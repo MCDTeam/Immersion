@@ -1,0 +1,19 @@
+0.0.1.0 - Alpha Build 1
+	Textures Work
+	Redid ModName/Id to match Devices
+
+0.0.0.4 - Alpha Start Build 4
+	Work On Textures
+
+0.0.0.3 - Alpha Start Build 3
+	@Instance added
+	Work On Textures
+
+0.0.0.2 - Alpha Start Build 2
+	Corrected DropBlock
+	Work On Textures
+
+0.0.0.1 - Alpha Start Build 1
+	Initial Start- RedOre Only
+
+	
