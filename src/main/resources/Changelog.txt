@@ -1,7 +1,8 @@
 0.0.3.0 - Alpha Build 3 - 2nd OreGen Update
-    Added Generators.createVein so as to create veined ores
-    Added Configuration
-    Started Work on tools
+	Added Generators.createVein so as to create veined ores
+	Added Configuration
+	Started Work on tools
+	Changed RedGemOre to OreGemRed and RedGem to GemRed
     
 0.0.2.0 - Alpha Build 2 - 1st OreGen Update
 	Generates RedGemOre in World |FAILED|
