@@ -14,24 +14,24 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 
-public class RedGemOre extends Block 
+public class OreGemRed extends Block 
 {
 	@SideOnly(Side.CLIENT)
 	protected IIcon texture;
 
-	public RedGemOre(Material material) 
+	public OreGemRed(Material material) 
 	{
 		super(material);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setBlockName("redGemOre");
+		setBlockName("oreRedGem");
 		setHarvestLevel("pickaxe", 2);
 	}
 
-	public Item func_149650_a(int metadata, Random random, int fortune) 
+	public Item getItemDropped(int metadata, Random random, int fortune) 
 	{
-		return Devices.redGem;
+		return Devices.gemRed;
 	}
 
 	@SideOnly(Side.CLIENT)

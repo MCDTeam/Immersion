@@ -1,6 +1,14 @@
+0.0.3.0 - Alpha Build 3 - 2nd OreGen Update
+    Added Generators.createVein so as to create veined ores
+    Added Configuration
+    Started Work on tools
+    
+0.0.2.0 - Alpha Build 2 - 1st OreGen Update
+	Generates RedGemOre in World |FAILED|
+
 0.0.1.0 - Alpha Build 1
 	Textures Work
-	Redid ModName/Id to match Devices
+	Re-did ModName/Id to match Devices
 
 0.0.0.4 - Alpha Start Build 4
 	Work On Textures

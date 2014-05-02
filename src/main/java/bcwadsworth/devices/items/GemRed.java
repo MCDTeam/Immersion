@@ -6,13 +6,13 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class RedGem extends Item 
+public class GemRed extends Item 
 {
-	public RedGem() 
+	public GemRed() 
 	{
 		maxStackSize = 64;
 		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName("redGem");
+		setUnlocalizedName("gemRed");
 	}
 
 	@SideOnly(Side.CLIENT)
