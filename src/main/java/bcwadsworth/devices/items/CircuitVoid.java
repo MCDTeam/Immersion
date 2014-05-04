@@ -6,18 +6,18 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class GemRed extends Item 
+public class CircuitVoid extends Item 
 {
-	public GemRed() 
+	public CircuitVoid() //EndGem
 	{
 		maxStackSize = 64;
 		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName("gemRed");
+		setUnlocalizedName("circuitVoid");
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister) 
 	{
-		itemIcon = iconRegister.registerIcon("devices:gemRed");
+		itemIcon = iconRegister.registerIcon("devices:circuitVoid");
 	}
 }

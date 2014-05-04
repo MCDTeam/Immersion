@@ -1,3 +1,6 @@
 tile.oreGemRed.name=Redstone Gem Ore
 
 item.gemRed.name=Redstone Gem
+item.circuitVoid.name=Void Circuit
+item.toolVoidLiquid.name=Liquid Void
+item.toolVoidBlock.name=Block Void

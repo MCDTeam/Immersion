@@ -1,23 +1,23 @@
 package bcwadsworth.devices.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class GemRed extends Item 
+public class CircuitEnergetic extends Item 
 {
-	public GemRed() 
+	public CircuitEnergetic() //RedGem
 	{
 		maxStackSize = 64;
 		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName("gemRed");
+		setUnlocalizedName("circuitEnergetic");
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister) 
 	{
-		itemIcon = iconRegister.registerIcon("devices:gemRed");
+		itemIcon = iconRegister.registerIcon("devices:circuitEnergetic");
 	}
 }
