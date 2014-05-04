@@ -1,6 +1,5 @@
 package bcwadsworth.devices.resources;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 

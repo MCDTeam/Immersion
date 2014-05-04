@@ -3,13 +3,10 @@ package bcwadsworth.devices;
 import java.util.Random;
 
 import bcwadsworth.devices.resources.ConfigLoad;
-import bcwadsworth.devices.resources.General;
 import bcwadsworth.devices.resources.Generators;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class OreGeneration implements IWorldGenerator

@@ -1,7 +1,6 @@
 package bcwadsworth.devices.blocks;
 
 import bcwadsworth.devices.Devices;
-import bcwadsworth.devices.resources.General;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

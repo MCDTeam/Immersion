@@ -191,10 +191,13 @@ public class Devices {
 		
 		GameRegistry.addShapelessRecipe(SHandler.S(matrixRandom, 2), SHandler.S(Blocks.flower_pot), SHandler.S(Blocks.wooden_door), SHandler.S(Items.arrow), SHandler.S(Items.baked_potato));
 		
-		GameRegistry.addShapedRecipe(SHandler.S(toolVoidLiquid), "aba","bcb","aba", 'a', SHandler.S(gemRed), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Items.bucket));
-		GameRegistry.addShapedRecipe(SHandler.S(toolVoidLiquid), "bab","aca","bab", 'a', SHandler.S(gemRed), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Items.bucket));
-		GameRegistry.addShapedRecipe(SHandler.S(toolVoidBlock), "aba","bcb","aba", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Blocks.stone));
-		GameRegistry.addShapedRecipe(SHandler.S(toolVoidBlock), "bab","aca","bab", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Blocks.stone));
+		if (ConfigLoad.VOIDTOOLS)
+		{
+			GameRegistry.addShapedRecipe(SHandler.S(toolVoidLiquid), "aba","bcb","aba", 'a', SHandler.S(gemRed), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Items.bucket));
+			GameRegistry.addShapedRecipe(SHandler.S(toolVoidLiquid), "bab","aca","bab", 'a', SHandler.S(gemRed), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Items.bucket));
+			GameRegistry.addShapedRecipe(SHandler.S(toolVoidBlock), "aba","bcb","aba", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Blocks.stone));
+			GameRegistry.addShapedRecipe(SHandler.S(toolVoidBlock), "bab","aca","bab", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Blocks.stone));
+		}
 		
 		if (ConfigLoad.GEMCRAFTABLE)
 		{
