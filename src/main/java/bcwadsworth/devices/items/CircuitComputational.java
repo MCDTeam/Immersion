@@ -1,23 +1,11 @@
 package bcwadsworth.devices.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import bcwadsworth.devices.items.ItemUpgrade;
 
-public class CircuitComputational extends Item 
+public class CircuitComputational extends ItemUpgrade
 {
 	public CircuitComputational() //Diamond
 	{
-		maxStackSize = 64;
-		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName("circuitComputational");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister) 
-	{
-		itemIcon = iconRegister.registerIcon("devices:circuitComputational");
+		super("circuitComputational", "devices:circuitComputational", 0)
 	}
 }
