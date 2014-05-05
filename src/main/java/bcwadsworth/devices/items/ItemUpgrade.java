@@ -6,9 +6,9 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemCircuit extends Item 
+public class ItemUpgrade extends Item 
 {
-	public ItemCircuit(String name, String itemIcon, int tier) //QuartzGem
+	public ItemUpgrade(String name, String itemIcon, int tier) //QuartzGem
 	{
 		private int tier = tier;
 		private String icon = itemIcon
@@ -29,5 +29,9 @@ public class ItemCircuit extends Item
 		{
 			return true;
 		}
+	}
+	interface IUpgrade
+	{
+		Boolean isEffectiveIn (
 	}
 }
