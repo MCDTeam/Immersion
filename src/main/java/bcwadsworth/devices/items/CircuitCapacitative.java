@@ -1,23 +1,11 @@
 package bcwadsworth.devices.items;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import bcwadsworth.devices.items.ItemUpgrade;
 
-public class CircuitCapacitative extends Item 
+public class CircuitCapacitative extends ItemUpgrade
 {
-	public CircuitCapacitative() //QuartzGem
+	public CircuitCapacitative() //EndGem
 	{
-		maxStackSize = 64;
-		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName("circuitCapacitative");
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister) 
-	{
-		itemIcon = iconRegister.registerIcon("devices:circuitCapacitative");
+		super("circuitCapacitative", "devices:circuitCapacitative", 0)
 	}
 }

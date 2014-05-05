@@ -1,6 +1,16 @@
 tile.oreGemRed.name=Redstone Gem Ore
+tile.oreGemEnd.name=End Gem Ore
+tile.fuelEnrichedCoal.name=Enriched Coal
+tile.furnaceUpgradeable.name=Upgradeable Furnace
 
 item.gemRed.name=Redstone Gem
+item.gemEnd.name=End Gem
+item.circuitCapacitative.name=Capacitative Circuit
+item.circuitComputational.name=Computational Circuit
+item.circuitEnergetic.name=Energetic Circuit
+item.circuitRandom.name=Random Circuit
+item.circuitTransforming.name=Transforming Circuit
 item.circuitVoid.name=Void Circuit
+item.matrixRandom.name=Random Matrix
 item.toolVoidLiquid.name=Liquid Void
 item.toolVoidBlock.name=Block Void
