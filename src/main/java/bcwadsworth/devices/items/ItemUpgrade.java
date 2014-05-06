@@ -3,35 +3,78 @@ package bcwadsworth.devices.items;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemUpgrade extends Item 
 {
-	public ItemUpgrade(String name, String itemIcon, int tier) //QuartzGem
+	int tier;
+	public ItemUpgrade(String name, int reqtier)
 	{
-		private int tier = tier;
-		private String icon = itemIcon
+		tier = reqtier;
 		maxStackSize = 16;
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
+	}
+	
+	public boolean isAllowed (int invUpgradeTier)
+	{
+		if (tier == 0 && invUpgradeTier > 0) 
+		{
+			if (invUpgradeTier >= tier) 
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
+		return false;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister) 
 	{
-		itemIcon = iconRegister.registerIcon(icon);
-	}
-
-	public Boolean isOfTier (int askTeir)
-	{
-		if (askTeir >= tier)
+		if (tier == 0)
 		{
-			return true;
+			itemIcon = iconRegister.registerIcon("devices:" + this.getUnlocalizedName());
+		}
+		else
+		{
+			itemIcon = iconRegister.registerIcon("devices:upgradeTeir" + tier);
 		}
 	}
-	interface IUpgrade
+	
+	public void installationEvent(String inventoryID, String inventoryType) 
 	{
-		Boolean isEffectiveIn (
+		
+	};
+
+	public void deinstallationEvent(String inventoryID, String inventoryType) 
+	{
+		
+	};
+
+	public void inventoryOpenEvent(String inventoryID, String inventoryType) 
+	{
+		
+	};
+
+	public void inventoryCloseEvent(String inventoryID, String inventoryType) 
+	{
+		
+	};
+
+	public void inventoryTickEvent(String inventoryID, String inventoryType) 
+	{
+		
+	};
+
+	public ItemStack[] getRecipie() 
+	{
+		return null;
 	}
+
 }

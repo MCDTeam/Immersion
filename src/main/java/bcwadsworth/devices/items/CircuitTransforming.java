@@ -6,6 +6,6 @@ public class CircuitTransforming extends ItemUpgrade
 {
 	public CircuitTransforming() //GlowGem
 	{
-		super("circuitTransforming", "devices:circuitTransforming", 0)
+		super("circuitTransforming", 0);
 	}
 }

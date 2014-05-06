@@ -6,6 +6,6 @@ public class CircuitEnergetic extends ItemUpgrade
 {
 	public CircuitEnergetic() //RedGem
 	{
-		super("circuitEnergetic", "devices:circuitEnergetic", 0)
+		super("circuitEnergetic", 0);
 	}
 }

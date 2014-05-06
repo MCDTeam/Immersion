@@ -6,6 +6,6 @@ public class CircuitRandom extends ItemUpgrade
 {
 	public CircuitRandom() //Emerald
 	{
-		super("circuitRandom", "devices:circuitRandom", 0)
+		super("circuitRandom", 0);
 	}
 }

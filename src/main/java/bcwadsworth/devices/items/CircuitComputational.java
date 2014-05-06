@@ -6,6 +6,6 @@ public class CircuitComputational extends ItemUpgrade
 {
 	public CircuitComputational() //Diamond
 	{
-		super("circuitComputational", "devices:circuitComputational", 0)
+		super("circuitComputational", 0);
 	}
 }

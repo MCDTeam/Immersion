@@ -6,6 +6,6 @@ public class CircuitVoid extends ItemUpgrade
 {
 	public CircuitVoid() //EndGem
 	{
-		super("circuitVoid", "devices:circuitVoid", 0)
+		super("circuitVoid", 0);
 	}
 }
