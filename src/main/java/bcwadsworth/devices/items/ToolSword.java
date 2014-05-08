@@ -1,14 +1,15 @@
 package bcwadsworth.devices.items;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.Item.ToolMaterial;
 
-public class ToolAxe extends ItemAxe 
+public class ToolSword extends ItemSword 
 {
-	public ToolAxe(ToolMaterial material) 
+	public ToolSword(ToolMaterial material) 
 	{
 		super(material);
-		setUnlocalizedName("axe" + material.name());
+		setUnlocalizedName("sword" + material.name());
 	}
 	public void registerIcons(IIconRegister iconRegister) 
 	{
