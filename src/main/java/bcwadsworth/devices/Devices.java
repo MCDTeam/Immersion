@@ -1,62 +1,64 @@
 package bcwadsworth.devices;
 
 //Blocks
-import bcwadsworth.devices.blocks.FuelEnrichedCoal;
-import bcwadsworth.devices.blocks.OreGemEnd;
-import bcwadsworth.devices.blocks.OreGemRed;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-
-//Items
-import bcwadsworth.devices.items.CircuitCapacitative;
-import bcwadsworth.devices.items.CircuitComputational;
-import bcwadsworth.devices.items.CircuitEnergetic;
-import bcwadsworth.devices.items.CircuitRandom;
-import bcwadsworth.devices.items.CircuitTransforming;
-import bcwadsworth.devices.items.CircuitVoid;
-import bcwadsworth.devices.items.GemEnd;
-import bcwadsworth.devices.items.GemRed;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemAxe;
+import net.minecraftforge.common.config.Configuration;
+import bcwadsworth.devices.blocks.BlockGemOre;
+import bcwadsworth.devices.blocks.FuelEnrichedCoal;
+import bcwadsworth.devices.items.ItemCircuit;
+import bcwadsworth.devices.items.ItemGem;
 import bcwadsworth.devices.items.MatrixRandom;
+import bcwadsworth.devices.items.ToolAxe;
 import bcwadsworth.devices.items.ToolVoidBlock;
 import bcwadsworth.devices.items.ToolVoidLiquid;
-import net.minecraft.item.Item;
-import net.minecraft.init.Items;
-
-//Loaders
-
-//Refrence Classes
-import bcwadsworth.devices.resources.General;
 import bcwadsworth.devices.resources.ConfigLoad;
+import bcwadsworth.devices.resources.General;
 import bcwadsworth.devices.resources.SHandler;
-
-//Internals
+import bcwadsworth.devices.resources.ToolArmorMaterial;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraftforge.common.config.Configuration;
+
 
 @Mod(modid = General.MODID, name = General.NAME, version = General.VERSION)
 public class Devices {
 	@Instance(General.MODID)
 	public static Devices instance;
 
-	public static Item gemRed;
-	public static Item gemEnd;
-	public static Item circuitCapacitative;
-	public static Item circuitComputational;
-	public static Item circuitEnergetic;
-	public static Item circuitRandom;
-	public static Item circuitTransforming;
-	public static Item circuitVoid;
+	public static ItemGem gemRed;
+	public static ItemGem gemEnd;
+	public static ItemGem gemGlow;
+	public static ItemCircuit circuitCapacitative;
+	public static ItemCircuit circuitComputational;
+	public static ItemCircuit circuitEnergetic;
+	public static ItemCircuit circuitRandom;
+	public static ItemCircuit circuitTransforming;
+	public static ItemCircuit circuitVoid;
 	public static Item matrixRandom;
 	public static Item toolVoidLiquid;
 	public static Item toolVoidBlock;
+	public static ItemAxe axeGemRed;
+	public static ItemAxe axeGemEnd;
+	public static ItemAxe axeGemDiamond;
+	public static ItemAxe axeGemEmerald;
+	public static ItemAxe axeGemQuartz;
+	public static ItemAxe axeGemGlow;
+	public static ItemAxe axeLapis;
+	public static ItemAxe axeObsidian;
 	
-	public static Block oreGemRed;
-	public static Block oreGemEnd;
+	public static BlockGemOre oreGemRed;
+	public static BlockGemOre oreGemEnd;
+	public static BlockGemOre oreGemDiamond;
+	public static BlockGemOre oreGemEmerald;
+	public static BlockGemOre oreGemQuartz;
+	public static BlockGemOre oreGemGlow;
 	public static Block fuelEnrichedCoal;
 
 	@EventHandler
@@ -89,6 +91,24 @@ public class Devices {
 			ConfigLoad.OREGEMREDGENERATEMIN = config.get(CATEGORYOREGEN, "Redstone Gem Ore Minimum Generated", ConfigLoad.OREGEMREDGENERATEMIN).getInt(ConfigLoad.OREGEMREDGENERATEMIN);
 			ConfigLoad.OREGEMREDGENERATEMAX = config.get(CATEGORYOREGEN, "Redstone Gem Ore Maximum Generated", ConfigLoad.OREGEMREDGENERATEMAX).getInt(ConfigLoad.OREGEMREDGENERATEMAX);
 		}
+		ConfigLoad.OREGEMGLOWGENERATE = config.get(CATEGORYOREGEN, "Generate Glowstone Gem Ore", ConfigLoad.OREGEMGLOWGENERATE).getBoolean(ConfigLoad.OREGEMGLOWGENERATE);
+		if (ConfigLoad.OREGEMGLOWGENERATE)
+		{
+			ConfigLoad.OREGEMGLOWCHUNKDENSITY = config.get(CATEGORYOREGEN, "Glowstone Gem Ore Chunk Density", ConfigLoad.OREGEMGLOWCHUNKDENSITY).getInt(ConfigLoad.OREGEMGLOWCHUNKDENSITY);
+			ConfigLoad.OREGEMGLOWYMIN = config.get(CATEGORYOREGEN, "Glowstone Gem Ore Minimum Y", ConfigLoad.OREGEMGLOWYMIN).getInt(ConfigLoad.OREGEMGLOWYMIN);
+			ConfigLoad.OREGEMGLOWYMAX = config.get(CATEGORYOREGEN, "Glowstone Gem Ore Maximum Y", ConfigLoad.OREGEMGLOWYMAX).getInt(ConfigLoad.OREGEMGLOWYMAX);
+			ConfigLoad.OREGEMGLOWGENERATEMIN = config.get(CATEGORYOREGEN, "Glowstone Gem Ore Minimum Generated", ConfigLoad.OREGEMGLOWGENERATEMIN).getInt(ConfigLoad.OREGEMGLOWGENERATEMIN);
+			ConfigLoad.OREGEMGLOWGENERATEMAX = config.get(CATEGORYOREGEN, "Glowstone Gem Ore Maximum Generated", ConfigLoad.OREGEMGLOWGENERATEMAX).getInt(ConfigLoad.OREGEMGLOWGENERATEMAX);
+		}
+		ConfigLoad.OREGEMQUARTZGENERATE = config.get(CATEGORYOREGEN, "Generate Quartz Gem Ore", ConfigLoad.OREGEMQUARTZGENERATE).getBoolean(ConfigLoad.OREGEMQUARTZGENERATE);
+		if (ConfigLoad.OREGEMQUARTZGENERATE)
+		{
+			ConfigLoad.OREGEMQUARTZCHUNKDENSITY = config.get(CATEGORYOREGEN, "Quartz Gem Ore Chunk Density", ConfigLoad.OREGEMQUARTZCHUNKDENSITY).getInt(ConfigLoad.OREGEMQUARTZCHUNKDENSITY);
+			ConfigLoad.OREGEMQUARTZYMIN = config.get(CATEGORYOREGEN, "Quartz Gem Ore Minimum Y", ConfigLoad.OREGEMQUARTZYMIN).getInt(ConfigLoad.OREGEMQUARTZYMIN);
+			ConfigLoad.OREGEMQUARTZYMAX = config.get(CATEGORYOREGEN, "Quartz Gem Ore Maximum Y", ConfigLoad.OREGEMQUARTZYMAX).getInt(ConfigLoad.OREGEMQUARTZYMAX);
+			ConfigLoad.OREGEMQUARTZGENERATEMIN = config.get(CATEGORYOREGEN, "Quartz Gem Ore Minimum Generated", ConfigLoad.OREGEMQUARTZGENERATEMIN).getInt(ConfigLoad.OREGEMQUARTZGENERATEMIN);
+			ConfigLoad.OREGEMQUARTZGENERATEMAX = config.get(CATEGORYOREGEN, "Quartz Gem Ore Maximum Generated", ConfigLoad.OREGEMQUARTZGENERATEMAX).getInt(ConfigLoad.OREGEMQUARTZGENERATEMAX);
+		}
 		ConfigLoad.OREGEMENDGENERATE = config.get(CATEGORYOREGEN, "Generate End Gem Ore", ConfigLoad.OREGEMENDGENERATE).getBoolean(ConfigLoad.OREGEMENDGENERATE);
 		if (ConfigLoad.OREGEMENDGENERATE)
 		{
@@ -103,36 +123,48 @@ public class Devices {
 			System.out.println("Devices: Config Loaded");
 		}
 		
-		gemRed = new GemRed();
-		GameRegistry.registerItem(gemRed, "gemRed");
-		
-		gemEnd = new GemEnd();
+		gemRed = new ItemGem("Red");
+		GameRegistry.registerItem(gemRed, "gemRed");	
+		gemEnd = new ItemGem("End");
 		GameRegistry.registerItem(gemEnd, "gemEnd");
+		gemGlow = new ItemGem("Glow");
+		GameRegistry.registerItem(gemGlow, "gemGlow");
 		
-		circuitCapacitative = new CircuitCapacitative();
+		circuitCapacitative = new ItemCircuit("Capacitative");
 		GameRegistry.registerItem(circuitCapacitative, "circuitCapacitative");
-		
-		circuitComputational = new CircuitComputational();
+		circuitComputational = new ItemCircuit("Computational");
 		GameRegistry.registerItem(circuitComputational, "circuitComputational");
-		
-		circuitEnergetic = new CircuitEnergetic();
+		circuitEnergetic = new ItemCircuit("Energetic");
 		GameRegistry.registerItem(circuitEnergetic, "circuitEnergetic");
-		
-		circuitRandom = new CircuitRandom();
+		circuitRandom = new ItemCircuit("Random");
 		GameRegistry.registerItem(circuitRandom, "circuitRandom");
-		
-		circuitTransforming = new CircuitTransforming();
-		GameRegistry.registerItem(circuitTransforming, "circuitTransforming");
-		
-		circuitVoid = new CircuitVoid();
+		circuitTransforming = new ItemCircuit("Transforming");
+		GameRegistry.registerItem(circuitTransforming, "circuitTransforming");		
+		circuitVoid = new ItemCircuit("Void");
 		GameRegistry.registerItem(circuitVoid, "circuitVoid");
 		
 		matrixRandom = new MatrixRandom();
 		GameRegistry.registerItem(matrixRandom, "matrixRandom");
 		
+		axeGemRed = new ToolAxe(ToolArmorMaterial.gemRed);
+		GameRegistry.registerItem(axeGemRed, "axeGemRed");
+		axeGemDiamond = new ToolAxe(ToolArmorMaterial.gemDiamond);
+		GameRegistry.registerItem(axeGemDiamond, "axeGemDiamond");
+		axeGemEmerald = new ToolAxe(ToolArmorMaterial.gemEmerald);
+		GameRegistry.registerItem(axeGemEmerald, "axeGemEmerald");
+		axeGemGlow = new ToolAxe(ToolArmorMaterial.gemGlow);
+		GameRegistry.registerItem(axeGemGlow, "axeGemGlow");
+		axeGemEnd = new ToolAxe(ToolArmorMaterial.gemEnd);
+		GameRegistry.registerItem(axeGemEnd, "axeGemEnd");
+		axeGemQuartz = new ToolAxe(ToolArmorMaterial.gemQuartz);
+		GameRegistry.registerItem(axeGemQuartz, "axeGemQuartz");
+		axeLapis = new ToolAxe(ToolArmorMaterial.lapis);
+		GameRegistry.registerItem(axeLapis, "axeLapis");
+		axeObsidian = new ToolAxe(ToolArmorMaterial.obsidian);
+		GameRegistry.registerItem(axeObsidian, "axeObsidian");
+		
 		toolVoidLiquid = new ToolVoidLiquid();
 		GameRegistry.registerItem(toolVoidLiquid, "toolVoidLiquid");
-		
 		toolVoidBlock = new ToolVoidBlock();
 		GameRegistry.registerItem(toolVoidBlock, "toolVoidBlock");
 		
@@ -141,12 +173,18 @@ public class Devices {
 			System.out.println("Devices: Items Loaded");
 		}
 		
-		
-		oreGemRed = new OreGemRed();
-		GameRegistry.registerBlock(oreGemRed, "oreGemRed");
-		
-		oreGemEnd = new OreGemEnd();
+		oreGemRed = new BlockGemOre("Red", gemRed);
+		GameRegistry.registerBlock(oreGemRed, "oreGemRed");		
+		oreGemEnd = new BlockGemOre("End", gemEnd);
 		GameRegistry.registerBlock(oreGemEnd, "oreGemEnd");
+		oreGemDiamond = new BlockGemOre("Diamond", Items.diamond);
+		GameRegistry.registerBlock(oreGemDiamond, "oreGemDiamond");
+		oreGemEmerald = new BlockGemOre("Emerald", Items.emerald);
+		GameRegistry.registerBlock(oreGemEmerald, "oreGemEmerald");
+		oreGemQuartz = new BlockGemOre("Quartz", Items.quartz);
+		GameRegistry.registerBlock(oreGemQuartz, "oreGemQuartz");
+		oreGemGlow = new BlockGemOre("Glow", gemGlow);
+		GameRegistry.registerBlock(oreGemGlow, "oreGemGlow");
 		
 		fuelEnrichedCoal = new FuelEnrichedCoal();
 		GameRegistry.registerBlock(fuelEnrichedCoal, "fuelEnrichedCoal");

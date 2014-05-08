@@ -31,7 +31,11 @@ public class OreGeneration implements IWorldGenerator
 
 	private void generateEnd(World world, Random random, int chunkX, int chunkZ) 
 	{
-		if ((0 == random.nextInt(ConfigLoad.OREGEMENDCHUNKDENSITY-1)) && ConfigLoad.OREGEMENDGENERATE)
+		if (ConfigLoad.OREGEMENDCHUNKDENSITY == 1)//OreGemEnd
+		{
+			Generators.createVein(world, random, Devices.oreGemEnd, Blocks.end_stone, chunkX, chunkZ, 1, 256, ConfigLoad.OREGEMENDGENERATEMIN, ConfigLoad.OREGEMENDGENERATEMAX);
+		}
+		else if ((0 == random.nextInt(ConfigLoad.OREGEMENDCHUNKDENSITY-1)) && ConfigLoad.OREGEMENDGENERATE)
 		{
 			Generators.createVein(world, random, Devices.oreGemEnd, Blocks.end_stone, chunkX, chunkZ, 1, 256, ConfigLoad.OREGEMENDGENERATEMIN, ConfigLoad.OREGEMENDGENERATEMAX);
 		}
@@ -39,14 +43,34 @@ public class OreGeneration implements IWorldGenerator
 
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ) 
 	{
-		if ((0 == random.nextInt(ConfigLoad.OREGEMREDCHUNKDENSITY-1)) && ConfigLoad.OREGEMREDGENERATE)
+		if (ConfigLoad.OREGEMREDCHUNKDENSITY == 1)// OreGemRed
 		{
-			Generators.createVein(world, random, Devices.oreGemRed, Blocks.stone, chunkX, chunkZ, ConfigLoad.OREGEMREDYMIN, ConfigLoad.OREGEMREDYMAX, ConfigLoad.OREGEMREDGENERATEMIN, ConfigLoad.OREGEMREDGENERATEMAX); //Generate OreGemRed
+			Generators.createVein(world, random, Devices.oreGemRed, Blocks.stone, chunkX, chunkZ, ConfigLoad.OREGEMREDYMIN, ConfigLoad.OREGEMREDYMAX, ConfigLoad.OREGEMREDGENERATEMIN, ConfigLoad.OREGEMREDGENERATEMAX);
+		}
+		else if ((0 == random.nextInt(ConfigLoad.OREGEMREDCHUNKDENSITY-1)) && ConfigLoad.OREGEMREDGENERATE)
+		{
+			Generators.createVein(world, random, Devices.oreGemRed, Blocks.stone, chunkX, chunkZ, ConfigLoad.OREGEMREDYMIN, ConfigLoad.OREGEMREDYMAX, ConfigLoad.OREGEMREDGENERATEMIN, ConfigLoad.OREGEMREDGENERATEMAX);
 		}
 	}
 	private void generateNether(World world, Random random, int chunkX, int chunkZ) 
 	{
-		//Currently Empty TODO: Add the Two Nether Ores
+		if (ConfigLoad.OREGEMGLOWCHUNKDENSITY == 1)// OreGemGlow
+		{
+			Generators.createVein(world, random, Devices.oreGemRed, Blocks.netherrack, chunkX, chunkZ, ConfigLoad.OREGEMGLOWYMIN, ConfigLoad.OREGEMGLOWYMAX, ConfigLoad.OREGEMGLOWGENERATEMIN, ConfigLoad.OREGEMGLOWGENERATEMAX);
+		}
+		else if ((0 == random.nextInt(ConfigLoad.OREGEMGLOWCHUNKDENSITY-1)) && ConfigLoad.OREGEMGLOWGENERATE)
+		{
+			Generators.createVein(world, random, Devices.oreGemRed, Blocks.netherrack, chunkX, chunkZ, ConfigLoad.OREGEMGLOWYMIN, ConfigLoad.OREGEMGLOWYMAX, ConfigLoad.OREGEMGLOWGENERATEMIN, ConfigLoad.OREGEMGLOWGENERATEMAX);
+		}
+		
+		if (ConfigLoad.OREGEMQUARTZCHUNKDENSITY == 1)// OreGemQuartz
+		{
+			Generators.createVein(world, random, Devices.oreGemRed, Blocks.netherrack, chunkX, chunkZ, ConfigLoad.OREGEMQUARTZYMIN, ConfigLoad.OREGEMQUARTZYMAX, ConfigLoad.OREGEMQUARTZGENERATEMIN, ConfigLoad.OREGEMQUARTZGENERATEMAX);
+		}
+		else if ((0 == random.nextInt(ConfigLoad.OREGEMQUARTZCHUNKDENSITY-1)) && ConfigLoad.OREGEMQUARTZGENERATE)
+		{
+			Generators.createVein(world, random, Devices.oreGemRed, Blocks.netherrack, chunkX, chunkZ, ConfigLoad.OREGEMQUARTZYMIN, ConfigLoad.OREGEMQUARTZYMAX, ConfigLoad.OREGEMQUARTZGENERATEMIN, ConfigLoad.OREGEMQUARTZGENERATEMAX);
+		}
 	}
 	
 }

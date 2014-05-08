@@ -13,7 +13,7 @@ public class ItemUpgrade extends Item
 	public ItemUpgrade(String name, int reqtier)
 	{
 		tier = reqtier;
-		maxStackSize = 16;
+		maxStackSize = 1;
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
@@ -37,14 +37,7 @@ public class ItemUpgrade extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister) 
 	{
-		if (tier == 0)
-		{
-			itemIcon = iconRegister.registerIcon("devices:" + this.getUnlocalizedName());
-		}
-		else
-		{
 			itemIcon = iconRegister.registerIcon("devices:upgradeTeir" + tier);
-		}
 	}
 	
 	public void installationEvent(String inventoryID, String inventoryType) 
