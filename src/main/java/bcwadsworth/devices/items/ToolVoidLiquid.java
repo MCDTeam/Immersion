@@ -1,5 +1,8 @@
 package bcwadsworth.devices.items;
 
+import java.util.Arrays;
+
+import bcwadsworth.devices.resources.BlockList;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,11 +17,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolVoidLiquid extends Item
 {
+	BlockList fluidlist = new BlockList (null, null);
 	public ToolVoidLiquid() 
 	{
 		maxStackSize = 1;
 		setCreativeTab(CreativeTabs.tabTools);
 		setUnlocalizedName("toolVoidLiquid");
+		fluidlist.removeFromList(Blocks.bedrock);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -36,21 +41,18 @@ public class ToolVoidLiquid extends Item
         }
         else
         {
-            if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
-            {
-                int X = movingobjectposition.blockX;
-                int Y = movingobjectposition.blockY;
-                int Z = movingobjectposition.blockZ;
+			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) 
+			{
+				int X = movingobjectposition.blockX;
+				int Y = movingobjectposition.blockY;
+				int Z = movingobjectposition.blockZ;
 
-                if (World.canMineBlock(EntityPlayer, X, Y, Z))
-                {
-                	Block block = World.getBlock(X, Y, Z);
-                	if (block == Blocks.lava || block == Blocks.water)
-                	{
-                		World.setBlockToAir(X,Y,Z);
-                	}
-                }
-            }
+				Block block = World.getBlock(X, Y, Z);
+				if (Arrays.asList(fluidlist.getList()).contains(block)) 
+				{
+					World.setBlockToAir(X, Y, Z);
+				}
+			}
         }
 		return ItemStack;
     }

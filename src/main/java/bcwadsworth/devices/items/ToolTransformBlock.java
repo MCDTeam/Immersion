@@ -42,54 +42,10 @@ public class ToolTransformBlock extends Item
                 int Y = movingobjectposition.blockY;
                 int Z = movingobjectposition.blockZ;
 
-                if (World.canMineBlock(EntityPlayer, X, Y, Z))
+                Block block = World.getBlock(X, Y, Z);
+                if (block != Blocks.bedrock)
                 {
-                	Block block = World.getBlock(X, Y, Z);
-                	if (block == Blocks.stone)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.gravel);
-                	}
-                	else if (block == Blocks.gravel)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.sand);
-                	}
-                	else if (block == Blocks.sand)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.glass);
-                	}
-                	else if (block == Blocks.glass)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.dirt);
-                	}
-                	else if (block == Blocks.dirt)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.cobblestone);
-                	}
-                	else if (block == Blocks.grass || block == Blocks.mycelium)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.dirt);
-                	}
-                	else if (block == Blocks.cobblestone)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.stonebrick);
-                	}
-                	else if (block == Blocks.mossy_cobblestone)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.cobblestone);
-                	}
-                	else if (block == Blocks.wool)
-                	{
-                		int metadata = World.getBlockMetadata(X, Y, Z);
-                		if (metadata == 16)
-                		{
-                			metadata = 0;
-                		}
-                		World.setBlock(X,Y,Z, Blocks.wool, metadata + 1, 0);
-                	}
-                	if (block == Blocks.stonebrick)
-                	{
-                		World.setBlock(X,Y,Z, Blocks.stone);
-                	}
+                	
                 }
             }
         }

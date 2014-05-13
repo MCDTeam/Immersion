@@ -1,5 +1,9 @@
 package bcwadsworth.devices.items;
 
+import java.util.Arrays;
+
+import bcwadsworth.devices.resources.BlockList;
+import bcwadsworth.devices.resources.ItemList;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolVoidBlock extends Item
 {
+	BlockList blacklist = new BlockList(null, null);
 	public ToolVoidBlock() 
 	{
 		maxStackSize = 1;
@@ -27,31 +32,29 @@ public class ToolVoidBlock extends Item
 		itemIcon = iconRegister.registerIcon("devices:toolVoidBlock");
 	}
 	
-	public ItemStack onItemRightClick(ItemStack ItemStack, World World, EntityPlayer EntityPlayer)
-    {
-		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(World, EntityPlayer, true);
-		if (movingobjectposition == null || World.isRemote)
-        {
+	public ItemStack onItemRightClick(ItemStack ItemStack, World World,
+			EntityPlayer EntityPlayer) {
+		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(
+				World, EntityPlayer, true);
+		if (movingobjectposition == null || World.isRemote) 
+		{
 			
-        }
-        else
-        {
-            if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
-            {
-                int X = movingobjectposition.blockX;
-                int Y = movingobjectposition.blockY;
-                int Z = movingobjectposition.blockZ;
+		} 
+		else 
+		{
+			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) 
+			{
+				int X = movingobjectposition.blockX;
+				int Y = movingobjectposition.blockY;
+				int Z = movingobjectposition.blockZ;
 
-                if (World.canMineBlock(EntityPlayer, X, Y, Z))
-                {
-                	Block block = World.getBlock(X, Y, Z);
-                	if (block != Blocks.lava && block != Blocks.water)
-                	{
-                		World.setBlockToAir(X,Y,Z);
-                	}
-                }
-            }
-        }
+				Block block = World.getBlock(X, Y, Z);
+				if (!Arrays.asList(blacklist.getList()).contains(block)) 
+				{
+					World.setBlockToAir(X, Y, Z);
+				}
+			}
+		}
 		return ItemStack;
     }
 }
