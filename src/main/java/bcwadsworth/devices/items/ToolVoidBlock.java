@@ -2,8 +2,6 @@ package bcwadsworth.devices.items;
 
 import java.util.Arrays;
 
-import bcwadsworth.devices.resources.BlockList;
-import bcwadsworth.devices.resources.ItemList;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,17 +11,22 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import bcwadsworth.devices.resources.BlockCompound;
+import bcwadsworth.devices.resources.BlockList;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolVoidBlock extends Item
 {
-	BlockList blacklist = new BlockList(null, null);
+	BlockList blacklist = new BlockList(null);
 	public ToolVoidBlock() 
 	{
 		maxStackSize = 1;
 		setCreativeTab(CreativeTabs.tabTools);
 		setUnlocalizedName("toolVoidBlock");
+		blacklist.addAllToList(Blocks.water);
+		blacklist.addAllToList(Blocks.lava);
+		blacklist.addToList(new BlockCompound(Blocks.bedrock, 0));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -48,8 +51,8 @@ public class ToolVoidBlock extends Item
 				int Y = movingobjectposition.blockY;
 				int Z = movingobjectposition.blockZ;
 
-				Block block = World.getBlock(X, Y, Z);
-				if (!Arrays.asList(blacklist.getList()).contains(block)) 
+				BlockCompound block = BlockCompound.get(World, X, Y, Z);
+				if (!blacklist.has(block)) 
 				{
 					World.setBlockToAir(X, Y, Z);
 				}

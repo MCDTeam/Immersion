@@ -10,130 +10,85 @@ import net.minecraft.item.Item;
 
 public class BlockList 
 {
-	private Block[] list;
-	private Integer[] metadata;
-	private static Block[] defaultList = new Block[] {Blocks.bedrock, Blocks.water, Blocks.lava};
-	private static Integer[] defaultMetadata = new Integer[] {17, 17, 17};
-	public BlockList(Block[] initialList, Integer[] listmetadata)
+	private BlockCompound[] list;
+	
+	public BlockList(BlockCompound[] initialList)
 	{
-		if (initialList == null)
-		{
-			this.setToDefaultList();
-		}
-		else
-		{
-			this.setList(initialList, listmetadata);
-		}
+		this.setList(initialList);
 	}
-	public Boolean addToList (Block blacklist, int blackmetadata)
+	
+	public void addToList(BlockCompound block)
 	{
-		if (list.length == metadata.length)
+		list = Arrays.copyOf(list, list.length + 1);
+		list[list.length - 1] = block;
+	}
+	
+	public void addAllToList(Block block)
+	{
+		for (int i = 0; i < 16; i++)
 		{
+			BlockCompound blockcomp = new BlockCompound(block, i);
 			list = Arrays.copyOf(list, list.length + 1);
-			list[list.length - 1] = blacklist;
-			metadata = Arrays.copyOf(metadata, list.length + 1);
-			metadata[metadata.length - 1] = blackmetadata;
-			return true;
+			list[list.length - 1] = blockcomp;
 		}
-		return false;
 	}
-	public Boolean removeFromList (Block whitelist)
+	
+	public void changeToList(int index, BlockCompound block)
 	{
-		if (list.length == metadata.length)
-		{
-			List<Block> listlist = Arrays.asList(list);
+		list[index] = block;
+	}
+	
+	public void removeFromList(BlockCompound whitelist)
+	{
+			List<BlockCompound> listlist = Arrays.asList(list);
 			int whiteIndex = listlist.indexOf(whitelist);
 			listlist.remove(whitelist);
-			list = listlist.toArray(new Block[listlist.size()]);
-			List<Integer> listmetadata = Arrays.asList(metadata);
-			listmetadata.remove(whiteIndex);
-			metadata = listmetadata.toArray(new Integer[listmetadata.size()]);
-			if (list.length == metadata.length)
-			{
-				return true;
-			}
-		}
-		return false;
+			list = listlist.toArray(new BlockCompound[listlist.size()]);
 	}
-	public void clearList ()
+	
+	public void removeFromList(int index)
 	{
-		list = new Block[] {null};
+			List<BlockCompound> listlist = Arrays.asList(list);
+			listlist.remove(index);
+			list = listlist.toArray(new BlockCompound[listlist.size()]);
+	}
+	
+	public void clearList()
+	{
+		list = new BlockCompound[] {null};
 		System.out.println(this + " just got cleared, something may not work right");
 	}
-	public Boolean setList (Block[] setList, Integer[] setMetadata)
+	
+	public void setList(BlockCompound[] setList)
 	{
-		if (list == null && setList.length == setMetadata.length)
-		{
-			list = setList;
-			metadata = setMetadata;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		this.clearList();
+		list = setList;
 	}
-	public Boolean setToDefaultList()
-	{
-		if (list == null && defaultList.length == defaultMetadata.length)
-		{
-			list = defaultList;
-			metadata = defaultMetadata;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	public Block[] getList()
+	
+	public BlockCompound[] get()
 	{
 		return list;
 	}
-	public Integer[] getMetadata()
+	
+	public int get(BlockCompound block)
 	{
-		return metadata;
-	}
-	public static Boolean addToDefaultList (Item blacklist)
-	{
-		return true;
-	}
-	public static Boolean removeFromDefaultList (Item whitelist)
-	{
-		if (defaultList.length == defaultMetadata.length)
+		if (this.has(block))
 		{
-			List<Block> listlist = Arrays.asList(defaultList);
-			int whiteIndex = listlist.indexOf(whitelist);
-			listlist.remove(whitelist);
-			defaultList = listlist.toArray(new Block[listlist.size()]);
-			List<Integer> listmetadata = Arrays.asList(defaultMetadata);
-			listmetadata.remove(whiteIndex);
-			defaultMetadata = listmetadata.toArray(new Integer[listmetadata.size()]);
-			if (defaultList.length == defaultMetadata.length)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	public static void clearDefaultList ()
-	{
-		defaultList = new Block[] {null};
-	}
-	public static Boolean setDefaultList (Block[] setList)
-	{
-		if (defaultList.length == 0)
-		{
-			defaultList = setList;
-			return true;
+			return Arrays.asList(list).indexOf(block);
 		}
 		else
 		{
-			return false;
+			return -1;
 		}
 	}
-	public static Block[] getDefaultList ()
+	
+	public Boolean has(BlockCompound block)
 	{
-		return defaultList;
+		return Arrays.asList(list).contains(block);
+	}
+	
+	public BlockCompound get(int index)
+	{
+		return list[index];
 	}
 }

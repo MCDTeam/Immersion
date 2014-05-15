@@ -39,6 +39,7 @@ public class Devices {
 	public static ItemGem gemRed;
 	public static ItemGem gemEnd;
 	public static ItemGem gemGlow;
+	public static ItemGem gemQuartz;
 	public static ItemCircuit circuitCapacitative;
 	public static ItemCircuit circuitComputational;
 	public static ItemCircuit circuitEnergetic;
@@ -104,6 +105,40 @@ public class Devices {
 		System.out.println("Pre-Initializing Devices Version " + General.VERSION);
 		
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		
+		this.configLoad(config);
+		
+		this.itemRegistration();
+		
+		this.blockRegistration();
+
+		System.out.println("Devices: Pre-Initialized");
+
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) 
+	{
+		System.out.println("Initializing Devices Version " + General.VERSION);
+		
+		GameRegistry.registerWorldGenerator(new OreGeneration(),0);
+		if (ConfigLoad.DEBUG)
+		{
+			System.out.println("World Generator Loaded");
+		}
+		GameRegistry.registerFuelHandler(new FuelHandler());
+		if (ConfigLoad.DEBUG)
+		{
+			System.out.println("Fuel Handler Loaded");
+		}
+		
+		this.craftingRegistration();
+		
+		System.out.println("Devices: Initialized");
+	}
+	
+	private void configLoad(Configuration config)
+	{
 		config.load();
 		
 		//General Category
@@ -159,13 +194,18 @@ public class Devices {
 		{
 			System.out.println("Devices: Config Loaded");
 		}
-		
+	}
+	
+	private void itemRegistration()
+	{
 		gemRed = new ItemGem("Red");
 		GameRegistry.registerItem(gemRed, "gemRed");	
 		gemEnd = new ItemGem("End");
 		GameRegistry.registerItem(gemEnd, "gemEnd");
 		gemGlow = new ItemGem("Glow");
 		GameRegistry.registerItem(gemGlow, "gemGlow");
+		gemQuartz = new ItemGem("Quartz");
+		GameRegistry.registerItem(gemQuartz, "gemQuartz");
 		
 		circuitCapacitative = new ItemCircuit("Capacitative");
 		GameRegistry.registerItem(circuitCapacitative, "circuitCapacitative");
@@ -279,7 +319,10 @@ public class Devices {
 		{
 			System.out.println("Devices: Items Loaded");
 		}
-		
+	}
+	
+	private void blockRegistration()
+	{
 		oreGemRed = new BlockGemOre("Red", gemRed);
 		GameRegistry.registerBlock(oreGemRed, "oreGemRed");		
 		oreGemEnd = new BlockGemOre("End", gemEnd);
@@ -300,27 +343,10 @@ public class Devices {
 		{
 			System.out.println("Devices: Blocks Loaded");
 		}
-
-		System.out.println("Devices: Pre-Initialized");
-
 	}
-
-	@EventHandler
-	public void init(FMLInitializationEvent event) 
+	
+	private void craftingRegistration()
 	{
-		System.out.println("Initializing Devices Version " + General.VERSION);
-		
-		GameRegistry.registerWorldGenerator(new OreGeneration(),0);
-		if (ConfigLoad.DEBUG)
-		{
-			System.out.println("World Generator Loaded");
-		}
-		GameRegistry.registerFuelHandler(new FuelHandler());
-		if (ConfigLoad.DEBUG)
-		{
-			System.out.println("Fuel Handler Loaded");
-		}
-		
 		GameRegistry.addShapedRecipe(SHandler.S(circuitCapacitative), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.ender_pearl), 'c', SHandler.S(Items.quartz));
 		GameRegistry.addShapedRecipe(SHandler.S(circuitCapacitative), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.ender_pearl), 'c', SHandler.S(Items.quartz));
 		GameRegistry.addShapedRecipe(SHandler.S(circuitComputational), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.gold_ingot), 'c', SHandler.S(Items.diamond));
@@ -348,13 +374,13 @@ public class Devices {
 		{
 			GameRegistry.addSmelting(Blocks.redstone_block, SHandler.S(gemRed, 2), 0.1F);
 			GameRegistry.addSmelting(gemRed, SHandler.S(Items.redstone, 2), 0.1F);
+			GameRegistry.addSmelting(Blocks.quartz_block, SHandler.S(gemQuartz, 1), 0.1F);
+			GameRegistry.addSmelting(gemQuartz, SHandler.S(Items.quartz, 1), 0.1F);
 		}
 		
 		if (ConfigLoad.DEBUG)
 		{
 			System.out.println("Devices: Recipies Loaded");
 		}
-		
-		System.out.println("Devices: Initialized");
 	}
 }

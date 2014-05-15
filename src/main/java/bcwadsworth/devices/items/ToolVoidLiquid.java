@@ -2,6 +2,7 @@ package bcwadsworth.devices.items;
 
 import java.util.Arrays;
 
+import bcwadsworth.devices.resources.BlockCompound;
 import bcwadsworth.devices.resources.BlockList;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,13 +18,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolVoidLiquid extends Item
 {
-	BlockList fluidlist = new BlockList (null, null);
+	BlockList fluidlist = new BlockList (null);
 	public ToolVoidLiquid() 
 	{
 		maxStackSize = 1;
 		setCreativeTab(CreativeTabs.tabTools);
 		setUnlocalizedName("toolVoidLiquid");
-		fluidlist.removeFromList(Blocks.bedrock);
+		fluidlist.addAllToList(Blocks.water);
+		fluidlist.addAllToList(Blocks.lava);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -47,8 +49,8 @@ public class ToolVoidLiquid extends Item
 				int Y = movingobjectposition.blockY;
 				int Z = movingobjectposition.blockZ;
 
-				Block block = World.getBlock(X, Y, Z);
-				if (Arrays.asList(fluidlist.getList()).contains(block)) 
+				BlockCompound block = BlockCompound.get(World, X, Y, Z);
+				if (fluidlist.has(block)) 
 				{
 					World.setBlockToAir(X, Y, Z);
 				}
