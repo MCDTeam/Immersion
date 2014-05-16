@@ -7,17 +7,18 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
-public class BlockList 
+public class ItemList //This is a reimplementation of Blocklist with itemstacks, pardon arguments being called block!
 {
-	private BlockCompound[] list;
+	private ItemStack[] list;
 	
-	public BlockList(BlockCompound[] initialList)
+	public ItemList(ItemStack[] initialList)
 	{
 		this.setList(initialList);
 	}
 	
-	public void addToList(BlockCompound block)
+	public void addToList(ItemStack block)
 	{
 		list = Arrays.copyOf(list, list.length + 1);
 		list[list.length - 1] = block;
@@ -29,56 +30,56 @@ public class BlockList
 		{
 			if (list == null)
 			{
-				list = new BlockCompound[] {new BlockCompound(Blocks.air, 0)};
+				list = new ItemStack[] {new ItemStack(Blocks.air, 0)};
 			}
-			BlockCompound blockcomp = new BlockCompound(block, i);
+			ItemStack blockcomp = new ItemStack(block, i);
 			list = Arrays.copyOf(list, list.length + 1);
 			list[list.length - 1] = blockcomp;
-			if (list[0] == new BlockCompound(Blocks.air, 0))
+			if (list[0] == new ItemStack(Blocks.air, 0))
 			{
 				this.removeFromList(0);
 			}
 		}
 	}
 	
-	public void changeToList(int index, BlockCompound block)
+	public void changeToList(int index, ItemStack block)
 	{
 		list[index] = block;
 	}
 	
-	public void removeFromList(BlockCompound whitelist)
+	public void removeFromList(ItemStack whitelist)
 	{
-			List<BlockCompound> listlist = Arrays.asList(list);
+			List<ItemStack> listlist = Arrays.asList(list);
 			int whiteIndex = listlist.indexOf(whitelist);
 			listlist.remove(whitelist);
-			list = listlist.toArray(new BlockCompound[listlist.size()]);
+			list = listlist.toArray(new ItemStack[listlist.size()]);
 	}
 	
 	public void removeFromList(int index)
 	{
-			List<BlockCompound> listlist = Arrays.asList(list);
+			List<ItemStack> listlist = Arrays.asList(list);
 			listlist.remove(index);
-			list = listlist.toArray(new BlockCompound[listlist.size()]);
+			list = listlist.toArray(new ItemStack[listlist.size()]);
 	}
 	
 	public void clearList()
 	{
-		list = new BlockCompound[] {null};
+		list = new ItemStack[] {null};
 		System.out.println(this + " just got cleared, something may not work right");
 	}
 	
-	public void setList(BlockCompound[] setList)
+	public void setList(ItemStack[] setList)
 	{
 		this.clearList();
 		list = setList;
 	}
 	
-	public BlockCompound[] get()
+	public ItemStack[] get()
 	{
 		return list;
 	}
 	
-	public int get(BlockCompound block)
+	public int get(ItemStack block)
 	{
 		if (this.has(block))
 		{
@@ -90,12 +91,12 @@ public class BlockList
 		}
 	}
 	
-	public Boolean has(BlockCompound block)
+	public Boolean has(ItemStack block)
 	{
 		return Arrays.asList(list).contains(block);
 	}
 	
-	public BlockCompound get(int index)
+	public ItemStack get(int index)
 	{
 		return list[index];
 	}

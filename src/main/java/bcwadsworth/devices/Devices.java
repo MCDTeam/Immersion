@@ -2,11 +2,13 @@ package bcwadsworth.devices;
 
 //Blocks
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockOre;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import bcwadsworth.devices.blocks.BlockGemOre;
+import bcwadsworth.devices.blocks.BlockImperfectOre;
 import bcwadsworth.devices.blocks.FuelEnrichedCoal;
 import bcwadsworth.devices.items.ItemCircuit;
 import bcwadsworth.devices.items.ItemGem;
@@ -97,6 +99,7 @@ public class Devices {
 	public static BlockGemOre oreGemEmerald;
 	public static BlockGemOre oreGemQuartz;
 	public static BlockGemOre oreGemGlow;
+	public static BlockImperfectOre oreImperfectDiamond;
 	public static Block fuelEnrichedCoal;
 
 	@EventHandler
@@ -113,6 +116,8 @@ public class Devices {
 		this.blockRegistration();
 
 		System.out.println("Devices: Pre-Initialized");
+		
+		
 
 	}
 
@@ -335,6 +340,9 @@ public class Devices {
 		GameRegistry.registerBlock(oreGemQuartz, "oreGemQuartz");
 		oreGemGlow = new BlockGemOre("Glow", gemGlow);
 		GameRegistry.registerBlock(oreGemGlow, "oreGemGlow");
+		
+		oreImperfectDiamond = new BlockImperfectOre("Diamond", Items.diamond);
+		Block.blockRegistry.addObject(56, "imperfect_diamond_ore", (oreImperfectDiamond)); //Overriding Vanilla Diamond Ore>imperfect diamond ore
 		
 		fuelEnrichedCoal = new FuelEnrichedCoal();
 		GameRegistry.registerBlock(fuelEnrichedCoal, "fuelEnrichedCoal");
