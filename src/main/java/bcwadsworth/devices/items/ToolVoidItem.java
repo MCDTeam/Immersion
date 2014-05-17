@@ -34,9 +34,9 @@ public class ToolVoidItem extends Item
 		itemIcon = iconRegister.registerIcon("devices:toolVoidBlock");
 	}
 	
-	public ItemStack onItemRightClick(ItemStack itemStack, World world,	EntityPlayer EntityPlayer) 
+	public ItemStack onItemRightClick(ItemStack itemStack, World world,	EntityPlayer player) 
 	{
-		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, EntityPlayer, true);
+		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, player, true);
 		if (movingobjectposition == null || world.isRemote) 
 		{
 			
@@ -72,7 +72,7 @@ public class ToolVoidItem extends Item
 		{
 			for (int i = 0; i < nbttaglist.tagCount(); ++i) 
 			{
-				int itemid = nbttaglist.getCompoundTagAt(i).getShort("item");
+				int itemid = nbttaglist.getCompoundTagAt(i).getInteger("item");
 
 				list.add(Item.getItemById(itemid));
 			}
@@ -87,11 +87,18 @@ public class ToolVoidItem extends Item
 
 		if (nbttaglist != null) 
 		{
-			for (int i = 0; i < nbttaglist.tagCount(); ++i) 
+			if (player.isSneaking())
 			{
-				int itemid = nbttaglist.getCompoundTagAt(i).getShort("item");
+				stack.setTagCompound(new NBTTagCompound());
+			}
+			else
+			{
+				for (int i = 0; i < nbttaglist.tagCount(); ++i) 
+				{
+					int itemid = nbttaglist.getCompoundTagAt(i).getInteger("item");
 
-				list.add(Item.getItemById(itemid));
+					player.inventory.clearInventory(Item.getItemById(itemid), -1);
+				}
 			}
 		}
         return true;

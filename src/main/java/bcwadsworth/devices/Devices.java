@@ -20,6 +20,7 @@ import bcwadsworth.devices.items.ToolShovel;
 import bcwadsworth.devices.items.ToolSword;
 import bcwadsworth.devices.items.ToolTransformBlock;
 import bcwadsworth.devices.items.ToolVoidBlock;
+import bcwadsworth.devices.items.ToolVoidItem;
 import bcwadsworth.devices.items.ToolVoidLiquid;
 import bcwadsworth.devices.resources.ConfigLoad;
 import bcwadsworth.devices.resources.General;
@@ -52,6 +53,7 @@ public class Devices {
 	public static Item toolTransformBlock;
 	public static Item toolVoidLiquid;
 	public static Item toolVoidBlock;
+	public static Item toolVoidItem;
 	public static ToolPickaxe pickaxeGemRed;
 	public static ToolPickaxe pickaxeGemEnd;
 	public static ToolPickaxe pickaxeGemDiamond;
@@ -116,9 +118,6 @@ public class Devices {
 		this.blockRegistration();
 
 		System.out.println("Devices: Pre-Initialized");
-		
-		
-
 	}
 
 	@EventHandler
@@ -319,6 +318,8 @@ public class Devices {
 		GameRegistry.registerItem(toolVoidLiquid, "toolVoidLiquid");
 		toolVoidBlock = new ToolVoidBlock();
 		GameRegistry.registerItem(toolVoidBlock, "toolVoidBlock");
+		toolVoidItem = new ToolVoidItem();
+		GameRegistry.registerItem(toolVoidItem, "toolVoidItem");
 		
 		if (ConfigLoad.DEBUG)
 		{
