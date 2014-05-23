@@ -11,18 +11,49 @@ item.gemRed.name=Redstone Gem
 item.gemEnd.name=End Gem
 item.gemQuartz.name=Quartz Gem
 item.gemGlow.name=Glowstone Gem
+
 item.circuitCapacitative.name=Capacitative Circuit
 item.circuitComputational.name=Computational Circuit
 item.circuitEnergetic.name=Energetic Circuit
 item.circuitRandom.name=Random Circuit
 item.circuitTransforming.name=Transforming Circuit
 item.circuitVoid.name=Void Circuit
+
 item.matrixRandom.name=Random Matrix
+item.matrixStorage.name=Storage Matrix
+
 item.axeGemRed.name=Redstone Gem Axe
 item.axeGemEmerald.name=Emerald Gem Axe
 item.axeGemDiamond.name=Diamond Gem Axe
 item.axeGemGlow.name=Glowstone Gem Axe
 item.axeGemQuartz.name=Quartz Gem Axe
 item.axeGemEnd.name=End Gem Axe
+
+item.pickaxeGemRed.name=Redstone Gem Pickaxe
+item.pickaxeGemEmerald.name=Emerald Gem Pickaxe
+item.pickaxeGemDiamond.name=Diamond Gem Pickaxe
+item.pickaxeGemGlow.name=Glowstone Gem Pickaxe
+item.pickaxeGemQuartz.name=Quartz Gem Pickaxe
+item.pickaxeGemEnd.name=End Gem Pickaxe
+
+item.hoeGemRed.name=Redstone Gem Hoe
+item.hoeGemEmerald.name=Emerald Gem Hoe
+item.hoeGemDiamond.name=Diamond Gem Hoe
+item.hoeGemGlow.name=Glowstone Gem Hoe
+item.hoeGemQuartz.name=Quartz Gem Hoe
+item.hoeGemEnd.name=End Gem Hoe
+
+item.shovelGemRed.name=Redstone Gem Shovel
+item.shovelGemEmerald.name=Emerald Gem Shovel
+item.shovelGemDiamond.name=Diamond Gem Shovel
+item.shovelGemGlow.name=Glowstone Gem Shovel
+item.shovelGemQuartz.name=Quartz Gem Shovel
+item.shovelGemEnd.name=End Gem Shovel
+
 item.toolVoidLiquid.name=Liquid Void
 item.toolVoidBlock.name=Block Void
+item.toolVoidItem.name=Item Void
+item.toolVoidItemWhite.name=Specific Item Void
+item.toolVoidItemBlack.name=Inspecific Item Void
+
+item.toolTransformBlock.name=Block Transformer

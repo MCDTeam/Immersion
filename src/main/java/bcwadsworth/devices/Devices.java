@@ -1,8 +1,6 @@
 package bcwadsworth.devices;
 
-//Blocks
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockOre;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -12,16 +10,17 @@ import bcwadsworth.devices.blocks.BlockImperfectOre;
 import bcwadsworth.devices.blocks.FuelEnrichedCoal;
 import bcwadsworth.devices.items.ItemCircuit;
 import bcwadsworth.devices.items.ItemGem;
-import bcwadsworth.devices.items.MatrixRandom;
-import bcwadsworth.devices.items.ToolHoe;
-import bcwadsworth.devices.items.ToolHoe;
-import bcwadsworth.devices.items.ToolPickaxe;
-import bcwadsworth.devices.items.ToolShovel;
-import bcwadsworth.devices.items.ToolSword;
-import bcwadsworth.devices.items.ToolTransformBlock;
-import bcwadsworth.devices.items.ToolVoidBlock;
-import bcwadsworth.devices.items.ToolVoidItem;
-import bcwadsworth.devices.items.ToolVoidLiquid;
+import bcwadsworth.devices.items.ItemMatrix;
+import bcwadsworth.devices.items.tools.ToolHoe;
+import bcwadsworth.devices.items.tools.ToolPickaxe;
+import bcwadsworth.devices.items.tools.ToolShovel;
+import bcwadsworth.devices.items.tools.ToolSword;
+import bcwadsworth.devices.items.tools.ToolTransformBlock;
+import bcwadsworth.devices.items.tools.ToolVoidBlock;
+import bcwadsworth.devices.items.tools.ToolVoidBlockRanged;
+import bcwadsworth.devices.items.tools.ToolVoidItem;
+import bcwadsworth.devices.items.tools.ToolVoidItemBlack;
+import bcwadsworth.devices.items.tools.ToolVoidItemWhite;
 import bcwadsworth.devices.resources.ConfigLoad;
 import bcwadsworth.devices.resources.General;
 import bcwadsworth.devices.resources.SHandler;
@@ -49,11 +48,14 @@ public class Devices {
 	public static ItemCircuit circuitRandom;
 	public static ItemCircuit circuitTransforming;
 	public static ItemCircuit circuitVoid;
-	public static Item matrixRandom;
+	public static ItemMatrix matrixRandom;
+	public static ItemMatrix matrixStorage;
 	public static Item toolTransformBlock;
-	public static Item toolVoidLiquid;
 	public static Item toolVoidBlock;
+	public static Item toolVoidBlockRanged;
 	public static Item toolVoidItem;
+	public static Item toolVoidItemWhite;
+	public static Item toolVoidItemBlack;
 	public static ToolPickaxe pickaxeGemRed;
 	public static ToolPickaxe pickaxeGemEnd;
 	public static ToolPickaxe pickaxeGemDiamond;
@@ -224,8 +226,10 @@ public class Devices {
 		circuitVoid = new ItemCircuit("Void");
 		GameRegistry.registerItem(circuitVoid, "circuitVoid");
 		
-		matrixRandom = new MatrixRandom();
+		matrixRandom = new ItemMatrix("Random");
 		GameRegistry.registerItem(matrixRandom, "matrixRandom");
+		matrixStorage = new ItemMatrix("Storage");
+		GameRegistry.registerItem(matrixStorage, "matrixStorage");
 		
 		pickaxeGemRed = new ToolPickaxe(ToolArmorMaterial.gemRed);
 		GameRegistry.registerItem(pickaxeGemRed, "pickaxeGemRed");
@@ -314,12 +318,16 @@ public class Devices {
 		
 		toolTransformBlock = new ToolTransformBlock();
 		GameRegistry.registerItem(toolTransformBlock, "toolTransformBlock");
-		toolVoidLiquid = new ToolVoidLiquid();
-		GameRegistry.registerItem(toolVoidLiquid, "toolVoidLiquid");
 		toolVoidBlock = new ToolVoidBlock();
 		GameRegistry.registerItem(toolVoidBlock, "toolVoidBlock");
+		toolVoidBlockRanged = new ToolVoidBlockRanged();
+		GameRegistry.registerItem(toolVoidBlockRanged, "toolVoidBlockRanged");
 		toolVoidItem = new ToolVoidItem();
 		GameRegistry.registerItem(toolVoidItem, "toolVoidItem");
+		toolVoidItemWhite = new ToolVoidItemWhite();
+		GameRegistry.registerItem(toolVoidItemWhite, "toolVoidItemWhite");
+		toolVoidItemBlack = new ToolVoidItemBlack();
+		GameRegistry.registerItem(toolVoidItemBlack, "toolVoidItemBlack");
 		
 		if (ConfigLoad.DEBUG)
 		{
@@ -370,11 +378,11 @@ public class Devices {
 		GameRegistry.addShapedRecipe(SHandler.S(circuitVoid), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.ender_pearl), 'c', SHandler.S(gemEnd));
 		
 		GameRegistry.addShapelessRecipe(SHandler.S(matrixRandom, 2), SHandler.S(Blocks.flower_pot), SHandler.S(Blocks.wooden_door), SHandler.S(Items.arrow), SHandler.S(Items.baked_potato));
+		GameRegistry.addShapelessRecipe(SHandler.S(matrixStorage, 2), SHandler.S(Blocks.chest), SHandler.S(Items.quartz), SHandler.S(Items.book), SHandler.S(Items.bed));
+		
 		
 		if (ConfigLoad.VOIDTOOLS)
 		{
-			GameRegistry.addShapedRecipe(SHandler.S(toolVoidLiquid), "aba","bcb","aba", 'a', SHandler.S(gemRed), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Items.bucket));
-			GameRegistry.addShapedRecipe(SHandler.S(toolVoidLiquid), "bab","aca","bab", 'a', SHandler.S(gemRed), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Items.bucket));
 			GameRegistry.addShapedRecipe(SHandler.S(toolVoidBlock), "aba","bcb","aba", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Blocks.stone));
 			GameRegistry.addShapedRecipe(SHandler.S(toolVoidBlock), "bab","aca","bab", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(circuitVoid), 'c', SHandler.S(Blocks.stone));
 		}

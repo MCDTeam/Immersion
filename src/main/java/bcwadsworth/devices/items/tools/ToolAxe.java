@@ -1,4 +1,4 @@
-package bcwadsworth.devices.items;
+package bcwadsworth.devices.items.tools;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemAxe;

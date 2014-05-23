@@ -1,15 +1,15 @@
-package bcwadsworth.devices.items;
+package bcwadsworth.devices.items.tools;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.Item.ToolMaterial;
 
-public class ToolHoe extends ItemHoe 
+public class ToolPickaxe extends ItemPickaxe 
 {
-	public ToolHoe(ToolMaterial material) 
+	public ToolPickaxe(ToolMaterial material) 
 	{
 		super(material);
-		setUnlocalizedName("hoe" + material.name());
+		setUnlocalizedName("pickaxe" + material.name());
 	}
 	public void registerIcons(IIconRegister iconRegister) 
 	{

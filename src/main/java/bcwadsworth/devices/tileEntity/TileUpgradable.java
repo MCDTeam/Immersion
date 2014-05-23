@@ -23,17 +23,12 @@ public class TileUpgradable extends TileEntity implements ISidedInventory
 	public int tier;
 	
 	
-	public TileUpgradable(String nameRaw, String typeRaw, int size)
+	public TileUpgradable()
 	{
-		name = nameRaw;
-		type = typeRaw;
 		tier = 0;
-		inventory = new ItemStack[size];
-		inventoryAvalible = new Boolean[size];
-		for (int i = 0; i < size; i++)
-		{
-			inventoryAvalible[i] = true;
-		}
+		inventory = new ItemStack[100];
+		inventoryAvalible = new Boolean[100];
+		Arrays.fill(inventoryAvalible, true);
 	}
 	
 	public void constructSections(Boolean[]... sectionConstructRaw)

@@ -9,8 +9,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class BlockGemOre extends Block 
 {
@@ -33,6 +35,16 @@ public class BlockGemOre extends Block
 	{
 		return drop;
 	}
+	
+    public int quantityDropped(Random random)
+    {
+        return random.nextInt(4);
+    }
+
+    public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+    {
+        return true;
+    }
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister register) 
