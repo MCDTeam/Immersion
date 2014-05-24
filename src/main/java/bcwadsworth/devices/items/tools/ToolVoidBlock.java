@@ -43,15 +43,18 @@ public class ToolVoidBlock extends Item
 		{
 			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) 
 			{
-				int X = movingobjectposition.blockX;
-				int Y = movingobjectposition.blockY;
-				int Z = movingobjectposition.blockZ;
+				int x = movingobjectposition.blockX;
+				int y = movingobjectposition.blockY;
+				int z = movingobjectposition.blockZ;
 
-				BlockCompound block = BlockCompound.get(world, X, Y, Z);
-				System.out.print(block.getBlock().getUnlocalizedName() + block.getMetadata());
-				if (block.getBlock().canHarvestBlock(EntityPlayer, block.getMetadata())) 
+				BlockCompound block = BlockCompound.get(world, x, y, z);
+				if (block.getBlock() == Blocks.bedrock) 
 				{
-					world.setBlockToAir(X, Y, Z);
+
+				}
+				else
+				{
+					world.setBlockToAir(x, y, z);
 				}
 			}
 		}

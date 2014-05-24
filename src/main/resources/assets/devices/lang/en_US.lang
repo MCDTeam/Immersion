@@ -5,7 +5,6 @@ tile.oreGemGlow.name=Glowstone Gem Ore
 tile.oreGemEmerald.name=Emerald Gem Ore
 tile.oreGemDiamond.name=Diamond Gem Ore
 tile.fuelEnrichedCoal.name=Enriched Coal
-tile.furnaceUpgradeable.name=Upgradeable Furnace
 
 item.gemRed.name=Redstone Gem
 item.gemEnd.name=End Gem
@@ -50,8 +49,8 @@ item.shovelGemGlow.name=Glowstone Gem Shovel
 item.shovelGemQuartz.name=Quartz Gem Shovel
 item.shovelGemEnd.name=End Gem Shovel
 
-item.toolVoidLiquid.name=Liquid Void
 item.toolVoidBlock.name=Block Void
+item.toolVoidBlockRanged.name=Block Void Ranged
 item.toolVoidItem.name=Item Void
 item.toolVoidItemWhite.name=Specific Item Void
 item.toolVoidItemBlack.name=Inspecific Item Void

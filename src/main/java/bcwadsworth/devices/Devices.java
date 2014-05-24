@@ -336,7 +336,7 @@ public class Devices {
 	}
 	
 	private void blockRegistration()
-	{
+	{	
 		oreGemRed = new BlockGemOre("Red", gemRed);
 		GameRegistry.registerBlock(oreGemRed, "oreGemRed");		
 		oreGemEnd = new BlockGemOre("End", gemEnd);
@@ -351,7 +351,6 @@ public class Devices {
 		GameRegistry.registerBlock(oreGemGlow, "oreGemGlow");
 		
 		oreImperfectDiamond = new BlockImperfectOre("Diamond", Items.diamond);
-		Block.blockRegistry.addObject(56, "imperfect_diamond_ore", (oreImperfectDiamond)); //Overriding Vanilla Diamond Ore>imperfect diamond ore
 		
 		fuelEnrichedCoal = new FuelEnrichedCoal();
 		GameRegistry.registerBlock(fuelEnrichedCoal, "fuelEnrichedCoal");
