@@ -8,6 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import bcwadsworth.devices.resources.ORef;
+import bcwadsworth.devices.blocks.BlockGem;
 import bcwadsworth.devices.blocks.BlockGemOre;
 import bcwadsworth.devices.blocks.BlockImperfectOre;
 import bcwadsworth.devices.blocks.FuelEnrichedCoal;
@@ -68,17 +69,10 @@ public class Devices
 		System.out.println("Initializing Devices Version " + General.VERSION);
 		
 		GameRegistry.registerWorldGenerator(new OreGeneration(),0);
-		if (ConfigLoad.DEBUG)
-		{
-			System.out.println("World Generator Loaded");
-		}
 		GameRegistry.registerFuelHandler(new FuelHandler());
-		if (ConfigLoad.DEBUG)
-		{
-			System.out.println("Fuel Handler Loaded");
-		}
 		
 		MinecraftForge.ORE_GEN_BUS.register(new EventHooks());
+		
 		
 		this.craftingRegistration();
 		
@@ -193,6 +187,13 @@ public class Devices
 		ORef.gemQuartz = new ItemGem("Quartz");
 		GameRegistry.registerItem(ORef.gemQuartz, "gemQuartz");
 		
+		ORef.gemImperfectDiamond = new ItemGem("ImperfectDiamond");
+		GameRegistry.registerItem(ORef.gemImperfectDiamond, "gemImperfectDiamond");
+		ORef.gemImperfectEmerald = new ItemGem("ImperfectEmerald");
+		GameRegistry.registerItem(ORef.gemImperfectEmerald, "gemImperfectEmerald");
+		ORef.gemImperfectEnd = new ItemGem("ImperfectEnd");
+		GameRegistry.registerItem(ORef.gemImperfectEnd, "gemImperfectEnd");
+		
 		ORef.circuitCapacitative = new ItemCircuit("Capacitative");
 		GameRegistry.registerItem(ORef.circuitCapacitative, "circuitCapacitative");
 		ORef.circuitComputational = new ItemCircuit("Computational");
@@ -205,11 +206,6 @@ public class Devices
 		GameRegistry.registerItem(ORef.circuitTransforming, "circuitTransforming");		
 		ORef.circuitVoid = new ItemCircuit("Void");
 		GameRegistry.registerItem(ORef.circuitVoid, "circuitVoid");
-		
-		ORef.matrixRandom = new ItemMatrix("Random");
-		GameRegistry.registerItem(ORef.matrixRandom, "matrixRandom");
-		ORef.matrixStorage = new ItemMatrix("Storage");
-		GameRegistry.registerItem(ORef.matrixStorage, "matrixStorage");
 		
 		ORef.pickaxeGemRed = new ToolPickaxe(ToolArmorMaterial.gemRed);
 		GameRegistry.registerItem(ORef.pickaxeGemRed, "pickaxeGemRed");
@@ -310,11 +306,6 @@ public class Devices
 		GameRegistry.registerItem(ORef.toolVoidItemBlack, "toolVoidItemBlack");
 		ORef.toolVoidTile = new ToolVoidTile();
 		GameRegistry.registerItem(ORef.toolVoidTile, "toolVoidTile");
-		
-		if (ConfigLoad.DEBUG)
-		{
-			System.out.println("Devices: Items Loaded");
-		}
 	}
 	
 	private void blockRegistration()
@@ -331,54 +322,87 @@ public class Devices
 		GameRegistry.registerBlock(ORef.oreGemQuartz, "oreGemQuartz");
 		ORef.oreGemGlow = new BlockGemOre("Glow", ORef.gemGlow);
 		GameRegistry.registerBlock(ORef.oreGemGlow, "oreGemGlow");
+				
+		ORef.blockGemEnd = new BlockGem("End");
+		GameRegistry.registerBlock(ORef.blockGemEnd, "blockGemEnd");
+		ORef.blockGemGlow = new BlockGem("Glow");
+		GameRegistry.registerBlock(ORef.blockGemGlow, "blockGemGlow");
 		
-		ORef.oreImperfectDiamond = new BlockImperfectOre("Diamond", Items.diamond);
+		ORef.oreImperfectRed = new BlockImperfectOre("Red", Items.redstone);
+		GameRegistry.registerBlock(ORef.oreImperfectRed, "oreImperfectRed");
+		ORef.oreImperfectDiamond = new BlockImperfectOre("Diamond", ORef.gemImperfectDiamond);
+		GameRegistry.registerBlock(ORef.oreImperfectDiamond, "oreImperfectDiamond");
+		ORef.oreImperfectEmerald = new BlockImperfectOre("Emerald", ORef.gemImperfectEmerald);
+		GameRegistry.registerBlock(ORef.oreImperfectEmerald, "oreImperfectEmerald");
+		ORef.oreImperfectQuartz = new BlockImperfectOre("Quartz", Items.quartz);
+		GameRegistry.registerBlock(ORef.oreImperfectQuartz, "oreImperfectQuartz");
+		
+		ORef.blockGemImperfectRed = new BlockGem("ImperfectRed");
+		GameRegistry.registerBlock(ORef.blockGemImperfectRed, "blockGemImperfectRed");
+		ORef.blockGemImperfectDiamond = new BlockGem("ImperfectDiamond");
+		GameRegistry.registerBlock(ORef.blockGemImperfectDiamond, "blockGemImperfectDiamond");
+		ORef.blockGemImperfectEmerald = new BlockGem("ImperfectEmerald");
+		GameRegistry.registerBlock(ORef.blockGemImperfectEmerald, "blockGemImperfectEmerald");
+		ORef.blockGemImperfectQuartz = new BlockGem("ImperfectQuartz");
+		GameRegistry.registerBlock(ORef.blockGemImperfectQuartz, "blockGemImperfectQuartz");
+		ORef.blockGemImperfectEnd = new BlockGem("ImperfectEnd");
+		GameRegistry.registerBlock(ORef.blockGemImperfectEnd, "blockGemImperfectEnd");
 		
 		ORef.fuelEnrichedCoal = new FuelEnrichedCoal();
 		GameRegistry.registerBlock(ORef.fuelEnrichedCoal, "fuelEnrichedCoal");
-		
-		if (ConfigLoad.DEBUG)
-		{
-			System.out.println("Devices: Blocks Loaded");
-		}
 	}
 	
 	private void craftingRegistration()
 	{
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitCapacitative), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.ender_pearl), 'c', SHandler.S(Items.quartz));
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitCapacitative), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.ender_pearl), 'c', SHandler.S(Items.quartz));
+		
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitComputational), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.gold_ingot), 'c', SHandler.S(Items.diamond));
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitComputational), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.gold_ingot), 'c', SHandler.S(Items.diamond));
+		
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitEnergetic), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.quartz), 'c', SHandler.S(ORef.gemRed));
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitEnergetic), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.quartz), 'c', SHandler.S(ORef.gemRed));
-		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitRandom), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(ORef.matrixRandom), 'c', SHandler.S(Items.emerald));
-		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitRandom), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(ORef.matrixRandom), 'c', SHandler.S(Items.emerald));
+		
+		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitRandom), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.bowl), 'c', SHandler.S(Items.emerald));
+		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitRandom), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.bowl), 'c', SHandler.S(Items.emerald));
+		
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitTransforming), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Blocks.obsidian), 'c', SHandler.S(Blocks.glowstone));
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitTransforming), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Blocks.obsidian), 'c', SHandler.S(Blocks.glowstone));
+		
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitVoid), "aba","bcb","aba", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.ender_pearl), 'c', SHandler.S(ORef.gemEnd));
 		GameRegistry.addShapedRecipe(SHandler.S(ORef.circuitVoid), "bab","aca","bab", 'a', SHandler.S(Items.redstone), 'b', SHandler.S(Items.ender_pearl), 'c', SHandler.S(ORef.gemEnd));
 		
-		GameRegistry.addShapelessRecipe(SHandler.S(ORef.matrixRandom, 2), SHandler.S(Blocks.flower_pot), SHandler.S(Blocks.wooden_door), SHandler.S(Items.arrow), SHandler.S(Items.baked_potato));
-		GameRegistry.addShapelessRecipe(SHandler.S(ORef.matrixStorage, 2), SHandler.S(Blocks.chest), SHandler.S(Items.quartz), SHandler.S(Items.book), SHandler.S(Items.bed));
 		
 		
 		if (ConfigLoad.VOIDTOOLS)
 		{
-			GameRegistry.addShapedRecipe(SHandler.S(ORef.toolVoidBlock), "aba","bcb","aba", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(ORef.circuitVoid), 'c', SHandler.S(Blocks.stone));
-			GameRegistry.addShapedRecipe(SHandler.S(ORef.toolVoidBlock), "bab","aca","bab", 'a', SHandler.S(Items.emerald), 'b', SHandler.S(ORef.circuitVoid), 'c', SHandler.S(Blocks.stone));
+			GameRegistry.addShapedRecipe(SHandler.S(ORef.toolVoidBlock), "aba","bcb","aba", 'a', SHandler.S(ORef.gemImperfectEnd), 'b', SHandler.S(ORef.circuitVoid), 'c', SHandler.S(Blocks.glass_pane));
+			GameRegistry.addShapedRecipe(SHandler.S(ORef.toolVoidBlock), "bab","aca","bab", 'a', SHandler.S(ORef.gemImperfectEnd), 'b', SHandler.S(ORef.circuitVoid), 'c', SHandler.S(Blocks.glass_pane));
 		}
 		
 		if (ConfigLoad.GEMCRAFTABLE)
 		{
-			GameRegistry.addSmelting(Blocks.redstone_block, SHandler.S(ORef.gemRed, 2), 0.1F);
+			GameRegistry.addSmelting(ORef.blockGemImperfectRed, SHandler.S(ORef.gemRed, 2), 0.1F);
 			GameRegistry.addSmelting(ORef.gemRed, SHandler.S(Items.redstone, 2), 0.1F);
-			GameRegistry.addSmelting(Blocks.quartz_block, SHandler.S(ORef.gemQuartz, 1), 0.1F);
-			GameRegistry.addSmelting(ORef.gemQuartz, SHandler.S(Items.quartz, 1), 0.1F);
-		}
-		
-		if (ConfigLoad.DEBUG)
-		{
-			System.out.println("Devices: Recipies Loaded");
+			
+			GameRegistry.addSmelting(ORef.blockGemImperfectQuartz, SHandler.S(ORef.gemQuartz, 2), 0.1F);
+			GameRegistry.addSmelting(ORef.gemQuartz, SHandler.S(Items.quartz, 2), 0.1F);
+			
+			GameRegistry.addSmelting(ORef.blockGemImperfectDiamond, SHandler.S(Items.diamond, 2), 0.1F);
+			GameRegistry.addSmelting(Items.diamond, SHandler.S(ORef.gemImperfectDiamond, 2), 0.1F);
+			
+			GameRegistry.addSmelting(ORef.blockGemImperfectEmerald, SHandler.S(Items.emerald, 2), 0.1F);
+			GameRegistry.addSmelting(Items.emerald, SHandler.S(ORef.gemImperfectEmerald, 2), 0.1F);
+			
+			GameRegistry.addSmelting(ORef.blockGemImperfectEnd, SHandler.S(ORef.gemEnd, 2), 0.1F);
+			GameRegistry.addSmelting(ORef.gemEnd, SHandler.S(ORef.gemImperfectEnd, 2), 0.1F);
+			
+			GameRegistry.addSmelting(Blocks.glowstone, SHandler.S(ORef.gemGlow, 2), 0.1F);
+			GameRegistry.addSmelting(ORef.gemGlow, SHandler.S(Items.glowstone_dust, 2), 0.1F);
+			
+			
+			GameRegistry.addSmelting(Items.ender_pearl, SHandler.S(ORef.gemImperfectEnd, 1), 0.1F);
+			GameRegistry.addSmelting(ORef.gemImperfectEnd, SHandler.S(Items.ender_pearl, 1), 0.1F);
 		}
 	}
 }

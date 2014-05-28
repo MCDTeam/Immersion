@@ -11,7 +11,7 @@ public class ItemGem extends Item
 	public ItemGem(String type) 
 	{
 		maxStackSize = 64;
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(CreativeTabs.tabMaterials);
 		setUnlocalizedName("gem" + type);
 	}
 
