@@ -7,8 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import bcwadsworth.devices.resources.BlockCompound;
-import bcwadsworth.devices.resources.BlockConversionRecipieHandler;
+import bcwadsworth.devices.resources.core.BlockCompound;
+import bcwadsworth.devices.resources.core.BlockConversionRecipieHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

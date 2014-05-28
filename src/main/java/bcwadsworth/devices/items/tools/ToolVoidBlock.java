@@ -12,8 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import bcwadsworth.devices.resources.BlockCompound;
-import bcwadsworth.devices.resources.BlockList;
+import bcwadsworth.devices.resources.core.BlockCompound;
+import bcwadsworth.devices.resources.core.BlockList;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,10 +48,8 @@ public class ToolVoidBlock extends Item
 				int z = movingobjectposition.blockZ;
 
 				BlockCompound block = BlockCompound.get(world, x, y, z);
-				if (block.getBlock() == Blocks.bedrock) 
-				{
-
-				}
+				if (block.getBlock().getBlockHardness(world, x, y, z) == -1.0F) 
+				{}
 				else
 				{
 					world.setBlockToAir(x, y, z);

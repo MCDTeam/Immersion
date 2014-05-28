@@ -12,8 +12,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
-import bcwadsworth.devices.resources.BlockCompound;
-import bcwadsworth.devices.resources.SHandler;
+import bcwadsworth.devices.resources.core.BlockCompound;
+import bcwadsworth.devices.resources.core.SHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -1,4 +1,5 @@
-package bcwadsworth.devices.resources;
+package bcwadsworth.devices.resources.core;
+
 
 public class BlockConversionRecipieHandler 
 {

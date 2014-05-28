@@ -15,6 +15,7 @@ public class ToolArmorMaterial
 	
 	public static ToolMaterial lapis = EnumHelper.addToolMaterial("Lapis", 1, 128, 4.0F, 1.0F, 15);
 	public static ToolMaterial obsidian = EnumHelper.addToolMaterial("Obsidian", 4, 128, 2.0F, 3.0F, 5);
+	public static ToolMaterial flint = EnumHelper.addToolMaterial("Flint", 1, 128, 2.0F, 2.0F, 5);
 	
 	public static ArmorMaterial gemRedA = EnumHelper.addArmorMaterial("GemRed", 512, new int[] {3,7,5,3}, 10);//speed boosts to all, H: aqua affinity, C:Haste, L:Speed, B: Speed
 	public static ArmorMaterial gemEmeraldA = EnumHelper.addArmorMaterial("GemEmerald", 512, new int[] {3,7,5,3}, 25);

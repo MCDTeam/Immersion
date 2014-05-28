@@ -1,5 +1,6 @@
 package bcwadsworth.devices;
 
+import bcwadsworth.devices.resources.ORef;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,7 +12,7 @@ public class FuelHandler implements IFuelHandler
 	public int getBurnTime (ItemStack fuel)
 	{
 		Item fuelItem = fuel.getItem();
-		if (fuelItem == Item.getItemFromBlock(Devices.fuelEnrichedCoal))
+		if (fuelItem == Item.getItemFromBlock(ORef.fuelEnrichedCoal))
 		{
 			return 12800;
 		}

@@ -15,8 +15,8 @@ import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import bcwadsworth.devices.resources.BlockCompound;
-import bcwadsworth.devices.resources.BlockList;
+import bcwadsworth.devices.resources.core.BlockCompound;
+import bcwadsworth.devices.resources.core.BlockList;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -173,18 +173,16 @@ public class ToolVoidBlockRanged extends Item
 				int X = movingobjectposition.blockX;
 				int Y = movingobjectposition.blockY;
 				int Z = movingobjectposition.blockZ;
-
-				BlockCompound block = BlockCompound.get(world, X, Y, Z);
+				
 				for(int x = (-(nbttaglist.getCompoundTagAt(0).getInteger("nx")) + X); x <= (nbttaglist.getCompoundTagAt(0).getInteger("px") + X); x++)
 				{
 					for(int y = (-(nbttaglist.getCompoundTagAt(0).getInteger("ny")) + Y); y <= (nbttaglist.getCompoundTagAt(0).getInteger("py") + Y); y++)
 					{	
 						for(int z = (-(nbttaglist.getCompoundTagAt(0).getInteger("nz")) + Z); z <= (nbttaglist.getCompoundTagAt(0).getInteger("pz") + Z); z++)
 						{
-							if (block.getBlock() == Blocks.bedrock) 
-							{
-
-							}
+							BlockCompound block = BlockCompound.get(world, x, y, z);
+							if (block.getBlock().getBlockHardness(world, x, y, z) == -1.0F) 
+							{}
 							else
 							{
 								world.setBlockToAir(x, y, z);

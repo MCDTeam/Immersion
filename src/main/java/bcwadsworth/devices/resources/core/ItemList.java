@@ -1,4 +1,4 @@
-package bcwadsworth.devices.resources;
+package bcwadsworth.devices.resources.core;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,9 +1,8 @@
-package bcwadsworth.devices.resources;
+package bcwadsworth.devices.resources.core;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import bcwadsworth.devices.resources.SHandler;
 
 public class BlockCompound 
 {
