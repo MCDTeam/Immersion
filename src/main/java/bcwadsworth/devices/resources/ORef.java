@@ -5,9 +5,11 @@ import net.minecraft.item.Item;
 import bcwadsworth.devices.blocks.BlockGem;
 import bcwadsworth.devices.blocks.BlockGemOre;
 import bcwadsworth.devices.blocks.BlockImperfectOre;
+import bcwadsworth.devices.blocks.BlockUpgradeTool;
 import bcwadsworth.devices.items.ItemCircuit;
 import bcwadsworth.devices.items.ItemGem;
 import bcwadsworth.devices.items.ItemMatrix;
+import bcwadsworth.devices.items.ItemToolBase;
 import bcwadsworth.devices.items.tools.ToolHoe;
 import bcwadsworth.devices.items.tools.ToolPickaxe;
 import bcwadsworth.devices.items.tools.ToolShovel;
@@ -37,6 +39,7 @@ public class ORef
 	public static Item toolVoidItemWhite;
 	public static Item toolVoidItemBlack;
 	public static Item toolVoidTile;
+	public static ItemToolBase itemToolBaseVoid;
 	
 	public static ToolPickaxe pickaxeGemRed;
 	public static ToolPickaxe pickaxeGemEnd;
@@ -107,4 +110,11 @@ public class ORef
 	public static BlockGem blockGemImperfectQuartz;
 
 	public static Block fuelEnrichedCoal;
+	
+	public static BlockUpgradeTool upgradeToolRange;
+	public static BlockUpgradeTool upgradeToolFilter;
+	public static BlockUpgradeTool upgradeToolInvert;
+	public static BlockUpgradeTool upgradeToolMode;
+	public static BlockUpgradeTool upgradeToolEfficiency;
+	public static BlockUpgradeTool upgradeToolFunction;
 }
