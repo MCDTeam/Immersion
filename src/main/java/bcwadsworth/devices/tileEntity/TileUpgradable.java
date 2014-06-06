@@ -2,20 +2,22 @@ package bcwadsworth.devices.tileEntity;
 
 import java.util.Arrays;
 
-import bcwadsworth.devices.items.ItemUpgrade;
+import bcwadsworth.devices.items.upgrades.ItemUpgrade;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
  
 public class TileUpgradable extends TileEntity implements ISidedInventory
 {
 	public ItemStack[] inventory;
-	public Boolean[] inventoryAvalible;
+	public Integer[] inventorySection;
+	public ItemStack[][] uInventory;
 	public Boolean[][] sectionInitialConstruction;
 	public int[] sectionLength;
-	public int[] upgradeSlots;
 	public ItemUpgrade[] upgradeSlotContents;
 	public Boolean[] sectionAcceptsItems;
 	public String name;
@@ -26,9 +28,10 @@ public class TileUpgradable extends TileEntity implements ISidedInventory
 	public TileUpgradable()
 	{
 		tier = 0;
-		inventory = new ItemStack[100];
-		inventoryAvalible = new Boolean[100];
-		Arrays.fill(inventoryAvalible, true);
+		inventory = new ItemStack[64];
+		inventorySection = new Integer[64];
+		uInventory = new ItemStack[8][8];
+		Arrays.fill(inventorySection, 0);
 	}
 	
 	public void constructSections(Boolean[]... sectionConstructRaw)
@@ -62,7 +65,7 @@ public class TileUpgradable extends TileEntity implements ISidedInventory
 	@Override
     public ItemStack getStackInSlot(int slot)
     {
-	    if (inventoryAvalible[slot])
+	    if (inventorySection[slot] == 0)
 	    {
 	    	return null;
 	    }
@@ -98,7 +101,7 @@ public class TileUpgradable extends TileEntity implements ISidedInventory
 	@Override
     public void setInventorySlotContents(int slot, ItemStack item)
     {
-	    if (inventoryAvalible[slot])
+	    if (inventorySection[slot] == 0)
 	    {
 	    	inventory[slot] = item;
 	    }
@@ -203,4 +206,59 @@ public class TileUpgradable extends TileEntity implements ISidedInventory
 	    return false;
     }
 	
+	@Override
+	public void readFromNBT(NBTTagCompound tagCompound)
+	{
+		super.readFromNBT(tagCompound);
+		
+		NBTTagList tagList = tagCompound.getTagList("Inventory", 0);
+		for (int i = 0; i < tagList.tagCount(); i++)
+		{
+			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
+			byte slot = tag.getByte("Slot");
+			if (slot >= 0 && slot < inventory.length)
+			{
+				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
+			}
+		}
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound tagCompound)
+	{
+		NBTTagList list = new NBTTagList();
+		for (int i = 0; i < inventory.length; i++)
+		{
+			ItemStack stack = inventory[i];
+			if (stack != null)
+			{
+				NBTTagCompound tag = new NBTTagCompound();
+				tag.setInteger("Slot", i);
+				tag.setInteger("Section", inventorySection[i]);
+				stack.writeToNBT(tag);
+				list.appendTag(tag);
+			}
+		}
+		tagCompound.setTag("Inventory", list);
+		
+		list = new NBTTagList();
+		for (int i = 0; i < uInventory.length; i++)
+		{
+			for (int j = 0; j < uInventory[i].length; j++)
+			{
+				ItemStack stack = uInventory[i][j];
+				if (stack != null)
+				{
+					NBTTagCompound tag = new NBTTagCompound();
+					tag.setInteger("VSlot", i);
+					tag.setInteger("HSlot", j);
+					stack.writeToNBT(tag);
+					list.appendTag(tag);
+				}
+			}
+		}
+		tagCompound.setTag("UpgradeInventory", list);
+		
+		super.writeToNBT(tagCompound);
+	}
 }

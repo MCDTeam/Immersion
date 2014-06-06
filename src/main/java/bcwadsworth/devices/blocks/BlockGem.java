@@ -27,6 +27,10 @@ public class BlockGem extends Block
 		setCreativeTab(CreativeTabs.tabBlock);
 		setBlockName("blockGem" + type);
 		setHarvestLevel("pickaxe", 3);
+		if (type == "Glow")
+		{
+			lightValue = 15;
+		}
 	}
 
 	@SideOnly(Side.CLIENT)

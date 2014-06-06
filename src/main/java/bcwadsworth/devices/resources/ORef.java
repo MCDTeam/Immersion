@@ -8,7 +8,6 @@ import bcwadsworth.devices.blocks.BlockImperfectOre;
 import bcwadsworth.devices.blocks.BlockUpgradeTool;
 import bcwadsworth.devices.items.ItemCircuit;
 import bcwadsworth.devices.items.ItemGem;
-import bcwadsworth.devices.items.ItemMatrix;
 import bcwadsworth.devices.items.ItemToolBase;
 import bcwadsworth.devices.items.tools.ToolHoe;
 import bcwadsworth.devices.items.tools.ToolPickaxe;

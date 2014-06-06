@@ -1,4 +1,4 @@
-package bcwadsworth.devices.items;
+package bcwadsworth.devices.items.upgrades;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;

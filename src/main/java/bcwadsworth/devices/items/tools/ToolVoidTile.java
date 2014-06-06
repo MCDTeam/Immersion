@@ -29,19 +29,18 @@ public class ToolVoidTile extends Item
 		itemIcon = iconRegister.registerIcon("devices:toolVoid");
 	}
 	
-	public ItemStack onItemRightClick(ItemStack ItemStack, World world,
-			EntityPlayer EntityPlayer)
+	public ItemStack onItemRightClick(ItemStack ItemStack, World world, EntityPlayer EntityPlayer)
 	{
-		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(
-				world, EntityPlayer, true);
+		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, EntityPlayer, true);
 		if (movingobjectposition == null || world.isRemote)
 		{
 			
 		} 
 		else
 		{
-			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
+			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK )
 			{
+				System.out.println("Recognized");
 				int x = movingobjectposition.blockX;
 				int y = movingobjectposition.blockY;
 				int z = movingobjectposition.blockZ;
@@ -49,6 +48,9 @@ public class ToolVoidTile extends Item
 				BlockCompound block = BlockCompound.get(world, x, y, z);
 				if (block.getBlock().hasTileEntity(block.getMetadata()))
 				{
+					
+					System.out.println("Has Tile");
+					world.setBlockToAir(x, y, z);
 					BlockCompound.set(world, x, y, z, block);
 				}
 			}

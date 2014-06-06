@@ -29,6 +29,14 @@ public class BlockGemOre extends Block
 		setBlockName("oreGem" + type);
 		setHarvestLevel("pickaxe", 3);
 		drop = dropped;
+		if (type == "Glow")
+		{
+			lightValue = 10;
+		}
+		if (type == "Red")
+		{
+			lightValue = 5;
+		}
 	}
 
 	public Item getItemDropped(int metadata, Random random, int fortune) 

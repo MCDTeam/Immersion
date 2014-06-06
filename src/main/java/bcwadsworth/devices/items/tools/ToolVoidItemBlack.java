@@ -44,6 +44,10 @@ public class ToolVoidItemBlack extends Item
 		{
 	        itemStack.setTagCompound(new NBTTagCompound());
 		}
+		else if (player.isSneaking() && movingobjectposition.typeOfHit == MovingObjectType.ENTITY)
+		{
+			//no idea
+		}
 		else if (player.isSneaking() && movingobjectposition.typeOfHit == MovingObjectType.BLOCK) 
 		{
 			int X = movingobjectposition.blockX;

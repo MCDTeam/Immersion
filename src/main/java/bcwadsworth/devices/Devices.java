@@ -14,7 +14,6 @@ import bcwadsworth.devices.blocks.BlockImperfectOre;
 import bcwadsworth.devices.blocks.FuelEnrichedCoal;
 import bcwadsworth.devices.items.ItemCircuit;
 import bcwadsworth.devices.items.ItemGem;
-import bcwadsworth.devices.items.ItemMatrix;
 import bcwadsworth.devices.items.tools.ToolHoe;
 import bcwadsworth.devices.items.tools.ToolPickaxe;
 import bcwadsworth.devices.items.tools.ToolShovel;
@@ -72,8 +71,8 @@ public class Devices
 		GameRegistry.registerFuelHandler(new FuelHandler());
 		
 		MinecraftForge.ORE_GEN_BUS.register(new EventHooks());
-		
-		
+		MinecraftForge.EVENT_BUS.register(new EventHooks());
+				
 		this.craftingRegistration();
 		
 		System.out.println("Devices: Initialized");

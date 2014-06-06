@@ -21,4 +21,5 @@ public class ItemCircuit extends Item
 				itemIcon = iconRegister.registerIcon("devices:" + this.getUnlocalizedName().substring(5));
 		}
 }
+
 		
