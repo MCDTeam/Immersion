@@ -4,11 +4,12 @@ package bcwadsworth.devices.items.upgrades;
  */
 public enum EType
 {
-	Circuit,
-	Upgrade,
-	Component,
-	Cable,
-	Function,
-	Provider,
-	Side
+	CIRCUIT,
+	UPGRADE,
+	COMPONENT,
+	CABLE,
+	FUNCTION,
+	PROVIDER,
+	SIDE,
+	GENERATOR
 }

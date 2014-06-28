@@ -18,9 +18,6 @@ item.circuitRandom.name=Random Circuit
 item.circuitTransforming.name=Transforming Circuit
 item.circuitVoid.name=Void Circuit
 
-item.matrixRandom.name=Random Matrix
-item.matrixStorage.name=Storage Matrix
-
 item.axeGemRed.name=Redstone Gem Axe
 item.axeGemEmerald.name=Emerald Gem Axe
 item.axeGemDiamond.name=Diamond Gem Axe
