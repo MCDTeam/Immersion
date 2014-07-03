@@ -1,5 +1,9 @@
 package bcwadsworth.devices;
 
+import java.util.logging.Logger;
+
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -7,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.terraingen.OreGenEvent;
-import bcwadsworth.devices.resources.ORef;
 import bcwadsworth.devices.blocks.BlockGem;
 import bcwadsworth.devices.blocks.BlockGemOre;
 import bcwadsworth.devices.blocks.BlockImperfectOre;
@@ -28,8 +31,10 @@ import bcwadsworth.devices.items.tools.ToolVoidTile;
 import bcwadsworth.devices.resources.ConfigLoad;
 import bcwadsworth.devices.resources.General;
 import bcwadsworth.devices.resources.ToolArmorMaterial;
+import bcwadsworth.devices.resources.api.ORef;
 import bcwadsworth.devices.resources.core.SHandler;
 import bcwadsworth.devices.EventHooks;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -43,13 +48,17 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @Mod(modid = General.MODID, name = General.NAME, version = General.VERSION)
 public class Devices 
 {
+	//public static Logger dLog;
+	
 	@Instance(General.MODID)
 	public static Devices instance;
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) 
 	{
-		System.out.println("Pre-Initializing Devices Version " + General.VERSION);
+		//dLog = Logger.getLogger(General.MODID);
+		//dLog.setParent((Logger) FMLLog.getLogger());
+		//dLog.info("Pre-Initializing Devices Version " + General.VERSION);
 		
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		
@@ -59,7 +68,7 @@ public class Devices
 		
 		this.blockRegistration();
 
-		System.out.println("Devices: Pre-Initialized");
+		//dLog.info("Devices: Pre-Initialized");
 	}
 
 	@EventHandler

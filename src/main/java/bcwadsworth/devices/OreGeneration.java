@@ -3,7 +3,7 @@ package bcwadsworth.devices;
 import java.util.Random;
 
 import bcwadsworth.devices.resources.ConfigLoad;
-import bcwadsworth.devices.resources.ORef;
+import bcwadsworth.devices.resources.api.ORef;
 import bcwadsworth.devices.resources.core.Generators;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;

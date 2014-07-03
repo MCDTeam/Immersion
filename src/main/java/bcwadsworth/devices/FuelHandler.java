@@ -1,6 +1,6 @@
 package bcwadsworth.devices;
 
-import bcwadsworth.devices.resources.ORef;
+import bcwadsworth.devices.resources.api.ORef;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

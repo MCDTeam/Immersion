@@ -6,7 +6,5 @@ public interface IEnergyNetInterface
 
 	public Boolean CanGiveEnergy(EEnergyTypes type);
 	
-	public int GiveEnergy(EEnergyTypes type);
-	
 	public EnergyPacket AcceptEnergy(EnergyPacket packet);
 }
