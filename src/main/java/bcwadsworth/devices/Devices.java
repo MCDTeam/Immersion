@@ -1,8 +1,8 @@
 package bcwadsworth.devices;
 
-import java.util.logging.Logger;
-
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -11,11 +11,12 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.terraingen.OreGenEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import bcwadsworth.devices.blocks.BlockGem;
 import bcwadsworth.devices.blocks.BlockGemOre;
 import bcwadsworth.devices.blocks.BlockImperfectOre;
 import bcwadsworth.devices.blocks.FuelEnrichedCoal;
-import bcwadsworth.devices.items.ItemCircuit;
+import bcwadsworth.devices.items.ItemProcessor;
 import bcwadsworth.devices.items.ItemGem;
 import bcwadsworth.devices.items.tools.ToolHoe;
 import bcwadsworth.devices.items.tools.ToolPickaxe;
@@ -48,43 +49,52 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @Mod(modid = General.MODID, name = General.NAME, version = General.VERSION)
 public class Devices 
 {
-	//public static Logger dLog;
+	public static Logger dLog = LogManager.getLogger(General.MODID);
 	
 	@Instance(General.MODID)
 	public static Devices instance;
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) 
-	{
-		//dLog = Logger.getLogger(General.MODID);
-		//dLog.setParent((Logger) FMLLog.getLogger());
-		//dLog.info("Pre-Initializing Devices Version " + General.VERSION);
+	{	
+		dLog.info("Preinit Version: " + General.VERSION);
 		
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		
 		this.configLoad(config);
+		dLog.debug("Config Loaded");
 		
 		this.itemRegistration();
+		dLog.debug("Items Loaded");
 		
 		this.blockRegistration();
-
-		//dLog.info("Devices: Pre-Initialized");
+		dLog.debug("Blocks Loaded");
+		
+		dLog.info("Preinit Finished");
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) 
 	{
-		System.out.println("Initializing Devices Version " + General.VERSION);
+		dLog.info("Init Version: " + General.VERSION);
 		
 		GameRegistry.registerWorldGenerator(new OreGeneration(),0);
+		dLog.debug("Ore Generator Loaded");
+		
 		GameRegistry.registerFuelHandler(new FuelHandler());
+		dLog.debug("Fuel Handler Loaded");
 		
 		MinecraftForge.ORE_GEN_BUS.register(new EventHooks());
 		MinecraftForge.EVENT_BUS.register(new EventHooks());
+		dLog.debug("Event Busses Loaded");
+		
+		this.dictRegistration();
+		dLog.debug("Ore Dictionary Names Loaded");
 				
 		this.craftingRegistration();
+		dLog.debug("Crafting/Smelting Loaded");
 		
-		System.out.println("Devices: Initialized");
+		dLog.info("Preinit Finished");
 	}
 	
 	private void configLoad(Configuration config)
@@ -177,10 +187,6 @@ public class Devices
 			}
 			
 			config.save();
-			if (ConfigLoad.DEBUG)
-			{
-				System.out.println("Devices: Config Loaded");
-			}
 		}
 	}
 	
@@ -202,17 +208,17 @@ public class Devices
 		ORef.gemImperfectEnd = new ItemGem("ImperfectEnd");
 		GameRegistry.registerItem(ORef.gemImperfectEnd, "gemImperfectEnd");
 		
-		ORef.circuitCapacitative = new ItemCircuit("Capacitative");
+		ORef.circuitCapacitative = new ItemProcessor("Capacitative");
 		GameRegistry.registerItem(ORef.circuitCapacitative, "circuitCapacitative");
-		ORef.circuitComputational = new ItemCircuit("Computational");
+		ORef.circuitComputational = new ItemProcessor("Computational");
 		GameRegistry.registerItem(ORef.circuitComputational, "circuitComputational");
-		ORef.circuitEnergetic = new ItemCircuit("Energetic");
+		ORef.circuitEnergetic = new ItemProcessor("Energetic");
 		GameRegistry.registerItem(ORef.circuitEnergetic, "circuitEnergetic");
-		ORef.circuitRandom = new ItemCircuit("Random");
+		ORef.circuitRandom = new ItemProcessor("Random");
 		GameRegistry.registerItem(ORef.circuitRandom, "circuitRandom");
-		ORef.circuitTransforming = new ItemCircuit("Transforming");
+		ORef.circuitTransforming = new ItemProcessor("Transforming");
 		GameRegistry.registerItem(ORef.circuitTransforming, "circuitTransforming");		
-		ORef.circuitVoid = new ItemCircuit("Void");
+		ORef.circuitVoid = new ItemProcessor("Void");
 		GameRegistry.registerItem(ORef.circuitVoid, "circuitVoid");
 		
 		ORef.pickaxeGemRed = new ToolPickaxe(ToolArmorMaterial.gemRed);
@@ -412,5 +418,19 @@ public class Devices
 			GameRegistry.addSmelting(Items.ender_pearl, SHandler.S(ORef.gemImperfectEnd, 1), 0.1F);
 			GameRegistry.addSmelting(ORef.gemImperfectEnd, SHandler.S(Items.ender_pearl, 1), 0.1F);
 		}
+	}
+	private void dictRegistration()
+	{
+		OreDictionary.registerOre("oreDiamond", ORef.oreGemDiamond);
+		OreDictionary.registerOre("oreGemRed", ORef.oreGemRed);
+		OreDictionary.registerOre("oreEmerald", ORef.oreGemEmerald);
+		OreDictionary.registerOre("oreGemGlow", ORef.oreGemGlow);
+		OreDictionary.registerOre("oreGemQuartz", ORef.oreGemQuartz);
+		OreDictionary.registerOre("oreGemEnd", ORef.oreGemEnd);
+		
+		OreDictionary.registerOre("oreImperfectDiamond", ORef.oreImperfectDiamond);
+		OreDictionary.registerOre("oreRedstone", ORef.oreImperfectRed);
+		OreDictionary.registerOre("oreImperfectEmerald", ORef.oreImperfectEmerald);
+		OreDictionary.registerOre("oreQuartz", ORef.oreImperfectQuartz);
 	}
 }

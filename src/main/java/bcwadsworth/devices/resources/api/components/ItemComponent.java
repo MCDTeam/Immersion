@@ -1,4 +1,4 @@
-package bcwadsworth.devices.items.upgrades;
+package bcwadsworth.devices.resources.api.components;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -7,10 +7,10 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemUpgrade extends Item 
+public class ItemComponent extends Item 
 {
 	int tier;
-	public ItemUpgrade(String name, int reqtier)
+	public ItemComponent(String name, int reqtier)
 	{
 		tier = reqtier;
 		maxStackSize = 1;
@@ -39,35 +39,4 @@ public class ItemUpgrade extends Item
 	{
 			itemIcon = iconRegister.registerIcon("devices:upgradeTeir" + tier);
 	}
-	
-	public void installationEvent(String inventoryID, String inventoryType) 
-	{
-		
-	};
-
-	public void deinstallationEvent(String inventoryID, String inventoryType) 
-	{
-		
-	};
-
-	public void inventoryOpenEvent(String inventoryID, String inventoryType) 
-	{
-		
-	};
-
-	public void inventoryCloseEvent(String inventoryID, String inventoryType) 
-	{
-		
-	};
-
-	public void inventoryTickEvent(String inventoryID, String inventoryType) 
-	{
-		
-	};
-
-	public ItemStack[] getRecipie() 
-	{
-		return null;
-	}
-
 }

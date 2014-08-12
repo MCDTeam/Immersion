@@ -13,6 +13,7 @@ public class BlockConversionRecipieHandler
 	
 	public BlockCompound getRecipie(BlockCompound block)
 	{
+		System.out.println(Convert.get(block));
 		int index = Convert.get(block);
 		if (index != -1)
 		{

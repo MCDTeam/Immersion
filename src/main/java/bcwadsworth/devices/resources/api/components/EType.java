@@ -1,4 +1,4 @@
-package bcwadsworth.devices.items.upgrades;
+package bcwadsworth.devices.resources.api.components;
 /*
  * The enum for Type, making it easier for Upgrades to ID themselves
  */

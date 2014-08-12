@@ -6,9 +6,9 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemCircuit extends Item
+public class ItemProcessor extends Item
 {
-		public ItemCircuit(String type)
+		public ItemProcessor(String type)
 		{
 			maxStackSize = 1;
 			setCreativeTab(CreativeTabs.tabMisc);

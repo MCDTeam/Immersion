@@ -6,7 +6,7 @@ import bcwadsworth.devices.blocks.BlockGem;
 import bcwadsworth.devices.blocks.BlockGemOre;
 import bcwadsworth.devices.blocks.BlockImperfectOre;
 import bcwadsworth.devices.blocks.BlockUpgradeTool;
-import bcwadsworth.devices.items.ItemCircuit;
+import bcwadsworth.devices.items.ItemProcessor;
 import bcwadsworth.devices.items.ItemGem;
 import bcwadsworth.devices.items.ItemToolBase;
 import bcwadsworth.devices.items.tools.ToolHoe;
@@ -24,12 +24,12 @@ public class ORef
 	public static ItemGem gemImperfectDiamond;
 	public static ItemGem gemImperfectEmerald;
 	
-	public static ItemCircuit circuitCapacitative;
-	public static ItemCircuit circuitComputational;
-	public static ItemCircuit circuitEnergetic;
-	public static ItemCircuit circuitRandom;
-	public static ItemCircuit circuitTransforming;
-	public static ItemCircuit circuitVoid;
+	public static ItemProcessor circuitCapacitative;
+	public static ItemProcessor circuitComputational;
+	public static ItemProcessor circuitEnergetic;
+	public static ItemProcessor circuitRandom;
+	public static ItemProcessor circuitTransforming;
+	public static ItemProcessor circuitVoid;
 	
 	public static Item toolTransformBlock;
 	public static Item toolVoidBlock;

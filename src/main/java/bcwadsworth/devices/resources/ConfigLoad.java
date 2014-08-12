@@ -4,8 +4,6 @@ public class ConfigLoad
 {
 	//This keeps all the variables returned from the config file and stores the default values
 	public static Boolean DEFAULTCONFIG = true;
-	
-	public static Boolean DEBUG = true;
 
 	//Features	
 	public static Boolean VOIDTOOLS = true;

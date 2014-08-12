@@ -3,6 +3,7 @@ package bcwadsworth.devices.items.tools;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
@@ -21,6 +22,7 @@ public class ToolTransformBlock extends Item
 		setCreativeTab(CreativeTabs.tabTools);
 		setUnlocalizedName("toolTransformBlock");
 		worldRecipieHandler = new BlockConversionRecipieHandler(null, null);
+		Normal();
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -54,5 +56,11 @@ public class ToolTransformBlock extends Item
         }
 		return ItemStack;
     }
+
+	private void Normal ()
+	{
+		worldRecipieHandler.addRecipie(new BlockCompound(Blocks.stone, 0), new BlockCompound(Blocks.dirt, 0));
+	}
 }
+
 
