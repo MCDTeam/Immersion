@@ -63,6 +63,8 @@ public class BcwadsworthWorld
 		this.craftingRegistration();
 		log.debug("Crafting/Smelting Loaded");
 		
+		OreDictionary.registerOre("oreGemEnd", ORef.oreGemEnd);
+		
 		log.info("Init Finished");
 	}
 	
