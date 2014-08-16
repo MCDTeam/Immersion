@@ -1,7 +1,14 @@
 package bcwadsworth.bcwadsworthWorld;
 
+import java.util.Iterator;
+import java.util.List;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
@@ -49,21 +56,24 @@ public class BcwadsworthWorld
 	@EventHandler
 	public void init(FMLInitializationEvent event) 
 	{
+
 		log.info("Init Version: " + ModConfig.VERSION);
 		
-		GameRegistry.registerWorldGenerator(new OreGeneration(), 0);
+		OreGeneration generator = new OreGeneration();
+	
+		GameRegistry.registerWorldGenerator(generator, 0);
 		log.debug("Ore Generator Loaded");
+		
+		MinecraftForge.ORE_GEN_BUS.register(generator);
+		log.debug("Event Busses Loaded");
 		
 		GameRegistry.registerFuelHandler(new FuelHandler());
 		log.debug("Fuel Handler Loaded");
-		
-		MinecraftForge.ORE_GEN_BUS.register(new EventHooks());
-		log.debug("Event Busses Loaded");
 				
 		this.craftingRegistration();
 		log.debug("Crafting/Smelting Loaded");
 		
-		OreDictionary.registerOre("oreGemEnd", ORef.oreGemEnd);
+		log.info(GameRegistry.getFuelValue(Stack.S(Blocks.coal_block)));
 		
 		log.info("Init Finished");
 	}
@@ -77,6 +87,28 @@ public class BcwadsworthWorld
 	
 	private void craftingRegistration()
 	{
+		//Remove all vanilla unsupported recipies
+		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
+		
+		Iterator<IRecipe> iterator = recipes.iterator();
+		while (iterator.hasNext()) 
+		{
+			ItemStack is = iterator.next().getRecipeOutput();
+			if (is != null && is.getItem() == Item.getItemFromBlock(Blocks.glowstone))
+			{
+				iterator.remove();
+			}
+			else if (is != null && is.getItem() == Item.getItemFromBlock(Blocks.redstone_block))
+			{
+				iterator.remove();
+			}
+			else if (is != null && is.getItem() == Item.getItemFromBlock(Blocks.quartz_block))
+			{
+				iterator.remove();
+			}
+		}
+		
+		//Add Smelting
 		GameRegistry.addSmelting(ORef.blockGemImperfectRed, Stack.S(ORef.gemRed, 2), 0.5F);
 		GameRegistry.addSmelting(ORef.gemRed, Stack.S(Items.redstone, 2), 0.5F);
 		GameRegistry.addSmelting(Blocks.redstone_block, Stack.S(Items.redstone, 20), 0.5F);

@@ -54,6 +54,9 @@ public class ModConfig
 	public static int OREGEMENDGENERATEMIN = 2;
 	public static int OREGEMENDGENERATEMAX = 8;
 	
+	public static Boolean GENERATEDIRTUNDERGROUND = true;
+	public static Boolean ADDITIONALFUELS = true;
+	
 	protected static void configLoad(Configuration config)
 	{
 		config.load();
