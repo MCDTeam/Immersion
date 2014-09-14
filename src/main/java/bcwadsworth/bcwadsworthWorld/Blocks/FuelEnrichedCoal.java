@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -22,6 +23,9 @@ public class FuelEnrichedCoal extends Block
 		setBlockName("fuelEnrichedCoal");
 		setHarvestLevel("pickaxe", 1);
 		setLightLevel(.5F);
+		
+		//External Registration
+		GameRegistry.registerBlock(this, this.getUnlocalizedName().substring(5));
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -20,19 +20,45 @@ public class ORef
 	public static ItemMaterial gemImperfectEmerald = new ItemMaterial("gemImperfectEmerald");
 	public static ItemMaterial gemImperfectEnd = new ItemMaterial("gemImperfectEnd");
 	
+	//Precious Family
 	public static ItemMaterial chunkCopper = new ItemMaterial("chunkCopper");
-	public static ItemMaterial chunkTin = new ItemMaterial("chunkTin");
-	public static ItemMaterial chunkBronze = new ItemMaterial("chunkBronze");
-	public static ItemMaterial chunkIron = new ItemMaterial("chunkIron");
-	public static ItemMaterial chunkSteel = new ItemMaterial("chunkSteel");
+	public static ItemMaterial chunkSilver = new ItemMaterial("chunkSilver");
+	public static ItemMaterial chunkChromium = new ItemMaterial("chunkChromium");
 	public static ItemMaterial chunkGold = new ItemMaterial("chunkGold");
+	public static ItemMaterial chunkPlatinum = new ItemMaterial("chunkPlatinum");
+	public static ItemMaterial chunkMythril = new ItemMaterial("chunkMythril");
 	
-	public static ItemMaterial ingotCopper = new ItemMaterial("ingotCopper");
-	public static ItemMaterial ingotTin = new ItemMaterial("ingotTin");
-	public static ItemMaterial ingotBronze = new ItemMaterial("ingotBronze");
-	public static ItemMaterial ingotSteel = new ItemMaterial("ingotSteel");
+	//Rare Earths
+	public static ItemMaterial chunkOsmium = new ItemMaterial("chunkOsmium");
+	public static ItemMaterial chunkIridium = new ItemMaterial("chunkIridium");
+	public static ItemMaterial chunkTin = new ItemMaterial("chunkTin");
+	public static ItemMaterial chunkLead = new ItemMaterial("chunkLead");
+	public static ItemMaterial chunkUranium = new ItemMaterial("chunkUranium");
+	public static ItemMaterial chunkPlutonium = new ItemMaterial("chunkPlutonium");
+	public static ItemMaterial chunkNickel = new ItemMaterial("chunkNickel");
+	public static ItemMaterial chunkZinc = new ItemMaterial("chunkZinc");
+	public static ItemMaterial chunkAluminium = new ItemMaterial("chunkAluminium");
+	public static ItemMaterial chunkBismuth = new ItemMaterial("chunkBismuth");
+	public static ItemMaterial chunkThorium = new ItemMaterial("chunkThorium");
+	public static ItemMaterial chunkRadium = new ItemMaterial("chunkRadium");
+	public static ItemMaterial chunkMaganese = new ItemMaterial("chunkMaganese");
+	public static ItemMaterial chunkMolybdenum = new ItemMaterial("chunkMolybdenum");
 	
+	//Building Family
+	public static ItemMaterial chunkIron = new ItemMaterial("chunkIron");
+	public static ItemMaterial chunkTitanium = new ItemMaterial("chunkTitanium");
+	public static ItemMaterial chunkTungsten = new ItemMaterial("chunkTungsten");
+	public static ItemMaterial chunkStrongithium = new ItemMaterial("chunkStrongithium");
 	
+	//Alloys
+	public static ItemMaterial chunkBronze = new ItemMaterial("chunkBronze"); //Cu/Sn
+	public static ItemMaterial chunkBrass = new ItemMaterial("chunkBrass"); //Cu/Zn
+	public static ItemMaterial chunkDuralumin = new ItemMaterial("chunkDuralumin"); //Cu/Al
+	public static ItemMaterial chunkCupronickel = new ItemMaterial("chunkCupronickel"); //Cu/Ni
+	public static ItemMaterial chunkCopernium = new ItemMaterial("chunkCopernium"); //Cu/Au
+	public static ItemMaterial chunkManganin = new ItemMaterial("chunkMaganin"); //Cu/Mn
+	public static ItemMaterial chunkdummy = new ItemMaterial("chunkdummy");
+	public static ItemMaterial chunkdm = new ItemMaterial("chunkdm");
 	
 	public static BlockOre oreGemDiamond = new BlockOre("GemDiamond", Items.diamond);
 	public static BlockOre oreGemEmerald = new BlockOre("GemEmerald", Items.emerald);
@@ -48,6 +74,8 @@ public class ORef
 	
 	public static BlockOre oreCopper = new BlockOre("Copper", ORef.chunkCopper);
 	public static BlockOre oreTin = new BlockOre("Tin", ORef.chunkTin);
+	public static BlockOre oreAluminium = new BlockOre("Aluminium", ORef.chunkTin);
+	public static BlockOre oreZinc = new BlockOre("Zinc", ORef.chunkTin);
 	public static BlockOre oreIron = new BlockOre("Iron", ORef.chunkIron);
 	public static BlockOre oreGold = new BlockOre("Gold", ORef.chunkGold);
 	
@@ -66,63 +94,4 @@ public class ORef
 	public static BlockStorage blockIngotSteel = new BlockStorage("IngotSteel");
 	
 	public static Block fuelEnrichedCoal = new FuelEnrichedCoal();
-	
-	protected static void ORegistration()
-	{
-		GameRegistry.registerItem(gemRed, "gemRed");
-		GameRegistry.registerItem(gemEnd, "gemEnd");
-		GameRegistry.registerItem(gemGlow, "gemGlow");
-		GameRegistry.registerItem(gemQuartz, "gemQuartz");
-		
-		GameRegistry.registerItem(gemImperfectDiamond, "gemImperfectDiamond");
-		GameRegistry.registerItem(gemImperfectEmerald, "gemImperfectEmerald");
-		GameRegistry.registerItem(gemImperfectEnd, "gemImperfectEnd");
-		
-		GameRegistry.registerItem(chunkCopper, "chunkCopper");
-		GameRegistry.registerItem(chunkTin, "chunkTin");
-		GameRegistry.registerItem(chunkBronze, "chunkBronze");
-		GameRegistry.registerItem(chunkIron, "chunkIron");
-		GameRegistry.registerItem(chunkSteel, "chunkSteel");
-		GameRegistry.registerItem(chunkGold, "chunkGold");
-		
-		GameRegistry.registerItem(ingotCopper, "ingotCopper");
-		GameRegistry.registerItem(ingotTin, "ingotTin");
-		GameRegistry.registerItem(ingotBronze, "ingotBronze");
-		GameRegistry.registerItem(ingotSteel, "ingotSteel");
-		
-		
-		
-		GameRegistry.registerBlock(oreGemRed, "oreGemRed");
-		GameRegistry.registerBlock(oreGemEnd, "oreGemEnd");
-		GameRegistry.registerBlock(oreGemDiamond, "oreGemDiamond");
-		GameRegistry.registerBlock(oreGemEmerald, "oreGemEmerald");
-		GameRegistry.registerBlock(oreGemQuartz, "oreGemQuartz");
-		GameRegistry.registerBlock(oreGemGlow, "oreGemGlow");
-		
-		GameRegistry.registerBlock(oreImperfectRed, "oreImperfectRed");
-		GameRegistry.registerBlock(oreImperfectDiamond, "oreImperfectDiamond");
-		GameRegistry.registerBlock(oreImperfectEmerald, "oreImperfectEmerald");
-		GameRegistry.registerBlock(oreImperfectQuartz, "oreImperfectQuartz");
-		
-		GameRegistry.registerBlock(oreCopper, "oreCopper");
-		GameRegistry.registerBlock(oreTin, "oreTin");
-		GameRegistry.registerBlock(oreIron, "oreIron");
-		GameRegistry.registerBlock(oreGold, "oreGemGold");
-		
-		GameRegistry.registerBlock(blockGemEnd, "blockGemEnd");
-		GameRegistry.registerBlock(blockGemGlow, "blockGemGlow");
-		
-		GameRegistry.registerBlock(blockGemImperfectRed, "blockGemImperfectRed");
-		GameRegistry.registerBlock(blockGemImperfectDiamond, "blockGemImperfectDiamond");
-		GameRegistry.registerBlock(blockGemImperfectEmerald, "blockGemImperfectEmerald");
-		GameRegistry.registerBlock(blockGemImperfectQuartz, "blockGemImperfectQuartz");
-		GameRegistry.registerBlock(blockGemImperfectEnd, "blockGemImperfectEnd");
-		
-		GameRegistry.registerBlock(blockIngotCopper, "blockIngotCopper");
-		GameRegistry.registerBlock(blockIngotTin, "blockIngotTin");
-		GameRegistry.registerBlock(blockIngotBronze, "blockIngotBronze");
-		GameRegistry.registerBlock(blockIngotSteel, "blockIngotSteel");
-		
-		GameRegistry.registerBlock(fuelEnrichedCoal, "fuelEnrichedCoal");
-	}
 }

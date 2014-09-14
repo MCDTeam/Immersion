@@ -1,5 +1,6 @@
 package bcwadsworth.bcwadsworthWorld.Items;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -13,6 +14,9 @@ public class ItemMaterial extends Item
 		maxStackSize = 64;
 		setCreativeTab(CreativeTabs.tabMaterials);
 		setUnlocalizedName(type);
+		
+		//External Registration
+		GameRegistry.registerItem(this, this.getUnlocalizedName().substring(5));
 	}
 
 	@SideOnly(Side.CLIENT)

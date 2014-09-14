@@ -3,6 +3,7 @@ package bcwadsworth.bcwadsworthWorld.Blocks;
 import java.util.Random;
 
 import bcwadsworth.bcwadsworthWorld.ORef;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -40,6 +41,9 @@ public class BlockOre extends Block
 		{
 			lightValue = 5;
 		}
+		
+		//External Registration
+		GameRegistry.registerBlock(this, this.getUnlocalizedName().substring(5));
 	}
 
 	public Item getItemDropped(int meta, Random random, int fortune)

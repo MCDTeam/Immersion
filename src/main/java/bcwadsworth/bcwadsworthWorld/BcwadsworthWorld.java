@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,9 +47,6 @@ public class BcwadsworthWorld
 		
 		ModConfig.configLoad(config);
 		log.debug("Config Loaded");
-		
-		ORef.ORegistration();
-		log.debug("Blocks/Items Loaded");
 		
 		log.info("Pre-Init Finished");
 	}
@@ -93,16 +91,20 @@ public class BcwadsworthWorld
 		Iterator<IRecipe> iterator = recipes.iterator();
 		while (iterator.hasNext()) 
 		{
-			ItemStack is = iterator.next().getRecipeOutput();
-			if (is != null && is.getItem() == Item.getItemFromBlock(Blocks.glowstone))
+			ItemStack stack = iterator.next().getRecipeOutput();
+			if (stack != null && stack.getItem() == Item.getItemFromBlock(Blocks.glowstone))
 			{
 				iterator.remove();
 			}
-			else if (is != null && is.getItem() == Item.getItemFromBlock(Blocks.redstone_block))
+			else if (stack != null && stack.getItem() == Item.getItemFromBlock(Blocks.redstone_block))
 			{
 				iterator.remove();
 			}
-			else if (is != null && is.getItem() == Item.getItemFromBlock(Blocks.quartz_block))
+			else if (stack != null && stack.getItem() == Item.getItemFromBlock(Blocks.quartz_block))
+			{
+				iterator.remove();
+			}
+			else if (stack != null && stack.getItem() instanceof ItemTool)
 			{
 				iterator.remove();
 			}
@@ -135,7 +137,8 @@ public class BcwadsworthWorld
 			
 		GameRegistry.addSmelting(Items.ender_pearl, Stack.S(ORef.gemImperfectEnd, 1), 0.5F);
 		GameRegistry.addSmelting(ORef.gemImperfectEnd, Stack.S(Items.ender_pearl, 1), 0.5F);
-		
+	/*	
+		//Smelting to ingots: Will change to nbt related nugget processing once I figure out how
 		GameRegistry.addSmelting(ORef.chunkCopper, Stack.S(ORef.ingotCopper), .05F);
 		GameRegistry.addSmelting(ORef.chunkTin, Stack.S(ORef.ingotTin), .05F);
 		GameRegistry.addSmelting(ORef.chunkBronze, Stack.S(ORef.ingotBronze), .05F);
@@ -143,8 +146,11 @@ public class BcwadsworthWorld
 		GameRegistry.addSmelting(ORef.chunkSteel, Stack.S(ORef.ingotSteel), .05F);
 		GameRegistry.addSmelting(ORef.chunkGold, Stack.S(Items.gold_ingot), .05F);
 		
+		//Alloying Recipies: Will change to nbt related nugget processing once I figure out how
 		GameRegistry.addShapelessRecipe(Stack.S(ORef.chunkBronze, 4), ORef.chunkTin, ORef.chunkCopper, ORef.chunkCopper, ORef.chunkCopper);
 		GameRegistry.addShapelessRecipe(Stack.S(ORef.chunkSteel, 4), Items.coal, ORef.chunkIron, ORef.chunkIron, ORef.chunkIron);
+	*/
+		GameRegistry.addShapelessRecipe(Stack.S(ORef.chunkGold), Blocks.gravel, Items.gold_ingot);
 		
 		GameRegistry.addShapelessRecipe(Stack.S(ORef.fuelEnrichedCoal), Items.redstone, Items.redstone, Items.redstone, Items.redstone, Items.coal, Items.coal, Items.coal, Items.coal, Items.coal);
 	}
