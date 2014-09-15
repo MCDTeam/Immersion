@@ -17,10 +17,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import bcwadsworth.bcwadsworthWorld.Blocks.BlockStorage;
-import bcwadsworth.bcwadsworthWorld.Blocks.BlockOre;
-import bcwadsworth.bcwadsworthWorld.Blocks.FuelEnrichedCoal;
-import bcwadsworth.bcwadsworthWorld.Items.ItemMaterial;
+import bcwadsworth.bcwadsworthWorld.blocks.BlockOre;
+import bcwadsworth.bcwadsworthWorld.blocks.BlockStorage;
+import bcwadsworth.bcwadsworthWorld.blocks.FuelEnrichedCoal;
+import bcwadsworth.bcwadsworthWorld.items.ItemMaterial;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

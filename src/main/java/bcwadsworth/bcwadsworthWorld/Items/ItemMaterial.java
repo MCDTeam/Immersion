@@ -1,4 +1,4 @@
-package bcwadsworth.bcwadsworthWorld.Items;
+package bcwadsworth.bcwadsworthWorld.items;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;

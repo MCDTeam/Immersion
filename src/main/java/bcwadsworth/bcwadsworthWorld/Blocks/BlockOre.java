@@ -1,4 +1,4 @@
-package bcwadsworth.bcwadsworthWorld.Blocks;
+package bcwadsworth.bcwadsworthWorld.blocks;
 
 import java.util.Random;
 

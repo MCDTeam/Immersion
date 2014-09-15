@@ -3,10 +3,10 @@ package bcwadsworth.bcwadsworthWorld;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
-import bcwadsworth.bcwadsworthWorld.Blocks.BlockStorage;
-import bcwadsworth.bcwadsworthWorld.Blocks.BlockOre;
-import bcwadsworth.bcwadsworthWorld.Blocks.FuelEnrichedCoal;
-import bcwadsworth.bcwadsworthWorld.Items.ItemMaterial;
+import bcwadsworth.bcwadsworthWorld.blocks.BlockOre;
+import bcwadsworth.bcwadsworthWorld.blocks.BlockStorage;
+import bcwadsworth.bcwadsworthWorld.blocks.FuelEnrichedCoal;
+import bcwadsworth.bcwadsworthWorld.items.ItemMaterial;
 
 public class ORef 
 {
