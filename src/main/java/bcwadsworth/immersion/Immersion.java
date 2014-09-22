@@ -1,4 +1,4 @@
-package bcwadsworth.bcwadsworthWorld;
+package bcwadsworth.immersion;
 
 import java.util.Iterator;
 import java.util.List;
@@ -17,10 +17,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import bcwadsworth.bcwadsworthWorld.blocks.BlockOre;
-import bcwadsworth.bcwadsworthWorld.blocks.BlockStorage;
-import bcwadsworth.bcwadsworthWorld.blocks.FuelEnrichedCoal;
-import bcwadsworth.bcwadsworthWorld.items.ItemMaterial;
+import bcwadsworth.immersion.blocks.BlockGemOre;
+import bcwadsworth.immersion.blocks.BlockStorage;
+import bcwadsworth.immersion.blocks.FuelEnrichedCoal;
+import bcwadsworth.immersion.items.ItemMaterial;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -31,12 +31,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 
 @Mod(modid = ModConfig.MODID, name = ModConfig.NAME, version = ModConfig.VERSION)
-public class BcwadsworthWorld 
+public class Immersion 
 {
 	public static Logger log = LogManager.getLogger(ModConfig.MODID);
 	
 	@Instance(ModConfig.MODID)
-	public static BcwadsworthWorld instance;
+	public static Immersion instance;
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) 
@@ -63,6 +63,7 @@ public class BcwadsworthWorld
 		log.debug("Ore Generator Loaded");
 		
 		MinecraftForge.ORE_GEN_BUS.register(generator);
+		MinecraftForge.EVENT_BUS.register(new OreDropsHelper());
 		log.debug("Event Busses Loaded");
 		
 		GameRegistry.registerFuelHandler(new FuelHandler());
@@ -137,21 +138,7 @@ public class BcwadsworthWorld
 			
 		GameRegistry.addSmelting(Items.ender_pearl, Stack.S(ORef.gemImperfectEnd, 1), 0.5F);
 		GameRegistry.addSmelting(ORef.gemImperfectEnd, Stack.S(Items.ender_pearl, 1), 0.5F);
-	/*	
-		//Smelting to ingots: Will change to nbt related nugget processing once I figure out how
-		GameRegistry.addSmelting(ORef.chunkCopper, Stack.S(ORef.ingotCopper), .05F);
-		GameRegistry.addSmelting(ORef.chunkTin, Stack.S(ORef.ingotTin), .05F);
-		GameRegistry.addSmelting(ORef.chunkBronze, Stack.S(ORef.ingotBronze), .05F);
-		GameRegistry.addSmelting(ORef.chunkIron, Stack.S(Items.iron_ingot), .05F);
-		GameRegistry.addSmelting(ORef.chunkSteel, Stack.S(ORef.ingotSteel), .05F);
-		GameRegistry.addSmelting(ORef.chunkGold, Stack.S(Items.gold_ingot), .05F);
-		
-		//Alloying Recipies: Will change to nbt related nugget processing once I figure out how
-		GameRegistry.addShapelessRecipe(Stack.S(ORef.chunkBronze, 4), ORef.chunkTin, ORef.chunkCopper, ORef.chunkCopper, ORef.chunkCopper);
-		GameRegistry.addShapelessRecipe(Stack.S(ORef.chunkSteel, 4), Items.coal, ORef.chunkIron, ORef.chunkIron, ORef.chunkIron);
-	*/
-		GameRegistry.addShapelessRecipe(Stack.S(ORef.chunkGold), Blocks.gravel, Items.gold_ingot);
-		
+
 		GameRegistry.addShapelessRecipe(Stack.S(ORef.fuelEnrichedCoal), Items.redstone, Items.redstone, Items.redstone, Items.redstone, Items.coal, Items.coal, Items.coal, Items.coal, Items.coal);
 	}
 }

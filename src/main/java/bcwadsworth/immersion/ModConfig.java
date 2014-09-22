@@ -1,13 +1,13 @@
-package bcwadsworth.bcwadsworthWorld;
+package bcwadsworth.immersion;
 
 import net.minecraftforge.common.config.Configuration;
 
 public class ModConfig 
 {
 
-	public static final String MODID = "bcwadsworthWorld";
+	public static final String MODID = "immersion";
 
-	public static final String NAME = "BCWadsworth World";
+	public static final String NAME = "Immersion";
 
 	public static final String VERSION = "0.0.1.0";
 	

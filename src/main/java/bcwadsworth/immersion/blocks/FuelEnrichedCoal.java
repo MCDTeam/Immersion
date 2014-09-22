@@ -1,5 +1,6 @@
-package bcwadsworth.bcwadsworthWorld.blocks;
+package bcwadsworth.immersion.blocks;
 
+import bcwadsworth.immersion.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -31,7 +32,7 @@ public class FuelEnrichedCoal extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister register) 
 	{
-		texture = register.registerIcon("bcwadsworthWorld:fuelEnrichedCoal");
+		texture = register.registerIcon(ModConfig.MODID + ":" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SideOnly(Side.CLIENT)

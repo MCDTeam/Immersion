@@ -1,8 +1,9 @@
-package bcwadsworth.bcwadsworthWorld.blocks;
+package bcwadsworth.immersion.blocks;
 
 import java.util.Random;
 
-import bcwadsworth.bcwadsworthWorld.ORef;
+import bcwadsworth.immersion.ModConfig;
+import bcwadsworth.immersion.ORef;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,10 +22,8 @@ public class BlockOre extends Block
 {
 	@SideOnly(Side.CLIENT)
 	protected IIcon texture;
-	
-	protected Item drop;
-	
-	public BlockOre(String type, Item dropped) 
+
+	public BlockOre(String type) 
 	{
 		super(Material.rock);
 		setHardness(2.0F);
@@ -32,29 +31,15 @@ public class BlockOre extends Block
 		setCreativeTab(CreativeTabs.tabBlock);
 		setBlockName("ore" + type);
 		setHarvestLevel("pickaxe", 3);
-		drop = dropped;
-		if (drop == ORef.gemGlow)
-		{
-			lightValue = 10;
-		}
-		else if (drop == ORef.gemRed || drop == Items.redstone)
-		{
-			lightValue = 5;
-		}
-		
+
 		//External Registration
 		GameRegistry.registerBlock(this, this.getUnlocalizedName().substring(5));
 	}
-
-	public Item getItemDropped(int meta, Random random, int fortune)
-    {
-        return drop;
-    }
 	
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister register) 
 	{
-		texture = register.registerIcon("bcwadsworthWorld:" + this.getUnlocalizedName().substring(5));
+		texture = register.registerIcon(ModConfig.MODID + ":" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SideOnly(Side.CLIENT)

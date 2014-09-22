@@ -1,5 +1,6 @@
-package bcwadsworth.bcwadsworthWorld.items;
+package bcwadsworth.immersion.items;
 
+import bcwadsworth.immersion.ModConfig;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,6 +23,6 @@ public class ItemMaterial extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register) 
 	{
-		itemIcon = register.registerIcon("bcwadsworthWorld:" + this.getUnlocalizedName().substring(5));
+		itemIcon = register.registerIcon(ModConfig.MODID + ":" + this.getUnlocalizedName().substring(5));
 	}
 }

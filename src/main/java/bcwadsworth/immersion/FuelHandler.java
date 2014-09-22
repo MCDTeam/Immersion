@@ -1,6 +1,6 @@
-package bcwadsworth.bcwadsworthWorld;
+package bcwadsworth.immersion;
 
-import bcwadsworth.bcwadsworthWorld.ORef;
+import bcwadsworth.immersion.ORef;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;

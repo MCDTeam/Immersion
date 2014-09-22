@@ -1,7 +1,8 @@
-package bcwadsworth.bcwadsworthWorld.blocks;
+package bcwadsworth.immersion.blocks;
 
 import java.util.Random;
 
+import bcwadsworth.immersion.ModConfig;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -39,7 +40,7 @@ public class BlockStorage extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister register) 
 	{
-		texture = register.registerIcon("bcwadsworthWorld:" + this.getUnlocalizedName().substring(5));
+		texture = register.registerIcon(ModConfig.MODID + ":" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SideOnly(Side.CLIENT)
