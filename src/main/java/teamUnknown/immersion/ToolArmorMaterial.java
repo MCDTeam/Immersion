@@ -1,4 +1,4 @@
-package bcwadsworth.immersion;
+package teamUnknown.immersion;
 
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;

@@ -1,4 +1,4 @@
-package bcwadsworth.immersion;
+package teamUnknown.immersion;
 
 import java.util.Iterator;
 import java.util.List;
@@ -17,10 +17,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import bcwadsworth.immersion.blocks.BlockGemOre;
-import bcwadsworth.immersion.blocks.BlockStorage;
-import bcwadsworth.immersion.blocks.FuelEnrichedCoal;
-import bcwadsworth.immersion.items.ItemMaterial;
+import teamUnknown.immersion.blocks.BlockGemOre;
+import teamUnknown.immersion.blocks.BlockStorage;
+import teamUnknown.immersion.blocks.FuelEnrichedCoal;
+import teamUnknown.immersion.items.ItemMaterial;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

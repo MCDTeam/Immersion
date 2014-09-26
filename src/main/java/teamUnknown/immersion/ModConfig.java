@@ -1,4 +1,4 @@
-package bcwadsworth.immersion;
+package teamUnknown.immersion;
 
 import net.minecraftforge.common.config.Configuration;
 

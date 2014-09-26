@@ -1,8 +1,8 @@
-package bcwadsworth.immersion;
+package teamUnknown.immersion;
 
 import java.util.Random;
 
-import bcwadsworth.immersion.ORef;
+import teamUnknown.immersion.ORef;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;

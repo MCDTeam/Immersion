@@ -1,6 +1,6 @@
-package bcwadsworth.immersion.items;
+package teamUnknown.immersion.items;
 
-import bcwadsworth.immersion.ModConfig;
+import teamUnknown.immersion.ModConfig;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

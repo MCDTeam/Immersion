@@ -1,14 +1,14 @@
-package bcwadsworth.immersion;
+package teamUnknown.immersion;
 
+import teamUnknown.immersion.blocks.BlockGemOre;
+import teamUnknown.immersion.blocks.BlockOre;
+import teamUnknown.immersion.blocks.BlockStorage;
+import teamUnknown.immersion.blocks.FuelEnrichedCoal;
+import teamUnknown.immersion.items.ItemMaterial;
+import teamUnknown.immersion.items.ItemPartOre;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
-import bcwadsworth.immersion.blocks.BlockGemOre;
-import bcwadsworth.immersion.blocks.BlockOre;
-import bcwadsworth.immersion.blocks.BlockStorage;
-import bcwadsworth.immersion.blocks.FuelEnrichedCoal;
-import bcwadsworth.immersion.items.ItemPartOre;
-import bcwadsworth.immersion.items.ItemMaterial;
 
 public class ORef 
 {
