@@ -1,4 +1,4 @@
-package teamUnknown.immersion;
+package teamUnknown.immersion.core.utils;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

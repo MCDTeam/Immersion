@@ -1,7 +1,6 @@
-package teamUnknown.immersion;
+package teamUnknown.immersion.features.metallurgyFeature.items;
 
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ToolArmorMaterial 
