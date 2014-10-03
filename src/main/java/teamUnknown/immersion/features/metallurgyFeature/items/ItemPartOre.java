@@ -1,17 +1,15 @@
-package teamUnknown.immersion.items;
+package teamUnknown.immersion.features.metallurgyFeature.items;
 
-import java.util.List;
-
-import teamUnknown.immersion.ORef;
-import teamUnknown.immersion.Stack;
-import teamUnknown.immersion.blocks.BlockOre;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import teamUnknown.immersion.core.utils.Stack;
+import teamUnknown.immersion.features.oreGenFeature.blocks.BlockOre;
+
+import java.util.List;
 
 public class ItemPartOre extends ItemMaterial {
 
@@ -54,7 +52,7 @@ public class ItemPartOre extends ItemMaterial {
 		{
 			int id = taglist.getCompoundTagAt(0).getInteger("ore");
 		
-			list.add(Item.getItemById(id).getItemStackDisplayName(Stack.S(Item.getItemById(id))) + ", " + taglist.getCompoundTagAt(0).getInteger("nuggets"));	
+			list.add(getItemById(id).getItemStackDisplayName(Stack.S(getItemById(id))) + ", " + taglist.getCompoundTagAt(0).getInteger("nuggets"));
 		}
 		super.addInformation(stack, player, list, par4);
 	}

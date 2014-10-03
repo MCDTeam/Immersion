@@ -1,10 +1,11 @@
-package teamUnknown.immersion;
+package teamUnknown.immersion.features.metallurgyFeature;
 
-import teamUnknown.immersion.blocks.BlockOre;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
+import teamUnknown.immersion.core.utils.Stack;
+import teamUnknown.immersion.features.oreGenFeature.ORef;
+import teamUnknown.immersion.features.oreGenFeature.blocks.BlockOre;
 
 public class OreDropsHelper 
 {

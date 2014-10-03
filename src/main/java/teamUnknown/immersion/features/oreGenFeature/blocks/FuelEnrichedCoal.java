@@ -1,14 +1,14 @@
-package teamUnknown.immersion.blocks;
+package teamUnknown.immersion.features.oreGenFeature.blocks;
 
-import teamUnknown.immersion.ModConfig;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import teamUnknown.immersion.core.meta.ModMetadata;
 
 public class FuelEnrichedCoal extends Block 
 {
@@ -32,7 +32,7 @@ public class FuelEnrichedCoal extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister register) 
 	{
-		texture = register.registerIcon(ModConfig.MODID + ":" + this.getUnlocalizedName().substring(5));
+		texture = register.registerIcon(ModMetadata.MOD_ID + ":" + this.getUnlocalizedName().substring(5));
 	}
 
 	@SideOnly(Side.CLIENT)

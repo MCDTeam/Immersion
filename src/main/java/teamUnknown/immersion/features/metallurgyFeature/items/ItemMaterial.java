@@ -1,12 +1,12 @@
-package teamUnknown.immersion.items;
+package teamUnknown.immersion.features.metallurgyFeature.items;
 
-import teamUnknown.immersion.ModConfig;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import teamUnknown.immersion.core.meta.ModMetadata;
 
 public class ItemMaterial extends Item 
 {
@@ -23,6 +23,6 @@ public class ItemMaterial extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register) 
 	{
-		itemIcon = register.registerIcon(ModConfig.MODID + ":" + this.getUnlocalizedName().substring(5));
+		itemIcon = register.registerIcon(ModMetadata.MOD_ID + ":" + this.getUnlocalizedName().substring(5));
 	}
 }
