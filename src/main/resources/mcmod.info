@@ -1,0 +1,20 @@
+[
+{
+  "modid": "immersion",
+  "name": "Immersion",
+  "description": "A mod that adds lots of cool features to Minecraft!",
+  "version": "@VERSION@",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "Deli_SK", "BCWadsworth"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
