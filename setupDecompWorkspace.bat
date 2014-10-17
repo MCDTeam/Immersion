@@ -1,1 +1,0 @@
-CALL gradlew.bat setupDecompWorkspace
