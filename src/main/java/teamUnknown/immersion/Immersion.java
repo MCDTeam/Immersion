@@ -11,7 +11,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.repositories.FeatureRepository;
+import teamUnknown.immersion.features.oreGenFeature.oreGenFeature;
 import teamUnknown.immersion.features.spawnFeature.SpawnFeature;
+import teamUnknown.immersion.features.versionCheckerFeature.VersionFeature;
 
 
 @Mod(modid = ModMetadata.MOD_ID, name = ModMetadata.NAME, version = ModMetadata.VERSION)
@@ -26,6 +28,8 @@ public class Immersion
     public Immersion(){
         this._featureRepository = new FeatureRepository();
         this._featureRepository.RegisterFeature(new SpawnFeature());
+        this._featureRepository.RegisterFeature(new oreGenFeature());
+        this._featureRepository.RegisterFeature(new VersionFeature());
     }
 
 	@EventHandler

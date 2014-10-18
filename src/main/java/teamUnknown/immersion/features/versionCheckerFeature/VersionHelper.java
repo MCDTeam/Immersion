@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.utils;
+package teamUnknown.immersion.features.versionCheckerFeature;
 
 import cpw.mods.fml.common.Loader;
 import net.minecraft.util.EnumChatFormatting;
@@ -16,7 +16,7 @@ public class VersionHelper implements Runnable{
     private static VersionHelper instance = new VersionHelper();
 
     // The (publicly available) remote version number authority file
-    private static final String REMOTE_VERSION_XML_FILE = "https://raw.githubusercontent.com/XeliteXirish/Quantum-Energistics-2/master/version.xml";
+    private static final String REMOTE_VERSION_XML_FILE = "https://raw.githubusercontent.com/Mc-Immersion/Immersion/master/version.xml";
 
     public static Properties remoteVersionProperties = new Properties();
 
@@ -61,8 +61,8 @@ public class VersionHelper implements Runnable{
                 }
 
                 if (remoteVersion != null) {
-                    /*if (!ConfigurationHelper.LAST_DISCOVERED_VERSION.equalsIgnoreCase(remoteVersion)) {
-                        ConfigurationHandler.set(ConfigurationHandler.CATEGORY_GENERAL, ConfigurationHelper.LAST_DISCOVERED_VERSION_CONFIGNAME, remoteVersion);
+                    /*if (!VersionHelper.LAST_DISCOVERED_VERSION.equalsIgnoreCase(remoteVersion)) {
+                        VersionFeature.set(ConfigurationHandler.CATEGORY_GENERAL, ConfigurationHelper.LAST_DISCOVERED_VERSION_CONFIGNAME, remoteVersion);
                     }*/
 
                     if (remoteVersion.equalsIgnoreCase(getVersionForCheck())) {
@@ -152,8 +152,6 @@ public class VersionHelper implements Runnable{
                 checkVersion();
                 count++;
                 logResult();
-
-
 
                 if (result == UNINITIALIZED || result == ERROR) {
                     Thread.sleep(10000);
