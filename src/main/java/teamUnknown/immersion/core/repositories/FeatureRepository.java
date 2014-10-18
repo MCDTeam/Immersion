@@ -74,6 +74,14 @@ public class FeatureRepository {
         }
     }
 
+    public void runServerStarting() {
+        this._logger.info("Running Server Starting of all features");
+        for (Map.Entry<String, FeatureEntry> entry: this._activeFeatures.entrySet()){
+            FeatureEntry featureEntry = entry.getValue();
+            featureEntry.feature.runFeatureServerStarting(featureEntry.context);
+        }
+    }
+
     public <T extends IFeature> T getFeature(Class<T> featureClass) {
         IFeature featureInstance = this._activeFeatures.get(featureClass.getSimpleName()).feature;
         if (featureClass.isInstance(featureInstance))

@@ -21,4 +21,5 @@ public @interface FeatureProperties {
     public boolean doEntitiesRegistration() default false;
     public boolean doCraftingRegistration() default false;
     public boolean doModCompatibilityRegistration() default false;
+    public boolean doCommandRegistration() default false;
 }

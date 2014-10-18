@@ -44,4 +44,9 @@ public class CommonFeature extends CommonFeatureBase {
     protected void registerModCompatibility(FeatureContext context) {
         context.getLogger().info("Registering mod compatibility");
     }
+
+    @Override
+    protected void registerServerCommands(FeatureContext context) {
+        context.getLogger().info("Registering commands");
+    }
 }
