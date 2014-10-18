@@ -6,6 +6,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,6 +31,11 @@ public class Immersion
         this._featureRepository.RegisterFeature(new SpawnFeature());
         this._featureRepository.RegisterFeature(new oreGenFeature());
         this._featureRepository.RegisterFeature(new VersionFeature());
+    }
+
+    @EventHandler
+    public void serverStarting(FMLServerStartedEvent event){
+        this._featureRepository.runServerStarting();
     }
 
 	@EventHandler
