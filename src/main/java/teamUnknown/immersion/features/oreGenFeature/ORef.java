@@ -9,9 +9,8 @@ import teamUnknown.immersion.features.oreGenFeature.blocks.BlockOre;
 import teamUnknown.immersion.features.oreGenFeature.blocks.BlockStorage;
 import teamUnknown.immersion.features.oreGenFeature.blocks.FuelEnrichedCoal;
 
-public class ORef 
-{
-	
+public class ORef {
+    // Gems
 	public static ItemMaterial gemEnd = new ItemMaterial("gemEnd");
 	public static BlockGemOre oreGemEnd = new BlockGemOre("GemEnd", ORef.gemEnd);
 	public static ItemMaterial gemGlow = new ItemMaterial("gemGlow");
@@ -25,6 +24,7 @@ public class ORef
 	public static ItemMaterial gemImperfectEmerald = new ItemMaterial("gemImperfectEmerald");
 	public static BlockGemOre oreImperfectEmerald = new BlockGemOre("GemImperfectEmerald", ORef.gemImperfectEmerald);
 	public static ItemMaterial gemImperfectEnd = new ItemMaterial("gemImperfectEnd");
+
 	//Precious Family
 	public static BlockOre oreCopper = new BlockOre("Copper");
 	public static BlockOre oreSilver = new BlockOre("Silver");
@@ -32,6 +32,7 @@ public class ORef
 	public static BlockOre oreGold = new BlockOre("Gold");
 	public static BlockOre orePlatinum = new BlockOre("Platinum");
 	public static BlockOre oreMythril = new BlockOre("Mythril");
+
 	//Rare Earths
 	public static BlockOre oreOsmium = new BlockOre("Osmium");
 	public static BlockOre oreIridium = new BlockOre("Iridium");
@@ -47,6 +48,7 @@ public class ORef
 	public static BlockOre oreRadium = new BlockOre("Radium");
 	public static BlockOre oreMaganese = new BlockOre("Maganese");
 	public static BlockOre oreMolybdenum = new BlockOre("Molybdenum");
+
 	//Building Family
 	public static BlockOre oreIron = new BlockOre("Iron");
 	public static BlockOre oreTitanium = new BlockOre("Titanium");
