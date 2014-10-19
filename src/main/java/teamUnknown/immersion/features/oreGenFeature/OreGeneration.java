@@ -82,24 +82,26 @@ public class OreGeneration  implements IWorldGenerator
     //Override of Vanilla Gen
     @SubscribeEvent
     public void undoVanillaGen(OreGenEvent.GenerateMinable event) {
-        if (event.type == OreGenEvent.GenerateMinable.EventType.REDSTONE) {
-            event.setResult(Event.Result.DENY);
+        if(oreGenFeature.enableSpecialSpawning) {
+            if (event.type == OreGenEvent.GenerateMinable.EventType.REDSTONE) {
+                event.setResult(Event.Result.DENY);
+            }
+            if (event.type == OreGenEvent.GenerateMinable.EventType.DIAMOND) {
+                event.setResult(Event.Result.DENY);
+            }
+            if (event.type == OreGenEvent.GenerateMinable.EventType.QUARTZ) {
+                event.setResult(Event.Result.DENY);
+            }
+            if (event.type == OreGenEvent.GenerateMinable.EventType.IRON) {
+                event.setResult(Event.Result.DENY);
+            }
+            if (event.type == OreGenEvent.GenerateMinable.EventType.GOLD) {
+                event.setResult(Event.Result.DENY);
+            }
+            /**if (event.type == OreGenEvent.GenerateMinable.EventType.DIRT && OreGenConfig.GENERATEDIRTUNDERGROUND) {
+             event.setResult(Event.Result.DENY);
+             }**/
         }
-        if (event.type == OreGenEvent.GenerateMinable.EventType.DIAMOND) {
-            event.setResult(Event.Result.DENY);
-        }
-        if (event.type == OreGenEvent.GenerateMinable.EventType.QUARTZ) {
-            event.setResult(Event.Result.DENY);
-        }
-        if (event.type == OreGenEvent.GenerateMinable.EventType.IRON) {
-            event.setResult(Event.Result.DENY);
-        }
-        if (event.type == OreGenEvent.GenerateMinable.EventType.GOLD) {
-            event.setResult(Event.Result.DENY);
-        }
-        /**if (event.type == OreGenEvent.GenerateMinable.EventType.DIRT && OreGenConfig.GENERATEDIRTUNDERGROUND) {
-            event.setResult(Event.Result.DENY);
-        }**/
     }
 
 }
