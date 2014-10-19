@@ -52,14 +52,7 @@ public class Immersion
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
 
-		//OreGeneration generator = new OreGeneration();
-	
-		//GameRegistry.registerWorldGenerator(generator, 0);
-		//log.debug("Ore Generator Loaded");
-		
-		//MinecraftForge.ORE_GEN_BUS.register(generator);
-		//MinecraftForge.EVENT_BUS.register(new OreDropsHelper());
-		//log.debug("Event Busses Loaded");
+
 		
 		//GameRegistry.registerFuelHandler(new FuelHandler());
 		//log.debug("Fuel Handler Loaded");
