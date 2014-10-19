@@ -15,19 +15,7 @@ import teamUnknown.immersion.features.metallurgyFeature.OreDropsHelper;
 @FeatureProperties(name = "Ore Generation feature", doConfigurationRegistration = true, doEventListenersRegistration = true, doItemsRegistration = true)
 public class oreGenFeature extends CommonFeature {
 
-    @Override
-    public void runFeatureInitialization(FeatureContext context) {
-        super.runFeatureInitialization(context);
-
-        OreGeneration generator = new OreGeneration();
-
-        GameRegistry.registerWorldGenerator(generator, 0);
-        Immersion.log.debug("Ore Generator Loaded");
-
-        MinecraftForge.ORE_GEN_BUS.register(generator);
-        MinecraftForge.EVENT_BUS.register(new OreDropsHelper());
-        Immersion.log.debug("Event Busses Loaded");
-    }
+    public static boolean enableSpecialSpawning;
 
     @Override
     protected void registerItems(FeatureContext context) {
@@ -41,11 +29,20 @@ public class oreGenFeature extends CommonFeature {
     @Override
     protected void registerConfiguration(FeatureContext context) {
         super.registerConfiguration(context);
+
+        this.enableSpecialSpawning = context.getConfiguration().getConfig("enable special spawning", "Enables the special ore spawning", true);
     }
 
     @Override
     protected void registerEventListeners(FeatureContext context) {
 
+        OreGeneration generator = new OreGeneration();
 
+        GameRegistry.registerWorldGenerator(generator, 0);
+        Immersion.log.debug("Ore Generator Loaded");
+
+        MinecraftForge.ORE_GEN_BUS.register(generator);
+        MinecraftForge.EVENT_BUS.register(new OreDropsHelper());
+        Immersion.log.debug("Event Busses Loaded");
     }
 }
