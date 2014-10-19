@@ -26,6 +26,12 @@ public interface IFeature {
     public void runFeaturePostInitialization(FeatureContext context);
 
     /**
+     * Called on Server Starting
+     * Used to register server commands etc
+     */
+    public void runFeatureServerStarting(FeatureContext context);
+
+    /**
      * Gets the feature name
      * @return Feature Name
      */

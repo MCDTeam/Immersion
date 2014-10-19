@@ -65,6 +65,16 @@ public abstract class CommonFeatureBase implements IFeature {
     }
 
     @Override
+    public void runFeatureServerStarting(FeatureContext context) {
+        context.getLogger().info(String.format("Running Server Starting of feature '%1$s'", this._featureName));
+
+        if(this._properties.doCommandRegistration())
+            this.registerServerCommands(context);
+
+        context.getLogger().info(String.format("Server Starting of feature '%1$s' completed", this._featureName));
+    }
+
+    @Override
     public String getFeatureName() {
         return this._featureName;
     }
@@ -77,5 +87,5 @@ public abstract class CommonFeatureBase implements IFeature {
     protected abstract void registerEntities(FeatureContext context);
     protected abstract void registerCraftingRecipes(FeatureContext context);
     protected abstract void registerModCompatibility(FeatureContext context);
-
+    protected abstract void registerServerCommands(FeatureContext context);
 }
