@@ -70,13 +70,13 @@ public class OreGeneration  implements IWorldGenerator
     }
 
     private void generateNether(World world, Random random, int chunkX, int chunkZ) {
-        /**for (int k = 0; k < OreGenConfig.OREGEMGLOWCHUNKDENSITY; k++) {
-            new WorldGenMinable(ORef.oreGemGlow, (OreGenConfig.OREGEMGLOWGENERATEMIN + random.nextInt(OreGenConfig.OREGEMGLOWGENERATEMAX - OreGenConfig.OREGEMGLOWGENERATEMIN)), Blocks.netherrack).generate(world, random, (chunkX + random.nextInt(16)), (OreGenConfig.OREGEMGLOWYMIN + random.nextInt(OreGenConfig.OREGEMGLOWYMAX - OreGenConfig.OREGEMGLOWYMIN)), (chunkZ + random.nextInt(16)));
+        for (int k = 0; k < OreGenConfig.ORE_GEM_GLOW_CHUNK_DENSITY; k++) {
+            new WorldGenMinable(ORef.oreGemGlow, (OreGenConfig.ORE_GEM_GLOW_GENERATE_MIN + random.nextInt(OreGenConfig.ORE_GEM_GLOW_GENERATE_MAX - OreGenConfig.ORE_GEM_GLOW_GENERATE_MIN)), Blocks.netherrack).generate(world, random, (chunkX + random.nextInt(16)), (OreGenConfig.ORE_GEM_GLOW_Y_MIN + random.nextInt(OreGenConfig.ORE_GEM_GLOW_Y_MAX - OreGenConfig.ORE_GEM_GLOW_Y_MIN)), (chunkZ + random.nextInt(16)));
         }
 
-        for (int k = 0; k < OreGenConfig.OREGEMQUARTZCHUNKDENSITY; k++) {
-            new WorldGenMinable(ORef.oreGemQuartz, (OreGenConfig.OREGEMQUARTZGENERATEMIN + random.nextInt(OreGenConfig.OREGEMQUARTZGENERATEMAX - OreGenConfig.OREGEMQUARTZGENERATEMIN))).generate(world, random, (chunkX + random.nextInt(16)), (OreGenConfig.OREGEMQUARTZYMIN + random.nextInt(OreGenConfig.OREGEMQUARTZYBREAK - OreGenConfig.OREGEMQUARTZYMIN)), (chunkZ + random.nextInt(16)));
-        }**/
+        for (int k = 0; k < OreGenConfig.ORE_GEM_QUARTZ_CHUNK_DENSITY; k++) {
+            new WorldGenMinable(ORef.oreGemQuartz, (OreGenConfig.ORE_GEM_QUARTZ_GENERATE_MIN + random.nextInt(OreGenConfig.ORE_GEM_QUARTZ_GENERATE_MAX - OreGenConfig.ORE_GEM_QUARTZ_GENERATE_MIN))).generate(world, random, (chunkX + random.nextInt(16)), (OreGenConfig.ORE_GEM_QUARTZ_Y_MIN + random.nextInt(OreGenConfig.ORE_GEM_QUARTZ_Y_BREAK - OreGenConfig.ORE_GEM_GLOW_Y_MIN)), (chunkZ + random.nextInt(16)));
+        }
     }
 
     //Override of Vanilla Gen
