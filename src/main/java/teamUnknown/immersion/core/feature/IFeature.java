@@ -23,10 +23,9 @@ public interface IFeature {
     
     /**
      * Called on all features that will be continuing into pre-init
-     * If alternates will be used, called only on alternates
-     * @param superfeatures list of features dependent upon itself
+     * FeatureData(alternate) If this is true, the alternate feature has been chosen
      */
-    public void postSetup(IFeature[] superfeatures);
+    public void postSetup();
     
     /**
      * Gets the feature name

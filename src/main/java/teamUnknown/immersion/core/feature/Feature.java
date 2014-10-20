@@ -35,12 +35,6 @@ public @interface Feature
     public boolean hasDisabledCompatility() default false;
     
     /**
-     * If set to true, all dependencies will be force base
-     * loaded or will run {@link @FeatureAlternate} code
-     */
-    public boolean requiresDependencies() default false;
-    
-    /**
      * The interface responsible for telling the code how to use methods within the feature class
      * NOTE: EVERY METHOD WITHIN THE FEATURE THAT WILL BE USED BY BEGINNING CODE
      * MUST HAVE ONE OF THESE ANNOTATIONS
@@ -116,7 +110,11 @@ public @interface Feature
     		CONFIGURATION,
     		LOGGER,
     		MODINSTANCE,
+    		PREFEATURELIST,
+    		FULLFEATURELIST,
+    		ALTFEATURELIST,
     		FEATURELIST,
+    		ALTERNATE,
     		NONDATA
     	}
     	

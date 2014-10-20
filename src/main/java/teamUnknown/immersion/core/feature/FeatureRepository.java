@@ -1,6 +1,8 @@
 package teamUnknown.immersion.core.feature;
 
 import net.minecraftforge.common.config.Configuration;
+import teamUnknown.immersion.core.feature.Feature.FeatureData;
+import teamUnknown.immersion.core.feature.Feature.FeatureData.Data;
 import teamUnknown.immersion.core.logging.FeatureLogger;
 import teamUnknown.immersion.core.logging.ILogger;
 import teamUnknown.immersion.core.logging.SubSystemLogger;
@@ -49,9 +51,16 @@ public class FeatureRepository {
     		{
     			try
     			{
-    				feild.getAnnotation(Feature.FeatureData.class);
+    				FeatureData data = feild.getAnnotation(Feature.FeatureData.class);
+    				if (data.value() == Data.PREFEATURELIST)
+    				{
+    					feild.set(feature, this._possibleFeatures);
+    				}
     			}
-    			
+    			catch (Throwable e)
+    			{
+    				this._logger.info("Scanning for feilds resulted in '%1$s' from feature '%2$s' for feild '%3$s' from declared class '%4$s'.", e.toString(), feature.getFeatureName(), feild.getName(), feild.getClass().getPackage());
+    			}	
     		}
     	}
     	//Getting all dependencies
@@ -61,56 +70,76 @@ public class FeatureRepository {
     		map.put(feature, feature.setup());
     	}
     	
-    	Iterator<IFeature> iterator = this._possibleFeatures.iterator();
-    	do
-    	{
-    		IFeature feature = iterator.next();
-    		if (feature.getClass().getAnnotation(Feature.class).isBase())
-    		{
-    			_activeFeatures.add(feature);
-    			iterator.remove();
-    			continue;
-    		}
-    		else
-    		{
-    			Boolean depFound = false;
-    			for(IFeature[] deplist : map.values())
-    			{
-    				for (IFeature dependency: deplist)
-    				{
-    					if (dependency.getFeatureName() == feature.getFeatureName())
-    					{
-    						depFound = true;
-    						break;
-    					}
-    				}
-    				if (depFound == true)
-    				{
-    					break;
-    				}
-    			}
-    			if (depFound == true)
-    			{
-    				continue;
-    			}
-    			else
-    			{
-    				Boolean active = configuration.get("Feature Activation", String.format("Feature '%1$s' active", feature.getFeatureName()), true).getBoolean(true);
-    				if (active)
-    				{
-    					_activeFeatures.add(feature);
-    					iterator.remove();
-    					continue;
-    				}
-    				else
-    				{
-    					iterator.remove();
-    					map.remove(feature);
-    					continue;
-    				}
-    			}
-    		}
-    	} while (iterator.hasNext());
+    	int topFound;
+		do {
+			topFound = 0;
+			Iterator<IFeature> iterator = this._possibleFeatures.iterator();
+			do {
+				IFeature feature = iterator.next();
+				if (feature.getClass().getAnnotation(Feature.class).isBase()) {
+					_activeFeatures.add(feature);
+					iterator.remove();
+					continue;
+				} else {
+					Boolean depFound = false;
+					for (IFeature[] deplist : map.values()) {
+						for (IFeature dependency : deplist) {
+							if (dependency.getFeatureName() == feature
+									.getFeatureName()) {
+								depFound = true;
+								break;
+							}
+						}
+						if (depFound == true) {
+							break;
+						}
+					}
+					if (depFound == true) {
+						continue;
+					} else {
+						topFound ++;
+						Boolean active = configuration.get("Feature Activation", String.format("Feature '%1$s' active", feature.getFeatureName()), true).getBoolean(true);
+						if (active) {
+							_activeFeatures.add(feature);
+							iterator.remove();
+							continue;
+						} else {
+							iterator.remove();
+							map.remove(feature);
+							continue;
+						}
+					}
+				}
+			} while (iterator.hasNext());
+		} while (topFound > 0);
+		
+		for (IFeature feature : _possibleFeatures)
+		{
+			if (feature.getClass().getAnnotation(Feature.class).hasDisabledCompatility()) 
+			{
+				Boolean active = configuration.get("Feature Activation", String.format("Feature '%1$s' active", feature.getFeatureName()), true).getBoolean(true);
+				if (active)
+				{
+					_activeFeatures.add(feature);
+					continue;
+				}
+				else
+				{
+					_activeAlternateFeatures.add(feature);
+					continue;
+				}
+			}
+			else
+			{
+				_activeFeatures.add(feature);
+				continue;
+			}
+		}
+		
+		for (IFeature feature : _activeFeatures)
+		{
+			feature.postSetup();
+		}
     	
     }
     public void runPreInitialization(Configuration configuration) {
