@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.spawnFeature.events;
+package teamUnknown.immersion.features.spawnFeature;
 
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -6,17 +6,18 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import teamUnknown.immersion.features.common.FeatureContext;
+import teamUnknown.immersion.core.logging.FeatureLogger;
 
 /**
  *
  */
 public class SpawnEventListener {
 
-    private final FeatureContext _featureContext;
     private final RespawnConfig _cfg;
-    public SpawnEventListener(FeatureContext context, RespawnConfig cfg) {
-        this._featureContext = context;
+	private FeatureLogger _logger;
+    public SpawnEventListener(FeatureLogger logger, RespawnConfig cfg) 
+    {
+        this._logger = logger;
         this._cfg = cfg;
     }
 
@@ -34,12 +35,12 @@ public class SpawnEventListener {
 
 
                 if (!player.worldObj.provider.canCoordinateBeSpawn(x, z)){
-                    this._featureContext.getLogger().info("Bad spawn @ X:%1$d Z:%2$d", x, z);
+                    this._logger.info("Bad spawn @ X:%1$d Z:%2$d", x, z);
                     continue;
                 }
 
                 int y = player.worldObj.getTopSolidOrLiquidBlock(x, z);
-                this._featureContext.getLogger().info("Player spawn @ X:%1$d Y:%2$d Z:%3$d", x, y, z);
+                this._logger.info("Player spawn @ X:%1$d Y:%2$d Z:%3$d", x, y, z);
 
                 player.setSpawnChunk(new ChunkCoordinates(x, y, z), true);
                 break;
@@ -50,8 +51,9 @@ public class SpawnEventListener {
     }
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
-    public void onRespawn(PlayerEvent.PlayerRespawnEvent event){
-        _featureContext.getLogger().info("Respawn");
+    public void onRespawn(PlayerEvent.PlayerRespawnEvent event)
+    {
+        _logger.info("Respawn");
     }
 
     public static class RespawnConfig{

@@ -6,16 +6,13 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.common.config.Configuration;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import teamUnknown.immersion.core.meta.ModMetadata;
-import teamUnknown.immersion.core.repositories.FeatureRepository;
-import teamUnknown.immersion.features.oreGenFeature.oreGenFeature;
-import teamUnknown.immersion.features.spawnFeature.SpawnFeature;
-import teamUnknown.immersion.features.versionCheckerFeature.VersionFeature;
 
+import teamUnknown.immersion.core.feature.FeatureRepository;
+import teamUnknown.immersion.core.meta.ModMetadata;
 
 @Mod(modid = ModMetadata.MOD_ID, name = ModMetadata.NAME, version = ModMetadata.VERSION)
 public class Immersion 
@@ -26,28 +23,23 @@ public class Immersion
 	public static Immersion instance;
     private final FeatureRepository _featureRepository;
 
-    public Immersion(){
+    public Immersion()
+    {
         this._featureRepository = new FeatureRepository();
-        this._featureRepository.RegisterFeature(new SpawnFeature());
-        this._featureRepository.RegisterFeature(new oreGenFeature());
-        this._featureRepository.RegisterFeature(new VersionFeature());
-    }
-
-    @EventHandler
-    public void serverStarting(FMLServerStartedEvent event){
-        this._featureRepository.runServerStarting();
     }
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{	
 		log.info("Pre-Init Version: " + ModMetadata.VERSION);
+		
+		//Put feature register together
+        
+        
+        //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
         this._featureRepository.runPreInitialization(config);
-
-		//ModMetadata.configLoad(config);
-		//log.debug("Config Loaded");
 
         config.save();
 		log.info("Pre-Init Finished");
@@ -57,23 +49,6 @@ public class Immersion
 	public void init(FMLInitializationEvent event) 
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
-
-		//OreGeneration generator = new OreGeneration();
-	
-		//GameRegistry.registerWorldGenerator(generator, 0);
-		//log.debug("Ore Generator Loaded");
-		
-		//MinecraftForge.ORE_GEN_BUS.register(generator);
-		//MinecraftForge.EVENT_BUS.register(new OreDropsHelper());
-		//log.debug("Event Busses Loaded");
-		
-		//GameRegistry.registerFuelHandler(new FuelHandler());
-		//log.debug("Fuel Handler Loaded");
-				
-		//this.craftingRegistration();
-		//log.debug("Crafting/Smelting Loaded");
-		
-		//log.info(GameRegistry.getFuelValue(Stack.S(Blocks.coal_block)));
 
         this._featureRepository.runInitialization();
 
@@ -87,4 +62,5 @@ public class Immersion
         this._featureRepository.runPostInitialization();
 		log.info("Post-Init Finished");
 	}
+
 }

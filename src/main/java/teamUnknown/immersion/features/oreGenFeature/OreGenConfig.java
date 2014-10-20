@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.oreGenFeature.config;
+package teamUnknown.immersion.features.oreGenFeature;
 
 import net.minecraftforge.common.config.Configuration;
 

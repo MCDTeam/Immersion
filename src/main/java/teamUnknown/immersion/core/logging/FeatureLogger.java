@@ -1,6 +1,6 @@
 package teamUnknown.immersion.core.logging;
 
-import teamUnknown.immersion.features.IFeature;
+import teamUnknown.immersion.core.feature.IFeature;
 
 /**
  *

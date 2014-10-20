@@ -17,7 +17,14 @@ public class SubSystemLogger implements ILogger {
     }
 
     @Override
-    public void info(String format, Object... args) {
+    public void info(String format, Object... args) 
+    {
         Immersion.log.info(String.format("[" + this._subSystemName + "]: " + format, args));
+    }
+    
+    @Override
+    public void debug(String format, Object... args) 
+    {
+        Immersion.log.debug(String.format("[" + this._subSystemName + "]: " + format, args));
     }
 }

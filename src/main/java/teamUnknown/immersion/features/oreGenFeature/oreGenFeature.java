@@ -1,13 +1,14 @@
 package teamUnknown.immersion.features.oreGenFeature;
 
-import teamUnknown.immersion.features.common.CommonFeature;
-import teamUnknown.immersion.features.common.FeatureProperties;
+import teamUnknown.immersion.core.feature.CommonFeature;
+import teamUnknown.immersion.core.feature.FeatureContext;
+import teamUnknown.immersion.core.feature.FeatureProperties;
 
 /**
  *
  */
-@FeatureProperties(name = "Ore Generation feature")
-public class oreGenFeature extends CommonFeature {
+@FeatureProperties(name = "Ore Generation")
+public class oreGenFeature extends CommonFeature 
+{
 
-      //TODO: do all worldGen and block registration here
 }

@@ -8,10 +8,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import teamUnknown.immersion.core.feature.CommonFeature;
+import teamUnknown.immersion.core.feature.FeatureContext;
+import teamUnknown.immersion.core.feature.FeatureProperties;
 import teamUnknown.immersion.core.utils.Stack;
-import teamUnknown.immersion.features.common.CommonFeature;
-import teamUnknown.immersion.features.common.FeatureContext;
-import teamUnknown.immersion.features.common.FeatureProperties;
 import teamUnknown.immersion.features.oreGenFeature.ORef;
 
 import java.util.Iterator;
