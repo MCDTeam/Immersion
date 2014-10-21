@@ -70,8 +70,6 @@ public @interface Feature
     		SERVERSTARTED,
     		SERVERSTOPPING,
     		SERVERSTOPPED,
-    		IMCSEND,
-    		IMCRECIVE,
     		NONSETUP
     	}
     	

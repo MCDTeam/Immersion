@@ -142,25 +142,9 @@ public class FeatureRepository {
 		}
     	
     }
-    public void runPreInitialization(Configuration configuration) {
+    public void runPreInitialization() {
 
         ILogger log = this._logger;
-
-        this.configuration = configuration;
-
-        log.info("Selecting activated features");
-
-        for (IFeature feature: this._possibleFeatures)
-        {
-            boolean featureEnabled = context.getConfiguration().getConfig("Enabled", String.format("Enables the '%1$s' feature", feature.getFeatureName()), true);
-            if (featureEnabled){
-                log.info(String.format("Feature '%1$s' activated ", feature.getFeatureName()));
-                this._activeFeatures.put(feature.getClass().getSimpleName(), new FeatureEntry(feature, context));
-            } else {
-                log.info(String.format("Feature '%1$s' deactivated ", feature.getFeatureName()));
-                
-            }
-        }
 
         log.info("Running Pre-Initialization of all features");
 

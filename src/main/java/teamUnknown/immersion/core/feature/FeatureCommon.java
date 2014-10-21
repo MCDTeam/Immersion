@@ -10,10 +10,9 @@ import teamUnknown.immersion.features.spawnFeature.SpawnEventListener;
 /**
  *  Feature that forces player to spawn randomly
  */
-@Feature(name = "playerspawning", version = "0.1")
+@Feature(name = "null", version = "null")
 public class FeatureCommon implements IFeature 
 {
-    
 	@Override
 	public void preSetup() 
 	{
@@ -25,16 +24,16 @@ public class FeatureCommon implements IFeature
 	{
 		return null;
 	}
-	
-	@Override
-	public void postSetup(IFeature[] superfeatures) 
-	{
-	
-	}
     
 	@Override
 	public String getFeatureName() 
 	{
 		return null;
+	}
+
+	@Override
+	public void postSetup() 
+	{
+		
 	}
 }
