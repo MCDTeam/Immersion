@@ -22,14 +22,17 @@ import java.util.Map;
 public class FeatureRepository {
     private final SubSystemLogger _logger;
     protected final ArrayList<IFeature> _possibleFeatures;
+    protected final ArrayList<IFeature> _fullFeatures;
+	private ArrayList<IFeature> _alternateFeatures;
     private final ArrayList<IFeature> _activeFeatures;
     private Configuration configuration;
-	private ArrayList<IFeature> _activeAlternateFeatures;
+
 
     public FeatureRepository(){
         this._possibleFeatures = new ArrayList<IFeature>();
+        this._fullFeatures = new ArrayList<IFeature>();
+        this._alternateFeatures = new ArrayList<IFeature>();
         this._activeFeatures = new ArrayList<IFeature>();
-        this._activeAlternateFeatures = new ArrayList<IFeature>();
         this._logger = SubSystemLogger.getLoggerForSubsystem(this.getClass());
     }
 
@@ -40,29 +43,16 @@ public class FeatureRepository {
 
     public void runSetup(Configuration configuration)
     {
+    	//Processing of Pre-Data Annotations
+    	this.fillData(Data.PREFEATURELIST, this._possibleFeatures, this._possibleFeatures);
+    	
+    	
+    	//Run Startup Code
     	for (IFeature feature: this._possibleFeatures)
     	{
     		feature.preSetup();
     	}
-    	//Processing of @FeatureData(Features_Possible) Annotations
-    	for (IFeature feature: this._possibleFeatures)
-    	{
-    		for (Field feild : feature.getClass().getFields())
-    		{
-    			try
-    			{
-    				FeatureData data = feild.getAnnotation(Feature.FeatureData.class);
-    				if (data.value() == Data.PREFEATURELIST)
-    				{
-    					feild.set(feature, this._possibleFeatures);
-    				}
-    			}
-    			catch (Throwable e)
-    			{
-    				this._logger.info("Scanning for feilds resulted in '%1$s' from feature '%2$s' for feild '%3$s' from declared class '%4$s'.", e.toString(), feature.getFeatureName(), feild.getName(), feild.getClass().getPackage());
-    			}	
-    		}
-    	}
+    	
     	//Getting all dependencies
     	HashMap<IFeature, IFeature[] > map = new HashMap<IFeature, IFeature[]>();
     	for (IFeature feature: this._possibleFeatures)
@@ -70,6 +60,7 @@ public class FeatureRepository {
     		map.put(feature, feature.setup());
     	}
     	
+    	//Find toplevels and ask about them. Goes to the smallest toplevel and then stops
     	int topFound;
 		do {
 			topFound = 0;
@@ -77,7 +68,7 @@ public class FeatureRepository {
 			do {
 				IFeature feature = iterator.next();
 				if (feature.getClass().getAnnotation(Feature.class).isBase()) {
-					_activeFeatures.add(feature);
+					_fullFeatures.add(feature);
 					iterator.remove();
 					continue;
 				} else {
@@ -100,7 +91,7 @@ public class FeatureRepository {
 						topFound ++;
 						Boolean active = configuration.get("Feature Activation", String.format("Feature '%1$s' active", feature.getFeatureName()), true).getBoolean(true);
 						if (active) {
-							_activeFeatures.add(feature);
+							_fullFeatures.add(feature);
 							iterator.remove();
 							continue;
 						} else {
@@ -113,6 +104,7 @@ public class FeatureRepository {
 			} while (iterator.hasNext());
 		} while (topFound > 0);
 		
+		//Finishes by adding all remaining if no alternate and asks about alternates
 		for (IFeature feature : _possibleFeatures)
 		{
 			if (feature.getClass().getAnnotation(Feature.class).hasDisabledCompatility()) 
@@ -120,23 +112,41 @@ public class FeatureRepository {
 				Boolean active = configuration.get("Feature Activation", String.format("Feature '%1$s' active", feature.getFeatureName()), true).getBoolean(true);
 				if (active)
 				{
-					_activeFeatures.add(feature);
+					_fullFeatures.add(feature);
 					continue;
 				}
 				else
 				{
-					_activeAlternateFeatures.add(feature);
+					_alternateFeatures.add(feature);
 					continue;
 				}
 			}
 			else
 			{
-				_activeFeatures.add(feature);
+				_fullFeatures.add(feature);
 				continue;
 			}
 		}
 		
-		for (IFeature feature : _activeFeatures)
+		//Create a cumulative list of features
+		for (IFeature feature : this._fullFeatures)
+		{
+			this._activeFeatures.add(feature);
+		}
+		for (IFeature feature : this._alternateFeatures)
+		{
+			this._activeFeatures.add(feature);
+		}
+		
+		//Filling of Booleans and Lists to be filled now
+		this.fillData(Data.ALTERNATE, false, this._fullFeatures);
+		this.fillData(Data.ALTERNATE, true, this._alternateFeatures);
+		this.fillData(Data.ALTFEATURELIST, this._alternateFeatures, this._activeFeatures);
+		this.fillData(Data.FULLFEATURELIST, this._activeFeatures, this._activeFeatures);
+		this.fillData(Data.FEATURELIST, this._activeFeatures, this._activeFeatures);
+		
+		//Finishing Setup by calling post setup
+		for (IFeature feature : _fullFeatures)
 		{
 			feature.postSetup();
 		}
@@ -148,7 +158,7 @@ public class FeatureRepository {
 
         log.info("Running Pre-Initialization of all features");
 
-        for (Map.Entry<String, FeatureEntry> entry: this._activeFeatures.entrySet()){
+        for (Map.Entry<String, FeatureEntry> entry: this._fullFeatures.entrySet()){
             Class c = entry.getValue().feature.getClass();
             Method[] m = c.getDeclaredMethods();
             for (Method method : m)
@@ -160,7 +170,7 @@ public class FeatureRepository {
 
     public void runInitialization() {
         this._logger.info("Running Initialization of all features");
-        for (Map.Entry<String, FeatureEntry> entry: this._activeFeatures.entrySet()){
+        for (Map.Entry<String, FeatureEntry> entry: this._fullFeatures.entrySet()){
             FeatureEntry featureEntry = entry.getValue();
             featureEntry.feature.runFeatureInitialization(featureEntry.context);
         }
@@ -168,17 +178,40 @@ public class FeatureRepository {
 
     public void runPostInitialization() {
         this._logger.info("Running Post-Initialization of all features");
-        for (Map.Entry<String, FeatureEntry> entry: this._activeFeatures.entrySet()){
+        for (Map.Entry<String, FeatureEntry> entry: this._fullFeatures.entrySet()){
             FeatureEntry featureEntry = entry.getValue();
             featureEntry.feature.runFeaturePostInitialization(featureEntry.context);
         }
     }
+    
+    public <T> void fillData(Feature.FeatureData.Data element, T fill, ArrayList<IFeature> list)
+    {
+    	for (IFeature feature: list)
+    	{
+    		for (Field feild : feature.getClass().getFields())
+    		{
+    			try
+    			{
+    				FeatureData data = feild.getAnnotation(Feature.FeatureData.class);
+    				if (data.value() == element)
+    				{
+    					feild.set(feature, fill);
+    				}
+    			}
+    			catch (Throwable e)
+    			{
+    				this._logger.info("Scanning for feilds resulted in '%1$s' from feature '%2$s' for feild '%3$s' from declared class '%4$s'.", e.toString(), feature.getFeatureName(), feild.getName(), feild.getClass().getPackage());
+    			}	
+    		}
+    	}
+    }
 
     public <T extends IFeature> T getFeature(Class<T> featureClass) {
-        IFeature featureInstance = this._activeFeatures.get(featureClass.getSimpleName()).feature;
+        IFeature featureInstance = this._fullFeatures.get(featureClass.getSimpleName()).feature;
         if (featureClass.isInstance(featureInstance))
             return featureClass.cast(featureInstance);
         else
             return null;
     }
 }
+

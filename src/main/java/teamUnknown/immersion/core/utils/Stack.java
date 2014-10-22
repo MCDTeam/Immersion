@@ -4,21 +4,21 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class S 
+public class Stack
 {
-	public static ItemStack St (Item item)
+	public static ItemStack S (Item item)
 	{
 		return new ItemStack (item);
 	}
-	public static ItemStack St (Block block)
+	public static ItemStack S (Block block)
 	{
 		return new ItemStack (block);
 	}
-	public static ItemStack St (Item item, int amount)
+	public static ItemStack S (Item item, int amount)
 	{
 		return new ItemStack (item, amount, 0);
 	}
-	public static ItemStack St (Block block, int amount)
+	public static ItemStack S (Block block, int amount)
 	{
 		return new ItemStack (block, amount, 0);
 	}
@@ -30,11 +30,11 @@ public class S
 	{
 		return new ItemStack (block, 1, metadata);
 	}
-	public static ItemStack St (Item item, int metadata, int amount)
+	public static ItemStack S (Item item, int metadata, int amount)
 	{
 		return new ItemStack (item, amount, metadata);
 	}
-	public static ItemStack St (Block block, int metadata, int amount)
+	public static ItemStack S (Block block, int metadata, int amount)
 	{
 		return new ItemStack (block, amount, metadata);
 	}

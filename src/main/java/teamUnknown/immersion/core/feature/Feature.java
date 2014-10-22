@@ -80,17 +80,6 @@ public @interface Feature
     }
     
     /**
-     * This code will only run if the feature is disabled and
-     * {@link hasDisabledCompatibility}, and is required
-     */
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target(ElementType.METHOD)
-    public @interface FeatureAlternate
-    {
-    	//This does not have any other calls or data
-    }
-    
-    /**
      * This is used for marking variables for the populator to populate
      * during setup and beyond if needed. If your stuff is not the correct 
      * type or not public, crashes will result
