@@ -16,7 +16,7 @@ public class FeatureCommon implements IFeature
 	@Override
 	public void preSetup() 
 	{
-		//This is not required
+		
 	}
 
 	@Override

@@ -94,13 +94,12 @@ public @interface Feature
     	 */
     	public enum Data
     	{
-    		CONFIGURATION,
     		LOGGER,
     		MODINSTANCE,
     		PREFEATURELIST,
     		FULLFEATURELIST,
     		ALTFEATURELIST,
-    		FEATURELIST,
+    		COMPLETEFEATURELIST,
     		ALTERNATE,
     		NONDATA
     	}

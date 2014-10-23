@@ -13,6 +13,8 @@ import org.apache.logging.log4j.Logger;
 
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
+import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
+import teamUnknown.immersion.features.versionCheckerFeature.FeatureVersion;
 
 @Mod(modid = ModMetadata.MOD_ID, name = ModMetadata.NAME, version = ModMetadata.VERSION)
 public class Immersion 
@@ -34,14 +36,16 @@ public class Immersion
 		log.info("Pre-Init Version: " + ModMetadata.VERSION);
 		
 		//Put feature register together
-        
+        _featureRepository.RegisterFeature(new FeatureSpawning());
+        _featureRepository.RegisterFeature(new FeatureVersion());
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
+		this._featureRepository.runSetup(config);
         this._featureRepository.runPreInitialization(config);
-
         config.save();
+        
 		log.info("Pre-Init Finished");
 	}
 
