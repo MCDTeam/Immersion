@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class Stack 
+public class Stack
 {
 	public static ItemStack S (Item item)
 	{
