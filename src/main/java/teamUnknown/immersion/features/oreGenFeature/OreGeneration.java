@@ -1,15 +1,13 @@
 package teamUnknown.immersion.features.oreGenFeature;
 
-import java.util.Random;
-
-import teamUnknown.immersion.core.meta.ModMetadata;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraftforge.event.terraingen.OreGenEvent;
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.event.terraingen.OreGenEvent;
+
+import java.util.Random;
 
 public class OreGeneration implements IWorldGenerator
 {
@@ -38,15 +36,15 @@ public class OreGeneration implements IWorldGenerator
 	}
 
 	private void generateEnd(World world, Random random, int chunkX, int chunkZ)
-	{
+	{/**
 		for(int k = 0; k < ModMetadata.OREGEMENDCHUNKDENSITY; k++)
 		{
 		    new WorldGenMinable(ORef.oreGemEnd, (ModMetadata.OREGEMENDGENERATEMIN + random.nextInt(ModMetadata.OREGEMENDGENERATEMAX - ModMetadata.OREGEMENDGENERATEMIN)), Blocks.end_stone).generate(world, random, (chunkX + random.nextInt(16)), random.nextInt(64), (chunkZ + random.nextInt(16)));
-		}
+		}**/
 	}
 
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ)
-	{
+	{/**
 		for(int k = 0; k < ModMetadata.OREGEMREDCHUNKDENSITY; k++)
 		{
 		    new WorldGenMinable(ORef.oreGemRed, (ModMetadata.OREGEMREDGENERATEMIN + random.nextInt(ModMetadata.OREGEMREDGENERATEMAX - ModMetadata.OREGEMREDGENERATEMIN))).generate(world, random, (chunkX + random.nextInt(16)), (ModMetadata.OREGEMREDYMIN + random.nextInt(ModMetadata.OREGEMREDYBREAK - ModMetadata.OREGEMREDYMIN)), (chunkZ + random.nextInt(16)));
@@ -75,11 +73,11 @@ public class OreGeneration implements IWorldGenerator
 		for(int k = 0; k < ModMetadata.OREGEMEMERALDCHUNKDENSITY; k++)
 		{
 		    new WorldGenMinable(ORef.oreGemEmerald, (ModMetadata.OREGEMEMERALDGENERATEMIN + random.nextInt(ModMetadata.OREGEMEMERALDGENERATEMAX - ModMetadata.OREGEMEMERALDGENERATEMIN))).generate(world, random, (chunkX + random.nextInt(16)), (ModMetadata.OREGEMEMERALDYMIN + random.nextInt(ModMetadata.OREGEMEMERALDYBREAK - ModMetadata.OREGEMEMERALDYMIN)), (chunkZ + random.nextInt(16)));
-		}
+		}**/
 	}
 	
 	private void generateNether(World world, Random random, int chunkX, int chunkZ)
-	{
+	{/**
 		for(int k = 0; k < ModMetadata.OREGEMGLOWCHUNKDENSITY; k++)
 		{
 		    new WorldGenMinable(ORef.oreGemGlow, (ModMetadata.OREGEMGLOWGENERATEMIN + random.nextInt(ModMetadata.OREGEMGLOWGENERATEMAX - ModMetadata.OREGEMGLOWGENERATEMIN)), Blocks.netherrack).generate(world, random, (chunkX + random.nextInt(16)), (ModMetadata.OREGEMGLOWYMIN + random.nextInt(ModMetadata.OREGEMGLOWYMAX - ModMetadata.OREGEMGLOWYMIN)), (chunkZ + random.nextInt(16)));
@@ -88,7 +86,7 @@ public class OreGeneration implements IWorldGenerator
 		for(int k = 0; k < ModMetadata.OREGEMQUARTZCHUNKDENSITY; k++)
 		{
 		    new WorldGenMinable(ORef.oreGemQuartz, (ModMetadata.OREGEMQUARTZGENERATEMIN + random.nextInt(ModMetadata.OREGEMQUARTZGENERATEMAX - ModMetadata.OREGEMQUARTZGENERATEMIN))).generate(world, random, (chunkX + random.nextInt(16)), (ModMetadata.OREGEMQUARTZYMIN + random.nextInt(ModMetadata.OREGEMQUARTZYBREAK - ModMetadata.OREGEMQUARTZYMIN)), (chunkZ + random.nextInt(16)));
-		}
+		}**/
 	}
 
 	//Override of Vanilla Gen
@@ -115,10 +113,10 @@ public class OreGeneration implements IWorldGenerator
 		{
 			event.setResult(Result.DENY);
 		}
-		if (event.type == OreGenEvent.GenerateMinable.EventType.DIRT && ModMetadata.GENERATEDIRTUNDERGROUND)
+		/**if (event.type == OreGenEvent.GenerateMinable.EventType.DIRT && ModMetadata.GENERATEDIRTUNDERGROUND)
 		{
 			event.setResult(Result.DENY);
-		}
+		}**/
 	}
 	
 }

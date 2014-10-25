@@ -16,6 +16,6 @@
 /.classpath
 
 /gradlew.bat
-
-/gradlew
 /clientAndServer/
+Immersion.*
+.gitignore

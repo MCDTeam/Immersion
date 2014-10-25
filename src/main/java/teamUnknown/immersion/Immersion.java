@@ -11,6 +11,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import teamUnknown.immersion.core.blocks.ModBlocks;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
@@ -38,7 +39,10 @@ public class Immersion
 		//Put feature register together
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
-        
+
+        // Initialize core blocks (can be moved to feature if required)
+        ModBlocks.init();
+
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
