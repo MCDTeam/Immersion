@@ -19,3 +19,6 @@
 
 /gradlew
 /clientAndServer/
+*.iml
+*.ipr
+*.iws
