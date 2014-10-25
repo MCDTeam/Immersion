@@ -43,8 +43,9 @@ public class ItemPartOre extends ItemMaterial {
 	{
 		return (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("Ores")) ? (NBTTagList) stack.stackTagCompound.getTag("BiggerDim") : new NBTTagList();
 	}
-	
-	@SideOnly(Side.CLIENT)
+
+    //TODO CAUSES CRASH
+	/**@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) 
 	{
 		NBTTagList taglist = (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("Ores")) ? (NBTTagList) stack.stackTagCompound.getTag("BiggerDim") : new NBTTagList();
@@ -55,6 +56,6 @@ public class ItemPartOre extends ItemMaterial {
 			list.add(getItemById(id).getItemStackDisplayName(Stack.S(getItemById(id))) + ", " + taglist.getCompoundTagAt(0).getInteger("nuggets"));
 		}
 		super.addInformation(stack, player, list, par4);
-	}
+	}**/
 
 }
