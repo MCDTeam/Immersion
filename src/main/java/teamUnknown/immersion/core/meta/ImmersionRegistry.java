@@ -33,7 +33,7 @@ public class ImmersionRegistry {
      * Adds a block to the Immersion Registry
      * @param block
      */
-    public void RegisterBlock(Block block){
+    public void register(Block block){
         this.possibleBlocks.add(block);
     }
 
@@ -41,7 +41,7 @@ public class ImmersionRegistry {
      * Adds a item to the Immersion Registry
      * @param item
      */
-    public void RegisterItem(Item item){
+    public void register(Item item){
         this.possibleItems.add(item);
     }
 

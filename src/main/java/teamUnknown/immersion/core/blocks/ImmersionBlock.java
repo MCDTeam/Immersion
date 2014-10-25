@@ -13,28 +13,29 @@ import teamUnknown.immersion.core.meta.ModMetadata;
 /**
  *
  */
-public class ImmersionBlock extends Block {
+public class ImmersionBlock extends Block implements IImersionBlock
+{
 
     @SideOnly(Side.CLIENT)
     protected IIcon texture;
 
-    public ImmersionBlock(Material material, String type) {
+    public ImmersionBlock(Material material) 
+    {
         super(material);
-
-
-        //External Registration
-        //GameRegistry.registerBlock(this, this.getUnlocalizedName().substring(5));
-        ImmersionRegistry.registry.RegisterBlock(this);
+        ImmersionRegistry.registry.register(this);
     }
 
-    public ImmersionBlock(Material material) {
-        super(material);
+	@Override
+	public void onRegistration() 
+	{
 
-        //External Registration
-        //GameRegistry.registerBlock(this, this.getUnlocalizedName().substring(5));
-        ImmersionRegistry.registry.RegisterBlock(this);
-    }
+	}
 
+	@Override
+	public void forgeOreDict() 
+	{
+
+	}
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register)
     {
