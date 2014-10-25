@@ -8,7 +8,7 @@ public class Commands {
     public static final String ON = "on";
     public static final String OFF = "off";
 
-    public static final String COMMAND_IMMERSION = "qe";
+    public static final String COMMAND_IMMERSION = "immersion";
     public static final String COMMAND_ON = "on";
     public static final String COMMAND_OFF = "off";
     public static final String COMMAND_ALL = "all";
