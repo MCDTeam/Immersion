@@ -3,14 +3,13 @@ package teamUnknown.immersion;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.*;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import teamUnknown.immersion.core.commands.CommandHandler;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
@@ -28,6 +27,13 @@ public class Immersion
     public Immersion()
     {
         this._featureRepository = new FeatureRepository();
+    }
+
+    @EventHandler
+    public void serverStarting(FMLServerStartingEvent event){
+
+        // Initialize the custom commands
+        CommandHandler.initCommands(event);
     }
 
 	@EventHandler
