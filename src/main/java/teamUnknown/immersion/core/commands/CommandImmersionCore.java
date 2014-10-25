@@ -49,6 +49,11 @@ public class CommandImmersionCore extends CommandBase {
                 return getListOfStringsMatchingLastWord(args, new String[]{
                         Commands.COMMAND_VERSION, Commands.COMMAND_WEBSITE});
             }
+                case 2: {
+                    if (args[0].equalsIgnoreCase(Commands.COMMAND_WEBSITE))
+                        return getListOfStringsMatchingLastWord(args,
+                                new String[]{Commands.COMMAND_WIKI, Commands.COMMAND_SOURCE});
+                }
             default: {
                 return null;
             }
