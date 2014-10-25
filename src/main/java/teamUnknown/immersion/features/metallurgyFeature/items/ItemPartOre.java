@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import teamUnknown.immersion.core.blocks.BlockOre;
+import teamUnknown.immersion.core.utils.NBTHelper;
 import teamUnknown.immersion.core.utils.Stack;
 
 import java.util.List;
@@ -48,14 +49,27 @@ public class ItemPartOre extends ItemMaterial {
 	/**@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) 
 	{
-		NBTTagList taglist = (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("Ores")) ? (NBTTagList) stack.stackTagCompound.getTag("BiggerDim") : new NBTTagList();
-		if (taglist != new NBTTagList())
+		//NBTTagList taglist = (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("Ores")) ? (NBTTagList) stack.stackTagCompound.getTag("BiggerDim") : new NBTTagList();
+        NBTTagList tagList = (NBTHelper.hasTag(stack, "Ores") ? (NBTHelper.getString(stack, "BiggerDim")) : new NBTTagList();
+        if (taglist != new NBTTagList())
 		{
-			int id = taglist.getCompoundTagAt(0).getInteger("ore");
+			//int id = taglist.getCompoundTagAt(0).getInteger("ore");
+            int id = NBTHelper.getInt(stack, "ore");
 		
-			list.add(getItemById(id).getItemStackDisplayName(Stack.S(getItemById(id))) + ", " + taglist.getCompoundTagAt(0).getInteger("nuggets"));
+			list.add(getItemById(id).getItemStackDisplayName(Stack.S(getItemById(id))) + ", " + NBTHelper.getInt(stack, "nuggets"));
+            //list.add(getItemById(id).getItemStackDisplayName(Stack.S(getItemById(id))) + ", " + taglist.getCompoundTagAt(0).getInteger("nuggets"));
 		}
 		super.addInformation(stack, player, list, par4);
 	}**/
 
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4){
+        boolean hasKeys = (NBTHelper.hasTag(stack, "ores") && (NBTHelper.hasTag(stack, "BiggerDim")));
+
+        if(hasKeys){
+            int id = NBTHelper.getInt(stack, "ore");
+
+            list.add(getItemById(id).getItemStackDisplayName(Stack.S(getItemById(id))) + ", " + NBTHelper.getInt(stack, "nuggets"));
+        }
+    }
 }
