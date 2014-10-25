@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.blocks;
+package teamUnknown.immersion.core.feature.object;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -7,26 +7,26 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import teamUnknown.immersion.core.meta.ImmersionRegistry;
+import teamUnknown.immersion.core.feature.object.IImersionObject;
 import teamUnknown.immersion.core.meta.ModMetadata;
 
 /**
  *
  */
-public class ImmersionBlock extends Block implements IImersionBlock
+public class ImmersionBlock extends Block implements IImersionObject
 {
 
     @SideOnly(Side.CLIENT)
     protected IIcon texture;
 
-    public ImmersionBlock(Material material) 
+    public ImmersionBlock(String name, Material material) 
     {
         super(material);
-        ImmersionRegistry.registry.register(this);
+    	setBlockName(name);
     }
 
 	@Override
-	public void onRegistration() 
+	public void craftingRegistration() 
 	{
 
 	}
@@ -36,6 +36,7 @@ public class ImmersionBlock extends Block implements IImersionBlock
 	{
 
 	}
+	
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register)
     {

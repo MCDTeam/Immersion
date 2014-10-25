@@ -1,5 +1,6 @@
-package teamUnknown.immersion.core.blocks;
+package teamUnknown.immersion.features.oreGenFeature;
 
+import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

@@ -3,9 +3,9 @@ package teamUnknown.immersion.features.metallurgyFeature;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import teamUnknown.immersion.core.blocks.BlockOre;
-import teamUnknown.immersion.core.blocks.ModBlocks;
 import teamUnknown.immersion.core.utils.Stack;
+import teamUnknown.immersion.features.oreGenFeature.BlockOre;
+import teamUnknown.immersion.features.oreGenFeature.ModBlocks;
 
 public class OreDropsHelper 
 {

@@ -1,25 +1,18 @@
-package teamUnknown.immersion.core.blocks;
+package teamUnknown.immersion.features.oreGenFeature;
 
-<<<<<<< HEAD
 import java.util.Random;
 
-=======
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
->>>>>>> origin/Block-Registry---New
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
-<<<<<<< HEAD
+import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-=======
 
-import java.util.Random;
->>>>>>> origin/Block-Registry---New
+
 
 public class BlockGemOre extends ImmersionBlock
 {

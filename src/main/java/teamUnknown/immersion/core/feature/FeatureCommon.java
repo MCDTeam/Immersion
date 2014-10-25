@@ -24,12 +24,6 @@ public class FeatureCommon implements IFeature
 	{
 		return null;
 	}
-    
-	@Override
-	public String getFeatureName() 
-	{
-		return null;
-	}
 
 	@Override
 	public void postSetup() 

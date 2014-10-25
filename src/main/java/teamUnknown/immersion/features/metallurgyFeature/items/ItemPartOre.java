@@ -6,9 +6,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import teamUnknown.immersion.core.blocks.BlockOre;
 import teamUnknown.immersion.core.utils.NBTHelper;
 import teamUnknown.immersion.core.utils.Stack;
+import teamUnknown.immersion.features.oreGenFeature.BlockOre;
 
 import java.util.List;
 
@@ -63,7 +63,8 @@ public class ItemPartOre extends ItemMaterial {
 	}**/
 
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4){
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+    {
         boolean hasKeys = (NBTHelper.hasTag(stack, "ores") && (NBTHelper.hasTag(stack, "BiggerDim")));
 
         if(hasKeys){
