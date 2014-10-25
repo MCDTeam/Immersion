@@ -3,9 +3,9 @@ package teamUnknown.immersion.features.metallurgyFeature;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
+import teamUnknown.immersion.core.blocks.BlockOre;
+import teamUnknown.immersion.core.blocks.ModBlocks;
 import teamUnknown.immersion.core.utils.Stack;
-import teamUnknown.immersion.features.oreGenFeature.ORef;
-import teamUnknown.immersion.features.oreGenFeature.blocks.BlockOre;
 
 public class OreDropsHelper 
 {
@@ -29,7 +29,7 @@ public class OreDropsHelper
 			int nuggets = (event.world.rand.nextInt(16) + event.fortuneLevel * event.world.rand.nextInt(5) + 1);
 			
 			ItemStack stack = event.drops.get(0);
-			stack = ORef.lumpOre.addOre((BlockOre) event.block, nuggets, stack);
+			stack = ModBlocks.lumpOre.addOre((BlockOre) event.block, nuggets, stack);
 			event.drops.set(0, stack);
 			event.dropChance = 1.0F;
 		}
