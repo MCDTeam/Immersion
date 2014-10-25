@@ -16,10 +16,6 @@
 /.classpath
 
 /gradlew.bat
-/gradlew
-
 /clientAndServer/
-*.iml
-*.iws
-*.ipr
-*.gitignore
+Immersion.*
+.gitignore
