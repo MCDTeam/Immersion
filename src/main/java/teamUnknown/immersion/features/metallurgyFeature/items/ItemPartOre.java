@@ -6,8 +6,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import teamUnknown.immersion.core.blocks.BlockOre;
 import teamUnknown.immersion.core.utils.Stack;
-import teamUnknown.immersion.features.oreGenFeature.blocks.BlockOre;
 
 import java.util.List;
 
