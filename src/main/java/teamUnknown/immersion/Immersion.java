@@ -12,9 +12,14 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
+<<<<<<< HEAD
 import teamUnknown.immersion.core.proxy.IProxy;
+=======
+import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
+>>>>>>> master
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
 import teamUnknown.immersion.features.versionCheckerFeature.FeatureVersion;
 
@@ -43,11 +48,13 @@ public class Immersion
 		//Put feature register together
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
-        
+        _featureRepository.RegisterFeature(new FeatureDataCollector());
+
+        // Initialize core blocks (can be moved to feature if required)
+
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
-		this._featureRepository.runSetup(config);
         this._featureRepository.runPreInitialization(config);
         config.save();
         
@@ -58,9 +65,7 @@ public class Immersion
 	public void init(FMLInitializationEvent event) 
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
-
         this._featureRepository.runInitialization();
-
         log.info("Init Finished");
 	}
 	
@@ -71,5 +76,4 @@ public class Immersion
         this._featureRepository.runPostInitialization();
 		log.info("Post-Init Finished");
 	}
-
 }

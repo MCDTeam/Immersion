@@ -1,6 +1,7 @@
-package teamUnknown.immersion.core.providers;
+package teamUnknown.immersion.core.feature.configuration;
 
 import net.minecraftforge.common.config.Configuration;
+import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.IFeature;
 
 /**
@@ -13,7 +14,7 @@ public class FeatureConfigurationProvider implements IConfigurationProvider {
 
     protected FeatureConfigurationProvider(Configuration config, IFeature feature){
         this._config = config;
-        this._featureName = feature.getFeatureName();
+        this._featureName = FeatureDataCollector.instance.getFeatureName(feature);
     }
 
     public static FeatureConfigurationProvider getFeatureConfigurationForFeature(IFeature feature, Configuration configuration){
