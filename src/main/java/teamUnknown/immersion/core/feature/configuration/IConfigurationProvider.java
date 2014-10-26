@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.providers;
+package teamUnknown.immersion.core.feature.configuration;
 
 /**
  *

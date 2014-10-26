@@ -1,5 +1,6 @@
-package teamUnknown.immersion.core.logging;
+package teamUnknown.immersion.core.feature.logging;
 
+import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.IFeature;
 
 /**
@@ -8,7 +9,7 @@ import teamUnknown.immersion.core.feature.IFeature;
 public class FeatureLogger extends SubSystemLogger implements IGameLogger {
 
     protected FeatureLogger(IFeature feature){
-        super("Feature/" + feature.getFeatureName());
+        super("Feature:" + FeatureDataCollector.instance.getFeatureName(feature));
     }
 
     public static IGameLogger getLoggerForFeature(IFeature feature){

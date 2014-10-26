@@ -16,9 +16,12 @@
 /.classpath
 
 /gradlew.bat
-
-/gradlew
 /clientAndServer/
+<<<<<<< HEAD
 *.iml
 *.ipr
 *.iws
+=======
+Immersion.*
+.gitignore
+>>>>>>> origin/Block-Registry---New

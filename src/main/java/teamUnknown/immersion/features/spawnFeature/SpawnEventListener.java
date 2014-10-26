@@ -6,7 +6,7 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import teamUnknown.immersion.core.logging.FeatureLogger;
+import teamUnknown.immersion.core.feature.logging.FeatureLogger;
 
 /**
  *
