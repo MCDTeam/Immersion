@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
-import teamUnknown.immersion.features.oreGenFeature.ModBlocks;
+import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
 import teamUnknown.immersion.features.versionCheckerFeature.FeatureVersion;
 

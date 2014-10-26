@@ -55,19 +55,42 @@ public abstract class FeatureObjectRegister {
 
             GameRegistry.registerBlock(block, name);
         }
-        Immersion.log.info("Finished adding blocks to registry");
 
-        for(Entry<String, ImmersionItem> entry : items.entrySet()){
+        for(Entry<String, ImmersionItem> entry : items.entrySet())
+        {
             String name = entry.getKey();
             Item item = entry.getValue();
 
             GameRegistry.registerItem(item, name);
         }
-        Immersion.log.info("Finished adding items to registry");
+    }
+    
+    public void registerCrafting()
+    {
+    	for (ImmersionBlock block : blocks.values())
+    	{
+    		block.craftingRegistration();
+    	}
+    	for (ImmersionItem item : items.values())
+    	{
+    		item.craftingRegistration();
+    	}
+    }
+    
+    public void registerForgeOreDict()
+    {
+    	for (ImmersionBlock block : blocks.values())
+    	{
+    		block.forgeOreDict();
+    	}
+    	for (ImmersionItem item : items.values())
+    	{
+    		item.forgeOreDict();
+    	}
     }
 
     /**
-     * Looks through both registers for an object.
+     * Looks through both registers for an object. Searches blocks first, then items.
      * 
      * @param name The unwrapped name of an object
      * @return Returns the found object. Type is ImmersionBlock for a block object, ImmersionItem for an item object, or null if not found

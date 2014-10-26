@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.oreGenFeature;
+package teamUnknown.immersion.features.metallurgyFeature.items;
 
 import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import cpw.mods.fml.relauncher.Side;
@@ -15,11 +15,10 @@ public class BlockStorage extends ImmersionBlock
 	
 	public BlockStorage(String type) 
 	{
-		super(Material.iron);
+		super("block" + type, Material.iron);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeMetal);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setBlockName("block" + type);
 		setHarvestLevel("pickaxe", 3);
 		if (type == "GemGlow")
 		{

@@ -3,8 +3,8 @@ package teamUnknown.immersion.core.feature;
 import net.minecraftforge.common.MinecraftForge;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.Feature.FeatureElement;
+import teamUnknown.immersion.core.feature.configuration.IConfigurationProvider;
 import teamUnknown.immersion.core.feature.IFeature;
-import teamUnknown.immersion.core.providers.IConfigurationProvider;
 import teamUnknown.immersion.features.spawnFeature.SpawnEventListener;
 
 /**

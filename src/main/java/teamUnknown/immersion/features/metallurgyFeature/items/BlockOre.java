@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.oreGenFeature;
+package teamUnknown.immersion.features.metallurgyFeature.items;
 
 import java.util.Random;
 
@@ -18,11 +18,10 @@ public class BlockOre extends ImmersionBlock
 
 	public BlockOre(String type) 
 	{
-		super(Material.rock);
+		super("ore" + type, Material.rock);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setBlockName("ore" + type);
 		setHarvestLevel("pickaxe", 3);
 	}
 	

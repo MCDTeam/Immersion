@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.logging;
+package teamUnknown.immersion.core.feature.logging;
 
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.IFeature;

@@ -7,11 +7,11 @@ import teamUnknown.immersion.core.feature.Feature.FeatureData.Data;
 import teamUnknown.immersion.core.feature.Feature.FeatureElement;
 import teamUnknown.immersion.core.feature.Feature.FeatureElement.Element;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
+import teamUnknown.immersion.core.feature.configuration.FeatureConfigurationProvider;
+import teamUnknown.immersion.core.feature.logging.FeatureLogger;
+import teamUnknown.immersion.core.feature.logging.ILogger;
+import teamUnknown.immersion.core.feature.logging.SubSystemLogger;
 import teamUnknown.immersion.core.feature.object.FeatureObjectRegister;
-import teamUnknown.immersion.core.logging.FeatureLogger;
-import teamUnknown.immersion.core.logging.ILogger;
-import teamUnknown.immersion.core.logging.SubSystemLogger;
-import teamUnknown.immersion.core.providers.FeatureConfigurationProvider;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -46,6 +46,8 @@ public class FeatureRepository {
         ArrayList<IFeature> _fullFeatures = new ArrayList<IFeature>();
     	ArrayList<IFeature> _alternateFeatures = new ArrayList<IFeature>();
     	ArrayList<IFeature> _methodFeatureStorage = new ArrayList<IFeature>();
+    	
+    	_logger.info("Now setting up the Feature Repository");
     	
     	//Processing of Pre-Data Annotations
     	this.fillData(Data.PREFEATURELIST, this._features, this._features);
@@ -180,6 +182,7 @@ public class FeatureRepository {
 		this.fillData(Data.ALTERNATE, true, _alternateFeatures);
 		this.fillData(Data.ALTFEATURELIST, _alternateFeatures, _methodFeatureStorage);
 		this.fillData(Data.FULLFEATURELIST, _fullFeatures, _methodFeatureStorage);
+		this.fillData(Data.FEATUREMAP, _features, _methodFeatureStorage);
 		this.fillData(Data.COMPLETEFEATURELIST, _methodFeatureStorage, _methodFeatureStorage);
 		
 		//Finishing Setup by calling post setup
@@ -199,8 +202,8 @@ public class FeatureRepository {
 
         for (IFeature feature : this._features.values())
         {
-            Class c = feature.getClass();
-            for (Method m : c.getDeclaredMethods())
+        	log.info("Now Pre-Initializing Feature '%1$s'", FeatureDataCollector.instance.getFeatureName(feature));
+            for (Method m : feature.getClass().getDeclaredMethods())
             {
             	try 
             	{
@@ -229,6 +232,13 @@ public class FeatureRepository {
 					this._logger.info("Scanning for and Invoking methods resulted in '%1$s' from feature '%2$s' for feild '%3$s'.", e.toString(), FeatureDataCollector.instance.getFeatureName(feature), m.getName());
 				}
             }
+        }
+        
+        this.fillData(Data.FEATUREOBJECTMAP, _featureObjectRegisters, _features);
+        log.info("Now Running Object Registration");
+        for (FeatureObjectRegister register : _featureObjectRegisters.values())
+        {
+        	register.registerToGame();
         }
         
         log.info("Finished Running Pre-Initialization of all features");
@@ -286,6 +296,12 @@ public class FeatureRepository {
             }
         }
         
+        log.info("Now Running Object Crafting Registration");
+        for (FeatureObjectRegister register : _featureObjectRegisters.values())
+        {
+        	register.registerCrafting();
+        }
+        
         log.info("Finished Running Initialization of all features");
     }
 
@@ -321,6 +337,12 @@ public class FeatureRepository {
 					this._logger.info("Scanning for and Invoking methods resulted in '%1$s' from feature '%2$s' for feild '%3$s'.", e.toString(), FeatureDataCollector.instance.getFeatureName(feature), m.getName());
 				}
             }
+        }
+        
+        log.info("Now Running Object Forge Ore Dictionary Registration");
+        for (FeatureObjectRegister register : _featureObjectRegisters.values())
+        {
+        	register.registerForgeOreDict();
         }
         
         log.info("Finished Running Post-Initialization of all features");

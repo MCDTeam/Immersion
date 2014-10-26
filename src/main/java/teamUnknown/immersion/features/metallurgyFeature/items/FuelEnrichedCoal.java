@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.oreGenFeature;
+package teamUnknown.immersion.features.metallurgyFeature.items;
 
 import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import cpw.mods.fml.relauncher.Side;
@@ -14,11 +14,10 @@ public class FuelEnrichedCoal extends ImmersionBlock
 	protected IIcon texture;
 
 	public FuelEnrichedCoal() {
-        super(Material.rock);
+        super("fuelEnrichedCoal", Material.rock);
         setHardness(2.0F);
         setStepSound(Block.soundTypeStone);
         setCreativeTab(CreativeTabs.tabBlock);
-        setBlockName("fuelEnrichedCoal");
         setHarvestLevel("pickaxe", 1);
         setLightLevel(.5F);
     }

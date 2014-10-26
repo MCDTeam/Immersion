@@ -11,7 +11,7 @@ import net.minecraft.item.crafting.IRecipe;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.core.utils.Stack;
-import teamUnknown.immersion.features.oreGenFeature.ModBlocks;
+import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
 
 import java.util.Iterator;
 import java.util.List;

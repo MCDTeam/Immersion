@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.oreGenFeature;
+package teamUnknown.immersion.features.metallurgyFeature.items;
 
 import java.util.Random;
 
@@ -23,11 +23,10 @@ public class BlockGemOre extends ImmersionBlock
 	
 	public BlockGemOre(String type, Item dropped) 
 	{
-		super(Material.rock);
+		super("oreGem" + type, Material.rock);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setBlockName("oreGem" + type);
 		setHarvestLevel("pickaxe", 3);
 		drop = dropped;
 		if (drop == ModBlocks.gemGlow)
