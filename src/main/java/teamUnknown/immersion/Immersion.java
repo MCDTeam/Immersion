@@ -3,7 +3,14 @@ package teamUnknown.immersion;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+<<<<<<< HEAD
 import cpw.mods.fml.common.event.*;
+=======
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+>>>>>>> Proxy
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +23,11 @@ import teamUnknown.immersion.core.feature.FeatureDataCollector;
 >>>>>>> master
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
+<<<<<<< HEAD
+import teamUnknown.immersion.core.proxy.IProxy;
+=======
 import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
+>>>>>>> master
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
 import teamUnknown.immersion.features.versionCheckerFeature.FeatureVersion;
 
@@ -28,6 +39,9 @@ public class Immersion
 	@Instance(ModMetadata.MOD_ID)
 	public static Immersion instance;
     private final FeatureRepository _featureRepository;
+
+    @SidedProxy(clientSide = ModMetadata.CLIENT_PROXY_CLASS, serverSide = ModMetadata.SERVER_PROXY_CLASS)
+    public static IProxy proxy;
 
     public Immersion()
     {
