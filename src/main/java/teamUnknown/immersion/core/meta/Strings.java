@@ -13,4 +13,9 @@ public class Strings {
         public static final String MC_VERSION_NOT_FOUND = "version.mc_version_not_found";
 
     }
+
+    public static class Commands{
+        public static final String COMMAND_PAGE_WIKI = "http://mcdteam.cf/";
+        public static final String COMMAND_PAGE_SOURCE = "https://github.com/Mc-Immersion";
+    }
 }

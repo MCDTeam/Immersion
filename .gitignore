@@ -22,6 +22,12 @@
 *.ipr
 *.iws
 =======
+<<<<<<< HEAD
+*.iml
+*.ipr
+*.iws
+=======
 Immersion.*
 .gitignore
 >>>>>>> origin/Block-Registry---New
+>>>>>>> master
