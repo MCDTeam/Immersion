@@ -29,8 +29,8 @@ public @interface Feature
     public boolean isBase() default false;
     
     /**
-     * If required and has this as true, code marked {@link @FeatureAlternate}
-     * will run if the feature is disabled
+     * If required and has this as true, @FeatureData(Data.Alternate) will be true if turned off
+     * All code will run. The feature is responsible to do processing based on this.
      */
     public boolean hasDisabledCompatility() default false;
     
@@ -53,14 +53,11 @@ public @interface Feature
     	public enum Element
     	{
     		CONFIGURATION,
-    		BLOCKS,
-    		ITEMS,
+    		OBJECT,
     		EVENTBUS_ORE,
     		EVENTBUS_TERRAIN,
     		EVENTBUS_EVENT,
-    		FORGE_DICTIONARY,
     		ENTITY,
-    		CRAFTING,
     		MOD_COMPATIBILITY,
     		PREINITIALIZATION,
     		INTITIALIZATION,
@@ -101,6 +98,8 @@ public @interface Feature
     		ALTFEATURELIST,
     		COMPLETEFEATURELIST,
     		ALTERNATE,
+    		FEATUREMAP,
+    		FEATUREOBJECTMAP,
     		NONDATA
     	}
     	

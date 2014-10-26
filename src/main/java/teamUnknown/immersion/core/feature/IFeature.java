@@ -31,5 +31,4 @@ public interface IFeature {
      * Gets the feature name
      * @return Feature Name
      */
-    public String getFeatureName();
 }

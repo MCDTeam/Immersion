@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.logging;
+package teamUnknown.immersion.core.feature.logging;
 
 /**
  *
