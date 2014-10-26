@@ -1,6 +1,8 @@
 package teamUnknown.immersion.features.metallurgyFeature;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import java.util.Iterator;
+import java.util.List;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -10,32 +12,15 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.FeatureCommon;
-<<<<<<< HEAD
-import teamUnknown.immersion.core.providers.IConfigurationProvider;
-=======
->>>>>>> origin/Block-Registry---New
 import teamUnknown.immersion.core.utils.Stack;
 import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
+import cpw.mods.fml.common.registry.GameRegistry;
 
-import java.util.Iterator;
-import java.util.List;
-
-/**
- *
- */
-<<<<<<< HEAD
-@Feature(name = "Metallurgy", version = "0.1")
-public class MetallurgyFeature extends FeatureCommon {
-
-    @Feature.FeatureElement(Feature.FeatureElement.Element.CONFIGURATION)
-    protected void registerConfiguration(IConfigurationProvider cfg) {
-=======
 @Feature(name = "Metallurgy", version = "1.0")
 public class MetallurgyFeature extends FeatureCommon {
 
     @Feature.FeatureElement(Feature.FeatureElement.Element.CONFIGURATION)
     protected void registerConfiguration() {
->>>>>>> origin/Block-Registry---New
 
         List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 
