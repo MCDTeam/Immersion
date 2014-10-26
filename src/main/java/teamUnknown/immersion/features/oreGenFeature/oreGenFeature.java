@@ -1,14 +1,13 @@
 package teamUnknown.immersion.features.oreGenFeature;
 
-import teamUnknown.immersion.core.feature.CommonFeature;
-import teamUnknown.immersion.core.feature.FeatureContext;
-import teamUnknown.immersion.core.feature.FeatureProperties;
+import teamUnknown.immersion.core.feature.Feature;
+import teamUnknown.immersion.core.feature.FeatureCommon;
 
 /**
  *
  */
-@FeatureProperties(name = "Ore Generation")
-public class oreGenFeature extends CommonFeature 
+@Feature(name = "Ore Generation")
+public class oreGenFeature extends FeatureCommon
 {
 
 }

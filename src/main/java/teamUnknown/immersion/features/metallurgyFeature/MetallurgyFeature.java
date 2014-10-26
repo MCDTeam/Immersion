@@ -8,9 +8,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import teamUnknown.immersion.core.feature.CommonFeature;
-import teamUnknown.immersion.core.feature.FeatureContext;
-import teamUnknown.immersion.core.feature.FeatureProperties;
+import teamUnknown.immersion.core.feature.Feature;
+import teamUnknown.immersion.core.feature.FeatureCommon;
+import teamUnknown.immersion.core.providers.IConfigurationProvider;
 import teamUnknown.immersion.core.utils.Stack;
 import teamUnknown.immersion.features.oreGenFeature.ORef;
 
@@ -20,12 +20,11 @@ import java.util.List;
 /**
  *
  */
-@FeatureProperties(name = "Metallurgy")
-public class MetallurgyFeature extends CommonFeature {
+@Feature(name = "Metallurgy", version = "0.1")
+public class MetallurgyFeature extends FeatureCommon {
 
-    @Override
-    protected void registerConfiguration(FeatureContext context) {
-        super.registerConfiguration(context);
+    @Feature.FeatureElement(Feature.FeatureElement.Element.CONFIGURATION)
+    protected void registerConfiguration(IConfigurationProvider cfg) {
 
         List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 
