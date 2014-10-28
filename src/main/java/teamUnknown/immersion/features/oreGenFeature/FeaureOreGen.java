@@ -5,7 +5,7 @@ import teamUnknown.immersion.core.feature.FeatureCommon;
 
 
 @Feature(name = "Ore Generation", version = "1.0")
-public class oreGenFeature extends FeatureCommon
+public class FeaureOreGen extends FeatureCommon
 {
 
 }
