@@ -1,7 +1,7 @@
 package teamUnknown.immersion.features.spawnFeature;
 
 import net.minecraftforge.common.MinecraftForge;
-import teamUnknown.immersion.core.providers.IConfigurationProvider;
+import teamUnknown.immersion.core.providers.config.IConfigurationProvider;
 import teamUnknown.immersion.features.common.CommonFeature;
 import teamUnknown.immersion.features.common.FeatureContext;
 import teamUnknown.immersion.features.common.FeatureProperties;

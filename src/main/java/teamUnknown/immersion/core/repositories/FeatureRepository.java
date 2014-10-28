@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Configuration;
 import teamUnknown.immersion.core.logging.FeatureLogger;
 import teamUnknown.immersion.core.logging.ILogger;
 import teamUnknown.immersion.core.logging.SubSystemLogger;
-import teamUnknown.immersion.core.providers.FeatureConfigurationProvider;
+import teamUnknown.immersion.core.providers.config.FeatureConfigurationProvider;
 import teamUnknown.immersion.features.IFeature;
 import teamUnknown.immersion.features.common.FeatureContext;
 

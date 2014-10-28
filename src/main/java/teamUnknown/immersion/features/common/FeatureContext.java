@@ -2,7 +2,7 @@ package teamUnknown.immersion.features.common;
 
 import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.logging.IGameLogger;
-import teamUnknown.immersion.core.providers.IConfigurationProvider;
+import teamUnknown.immersion.core.providers.config.IConfigurationProvider;
 
 /**
  *  Feature context - for quick access to Mod instance, logging and configuration in features

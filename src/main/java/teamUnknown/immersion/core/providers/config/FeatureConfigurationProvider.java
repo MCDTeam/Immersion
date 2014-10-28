@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.providers;
+package teamUnknown.immersion.core.providers.config;
 
 import net.minecraftforge.common.config.Configuration;
 import teamUnknown.immersion.features.IFeature;
