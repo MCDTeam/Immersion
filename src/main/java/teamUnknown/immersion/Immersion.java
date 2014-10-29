@@ -1,15 +1,22 @@
 package teamUnknown.immersion;
 
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.common.config.Configuration;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import teamUnknown.immersion.core.commands.CommandHandler;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.proxy.IProxy;
+<<<<<<< HEAD
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
 import cpw.mods.fml.common.Mod;
@@ -20,6 +27,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+=======
+import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
+import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
+import teamUnknown.immersion.features.versionCheckerFeature.FeatureVersion;
+>>>>>>> origin/master
 
 @Mod(modid = ModMetadata.MOD_ID, name = ModMetadata.NAME, version = ModMetadata.VERSION)
 public class Immersion 
@@ -51,9 +63,10 @@ public class Immersion
 		log.info("Pre-Init Version: " + ModMetadata.VERSION);
 		
 		//Put feature register together
+        _featureRepository.RegisterFeature(new FeatureDataCollector()); // this need to be first entry, as other features will not work without it
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
-        _featureRepository.RegisterFeature(new FeatureDataCollector());
+        _featureRepository.RegisterFeature(new BlacksmithFeature());
 
         // Initialize core blocks (can be moved to feature if required)
 
