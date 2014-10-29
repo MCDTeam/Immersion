@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import teamUnknown.immersion.core.feature.Feature.FeatureData;
 import teamUnknown.immersion.core.feature.Feature.FeatureData.Data;
+import teamUnknown.immersion.core.feature.object.FeatureObjectRegister;
 
 @Feature(name = "DataCollector", version = "1.0", isBase = true)
 public class FeatureDataCollector extends FeatureCommon 
@@ -28,7 +29,7 @@ public class FeatureDataCollector extends FeatureCommon
 	public HashMap<String, IFeature> FEATUREMAP;
 	
 	@FeatureData(Data.FEATUREOBJECTMAP)
-	public HashMap<String, IFeature> FEATUREOBJECTMAP;
+	public HashMap<IFeature, FeatureObjectRegister> FEATUREOBJECTMAP;
 	
 	public IFeature getFeature (String name)
     {
