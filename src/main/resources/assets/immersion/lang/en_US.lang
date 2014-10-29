@@ -1,20 +1,21 @@
-tile.oreGemRed.name=Redstone Gem Ore
-tile.oreGemEnd.name=End Gem Ore
-tile.oreGemQuartz.name=Quartz Gem Ore
-tile.oreGemGlow.name=Glowstone Gem Ore
-tile.oreGemEmerald.name=Emerald Gem Ore
-tile.oreGemDiamond.name=Diamond Gem Ore
+tile.immersion.oreGemRed.name=Redstone Gem Ore
+tile.immersion.oreGemEnd.name=End Gem Ore
+tile.immersion.oreGemQuartz.name=Quartz Gem Ore
+tile.immersion.oreGemGlow.name=Glowstone Gem Ore
+tile.immersion.oreGemEmerald.name=Emerald Gem Ore
+tile.immersion.oreGemDiamond.name=Diamond Gem Ore
+tile.immersion.BlockHeatedCoal.name=Heated Coal
 
-tile.fuelEnrichedCoal.name=Enriched Coal
+tile.immersion.fuelEnrichedCoal.name=Enriched Coal
 
-item.gemRed.name=Redstone Gem
-item.gemEnd.name=End Gem
-item.gemQuartz.name=Quartz Gem
-item.gemGlow.name=Glowstone Gem
+item.immersion.gemRed.name=Redstone Gem
+item.immersion.gemEnd.name=End Gem
+item.immersion.gemQuartz.name=Quartz Gem
+item.immersion.gemGlow.name=Glowstone Gem
 
-item.circuitCapacitative.name=Capacitative Circuit
-item.circuitComputational.name=Computational Circuit
-item.circuitEnergetic.name=Energetic Circuit
-item.circuitRandom.name=Random Circuit
-item.circuitTransforming.name=Transforming Circuit
-item.circuitVoid.name=Void Circuit
+item.immersion.circuitCapacitative.name=Capacitative Circuit
+item.immersion.circuitComputational.name=Computational Circuit
+item.immersion.circuitEnergetic.name=Energetic Circuit
+item.immersion.circuitRandom.name=Random Circuit
+item.immersion.circuitTransforming.name=Transforming Circuit
+item.immersion.circuitVoid.name=Void Circuit

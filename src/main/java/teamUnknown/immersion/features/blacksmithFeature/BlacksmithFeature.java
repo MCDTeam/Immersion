@@ -1,38 +1,31 @@
 package teamUnknown.immersion.features.blacksmithFeature;
 
 import net.minecraftforge.common.MinecraftForge;
+import teamUnknown.immersion.core.feature.Feature;
+import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.features.blacksmithFeature.blocks.BlockFakeAir;
 import teamUnknown.immersion.features.blacksmithFeature.blocks.BlockHeatedCoal;
 import teamUnknown.immersion.features.blacksmithFeature.events.PlayerInteractEventListener;
-import teamUnknown.immersion.features.common.CommonFeature;
-import teamUnknown.immersion.features.common.FeatureContext;
-import teamUnknown.immersion.features.common.FeatureProperties;
 
 /**
  *
  */
 
-@FeatureProperties(name = "Blacksmithing",
-        doEventListenersRegistration = true,
-        doBlocksRegistration = true)
-public class BlacksmithFeature extends CommonFeature {
+@Feature(name = "Blacksmithing", version = "0.0.1")
+public class BlacksmithFeature extends FeatureCommon {
 
     public BlockHeatedCoal blockHeatedCoal;
     public BlockFakeAir blockFakeAir;
 
-    @Override
-    protected void registerBlocks(FeatureContext context) {
-        super.registerBlocks(context);
-
+    @Feature.FeatureElement(Feature.FeatureElement.Element.PREINITIALIZATION)
+    public void registerBlocks() {
         this.blockHeatedCoal = new BlockHeatedCoal();
         this.blockFakeAir = new BlockFakeAir();
 
     }
 
-    @Override
-    protected void registerEventListeners(FeatureContext context) {
-        super.registerEventListeners(context);
-
+    @Feature.FeatureElement(Feature.FeatureElement.Element.EVENTBUS_EVENT)
+    public void registerEventListeners() {
         MinecraftForge.EVENT_BUS.register(new PlayerInteractEventListener(this));
     }
 }

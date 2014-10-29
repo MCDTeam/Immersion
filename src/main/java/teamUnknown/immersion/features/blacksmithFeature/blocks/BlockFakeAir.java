@@ -1,16 +1,9 @@
 package teamUnknown.immersion.features.blacksmithFeature.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import teamUnknown.immersion.core.blocks.ImmersionBlock;
-
-import java.util.Random;
+import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 
 /**
- * Fake air to prevent block placing
+ * Fake air to prevent block placing ( just a placeholder for a workaround)
  */
 public class BlockFakeAir extends ImmersionBlock {
     @Override

@@ -1,28 +1,48 @@
 package teamUnknown.immersion.core.feature.object;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.IIcon;
-import teamUnknown.immersion.core.feature.object.IImersionObject;
-import teamUnknown.immersion.core.meta.ModMetadata;
+import net.minecraft.creativetab.CreativeTabs;
+import teamUnknown.immersion.core.providers.resources.ResourceProvider;
 
 /**
  *
  */
 public class ImmersionBlock extends Block implements IImersionObject
 {
+    private static final Material DEFAULT_MATERIAL = Material.rock;
 
-    @SideOnly(Side.CLIENT)
-    protected IIcon texture;
+    protected ImmersionBlock() {
+        this(null, DEFAULT_MATERIAL);
+    }
 
-    public ImmersionBlock(String name, Material material) 
-    {
+    protected ImmersionBlock(Material material) {
+        this(null, material);
+    }
+
+    protected ImmersionBlock(String name) {
+        this(name, DEFAULT_MATERIAL);
+    }
+
+    protected ImmersionBlock(String name, Material material) {
         super(material);
-    	setBlockName(name);
+
+        if (name == null)
+            name = this.inferName();
+
+        this.setBlockName(ResourceProvider.getBlockName(name));
+        this.setBlockTextureName(ResourceProvider.getTextureName(name));
+
+        // ToDo: Creative tab handler?
+        this.setCreativeTab(CreativeTabs.tabBlock);
+
+        // ToDo: Do we need to register it via FeatureObjectRegister?
+        GameRegistry.registerBlock(this, name);
+    }
+
+    private String inferName() {
+        return this.getClass().getSimpleName();
     }
 
 	@Override
@@ -36,16 +56,4 @@ public class ImmersionBlock extends Block implements IImersionObject
 	{
 
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister register)
-    {
-        texture = register.registerIcon(ModMetadata.MOD_ID + ":" + this.getUnlocalizedName().substring(5));
-    }
-
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta)
-    {
-        return texture;
-    }
 }

@@ -1,16 +1,17 @@
 package teamUnknown.immersion.features.blacksmithFeature.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import teamUnknown.immersion.core.blocks.ImmersionBlock;
+import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import teamUnknown.immersion.core.utils.BlockPosition;
 import teamUnknown.immersion.core.utils.WorldBlockPosition;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.HashSet;
+import java.util.Random;
 
 /**
  *
