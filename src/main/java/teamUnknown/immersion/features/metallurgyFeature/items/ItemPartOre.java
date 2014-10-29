@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import teamUnknown.immersion.core.utils.NBTHelper;
 import teamUnknown.immersion.core.utils.Stack;
-import teamUnknown.immersion.features.oreGenFeature.BlockOre;
+import teamUnknown.immersion.corefeatures.oreGen.BlockOre;
 
 import java.util.List;
 

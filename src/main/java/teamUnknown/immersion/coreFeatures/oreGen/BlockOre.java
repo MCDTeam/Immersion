@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.oreGenFeature;
+package teamUnknown.immersion.coreFeatures.oreGen;
 
 import java.util.Random;
 
@@ -30,42 +30,46 @@ public class BlockOre extends ImmersionBlock
 		setHarvestLevel("pickaxe", 3);
 	}
 	
-	public void registerForGeneration(int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, Type type)
+	public void registerForGeneration(int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension)
 	{
-		this.generator = new OreGenerator(chunkdensity, YMin, YMax, sizeMin, sizeMax, type, this);
-	}
-
-	public enum Type
-	{
-		OVERWORLD,
-		NETHER,
-		END
+		this.generator = new OreGenerator(chunkdensity, YMin, YMax, sizeMin, sizeMax, dimension, this);
 	}
 	
-	protected class OreGenerator
+	protected void generate(World world, Random random, int chunkX, int chunkZ)
+	{
+		generator.generateForChunk (world, random, chunkX, chunkZ);
+	}
+	
+	private class OreGenerator
 	{
 		private int chunkdensity;
 		private int YMin;
 		private int YMax;
 		private int sizeMin;
 		private int sizeMax;
-		private Type type;
+		private int dimension;
 		private BlockOre ore;
 		
-		public OreGenerator (int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, Type type, BlockOre ore)
+		public OreGenerator (int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension, BlockOre ore)
 		{
 			this.chunkdensity = chunkdensity;
 			this.YMin = YMin;
 			this.YMax = YMax;
 			this.sizeMin = sizeMin;
 			this.sizeMax = sizeMax;
-			this.type = type;
+			this.dimension = dimension;
 			this.ore = ore;
 		}
 		
 		public void generateForChunk (World world, Random random, int chunkX, int chunkZ)
 		{
-			new WorldGenMinable(ore, (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, (chunkX + random.nextInt(16)), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16)));
+			if (dimension == world.provider.dimensionId)
+			{
+				for (int i = 0; i < chunkdensity; i++)
+				{
+					new WorldGenMinable(ore, (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, (chunkX + random.nextInt(16)), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16)));
+				}
+			}
 		}
 	}
 }

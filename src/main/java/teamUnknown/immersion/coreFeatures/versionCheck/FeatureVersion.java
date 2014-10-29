@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.versionCheckerFeature;
+package teamUnknown.immersion.coreFeatures.versionCheck;
 
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.Feature.FeatureData;
@@ -16,14 +16,14 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 @Feature(name = "Version Checker", version = "1.0", isBase = true)
 public class FeatureVersion extends FeatureCommon {
 
-    public static boolean enableVersionCheckerMod;
+    public static boolean enableVersionChecker;
 
     @FeatureData(Data.NONDATA)
     public static String LAST_DISCOVERED_VERSION;
 
     @FeatureElement(Element.CONFIGURATION)
     public void registerConfiguration(IConfigurationProvider cfg) {
-        this.enableVersionCheckerMod = cfg.getConfig("Enable version checker mod", "Enable version checker mod", true);
+        this.enableVersionChecker = cfg.getConfig("Enable version checker", "Enable version checker", true);
         //this.LAST_DISCOVERED_VERSION = context.getConfiguration().
     }
 
@@ -34,7 +34,8 @@ public class FeatureVersion extends FeatureCommon {
 
     @FeatureElement(Element.INTITIALIZATION)
     public void runFeatureInitialization() {
-        if(this.enableVersionCheckerMod){
+        if(this.enableVersionChecker)
+        {
             FMLInterModComms.sendRuntimeMessage(ModMetadata.MOD_ID, "VersionChecker", "addVersionCheck", ModMetadata.VERSION_CHECKER_REMOTE_URL);
         }
     }
