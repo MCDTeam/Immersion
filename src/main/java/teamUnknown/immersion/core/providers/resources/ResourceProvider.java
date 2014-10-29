@@ -6,7 +6,7 @@ import teamUnknown.immersion.core.meta.ModMetadata;
  *
  */
 public class ResourceProvider {
-
+//TODO: Get feature name into names
     protected static String getNameForRegistration(String name){
         return ModMetadata.MOD_ID + "." + name;
     }

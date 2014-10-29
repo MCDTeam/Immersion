@@ -12,16 +12,12 @@ import teamUnknown.immersion.features.blacksmithFeature.events.PlayerInteractEve
  */
 
 @Feature(name = "Blacksmithing", version = "0.0.1")
-public class BlacksmithFeature extends FeatureCommon {
-
-    public BlockHeatedCoal blockHeatedCoal;
-    public BlockFakeAir blockFakeAir;
-
-    @Feature.FeatureElement(Feature.FeatureElement.Element.PREINITIALIZATION)
-    public void registerBlocks() {
-        this.blockHeatedCoal = new BlockHeatedCoal();
-        this.blockFakeAir = new BlockFakeAir();
-
+public class BlacksmithFeature extends FeatureCommon 
+{
+    @Feature.FeatureElement(Feature.FeatureElement.Element.OBJECT)
+    public ObjectRegister registerBlocks() 
+    {
+        return new ObjectRegister();
     }
 
     @Feature.FeatureElement(Feature.FeatureElement.Element.EVENTBUS_EVENT)

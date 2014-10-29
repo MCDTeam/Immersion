@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.utils.WorldBlockPosition;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
 
@@ -39,7 +40,7 @@ public class PlayerInteractEventListener {
                 if (top.isAir()){
                     if (world.isRemote){
                         // prevent flame "flickering"
-                        pos.top().setBlock(this._feature.blockFakeAir);
+                        pos.top().setBlock(FeatureDataCollector.instance.FEATUREOBJECTMAP.get(_feature).readBlock("BlockFakeAir"));
 
                         // client side effects
                         Random random = new Random();

@@ -7,7 +7,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import teamUnknown.immersion.core.providers.resources.ResourceProvider;
 
 /**
- *
+ * Reminder: You must register your block with your own ObjectRegister to have it
+ * Registered into the game. Failure to do this will cause nothing to happen.
  */
 public class ImmersionBlock extends Block implements IImersionObject
 {
@@ -34,14 +35,12 @@ public class ImmersionBlock extends Block implements IImersionObject
         this.setBlockName(ResourceProvider.getBlockName(name));
         this.setBlockTextureName(ResourceProvider.getTextureName(name));
 
-        // ToDo: Creative tab handler?
+        //Sets a basic creative tab so that it is accessible. Calling this in the constuructor overrides this
         this.setCreativeTab(CreativeTabs.tabBlock);
-
-        // ToDo: Do we need to register it via FeatureObjectRegister?
-        GameRegistry.registerBlock(this, name);
     }
 
-    private String inferName() {
+    private String inferName() 
+    {
         return this.getClass().getSimpleName();
     }
 

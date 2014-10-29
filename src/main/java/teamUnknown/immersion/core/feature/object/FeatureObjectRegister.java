@@ -32,7 +32,7 @@ public abstract class FeatureObjectRegister {
      */
     public void register(ImmersionBlock block)
     {
-    	blocks.put(block.getUnlocalizedName().substring(5), block);
+    	blocks.put(block.getUnlocalizedName().substring(15), block);
     }
 
     /**
