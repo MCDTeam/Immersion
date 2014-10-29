@@ -15,11 +15,8 @@ public class ImmersionItem extends Item implements IImersionObject
         this.setUnlocalizedName(ResourceProvider.getBlockName(name));
         this.setTextureName(ResourceProvider.getTextureName(name));
 
-        // ToDo: Creative tab handler?
+        // Override if needed
         this.setCreativeTab(CreativeTabs.tabMisc);
-
-        // ToDo: Do we need to register it via FeatureObjectRegister?
-        GameRegistry.registerItem(this, name);
     }
 
     private String inferName() {
