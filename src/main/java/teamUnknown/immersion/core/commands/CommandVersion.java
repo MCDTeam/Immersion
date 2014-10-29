@@ -4,7 +4,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import net.minecraft.util.ChatComponentText;
 import teamUnknown.immersion.core.meta.Commands;
-import teamUnknown.immersion.features.versionCheckerFeature.VersionHelper;
+import teamUnknown.immersion.coreFeatures.versionCheck.VersionHelper;
 
 public class CommandVersion {
 

@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import teamUnknown.immersion.core.feature.object.FeatureObjectRegister;
 import teamUnknown.immersion.core.meta.ModMetadata;
+import teamUnknown.immersion.coreFeatures.oreGen.BlockOre;
 
 @GameRegistry.ObjectHolder(ModMetadata.MOD_ID)
 public class ModBlocks 

@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.versionCheckerFeature;
+package teamUnknown.immersion.coreFeatures.versionCheck;
 
 import cpw.mods.fml.common.Loader;
 import net.minecraft.util.EnumChatFormatting;
