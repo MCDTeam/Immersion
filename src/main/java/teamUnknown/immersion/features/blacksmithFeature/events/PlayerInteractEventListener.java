@@ -58,7 +58,7 @@ public class PlayerInteractEventListener {
                         event.setCanceled(true);
                     }
 
-                    this._feature.blockHeatedCoal.ignite(pos);
+                    pos.setBlock(FeatureDataCollector.instance.FEATUREOBJECTMAP.get(_feature).readBlock("BlockHeatedCoal"));
                 }
             }
         }
