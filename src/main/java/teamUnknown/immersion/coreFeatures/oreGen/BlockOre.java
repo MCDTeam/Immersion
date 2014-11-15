@@ -29,7 +29,20 @@ public class BlockOre extends ImmersionBlock
 		setCreativeTab(CreativeTabs.tabBlock);
 		setHarvestLevel("pickaxe", 3);
 	}
-	
+
+    /**
+     * Used to prevent the client from crashing
+     * @param type
+     */
+    public BlockOre(String type){
+
+        super("ore" + type, Material.rock);
+        setHardness(2.0F);
+        setStepSound(Block.soundTypeStone);
+        setCreativeTab(CreativeTabs.tabBlock);
+        setHarvestLevel("pickaxe", 3);
+    }
+
 	public void registerForGeneration(int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension)
 	{
 		this.generator = new OreGenerator(chunkdensity, YMin, YMax, sizeMin, sizeMax, dimension, this);
