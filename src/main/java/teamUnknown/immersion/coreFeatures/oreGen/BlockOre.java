@@ -24,10 +24,10 @@ public class BlockOre extends ImmersionBlock
 	public BlockOre(String type, Float hardness, int picklevel)
 	{
 		super("ore" + type, Material.rock);
-		setHardness(2.0F);
+		setHardness(hardness);
 		setStepSound(Block.soundTypeStone);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setHarvestLevel("pickaxe", 3);
+		setHarvestLevel("pickaxe", picklevel);
 	}
 
     /**
