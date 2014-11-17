@@ -3,27 +3,16 @@ package teamUnknown.immersion.features.metallurgyFeature.items;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
+import teamUnknown.immersion.core.common.BlockStorage;
 import teamUnknown.immersion.core.feature.object.FeatureObjectRegister;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.coreFeatures.oreGen.BlockOre;
+import teamUnknown.immersion.features.magicOreGen.BlockGemOre;
 
 @GameRegistry.ObjectHolder(ModMetadata.MOD_ID)
 public class ModBlocks 
 {
-    // Gems
-    public static ItemMaterial gemEnd = new ItemMaterial("gemEnd");
-    public static BlockGemOre oreGemEnd = new BlockGemOre("GemEnd", ModBlocks.gemEnd);
-    public static ItemMaterial gemGlow = new ItemMaterial("gemGlow");
-    public static BlockGemOre oreGemGlow = new BlockGemOre("GemGlow", ModBlocks.gemGlow);
-    public static ItemMaterial gemQuartz = new ItemMaterial("gemQuartz");
-    public static BlockGemOre oreGemQuartz = new BlockGemOre("GemQuartz", ModBlocks.gemQuartz);
-    public static ItemMaterial gemRed = new ItemMaterial("gemRed");
-    public static BlockGemOre oreGemRed = new BlockGemOre("GemRed", ModBlocks.gemRed);
-    public static ItemMaterial gemImperfectDiamond = new ItemMaterial("gemImperfectDiamond");
-    public static BlockGemOre oreImperfectDiamond = new BlockGemOre("GemImperfectDiamond", ModBlocks.gemImperfectDiamond);
-    public static ItemMaterial gemImperfectEmerald = new ItemMaterial("gemImperfectEmerald");
-    public static BlockGemOre oreImperfectEmerald = new BlockGemOre("GemImperfectEmerald", ModBlocks.gemImperfectEmerald);
-    public static ItemMaterial gemImperfectEnd = new ItemMaterial("gemImperfectEnd");
+
 
     //Precious Family
     public static BlockOre oreCopper = new BlockOre("Copper");
