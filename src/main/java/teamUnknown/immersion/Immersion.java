@@ -1,11 +1,14 @@
 package teamUnknown.immersion;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import teamUnknown.immersion.core.commands.CommandHandler;
+import teamUnknown.immersion.core.debug.ItemImmersionDebug;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
@@ -65,7 +68,11 @@ public class Immersion
 
         this._featureRepository.runPreInitialization(config);
         config.save();
-        
+
+        // Had no clue were to register this item
+        Item itemAdminDebug = new ItemImmersionDebug();
+        GameRegistry.registerItem(itemAdminDebug, "itemAdminDebug");
+
 		log.info("Pre-Init Finished");
 	}
 
