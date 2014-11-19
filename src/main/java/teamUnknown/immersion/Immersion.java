@@ -8,11 +8,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import teamUnknown.immersion.core.commands.CommandHandler;
-import teamUnknown.immersion.core.debug.ItemImmersionDebug;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.proxy.IProxy;
+import teamUnknown.immersion.coreFeatures.debug.FeatureDebugging;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
@@ -62,16 +62,13 @@ public class Immersion
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());
+        _featureRepository.RegisterFeature(new FeatureDebugging());
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
         this._featureRepository.runPreInitialization(config);
         config.save();
-
-        // Had no clue were to register this item
-        Item itemAdminDebug = new ItemImmersionDebug();
-        GameRegistry.registerItem(itemAdminDebug, "itemAdminDebug");
 
 		log.info("Pre-Init Finished");
 	}
