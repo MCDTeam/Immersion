@@ -1,5 +1,7 @@
 package teamUnknown.immersion;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +12,7 @@ import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.proxy.IProxy;
+import teamUnknown.immersion.coreFeatures.debug.FeatureDebugging;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
@@ -59,13 +62,14 @@ public class Immersion
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());
+        _featureRepository.RegisterFeature(new FeatureDebugging());
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
         this._featureRepository.runPreInitialization(config);
         config.save();
-        
+
 		log.info("Pre-Init Finished");
 	}
 
