@@ -27,6 +27,7 @@ public class TileEntityRenderElectricalWireBasic extends TileEntitySpecialRender
         GL11.glRotatef(180, 0, 0, 1);
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(Textures.MODEL_ELECTRICAL_WIRE_BASIC);
+        
         ModelElectricalWireBasic.instance.renderMiddle();
         if (sides[0]) ModelElectricalWireBasic.instance.renderDown(cables[0]);
         if (sides[1]) ModelElectricalWireBasic.instance.renderUp(cables[1]);

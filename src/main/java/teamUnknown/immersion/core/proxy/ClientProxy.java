@@ -1,7 +1,10 @@
 package teamUnknown.immersion.core.proxy;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import teamUnknown.immersion.features.electricalAge.client.render.tileEntity.TileEntityRenderElectricalWireBasic;
+import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityElectricalWire;
 
 public class ClientProxy extends CommonProxy{
 
@@ -9,6 +12,7 @@ public class ClientProxy extends CommonProxy{
     @Override
     public void registerRendering() {
 
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElectricalWire.class, new TileEntityRenderElectricalWireBasic());
     }
 
     @Override

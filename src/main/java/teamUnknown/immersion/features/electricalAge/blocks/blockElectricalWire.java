@@ -19,7 +19,7 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
     private float pixel = 1F / 16F;
 
     public blockElectricalWire() {
-        super(Material.rock);
+        super("electricalWire", Material.rock);
 
         this.useNeighborBrightness = true;
         this.setBlockBounds(11 * pixel / 2, 11 * pixel / 2, 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2);
@@ -31,6 +31,7 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
         return new TileEntityElectricalWire();
     }
 
+    @Override
     public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
 
         boolean[] blockBounds = new boolean[6];
@@ -40,6 +41,7 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
         this.setBlockBounds(blockBounds[4] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[0] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[2] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[5] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS, blockBounds[1] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS, blockBounds[3] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS);
     }
 
+    @Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 
         int meta = world.getBlockMetadata(x, y, z);
@@ -53,11 +55,11 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
         return super.getCollisionBoundingBoxFromPool(world, x, y, z);
     }
 
-    @Override
+    /**@Override
     @SideOnly(Side.CLIENT)
     public int getRenderType() {
         return -1;
-    }
+    }**/
 
     @Override
     public boolean isOpaqueCube() {
