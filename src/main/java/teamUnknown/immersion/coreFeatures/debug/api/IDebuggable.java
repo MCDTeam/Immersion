@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.debug.api;
+package teamUnknown.immersion.coreFeatures.debug.api;
 
     /**
      * Allows a tile entity/block to output a debug message when the debugItem is used on it.

@@ -1,4 +1,4 @@
-package teamUnknown.immersion.core.debug;
+package teamUnknown.immersion.coreFeatures.debug.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -9,15 +9,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import teamUnknown.immersion.core.debug.api.IDebuggable;
+import teamUnknown.immersion.coreFeatures.debug.api.IDebuggable;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 import teamUnknown.immersion.core.utils.ChatHelper;
 
 import java.util.List;
 
-public class ItemImmersionDebug extends ImmersionItem{
+public class itemAdminDebug extends ImmersionItem{
 
-    public ItemImmersionDebug(){
+    public itemAdminDebug(){
         super("adminDebug");
 
         this.setCreativeTab(CreativeTabs.tabTools);
