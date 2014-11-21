@@ -31,7 +31,11 @@ public class BlockOre extends ImmersionBlock
 	}
 
     /**
+<<<<<<< HEAD
+     * Used to prevent the client from crashing
+=======
      * Used so the client doesnt crash
+>>>>>>> master
      * @param type
      */
     public BlockOre(String type){
@@ -42,7 +46,11 @@ public class BlockOre extends ImmersionBlock
         setCreativeTab(CreativeTabs.tabBlock);
         setHarvestLevel("pickaxe", 3);
     }
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> master
 	public void registerForGeneration(int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension)
 	{
 		this.generator = new OreGenerator(chunkdensity, YMin, YMax, sizeMin, sizeMax, dimension, this);
