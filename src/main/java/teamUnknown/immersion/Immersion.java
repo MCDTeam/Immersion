@@ -13,6 +13,7 @@ import teamUnknown.immersion.core.proxy.IProxy;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
+import teamUnknown.immersion.features.magic.FeatureMagic;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -59,6 +60,7 @@ public class Immersion
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());
+        _featureRepository.RegisterFeature(new FeatureMagic());
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
