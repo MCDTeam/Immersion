@@ -1,18 +1,13 @@
 package teamUnknown.immersion;
 
-<<<<<<< HEAD
-import net.minecraft.creativetab.CreativeTabs;
-=======
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
->>>>>>> master
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import teamUnknown.immersion.core.commands.CommandHandler;
-import teamUnknown.immersion.core.creativeTab.ImmersionCreativeTab;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
@@ -43,8 +38,6 @@ public class Immersion
 
     @SidedProxy(clientSide = ModMetadata.CLIENT_PROXY_CLASS, serverSide = ModMetadata.SERVER_PROXY_CLASS)
     public static IProxy proxy;
-
-    public static CreativeTabs tabIM = new ImmersionCreativeTab(CreativeTabs.getNextID(), ModMetadata.MOD_ID);
 
     public Immersion()
     {
