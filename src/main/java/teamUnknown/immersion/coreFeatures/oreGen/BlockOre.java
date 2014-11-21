@@ -21,17 +21,21 @@ public class BlockOre extends ImmersionBlock
 	@SideOnly(Side.CLIENT)
 	protected IIcon texture;
 
-	public BlockOre(String type, Float hardness, int picklevel) 
+	public BlockOre(String type, Float hardness, int picklevel)
 	{
 		super("ore" + type, Material.rock);
-		setHardness(2.0F);
+		setHardness(hardness);
 		setStepSound(Block.soundTypeStone);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setHarvestLevel("pickaxe", 3);
+		setHarvestLevel("pickaxe", picklevel);
 	}
 
     /**
+<<<<<<< HEAD
      * Used to prevent the client from crashing
+=======
+     * Used so the client doesnt crash
+>>>>>>> master
      * @param type
      */
     public BlockOre(String type){
@@ -42,7 +46,11 @@ public class BlockOre extends ImmersionBlock
         setCreativeTab(CreativeTabs.tabBlock);
         setHarvestLevel("pickaxe", 3);
     }
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> master
 	public void registerForGeneration(int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension)
 	{
 		this.generator = new OreGenerator(chunkdensity, YMin, YMax, sizeMin, sizeMax, dimension, this);
