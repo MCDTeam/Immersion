@@ -7,14 +7,14 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class RendererManaPylonBasic extends TileEntitySpecialRenderer 
+public class RendererManaPylonTopBasic extends TileEntitySpecialRenderer 
 {
-	private ModelManaPylon model = new ModelManaPylon();
+	private ModelManaPylonTop model = new ModelManaPylonTop();
 	
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float scale) 
 	{
-		this.model.render(x, y, z, new ResourceLocation("immersion:textures/blocks/model/ManaPylonBasic.png"));
+		this.model.render(x, y, z, new ResourceLocation("immersion:textures/blocks/model/ManaPylonTopBasic.png"));
 	}
 
 }

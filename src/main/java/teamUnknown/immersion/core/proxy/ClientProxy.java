@@ -1,7 +1,9 @@
 package teamUnknown.immersion.core.proxy;
 
 import teamUnknown.immersion.features.magic.blocks.tileEntity.TileManaPylonBasic;
+import teamUnknown.immersion.features.magic.blocks.tileEntity.TileManaPylonTopBasic;
 import teamUnknown.immersion.features.magic.blocks.tileEntity.render.RendererManaPylonBasic;
+import teamUnknown.immersion.features.magic.blocks.tileEntity.render.RendererManaPylonTopBasic;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,6 +15,7 @@ public class ClientProxy extends CommonProxy{
     public void registerRendering() 
     {
     	ClientRegistry.bindTileEntitySpecialRenderer(TileManaPylonBasic.class, new RendererManaPylonBasic());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileManaPylonTopBasic.class, new RendererManaPylonTopBasic());
     }
     
     @Override
