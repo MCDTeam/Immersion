@@ -14,7 +14,7 @@ public class GuiXPMagicBar extends Gui
 	private Minecraft mc = Minecraft.getMinecraft();
 
 	@SubscribeEvent
-	public void onRenderExperienceBar(RenderGameOverlayEvent event)
+	public void onRenderExperienceBar(RenderGameOverlayEvent.Pre event)
 	{
 		if (event.type == ElementType.EXPERIENCE && !mc.thePlayer.isRidingHorse())
 		{
@@ -33,11 +33,11 @@ public class GuiXPMagicBar extends Gui
 	                int expl = (int)(this.mc.thePlayer.experience * (float)(183));
 	                int x = w / 2 - 92;
 	                int y = h - 32 + 3;
-	                this.drawTexturedModalRect(x, y, 0, 0, 182, 8);
+	                this.drawTexturedModalRect(x, y, 0, 0, 182, 4);
 
 	                if (expl > 0)
 	                {
-	                    this.drawTexturedModalRect(x, y, 0, 9, expl, 8);
+	                    this.drawTexturedModalRect(x, y, 0, 9, expl, 4);
 	                }
 	            }
 	        }

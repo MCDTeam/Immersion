@@ -11,6 +11,7 @@ import teamUnknown.immersion.core.feature.Feature.FeatureElement.Element;
 import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.IFeature;
+import teamUnknown.immersion.features.magic.ObjectRegister;
 import teamUnknown.immersion.features.magicOreGen.FeatureMagicOreGen;
 
 @Feature(name = "Magic", version = "1.0")
@@ -29,4 +30,10 @@ public class FeatureMagic extends FeatureCommon
 	{
 		MinecraftForge.EVENT_BUS.register(new GuiXPMagicBar());
 	}
+	
+    @FeatureElement(Element.OBJECT)
+    public ObjectRegister registerBlocks() 
+    {
+        return new ObjectRegister();
+    }
 }

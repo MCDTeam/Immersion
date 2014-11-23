@@ -76,6 +76,9 @@ public class Immersion
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
         this._featureRepository.runInitialization();
+        
+        proxy.registerRendering();
+        proxy.registerTileEntitys();
         log.info("Init Finished");
 	}
 	
