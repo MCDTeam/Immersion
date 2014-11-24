@@ -63,11 +63,8 @@ public class Immersion
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());
-<<<<<<< HEAD
         _featureRepository.RegisterFeature(new FeatureMagic());
-=======
         _featureRepository.RegisterFeature(new FeatureDebugging());
->>>>>>> origin/master
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
