@@ -36,7 +36,7 @@ public class ModelManaPylonTop extends ModelBase
   public void render(double x, double y, double z, ResourceLocation rl)
   {
 	  GL11.glPushMatrix();
-	  Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("immersion:textures/blocks/model/ManaPylonBasic.png"));
+	  Minecraft.getMinecraft().renderEngine.bindTexture(rl);
 	  GL11.glTranslatef((float) x + .5F, (float) y + 1.501F, (float) z + .5F);
 	  GL11.glRotatef(180, 1, 0, 1);
 	  GL11.glPushMatrix();

@@ -14,7 +14,7 @@ public class RendererManaPylonTopBasic extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float scale) 
 	{
-		this.model.render(x, y, z, new ResourceLocation("immersion:textures/blocks/model/ManaPylonTopBasic.png"));
+		this.model.render(x, y, z, new ResourceLocation("immersion:textures/blocks/model/ManaPylonTopDiamond.png"));
 	}
 
 }
