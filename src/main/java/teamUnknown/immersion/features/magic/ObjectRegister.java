@@ -4,7 +4,6 @@ import net.minecraft.init.Items;
 import teamUnknown.immersion.core.feature.object.FeatureObjectRegister;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 import teamUnknown.immersion.features.magic.blocks.ManaPylonBasic;
-import teamUnknown.immersion.features.magic.blocks.ManaPylonTopBasic;
 import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
 
 public class ObjectRegister extends FeatureObjectRegister {
@@ -13,7 +12,6 @@ public class ObjectRegister extends FeatureObjectRegister {
 	public void startRegistry() 
 	{
 		register(new ManaPylonBasic());
-		register(new ManaPylonTopBasic());
 	}
 
 }
