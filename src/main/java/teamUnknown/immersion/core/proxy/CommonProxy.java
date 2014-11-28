@@ -1,6 +1,7 @@
 package teamUnknown.immersion.core.proxy;
 
-import teamUnknown.immersion.features.magic.blocks.tileEntity.TileManaPylonBasic;
+import teamUnknown.immersion.features.magic.blocks.tileEntity.TileManaPylon;
+import teamUnknown.immersion.features.magic.blocks.tileEntity.TilePlinth;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public abstract class CommonProxy implements IProxy{
@@ -8,6 +9,7 @@ public abstract class CommonProxy implements IProxy{
     @Override
     public void registerTileEntitys() 
     {
-    	GameRegistry.registerTileEntity(TileManaPylonBasic.class, "ManaPylonBasic");
+    	GameRegistry.registerTileEntity(TileManaPylon.class, "ManaPylonBasic");
+    	GameRegistry.registerTileEntity(TilePlinth.class, "Plinth");
     }
 }

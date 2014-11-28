@@ -1,6 +1,7 @@
 package teamUnknown.immersion.core.utils;
 
 import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -9,26 +10,28 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 public class BlockPosition {
 
-    private int _x;
-    private int _y;
-    private int _z;
+    public int x;
+    public int y;
+    public int z;
+    public World w;
 
-    public BlockPosition(int x, int y, int z){
-        this._x = x;
-        this._y = y;
-        this._z = z;
+    public BlockPosition(int x, int y, int z, World w){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
     }
 
     public int getZ() {
-        return this._z;
+        return this.z;
     }
 
     public int getY() {
-        return this._y;
+        return this.y;
     }
 
     public int getX() {
-        return this._x;
+        return this.x;
     }
 
     public BlockPosition direction(ForgeDirection direction) {
@@ -36,7 +39,7 @@ public class BlockPosition {
     }
 
     public BlockPosition direction(ForgeDirection direction, int count){
-        return new BlockPosition(this._x + direction.offsetX * count, this._y + direction.offsetY * count, this._z + direction.offsetZ * count);
+        return new BlockPosition(this.x + direction.offsetX * count, this.y + direction.offsetY * count, this.z + direction.offsetZ * count, w);
     }
 
     public BlockPosition top(){
@@ -63,36 +66,55 @@ public class BlockPosition {
         return this.direction(ForgeDirection.EAST);
     }
 
-    public BlockPosition topWorldBlock(World world, int x, int z){
+    public static BlockPosition topWorldBlock(World world, int x, int z){
         int y = world.getTopSolidOrLiquidBlock(x, z);
-        return new BlockPosition(x, y, z);
+        return new BlockPosition(x, y, z, world);
     }
 
-    public BlockPosition topTerrainBlock(World world, int x, int z){
+    public static BlockPosition topTerrainBlock(World world, int x, int z){
         int y = world.getHeightValue(x, z);
-        return new BlockPosition(x, y, z);
+        return new BlockPosition(x, y, z, world);
     }
 
-    public Block getBlock(World world){
-        return world.getBlock(this._x, this._y, this._z);
+    public Block getBlock(){
+        return w.getBlock(x, y, z);
     }
 
-    public boolean setBlock(World world, Block block){
-        return world.setBlock(this._x, this._y, this._z, block);
-    }
-
-
-    public boolean setBlock(World world, Block block, int meta) {
-        return world.setBlock(this._x, this._y, this._z, block, meta, 3);
+    public boolean setBlock(Block block){
+        return w.setBlock(x, y, z, block);
     }
 
 
-    public boolean isAir(World world) {
-        return world.isAirBlock(this._x, this._y, this._z);
+    public boolean setBlock(Block block, int meta) {
+        return w.setBlock(x, y, z, block, meta, 3);
+    }
+    
+    public boolean setAir()
+    {
+    	return w.setBlockToAir(x, y, z);
     }
 
-    public boolean is(World world, Block block) {
-        return this.getBlock(world) == block;
+    public boolean isAir() {
+        return w.isAirBlock(x, y, z);
+    }
+
+    public boolean is(Block block) {
+        return this.getBlock() == block;
+    }
+    
+    public boolean hasTileEntity()
+    {
+    	return w.getTileEntity(x, y, z) != null;
+    }
+    
+    public TileEntity getTileEntity()
+    {
+    	return w.getTileEntity(x, y, z);
+    }
+    
+    public static BlockPosition getPositonFromTile(TileEntity tile)
+    {
+    	return new BlockPosition(tile.xCoord, tile.yCoord, tile.zCoord, tile.getWorldObj());
     }
 
     @Override
@@ -102,18 +124,19 @@ public class BlockPosition {
 
         BlockPosition that = (BlockPosition) o;
 
-        if (_x != that._x) return false;
-        if (_y != that._y) return false;
-        if (_z != that._z) return false;
+        if (x != that.x) return false;
+        if (y != that.y) return false;
+        if (z != that.z) return false;
+        if (w != that.w) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = _x;
-        result = 31 * result + _y;
-        result = 31 * result + _z;
+        int result = x;
+        result = 31 * result + y;
+        result = 31 * result + z;
         return result;
     }
 

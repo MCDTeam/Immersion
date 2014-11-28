@@ -13,19 +13,19 @@ public class ImmersionBlock extends Block implements IImersionObject
 {
     private static final Material DEFAULT_MATERIAL = Material.rock;
 
-    protected ImmersionBlock() {
+    public ImmersionBlock() {
         this(null, DEFAULT_MATERIAL);
     }
 
-    protected ImmersionBlock(Material material) {
+    public ImmersionBlock(Material material) {
         this(null, material);
     }
 
-    protected ImmersionBlock(String name) {
+    public ImmersionBlock(String name) {
         this(name, DEFAULT_MATERIAL);
     }
 
-    protected ImmersionBlock(String name, Material material) {
+    public ImmersionBlock(String name, Material material) {
         super(material);
 
         if (name == null)
