@@ -1,2 +1,4 @@
-package teamUnknown.immersion.features.electricalAge.thirdParty;public class Waila {
+package teamUnknown.immersion.features.electricalAge.thirdParty;
+
+public class Waila {
 }
