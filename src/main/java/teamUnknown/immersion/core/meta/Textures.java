@@ -11,8 +11,10 @@ public class Textures {
     public static final String GUI_FILE_PATH = "textures/gui/";
 
     // Gui's
+    public static final ResourceLocation GUI_ENERGY_CELL = ResourceLocationHelper.getResourceLocation(GUI_FILE_PATH + "creativeEnergyCell");
 
     // Block Models
     public static final ResourceLocation MODEL_ELECTRICAL_WIRE_BASIC = ResourceLocationHelper.getResourceLocation(MODEL_FILE_PATH + "electricalWireBasic.png");
+
 
 }
