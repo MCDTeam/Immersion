@@ -67,6 +67,12 @@ public class Immersion
 
         this._featureRepository.runPreInitialization(config);
         config.save();
+
+        // All proxy rendering
+        proxy.registerRendering();
+
+        // All proxy TileEntity registering
+        proxy.registerTileEntitys();
         
 		log.info("Pre-Init Finished");
 	}

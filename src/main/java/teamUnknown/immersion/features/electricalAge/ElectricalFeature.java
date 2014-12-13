@@ -18,6 +18,7 @@ public class ElectricalFeature extends FeatureCommon{
 
     @Feature.FeatureElement(Feature.FeatureElement.Element.PREINITIALIZATION)
     public void preInit(){
+
         ElectricalBlocks.init();
     }
 

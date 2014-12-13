@@ -10,6 +10,6 @@ public class ResourceLocationHelper {
     }
 
     public static ResourceLocation getResourceLocation(String path) {
-        return getResourceLocation(ModMetadata.RESOURCE_LOCATION, path);
+        return getResourceLocation(ModMetadata.MOD_ID, path);
     }
 }

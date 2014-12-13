@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
@@ -21,6 +22,7 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
     public blockElectricalWire() {
         super("electricalWire", Material.rock);
 
+        this.setCreativeTab(CreativeTabs.tabBlock);
         this.useNeighborBrightness = true;
         this.setBlockBounds(11 * pixel / 2, 11 * pixel / 2, 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2);
 
@@ -55,11 +57,11 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
         return super.getCollisionBoundingBoxFromPool(world, x, y, z);
     }
 
-    /**@Override
+    @Override
     @SideOnly(Side.CLIENT)
     public int getRenderType() {
         return -1;
-    }**/
+    }
 
     @Override
     public boolean isOpaqueCube() {
