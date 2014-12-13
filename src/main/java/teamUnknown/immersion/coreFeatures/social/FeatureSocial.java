@@ -19,7 +19,7 @@ public class FeatureSocial extends FeatureCommon {
 
     @Feature.FeatureElement(Feature.FeatureElement.Element.INTITIALIZATION)
     public void init(){
-
+        SocialRegistry.initialize();
     }
 
     @Feature.FeatureElement(Feature.FeatureElement.Element.POSTINITIALIZATION)

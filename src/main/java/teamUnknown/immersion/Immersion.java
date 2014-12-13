@@ -14,6 +14,7 @@ import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.proxy.IProxy;
 import teamUnknown.immersion.coreFeatures.debug.FeatureDebugging;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
+import teamUnknown.immersion.coreFeatures.social.FeatureSocial;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
@@ -55,7 +56,8 @@ public class Immersion
 	public void preInit(FMLPreInitializationEvent event)
 	{	
 		log.info("Pre-Init Version: " + ModMetadata.VERSION);
-		
+		ModMetadata.CONF_DIR = event.getModConfigurationDirectory();
+
 		//Put feature register together
         _featureRepository.RegisterFeature(new FeatureDataCollector()); // this need to be first entry, as other features will not work without it
         _featureRepository.RegisterFeature(new FeatureOreGen());
@@ -63,6 +65,7 @@ public class Immersion
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());
         _featureRepository.RegisterFeature(new FeatureDebugging());
+        _featureRepository.RegisterFeature(new FeatureSocial());
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());

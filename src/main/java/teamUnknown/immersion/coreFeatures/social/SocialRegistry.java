@@ -2,6 +2,9 @@ package teamUnknown.immersion.coreFeatures.social;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.config.Configuration;
+import teamUnknown.immersion.core.meta.ModMetadata;
+import teamUnknown.immersion.core.network.PacketHandler;
+import teamUnknown.immersion.core.network.message.MessageSocialPacket;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -11,7 +14,7 @@ public class SocialRegistry {
 
     public static void initialize() {
 
-        friendConf = new Configuration(new File(CoFHProps.configDir, "/cofh/CoFHSocial-Friends.cfg"));
+        friendConf = new Configuration(new File(ModMetadata.CONF_DIR,"/immersion/ImmersionSocial-Friends.cfg"));
         friendConf.load();
     }
 
@@ -55,12 +58,12 @@ public class SocialRegistry {
 
     public static void sendFriendsToPlayer(EntityPlayerMP thePlayer) {
 
-        PacketSocial aPacket = new PacketSocial();
-        aPacket.addByte(PacketTypes.FRIEND_LIST.ordinal());
-        aPacket.addInt(friendConf.getCategory(thePlayer.getCommandSenderName().toLowerCase()).keySet().size());
+        MessageSocialPacket packet = new MessageSocialPacket();
+        packet.addByte(MessageSocialPacket.PacketTypes.FRIEND_LIST.ordinal());
+        packet.addInt(friendConf.getCategory(thePlayer.getCommandSenderName().toLowerCase()).keySet().size());
         for (String theName : friendConf.getCategory(thePlayer.getCommandSenderName().toLowerCase()).keySet()) {
-            aPacket.addString(theName);
+            packet.addString(theName);
         }
-        PacketHandler.sendTo(aPacket, thePlayer);
+        PacketHandler.sendTo(packet, thePlayer);
     }
 }

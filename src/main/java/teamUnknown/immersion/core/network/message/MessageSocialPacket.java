@@ -1,8 +1,5 @@
 package teamUnknown.immersion.core.network.message;
 
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import teamUnknown.immersion.core.network.PacketHandler;
@@ -32,7 +29,7 @@ public class MessageSocialPacket extends ImmersionPacketBase{
                     SocialRegistry.clientPlayerFriends.add(getString());
                 }
                 java.util.Collections.sort(SocialRegistry.clientPlayerFriends);
-                CoFHCore.proxy.updateFriendListGui();
+
                 return;
             case ADD_FRIEND:
                 SocialRegistry.addFriend(player.getCommandSenderName(), getString());
