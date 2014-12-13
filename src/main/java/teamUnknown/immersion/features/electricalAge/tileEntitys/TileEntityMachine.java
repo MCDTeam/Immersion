@@ -42,6 +42,10 @@ public class TileEntityMachine extends TileEntity implements IEnergy{
 
     }
 
+    public int getRotation(){
+        return this.rotation;
+    }
+
     @Override
     public int getEnergyTransferRate() {
         return DEFAULT_TRANSFERE_RATE;
