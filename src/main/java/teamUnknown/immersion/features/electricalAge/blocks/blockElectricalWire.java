@@ -19,8 +19,8 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
 
     private float pixel = 1F / 16F;
 
-    public blockElectricalWire() {
-        super("electricalWire", Material.rock);
+    public blockElectricalWire(String name) {
+        super(name, Material.rock);
 
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.useNeighborBrightness = true;
