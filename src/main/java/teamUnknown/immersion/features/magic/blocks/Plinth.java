@@ -13,7 +13,7 @@ public class Plinth extends ImmersionBlock implements ITileEntityProvider{
 	public Plinth ()
 	{
 		super();
-		this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
+		this.setBlockBounds(0F, 0F, 0F, 1F, .25F, 1F);
 	}
 
 	@Override

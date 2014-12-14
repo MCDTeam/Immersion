@@ -20,19 +20,18 @@ public class RendererPlinth extends TileEntitySpecialRenderer
 	{
 		if (Minecraft.getMinecraft().gameSettings.fancyGraphics) 
 		{
-			Random r = Minecraft.getMinecraft().theWorld.rand;
 			TilePlinth convertedtile = (TilePlinth) tile;
-			convertedtile.x = convertedtile.x + ((float) (r.nextInt(5) + 5) / 100F);
+			convertedtile.x = convertedtile.x + convertedtile.mx;
 			if (convertedtile.x >= 3.1415F) 
 			{
 				convertedtile.x = -3.1415F;
 			}
-			convertedtile.y = convertedtile.y + ((float) (r.nextInt(5) + 5) / 100F);
+			convertedtile.y = convertedtile.y + convertedtile.my;
 			if (convertedtile.y >= 3.1415F) 
 			{
 				convertedtile.y = -3.1415F;
 			}
-			convertedtile.z = convertedtile.z + ((float) (r.nextInt(5) + 5) / 100F);
+			convertedtile.z = convertedtile.z + convertedtile.mz;
 			if (convertedtile.z >= 3.1415F) 
 			{
 				convertedtile.z = -3.1415F;
