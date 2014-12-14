@@ -9,8 +9,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.meta.Names;
 import teamUnknown.immersion.core.utils.NBTHelper;
-import teamUnknown.immersion.features.electricalAge.energy.EnergyBar;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
 
 public class TileEntityMachine extends TileEntity implements IEnergy{
 
