@@ -8,7 +8,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  * A reference implementation is provided {@link TileEnergyHandler}.
  */
 
-public interface IEnergyReceiver {
+public interface IEnergyReceiver extends IEnergyConnection{
 
     /**
      * Add energy to an IEnergyReceiver, internal distribution is left entirely to the IEnergyReceiver.

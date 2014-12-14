@@ -8,7 +8,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  * A reference implementation is provided {@link TileEnergyHandler}.
  */
 
-public interface IEnergyProvider {
+public interface IEnergyProvider extends IEnergyConnection{
 
     /**
      * Remove energy from an IEnergyProvider, internal distribution is left entirely to the IEnergyProvider.
