@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import teamUnknown.immersion.core.meta.BBConstants;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyConnection;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityElectricalWire;
 
 public class blockElectricalWire extends ImmersionBlock implements ITileEntityProvider{
@@ -38,7 +38,7 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
 
         boolean[] blockBounds = new boolean[6];
         for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) {
-            blockBounds[direction.ordinal()] = world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) instanceof IEnergy && ((IEnergy) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ)).canConnect(direction);
+            blockBounds[direction.ordinal()] = world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) instanceof IEnergyConnection && ((IEnergyConnection) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ)).canConnectEnergy(direction);
         }
         this.setBlockBounds(blockBounds[4] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[0] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[2] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[5] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS, blockBounds[1] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS, blockBounds[3] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS);
     }
@@ -50,7 +50,7 @@ public class blockElectricalWire extends ImmersionBlock implements ITileEntityPr
         boolean[] blockBounds = new boolean[6];
         for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) {
 
-            blockBounds[direction.ordinal()] = world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) instanceof IEnergy && ((IEnergy) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ)).canConnect(direction);
+            blockBounds[direction.ordinal()] = world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) instanceof IEnergyConnection && ((IEnergyConnection) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ)).canConnectEnergy(direction);
         }
         if (meta == 0)
             return AxisAlignedBB.getBoundingBox(x + (blockBounds[4] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS), y + (blockBounds[0] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS), z + (blockBounds[2] ? 0 : 0.375F), x + (blockBounds[5] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS), y + (blockBounds[1] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS), z + (blockBounds[3] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS));

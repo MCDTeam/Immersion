@@ -52,4 +52,6 @@ public interface IEnergyHandler extends IEnergyProvider, IEnergyReceiver{
      */
     @Override
     int getMaxEnergyStored(ForgeDirection from);
+
+    int getEnergyTransferRate();
 }

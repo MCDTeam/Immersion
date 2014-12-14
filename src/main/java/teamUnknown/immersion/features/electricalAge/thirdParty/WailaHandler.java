@@ -7,7 +7,8 @@ import mcp.mobius.waila.api.SpecialChars;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyHelper;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyStorage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -38,9 +39,9 @@ public class WailaHandler implements IWailaDataProvider {
 
         TileEntity tileEntity = accessor.getTileEntity();
 
-        if(tileEntity instanceof IEnergy) {
-            String energyLevel = String.valueOf(((IEnergy)tileEntity).getEnergyBar().getEnergyLevel());
-            String maxEnergyLevel = String.valueOf(((IEnergy) tileEntity).getEnergyBar().getMaxEnergyLevel());
+        if(tileEntity instanceof IEnergyStorage) {
+            String energyLevel = String.valueOf(EnergyHelper.getStoredEnergy(tileEntity));
+            String maxEnergyLevel = String.valueOf(EnergyHelper.getMaxEnergyStored(tileEntity));
 
             values.put(EnumChatFormatting.GREEN + "Energy Level: ", energyLevel + " / " + maxEnergyLevel);
         }

@@ -6,19 +6,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import teamUnknown.immersion.Immersion;
-import teamUnknown.immersion.core.feature.object.ImmersionItem;
+import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.meta.Names;
 import teamUnknown.immersion.core.utils.ChatHelper;
 import teamUnknown.immersion.core.utils.NBTHelper;
 import teamUnknown.immersion.features.electricalAge.api.IWrenchable;
-import teamUnknown.immersion.features.electricalAge.blocks.ImmersionElectricalBlock;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyReceiver;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.ItemEnergyContainer;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityMachine;
 
 import java.util.List;
 
-public class ItemImmersionWrench extends ImmersionItem{
+public class ItemImmersionWrench extends ItemEnergyContainer{
 
     public ItemImmersionWrench(String name){
         super(name);
@@ -160,9 +160,9 @@ public class ItemImmersionWrench extends ImmersionItem{
 
     public static void modePowerReader(World world, EntityPlayer player, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if (tileEntity instanceof IEnergy) {
+        if (tileEntity instanceof IEnergyReceiver) {
             //((IEnergy) tileEntity).getEnergyBar().setEnergyLevel(20);
-            ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + ((IEnergy) tileEntity).getEnergyBar().getEnergyLevel() + "/" + ((IEnergy) tileEntity).getEnergyBar().getMaxEnergyLevel());
+            ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + ((IEnergyStorage) tileEntity).getEnergyStored() + "/" + ((IEnergyStorage) tileEntity).getMaxEnergyStored());
         }
     }
 }

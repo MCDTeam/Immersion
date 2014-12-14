@@ -4,67 +4,52 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.meta.EnergyValues;
-import teamUnknown.immersion.features.electricalAge.energy.EnergyBar;
-import teamUnknown.immersion.features.electricalAge.energy.EnergyNet;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.TileEnergyHandler;
 
-public class TileEntityElectricalWire extends TileEntity implements IEnergy {
+public class TileEntityElectricalWire extends TileEnergyHandler{
 
-    private EnergyBar energyBar = new EnergyBar(EnergyValues.Values.ELECTRICAL_WIRE_STORGE);
-    private ForgeDirection lastReceivedDirection = ForgeDirection.UNKNOWN;
+    protected EnergyStorage storage = new EnergyStorage(EnergyValues.Values.ELECTRICAL_WIRE_STORGE);
 
-    public TileEntityElectricalWire(){
+    @Override
+    public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
 
+        return storage.receiveEnergy(maxReceive, simulate);
     }
 
     @Override
-    public void updateEntity() {
-        EnergyNet.distributeEnergyToSurrounding(worldObj, xCoord, yCoord, zCoord, lastReceivedDirection, energyBar);
+    public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
+        return storage.extractEnergy(maxExtract, simulate);
     }
 
-    /**
-     * Power Network Functions *
-     */
     @Override
-    public boolean canAddEnergyOnSide(ForgeDirection direction) {
+    public int getEnergyStored(ForgeDirection from) {
+        return storage.getEnergyStored();
+    }
+
+    @Override
+    public int getMaxEnergyStored(ForgeDirection from) {
+        return storage.getMaxEnergyStored();
+    }
+
+    @Override
+    public boolean canConnectEnergy(ForgeDirection from) {
         return true;
-    }
-
-    @Override
-    public boolean canConnect(ForgeDirection direction) {
-        return true;
-    }
-
-    public EnergyBar getEnergyBar() {
-        return energyBar;
-    }
-
-    @Override
-    public void setLastReceivedDirection(ForgeDirection direction) {
-        this.lastReceivedDirection = direction;
-    }
-
-    @Override
-    public int getEnergyTransferRate() {
-        return EnergyValues.Values.ELECTRICAL_WIRE_TRANSFERE;
     }
 
     @Override
     public void writeToNBT(NBTTagCompound tag) {
-
         super.writeToNBT(tag);
-        energyBar.writeToNBT(tag);
+        storage.writeToNBT(tag);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound tag) {
-
         super.readFromNBT(tag);
-        energyBar.readFromNBT(tag);
+        storage.readFromNBT(tag);
     }
 
     @Override
@@ -76,12 +61,12 @@ public class TileEntityElectricalWire extends TileEntity implements IEnergy {
      * Network
      */
 
-    /**@Override
+    @Override
     public Packet getDescriptionPacket() {
         NBTTagCompound tag = new NBTTagCompound();
         writeToNBT(tag);
         return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tag);
-    }**/
+    }
 
     @Override
     public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {

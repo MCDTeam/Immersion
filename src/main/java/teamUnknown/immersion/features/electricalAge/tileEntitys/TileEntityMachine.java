@@ -1,52 +1,47 @@
 package teamUnknown.immersion.features.electricalAge.tileEntitys;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import teamUnknown.immersion.core.meta.Names;
-import teamUnknown.immersion.core.utils.NBTHelper;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyHandler;
 
-public class TileEntityMachine extends TileEntity implements IEnergy{
+public class TileEntityMachine extends TileEntity implements IEnergyHandler{
 
-    private int DEFAULT_TRANSFERE_RATE = 100;
     public int rotation;
+    public EnergyStorage storage;
     private String playerOwner;
 
-    public TileEntityMachine(){
-        super();
+    public TileEntityMachine(EnergyStorage storage){
+        this.storage = storage;
     }
 
     @Override
-    public boolean canAddEnergyOnSide(ForgeDirection direction) {
+    public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+        return storage.receiveEnergy(maxReceive, simulate);
+    }
+
+    @Override
+    public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
+        return storage.extractEnergy(maxExtract, simulate);
+    }
+
+    @Override
+    public int getEnergyStored(ForgeDirection from) {
+        return storage.getEnergyStored();
+    }
+
+    @Override
+    public int getMaxEnergyStored(ForgeDirection from) {
+        return storage.getMaxEnergyStored();
+    }
+
+    @Override
+    public boolean canConnectEnergy(ForgeDirection from) {
         return true;
-    }
-
-    @Override
-    public boolean canConnect(ForgeDirection direction) {
-        return false;
-    }
-
-    @Override
-    public EnergyBar getEnergyBar() {
-        return null;
-    }
-
-    @Override
-    public void setLastReceivedDirection(ForgeDirection direction) {
-
-    }
-
-    public int getRotation(){
-        return this.rotation;
-    }
-
-    @Override
-    public int getEnergyTransferRate() {
-        return DEFAULT_TRANSFERE_RATE;
     }
 
     public Packet getDescriptionPacket() {
@@ -60,21 +55,7 @@ public class TileEntityMachine extends TileEntity implements IEnergy{
         readFromNBT(packet.func_148857_g());
     }
 
-    public void writeToNBT(NBTTagCompound tag, EnergyBar energyBar, int actionStatus, ItemStack[] itemStacks, int rotation) {
-        super.writeToNBT(tag);
-        energyBar.writeToNBT(tag);
-        tag.setInteger(Names.NBT.DIRECTION, rotation);
-        tag.setInteger("actionStatus", actionStatus);
-        NBTHelper.Inventorys.writeItemStackArrayToNBT(itemStacks, tag);
-        //markDirty();
-    }
-
-    public void readFromNBT(NBTTagCompound tag, EnergyBar energyBar, int actionStatus, ItemStack[] itemStacks, int rotation) {
-        super.readFromNBT(tag);
-        energyBar.readFromNBT(tag);
-        rotation = tag.getInteger(Names.NBT.DIRECTION);
-        actionStatus = tag.getInteger("actionStatus"); //TODO check what for
-        NBTHelper.Inventorys.readItemStackArrayFromNBT(itemStacks, tag);
-        //markDirty();
+    public int getRotation(){
+        return this.rotation;
     }
 }
