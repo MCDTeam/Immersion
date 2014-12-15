@@ -11,6 +11,7 @@ import teamUnknown.immersion.core.commands.CommandHandler;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
+import teamUnknown.immersion.core.network.message.MessageSocialPacket;
 import teamUnknown.immersion.core.proxy.IProxy;
 import teamUnknown.immersion.coreFeatures.debug.FeatureDebugging;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
@@ -80,6 +81,7 @@ public class Immersion
 	public void init(FMLInitializationEvent event) 
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
+
         this._featureRepository.runInitialization();
         log.info("Init Finished");
 	}
