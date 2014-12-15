@@ -7,7 +7,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import teamUnknown.immersion.core.utils.BlockPosition;
-import teamUnknown.immersion.core.utils.WorldBlockPosition;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
@@ -30,16 +29,16 @@ public class BlockHeatedCoal extends ImmersionBlock {
 
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-        WorldBlockPosition position = new WorldBlockPosition(world, x, y, z);
+        BlockPosition position = new BlockPosition(world, x, y, z);
 
         if (!isPositionValid(position)){
             HashSet<BlockPosition> closed = new HashSet<BlockPosition>();
-            ArrayDeque<WorldBlockPosition> open = new ArrayDeque<WorldBlockPosition>();
+            ArrayDeque<BlockPosition> open = new ArrayDeque<BlockPosition>();
 
             open.add(position);
 
             while (!open.isEmpty()){
-                WorldBlockPosition pos = open.removeFirst();
+                BlockPosition pos = open.removeFirst();
                 if (!closed.contains(pos) && pos.is(this)){
                     closed.add(pos);
 
@@ -73,11 +72,11 @@ public class BlockHeatedCoal extends ImmersionBlock {
     }
 
 
-    public void ignite(WorldBlockPosition position){
+    public void ignite(BlockPosition position){
         this.propagateIgnition(position);
     }
 
-    protected boolean isPositionValid(WorldBlockPosition position){
+    protected boolean isPositionValid(BlockPosition position){
         return !position.bottom().isAir()
                 && !position.north().isAir()
                 && !position.east().isAir()
@@ -86,18 +85,18 @@ public class BlockHeatedCoal extends ImmersionBlock {
                 && position.top().isAir();
     }
 
-    protected boolean canBePropagatedTo(WorldBlockPosition position){
+    protected boolean canBePropagatedTo(BlockPosition position){
         return position.is(Blocks.coal_block) && this.isPositionValid(position);
     }
 
-    protected void propagateIgnition(WorldBlockPosition position){
+    protected void propagateIgnition(BlockPosition position){
         HashSet<BlockPosition> closed = new HashSet<BlockPosition>();
-        ArrayDeque<WorldBlockPosition> open = new ArrayDeque<WorldBlockPosition>();
+        ArrayDeque<BlockPosition> open = new ArrayDeque<BlockPosition>();
 
         open.add(position);
 
         while (!open.isEmpty()){
-            WorldBlockPosition pos = open.removeFirst();
+            BlockPosition pos = open.removeFirst();
             if (!closed.contains(pos) && this.canBePropagatedTo(pos)){
                 closed.add(pos);
 

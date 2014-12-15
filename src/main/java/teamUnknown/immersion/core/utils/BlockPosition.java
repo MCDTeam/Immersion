@@ -15,7 +15,7 @@ public class BlockPosition {
     public int z;
     public World w;
 
-    public BlockPosition(int x, int y, int z, World w){
+    public BlockPosition(World w, int y, int z, int x){
         this.x = x;
         this.y = y;
         this.z = z;
@@ -39,7 +39,7 @@ public class BlockPosition {
     }
 
     public BlockPosition direction(ForgeDirection direction, int count){
-        return new BlockPosition(this.x + direction.offsetX * count, this.y + direction.offsetY * count, this.z + direction.offsetZ * count, w);
+        return new BlockPosition(w, this.x + direction.offsetX * count, this.y + direction.offsetY * count, this.z + direction.offsetZ * count);
     }
 
     public BlockPosition top(){
@@ -68,12 +68,12 @@ public class BlockPosition {
 
     public static BlockPosition topWorldBlock(World world, int x, int z){
         int y = world.getTopSolidOrLiquidBlock(x, z);
-        return new BlockPosition(x, y, z, world);
+        return new BlockPosition(world, y, z, x);
     }
 
     public static BlockPosition topTerrainBlock(World world, int x, int z){
         int y = world.getHeightValue(x, z);
-        return new BlockPosition(x, y, z, world);
+        return new BlockPosition(world, y, z, x);
     }
 
     public Block getBlock(){
@@ -114,7 +114,7 @@ public class BlockPosition {
     
     public static BlockPosition getPositonFromTile(TileEntity tile)
     {
-    	return new BlockPosition(tile.xCoord, tile.yCoord, tile.zCoord, tile.getWorldObj());
+    	return new BlockPosition(tile.getWorldObj(), tile.yCoord, tile.zCoord, tile.xCoord);
     }
 
     @Override

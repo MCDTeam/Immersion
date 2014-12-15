@@ -41,21 +41,40 @@ public class BlockGemOre extends BlockOre
 
 	public Item getItemDropped(int meta, Random random, int fortune)
     {
-		if (blockConstructorCalled) 
-		{
 			switch (fortune) 
 			{
+			
 			case 0:
-				if (random.nextInt(100) >= 33) 
+				if (random.nextInt(100) >= 10) 
 				{
-
+					return droptwo;
 				} 
 				else 
 				{
-
+					return dropone;
 				}
-				break;
+			case 1:
+				if (random.nextInt(100) >= 33) 
+				{
+					return droptwo;
+				} 
+				else 
+				{
+					return dropone;
+				}
+			case 2:
+				if (random.nextInt(100) >= 66) 
+				{
+					return droptwo;
+				} 
+				else 
+				{
+					return dropone;
+				}
+			case 3:
+				return dropone;
+			default:
+				return droptwo;
 			}
-		}
     }
 }

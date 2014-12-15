@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
-import teamUnknown.immersion.core.utils.WorldBlockPosition;
+import teamUnknown.immersion.core.utils.BlockPosition;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
 
 import java.util.Random;
@@ -32,11 +32,11 @@ public class PlayerInteractEventListener {
             && event.entityPlayer.getHeldItem().getItem() != null
             && event.entityPlayer.getHeldItem().getItem() == Items.flint_and_steel)
         {
-            WorldBlockPosition pos = new WorldBlockPosition(event.world, event.x, event.y, event.z);
+            BlockPosition pos = new BlockPosition(event.world, event.x, event.y, event.z);
 
             if (pos.getBlock() == Blocks.coal_block)
             {
-                WorldBlockPosition top = pos.top();
+                BlockPosition top = pos.top();
                 if (top.isAir()){
                     if (world.isRemote){
                         // prevent flame "flickering"
