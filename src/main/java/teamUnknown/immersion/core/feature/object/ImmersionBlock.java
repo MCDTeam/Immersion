@@ -54,4 +54,9 @@ public class ImmersionBlock extends Block implements IImersionObject
 	{
 
 	}
+	
+	public ImmersionBlock get()
+	{
+		return this;
+	}
 }

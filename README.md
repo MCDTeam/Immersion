@@ -1,14 +1,11 @@
 Immersion
 =======
 
-The repository for the mod for Minecraft 1.7.10 immersion.
+The repository for the modification for Minecraft 1.7.10 Immersion.
+This mod is built with Forge. Current version of forge being used can be found in the build.gradle.
 
-If you want development builds, please label the version in build.gradle as 1.7.10-DEVELOPMENT
-
-Versioning is provided by the following system:
-Release.Beta.Alpha.Bugfix
-Therefore a release 0.1.8.2 is Relase 0 (pre-release) Beta Build 1 Alpha Build 8 Bugfix 2
-And would be called Pre-Release Beta 1 Alpha 8 Bugfix 2
+If you want development builds, please label the version in build.gradle as 1.7.10-DEV and do gradlew build. These builds will not be stable. Do not ask for support for these builds.
 
 Please submit BUGS to the issue tracker, not support requests.
+If you wish to contribute, submit a pull request
 Please make sure our mod is causing your problems, not any other mod.

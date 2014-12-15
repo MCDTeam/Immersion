@@ -8,12 +8,13 @@ import teamUnknown.immersion.features.magic.blocks.ManaPylonBasic;
 import teamUnknown.immersion.features.magic.blocks.Plinth;
 import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
 
-public class ObjectRegister extends FeatureObjectRegister {
-
+public class Objects extends FeatureObjectRegister 
+{
+	public static Objects INSTANCE = new Objects();
 	@Override
 	public void startRegistry() 
 	{
-		register(new ManaPylonBasic());
+		register(((ImmersionBlock) new ManaPylonBasic().setBlockTextureName("glass")).get());
 		register(new ImmersionBlock("blockBrickMagic"));
 		register(new Plinth());
 	}
