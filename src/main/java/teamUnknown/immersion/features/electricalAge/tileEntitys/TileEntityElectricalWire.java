@@ -10,7 +10,7 @@ import teamUnknown.immersion.core.meta.EnergyValues;
 import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
 import teamUnknown.immersion.features.electricalAge.energy.TileEnergyHandler;
 
-public class TileEntityElectricalWire extends TileEnergyHandler{
+public class TileEntityElectricalWire extends TileEntityMachine{
 
     protected EnergyStorage storage = new EnergyStorage(EnergyValues.Values.ELECTRICAL_WIRE_STORGE);
 
