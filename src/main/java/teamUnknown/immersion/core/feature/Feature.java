@@ -67,7 +67,8 @@ public @interface Feature
     		SERVERSTARTED,
     		SERVERSTOPPING,
     		SERVERSTOPPED,
-    		NONSETUP
+    		NONSETUP,
+            CLIENT
     	}
     	
     	/**
