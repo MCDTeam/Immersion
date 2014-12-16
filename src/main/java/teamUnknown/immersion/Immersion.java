@@ -1,5 +1,7 @@
 package teamUnknown.immersion;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,8 +11,11 @@ import teamUnknown.immersion.core.commands.CommandHandler;
 import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
+import teamUnknown.immersion.core.network.message.MessageSocialPacket;
 import teamUnknown.immersion.core.proxy.IProxy;
+import teamUnknown.immersion.coreFeatures.debug.FeatureDebugging;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
+import teamUnknown.immersion.coreFeatures.social.FeatureSocial;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
 import teamUnknown.immersion.features.electricalAge.ElectricalFeature;
@@ -53,14 +58,20 @@ public class Immersion
 	public void preInit(FMLPreInitializationEvent event)
 	{	
 		log.info("Pre-Init Version: " + ModMetadata.VERSION);
-		
+		ModMetadata.CONF_DIR = event.getModConfigurationDirectory();
+
 		//Put feature register together
         _featureRepository.RegisterFeature(new FeatureDataCollector()); // this need to be first entry, as other features will not work without it
         _featureRepository.RegisterFeature(new FeatureOreGen());
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());
+<<<<<<< HEAD
         _featureRepository.RegisterFeature(new ElectricalFeature());
+=======
+        _featureRepository.RegisterFeature(new FeatureDebugging());
+        _featureRepository.RegisterFeature(new FeatureSocial());
+>>>>>>> master
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -68,12 +79,15 @@ public class Immersion
         this._featureRepository.runPreInitialization(config);
         config.save();
 
+<<<<<<< HEAD
         // All proxy rendering
         proxy.registerRendering();
 
         // All proxy TileEntity registering
         proxy.registerTileEntitys();
         
+=======
+>>>>>>> master
 		log.info("Pre-Init Finished");
 	}
 
@@ -81,6 +95,7 @@ public class Immersion
 	public void init(FMLInitializationEvent event) 
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
+
         this._featureRepository.runInitialization();
         log.info("Init Finished");
 	}
