@@ -7,7 +7,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import teamUnknown.immersion.features.electricalAge.client.render.tileEntity.TileEntityRenderElectricalWireBasic;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityElectricalWire;
 
-@SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy{
 
     @SideOnly(Side.CLIENT)

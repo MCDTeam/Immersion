@@ -4,7 +4,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import teamUnknown.immersion.core.ImmersionCreativeTab;
 import teamUnknown.immersion.core.providers.resources.ResourceProvider;
 
 /**
@@ -37,8 +36,7 @@ public class ImmersionBlock extends Block implements IImersionObject
         this.setBlockTextureName(ResourceProvider.getTextureName(name));
 
         //Sets a basic creative tab so that it is accessible. Calling this in the constuructor overrides this
-        this.setCreativeTab(ImmersionCreativeTab.tabGeneral);
-        //this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
     private String inferName() 

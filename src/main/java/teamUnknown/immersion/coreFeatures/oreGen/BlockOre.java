@@ -18,7 +18,6 @@ public class BlockOre extends ImmersionBlock
 {
     private OreGenerator generator;
 
-<<<<<<< HEAD
     @SideOnly(Side.CLIENT)
     protected IIcon texture;
 
@@ -30,16 +29,6 @@ public class BlockOre extends ImmersionBlock
         setCreativeTab(CreativeTabs.tabBlock);
         setHarvestLevel("pickaxe", picklevel);
     }
-=======
-	public BlockOre(String type, Float hardness, int picklevel)
-	{
-		super("ore" + type, Material.rock);
-		setHardness(hardness);
-		setStepSound(Block.soundTypeStone);
-		setCreativeTab(CreativeTabs.tabBlock);
-		setHarvestLevel("pickaxe", picklevel);
-	}
->>>>>>> master
 
     /**
      * Used so the client doesnt crash
@@ -53,7 +42,6 @@ public class BlockOre extends ImmersionBlock
         setCreativeTab(CreativeTabs.tabBlock);
         setHarvestLevel("pickaxe", 3);
     }
-<<<<<<< HEAD
 
     public void registerForGeneration(int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension)
     {
@@ -97,49 +85,4 @@ public class BlockOre extends ImmersionBlock
             }
         }
     }
-=======
-	
-	public void registerForGeneration(int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension)
-	{
-		this.generator = new OreGenerator(chunkdensity, YMin, YMax, sizeMin, sizeMax, dimension, this);
-	}
-	
-	protected void generate(World world, Random random, int chunkX, int chunkZ)
-	{
-		generator.generateForChunk (world, random, chunkX, chunkZ);
-	}
-	
-	private class OreGenerator
-	{
-		private int chunkdensity;
-		private int YMin;
-		private int YMax;
-		private int sizeMin;
-		private int sizeMax;
-		private int dimension;
-		private BlockOre ore;
-		
-		public OreGenerator (int chunkdensity, int YMin, int YMax, int sizeMin, int sizeMax, int dimension, BlockOre ore)
-		{
-			this.chunkdensity = chunkdensity;
-			this.YMin = YMin;
-			this.YMax = YMax;
-			this.sizeMin = sizeMin;
-			this.sizeMax = sizeMax;
-			this.dimension = dimension;
-			this.ore = ore;
-		}
-		
-		public void generateForChunk (World world, Random random, int chunkX, int chunkZ)
-		{
-			if (dimension == world.provider.dimensionId)
-			{
-				for (int i = 0; i < chunkdensity; i++)
-				{
-					new WorldGenMinable(ore, (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, (chunkX + random.nextInt(16)), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16)));
-				}
-			}
-		}
-	}
->>>>>>> master
 }

@@ -31,8 +31,6 @@ public class CommandImmersionCore extends CommandBase {
                 CommandVersion.processCommand(sender, args);
             } else if (commandName.equalsIgnoreCase(Commands.COMMAND_WEBSITE)) {
                 CommandWebsite.processCommand(sender, args);
-            } else if (commandName.equalsIgnoreCase(Commands.COMMAND_FRIEND)) {
-                CommandFriend.processCommand(sender, args);
             } else
                 throw new WrongUsageException(Commands.COMMAND_IMMERSION_USAGE, new Object[0]);
         } else
@@ -49,16 +47,12 @@ public class CommandImmersionCore extends CommandBase {
         switch (args.length) {
             case 1: {
                 return getListOfStringsMatchingLastWord(args, new String[]{
-                        Commands.COMMAND_VERSION, Commands.COMMAND_WEBSITE, Commands.COMMAND_FRIEND});
+                        Commands.COMMAND_VERSION, Commands.COMMAND_WEBSITE});
             }
                 case 2: {
                     if (args[0].equalsIgnoreCase(Commands.COMMAND_WEBSITE))
                         return getListOfStringsMatchingLastWord(args,
                                 new String[]{Commands.COMMAND_WIKI, Commands.COMMAND_SOURCE});
-
-                    if (args[0].equalsIgnoreCase(Commands.COMMAND_FRIEND))
-                        return getListOfStringsMatchingLastWord(args,
-                                new String[]{Commands.ADD, Commands.REMOVE});
                 }
             default: {
                 return null;
