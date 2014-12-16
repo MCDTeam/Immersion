@@ -97,4 +97,9 @@ public class ItemEnergyContainer extends ImmersionItem implements IEnergyContain
 
         return capacity;
     }
+
+    @Override
+    public EnergyStorage getEnergyStorage() {
+        return null;
+    }
 }

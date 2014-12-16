@@ -1,12 +1,12 @@
 package teamUnknown.immersion.features.electricalAge.tileEntitys;
 
 /**
- * Implement this interface to allow it to be rotated and known as a machine
+ * Implement this interface to allow it to be rotated.
  */
 
 public interface IRotatable {
 
-    public boolean isMachine();
-
     public boolean isRotatable();
+
+    public int getRotation();
 }

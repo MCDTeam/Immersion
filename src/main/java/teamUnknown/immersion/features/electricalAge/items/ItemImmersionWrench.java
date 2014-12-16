@@ -16,7 +16,6 @@ import teamUnknown.immersion.features.electricalAge.energy.EnergyHelper;
 import teamUnknown.immersion.features.electricalAge.energy.update.EnergyStorage;
 import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyContainerItem;
 import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyStorage;
-import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityMachine;
 
 import java.util.List;
 
@@ -41,7 +40,7 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
         public static String CHANGELOG = "changelog";
     }
 
-    public static String DEFAULT_WRENCH_MODE = WrenchModes.BREAK;
+    public static String DEFAULT_WRENCH_MODE = WrenchModes.BREAK;//TODO
 
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
@@ -152,14 +151,14 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
     }
 
     public static void modeRotate(World world, int x, int y, int z) { //TODO
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        /**TileEntity tileEntity = world.getTileEntity(x, y, z);
 
         if(tileEntity instanceof TileEntityMachine){
 
             int rotation = ((TileEntityMachine)tileEntity).getRotation();
             rotation++;
 
-        }
+        }**/
     }
 
     public static void modePowerReader(World world, EntityPlayer player, int x, int y, int z) {

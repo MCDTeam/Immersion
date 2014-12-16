@@ -61,7 +61,19 @@ public class TileEntityElectricalWire extends TileEntity implements IEnergyHandl
 
     @Override
     public void setLastReceivedDirection(ForgeDirection direction) {
+            this.lastReceivedDirection = direction;
+    }
 
+    @Override
+    public void writeToNBT(NBTTagCompound tagCompound) {
+        //super.writeToNBT(tagCompound);
+        //storage.writeToNBT(tagCompound);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound tagCompound) {
+        super.readFromNBT(tagCompound);
+        storage.readFromNBT(tagCompound);
     }
 
     /**
