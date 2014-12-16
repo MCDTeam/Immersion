@@ -50,4 +50,6 @@ public interface IEnergyStorage {
      * @param amount The amount of energy that is being tried to remove.
      */
     boolean canRemoveEnergy(int amount);
+
+    int getEnergyTransferRate();
 }

@@ -164,4 +164,9 @@ public class EnergyStorage implements IEnergyStorage {
     public boolean canRemoveEnergy(int amount) {
         return (energy - amount) >= 0;
     }
+
+    @Override
+    public int getEnergyTransferRate() {
+        return maxReceive;
+    }
 }
