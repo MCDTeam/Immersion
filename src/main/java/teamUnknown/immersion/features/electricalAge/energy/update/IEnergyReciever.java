@@ -33,4 +33,10 @@ public interface IEnergyReciever extends IEnergyConnection{
      */
     int getMaxEnergyStored(ForgeDirection from);
 
+    /**
+     * Removes an amount of energy
+     * @param energy
+     */
+    void removeEnergy(int amount);
+
 }

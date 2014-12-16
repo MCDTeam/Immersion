@@ -64,6 +64,16 @@ public class TileEnergyHandler extends TileEntity implements IEnergyHandler {
     }
 
     @Override
+    public void removeEnergy(int amount) {
+        storage.energy -= amount;
+    }
+
+    @Override
+    public void addEnergy(int amount) {
+        storage.energy += amount;
+    }
+
+    @Override
     public EnergyStorage getEnergyStorage() {
         return storage;
     }

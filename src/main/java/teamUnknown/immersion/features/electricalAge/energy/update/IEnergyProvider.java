@@ -32,4 +32,10 @@ public interface IEnergyProvider extends IEnergyConnection{
      * Returns the maximum amount of energy that can be stored.
      */
     int getMaxEnergyStored(ForgeDirection from);
+
+    /**
+     * Adds an amount of energy
+     * @param energy
+     */
+    void addEnergy(int amount);
 }

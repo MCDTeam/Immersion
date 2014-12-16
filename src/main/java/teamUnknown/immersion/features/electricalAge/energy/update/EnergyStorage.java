@@ -169,4 +169,14 @@ public class EnergyStorage implements IEnergyStorage {
     public int getEnergyTransferRate() {
         return maxReceive;
     }
+
+    public int addEnergyWithRemaining(int amount) {
+        energy += amount;
+        if (energy > capacity) {
+            int powerRemaining = energy - capacity;
+            energy -= powerRemaining;
+            return powerRemaining;
+        }
+        return 0;
+    }
 }
