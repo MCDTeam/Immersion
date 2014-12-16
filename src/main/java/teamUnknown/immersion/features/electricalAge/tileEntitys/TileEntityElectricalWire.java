@@ -4,52 +4,68 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
+import teamUnknown.immersion.core.meta.Energy;
 import teamUnknown.immersion.core.meta.EnergyValues;
-import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
-import teamUnknown.immersion.features.electricalAge.energy.TileEnergyHandler;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyBar;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyNet;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
 
-public class TileEntityElectricalWire extends TileEntityMachine{
+public class TileEntityElectricalWire extends TileEntity implements IEnergy{
 
-    protected EnergyStorage storage = new EnergyStorage(EnergyValues.Values.ELECTRICAL_WIRE_STORGE);
+    protected EnergyBar energyBar = new EnergyBar(EnergyValues.Values.ELECTRICAL_WIRE_STORGE);
+    private ForgeDirection lastReceivedDirection = ForgeDirection.UNKNOWN;
 
-    @Override
-    public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+    public TileEntityElectricalWire(){
 
-        return storage.receiveEnergy(maxReceive, simulate);
     }
 
     @Override
-    public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
-        return storage.extractEnergy(maxExtract, simulate);
+    public void updateEntity() {
+        EnergyNet.distributeEnergyToSurrounding(worldObj, xCoord, yCoord, zCoord, lastReceivedDirection, energyBar);
     }
 
+    /**
+     * Power Network Functions *
+     */
     @Override
-    public int getEnergyStored(ForgeDirection from) {
-        return storage.getEnergyStored();
-    }
-
-    @Override
-    public int getMaxEnergyStored(ForgeDirection from) {
-        return storage.getMaxEnergyStored();
-    }
-
-    @Override
-    public boolean canConnectEnergy(ForgeDirection from) {
+    public boolean canAddEnergyOnSide(ForgeDirection direction) {
         return true;
     }
 
     @Override
+    public boolean canConnect(ForgeDirection direction) {
+        return true;
+    }
+
+    public EnergyBar getEnergyBar() {
+        return energyBar;
+    }
+
+    @Override
+    public void setLastReceivedDirection(ForgeDirection direction) {
+        this.lastReceivedDirection = direction;
+    }
+
+    @Override
+    public int getEnergyTransferRate() {
+        return Energy.Values.ELECTRICAL_WIRE_TRANSFERE;
+    }
+
+    @Override
     public void writeToNBT(NBTTagCompound tag) {
+
         super.writeToNBT(tag);
-        storage.writeToNBT(tag);
+        energyBar.writeToNBT(tag);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound tag) {
+
         super.readFromNBT(tag);
-        storage.readFromNBT(tag);
+        energyBar.readFromNBT(tag);
     }
 
     @Override

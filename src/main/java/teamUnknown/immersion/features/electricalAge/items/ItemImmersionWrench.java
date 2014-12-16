@@ -6,13 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.meta.Names;
 import teamUnknown.immersion.core.utils.ChatHelper;
 import teamUnknown.immersion.core.utils.NBTHelper;
 import teamUnknown.immersion.features.electricalAge.api.IWrenchable;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergyReceiver;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
 import teamUnknown.immersion.features.electricalAge.energy.ItemEnergyContainer;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityMachine;
 
@@ -160,9 +158,9 @@ public class ItemImmersionWrench extends ItemEnergyContainer{
 
     public static void modePowerReader(World world, EntityPlayer player, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if (tileEntity instanceof IEnergyReceiver) {
+        if (tileEntity instanceof IEnergy) {
             //((IEnergy) tileEntity).getEnergyBar().setEnergyLevel(20);
-            ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + ((IEnergyStorage) tileEntity).getEnergyStored() + "/" + ((IEnergyStorage) tileEntity).getMaxEnergyStored());
+            ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + ((IEnergy) tileEntity).getEnergyBar().getEnergyLevel() + "/" + ((IEnergy) tileEntity).getEnergyBar().getEnergyLevel());
         }
     }
 }

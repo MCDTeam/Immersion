@@ -7,7 +7,7 @@ import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.features.electricalAge.blocks.ElectricalBlocks;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
 import teamUnknown.immersion.features.electricalAge.handler.ElectricalFeatureGuiHandler;
 import teamUnknown.immersion.features.electricalAge.items.ElectricalItems;
 import teamUnknown.immersion.features.electricalAge.thirdParty.WailaHandler;
@@ -43,6 +43,6 @@ public class ElectricalFeature extends FeatureCommon{
     }
 
     public void doWailaRegistry(IWailaRegistrar registrar){
-        registrar.registerBodyProvider(new WailaHandler(), IEnergyStorage.class);
+        registrar.registerBodyProvider(new WailaHandler(), IEnergy.class);
     }
 }

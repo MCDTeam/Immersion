@@ -30,6 +30,9 @@ public class Energy {
 
     public class Values {
 
+        public static final int ELECTRICAL_WIRE_TRANSFERE = 200;
+
         public static final int CREATIVE_CELL_STORAGE = 50000000;
+
     }
 }
