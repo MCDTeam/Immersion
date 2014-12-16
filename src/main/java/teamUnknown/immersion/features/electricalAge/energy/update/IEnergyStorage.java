@@ -52,4 +52,16 @@ public interface IEnergyStorage {
     boolean canRemoveEnergy(int amount);
 
     int getEnergyTransferRate();
+
+    /**
+     * Adds an amount of energy
+     * @param amount
+     */
+    void addEnergy(int amount);
+
+    /**
+     * Removes an amount of energy
+     * @param amount
+     */
+    void removeEnergy(int amount);
 }

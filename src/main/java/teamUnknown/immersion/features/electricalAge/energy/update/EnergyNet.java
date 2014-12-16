@@ -19,7 +19,7 @@ public class EnergyNet {
      *                      of you don't have a last direction.
      * @param storage     The energyBar object to take the energy from.
      */
-    public static void distributeEnergyToSurrounding(World world, int x, int y, int z, ForgeDirection lastDirection, IEnergyHandler storage) {
+    public static void distributeEnergyToSurrounding(World world, int x, int y, int z, ForgeDirection lastDirection, IEnergyStorage storage) {
         distributeEnergyToSurroundingWithLoss(world, x, y, z, lastDirection, storage, 0);
     }
 
@@ -34,17 +34,17 @@ public class EnergyNet {
      * @param storage The energyBar object to take the energy from.
      */
 
-    public static void distributeEnergyToSurrounding(World world, int x, int y, int z, IEnergyHandler storage) {
+    public static void distributeEnergyToSurrounding(World world, int x, int y, int z, IEnergyStorage storage) {
         distributeEnergyToSurrounding(world, x, y, z, ForgeDirection.UNKNOWN, storage);
     }
 
-    public static void distributeEnergyToSide(World world, int x, int y, int z, ForgeDirection direction, IEnergyHandler storage) {
+    public static void distributeEnergyToSide(World world, int x, int y, int z, ForgeDirection direction, IEnergyStorage storage) {
         if (world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) instanceof IEnergyHandler) {
             IEnergyHandler energyTileOnSide = (IEnergyHandler) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
             IEnergyHandler thisEnergyTile = (IEnergyHandler) world.getTileEntity(x, y, z);
             ForgeDirection invertedSide = ForgeDirection.VALID_DIRECTIONS[ForgeDirection.OPPOSITES[direction.ordinal()]];
             if (thisEnergyTile.canConnectEnergy(invertedSide) && energyTileOnSide.canConnectEnergy(invertedSide)) {
-                if (storage.getEnergyStorage().getEnergyStored() - thisEnergyTile.getEnergyStorage().getEnergyTransferRate() >= 0) {
+                if (storage.getEnergyStored() - thisEnergyTile.getEnergyStorage().getEnergyTransferRate() >= 0) {
                     if (energyTileOnSide.getEnergyStorage().canAddEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate())) {
                         energyTileOnSide.getEnergyStorage().receiveEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate(), false);
                         storage.removeEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate());
@@ -58,7 +58,7 @@ public class EnergyNet {
         }
     }
 
-    public static void distributeEnergyToSurroundingWithLoss(World world, int x, int y, int z, ForgeDirection lastDirection, IEnergyHandler storage, int loss) {
+    public static void distributeEnergyToSurroundingWithLoss(World world, int x, int y, int z, ForgeDirection lastDirection, IEnergyStorage storage, int loss) {
         int sides = 0;
         boolean sidesCanOutput[] = new boolean[6];
         for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) {
@@ -75,9 +75,9 @@ public class EnergyNet {
         for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) {
             if (sidesCanOutput[direction.ordinal()] && direction != lastDirection) {
                 IEnergyHandler energyTile = (IEnergyHandler) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
-                if (storage.getEnergyStorage().getEnergyStored() - energyTile.getEnergyStorage().getEnergyTransferRate() / sides >= 0) {
+                if (storage.getEnergyStored() - energyTile.getEnergyStorage().getEnergyTransferRate() / sides >= 0) {
                     if (energyTile.getEnergyStorage().canAddEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss)) {
-                        energyTile.addEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss);
+                        energyTile.getEnergyStorage().removeEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss);
                         storage.removeEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides);
                     } else {
                         int remaining = energyTile.getEnergyStorage().addEnergyWithRemaining(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss);

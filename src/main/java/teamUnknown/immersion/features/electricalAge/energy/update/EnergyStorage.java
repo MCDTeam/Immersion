@@ -179,4 +179,14 @@ public class EnergyStorage implements IEnergyStorage {
         }
         return 0;
     }
+
+    @Override
+    public void removeEnergy(int amount) {
+        energy -= amount;
+    }
+
+    @Override
+    public void addEnergy(int amount) {
+        energy += amount;
+    }
 }

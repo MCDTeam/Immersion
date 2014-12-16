@@ -5,13 +5,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
-import teamUnknown.immersion.core.meta.Energy;
 import teamUnknown.immersion.core.meta.EnergyValues;
-import teamUnknown.immersion.features.electricalAge.energy.EnergyBar;
-import teamUnknown.immersion.features.electricalAge.energy.EnergyNet;
-import teamUnknown.immersion.features.electricalAge.energy.IEnergy;
+import teamUnknown.immersion.features.electricalAge.energy.update.EnergyNet;
 import teamUnknown.immersion.features.electricalAge.energy.update.EnergyStorage;
 import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyHandler;
 
@@ -51,16 +47,6 @@ public class TileEntityElectricalWire extends TileEntity implements IEnergyHandl
     @Override
     public int getMaxEnergyStored(ForgeDirection from) {
         return storage.getMaxEnergyStored();
-    }
-
-    @Override
-    public void removeEnergy(int amount) {
-        storage.extractEnergy(amount, false);
-    }
-
-    @Override
-    public void addEnergy(int amount) {
-        storage.receiveEnergy(amount, false);
     }
 
     @Override
