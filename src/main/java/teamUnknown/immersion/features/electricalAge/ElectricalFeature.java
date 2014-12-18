@@ -7,7 +7,6 @@ import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.features.electricalAge.blocks.ElectricalBlocks;
-import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyHandler;
 import teamUnknown.immersion.features.electricalAge.handler.ElectricalFeatureGuiHandler;
 import teamUnknown.immersion.features.electricalAge.items.ElectricalItems;
 import teamUnknown.immersion.features.electricalAge.thirdParty.WailaHandler;

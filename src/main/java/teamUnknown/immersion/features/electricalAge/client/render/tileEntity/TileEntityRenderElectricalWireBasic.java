@@ -6,7 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 import teamUnknown.immersion.core.meta.Textures;
-import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyConnection;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyConnection;
 import teamUnknown.immersion.features.electricalAge.model.ModelElectricalWireBasic;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityElectricalWire;
 

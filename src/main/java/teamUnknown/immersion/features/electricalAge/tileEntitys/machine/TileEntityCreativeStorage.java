@@ -7,9 +7,9 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.meta.Energy;
-import teamUnknown.immersion.features.electricalAge.energy.update.EnergyNet;
-import teamUnknown.immersion.features.electricalAge.energy.update.EnergyStorage;
-import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyHandler;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyNet;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyHandler;
 
 public class TileEntityCreativeStorage extends TileEntity implements IEnergyHandler{
 
@@ -56,6 +56,11 @@ public class TileEntityCreativeStorage extends TileEntity implements IEnergyHand
     }
 
     @Override
+    public boolean canAddEnergyOnSide(ForgeDirection direction) {
+        return true;
+    }
+
+    @Override
     public boolean canConnectEnergy(ForgeDirection from) {
         return true;
     }
@@ -63,5 +68,17 @@ public class TileEntityCreativeStorage extends TileEntity implements IEnergyHand
     @Override
     public void setLastReceivedDirection(ForgeDirection direction) {
 
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound tagCompound) {
+        super.writeToNBT(tagCompound);
+        storage.writeToNBT(tagCompound);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound tagCompound) {
+        super.readFromNBT(tagCompound);
+        storage.readFromNBT(tagCompound);
     }
 }

@@ -46,7 +46,7 @@ public class EnergyNet {
             if (thisEnergyTile.canConnectEnergy(invertedSide) && energyTileOnSide.canAddEnergyOnSide(invertedSide)) {
                 if (storage.getEnergyStored() - thisEnergyTile.getEnergyStorage().getEnergyTransferRate() >= 0) {
                     if (energyTileOnSide.getEnergyStorage().canAddEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate())) {
-                        energyTileOnSide.getEnergyStorage().receiveEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate(), false);
+                        energyTileOnSide.getEnergyStorage().addEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate());
                         storage.removeEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate());
                     } else {
                         int remaining = energyTileOnSide.getEnergyStorage().addEnergyWithRemaining(thisEnergyTile.getEnergyStorage().getEnergyTransferRate());
@@ -77,7 +77,7 @@ public class EnergyNet {
                 IEnergyHandler energyTile = (IEnergyHandler) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
                 if (storage.getEnergyStored() - energyTile.getEnergyStorage().getEnergyTransferRate() / sides >= 0) {
                     if (energyTile.getEnergyStorage().canAddEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss)) {
-                        energyTile.getEnergyStorage().removeEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss);
+                        energyTile.getEnergyStorage().addEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss);
                         storage.removeEnergy(energyTile.getEnergyStorage().getEnergyTransferRate() / sides);
                     } else {
                         int remaining = energyTile.getEnergyStorage().addEnergyWithRemaining(energyTile.getEnergyStorage().getEnergyTransferRate() / sides - loss);

@@ -1,5 +1,6 @@
 package teamUnknown.immersion.features.electricalAge.blocks.Machines;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -10,12 +11,13 @@ import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.feature.object.ImmersionContainer;
 import teamUnknown.immersion.core.meta.GuiIds;
 import teamUnknown.immersion.core.meta.ModMetadata;
+import teamUnknown.immersion.features.electricalAge.blocks.ImmersionElectricalBlock;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityCreativeStorage;
 
-public class blockCreativeStorage extends ImmersionContainer{
+public class blockCreativeStorage extends ImmersionElectricalBlock{
 
-    public blockCreativeStorage(String name){
-        super(name);
+    public blockCreativeStorage(String name, Material material){
+        super(name, material);
     }
 
     public IIcon output;

@@ -16,8 +16,8 @@ import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityMachin
 
 public class ImmersionElectricalBlock extends ImmersionContainer {
 
-    public ImmersionElectricalBlock() {
-        super(Material.rock);
+    public ImmersionElectricalBlock(String name, Material material) {
+        super(name, material);
     }
 
     public String playerOwner;

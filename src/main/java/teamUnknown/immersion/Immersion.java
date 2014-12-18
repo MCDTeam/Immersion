@@ -70,9 +70,6 @@ public class Immersion
 
         // All proxy rendering
         proxy.registerRendering();
-
-        // All proxy TileEntity registering
-        proxy.registerTileEntitys();
         
 		log.info("Pre-Init Finished");
 	}
@@ -81,6 +78,10 @@ public class Immersion
 	public void init(FMLInitializationEvent event) 
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
+
+        // All proxy TileEntity registering
+        proxy.registerTileEntitys();
+
         this._featureRepository.runInitialization();
         log.info("Init Finished");
 	}

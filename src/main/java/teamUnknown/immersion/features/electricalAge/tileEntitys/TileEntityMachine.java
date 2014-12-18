@@ -7,8 +7,8 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
-import teamUnknown.immersion.features.electricalAge.energy.update.EnergyStorage;
-import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyHandler;
+import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyHandler;
 
 public class TileEntityMachine extends TileEntity implements IEnergyHandler{
 
@@ -74,6 +74,11 @@ public class TileEntityMachine extends TileEntity implements IEnergyHandler{
     @Override
     public EnergyStorage getEnergyStorage() {
         return null;
+    }
+
+    @Override
+    public boolean canAddEnergyOnSide(ForgeDirection direction) {
+        return true;
     }
 
     @Override

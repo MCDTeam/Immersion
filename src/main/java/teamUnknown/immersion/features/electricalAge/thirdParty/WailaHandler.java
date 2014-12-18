@@ -8,7 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import teamUnknown.immersion.features.electricalAge.energy.EnergyHelper;
-import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyHandler;
+import teamUnknown.immersion.features.electricalAge.energy.IEnergyStorage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +40,7 @@ public class WailaHandler implements IWailaDataProvider {
 
         TileEntity tileEntity = accessor.getTileEntity();
 
-        if(tileEntity instanceof IEnergyStorage) {
+        if(tileEntity instanceof IEnergyHandler) {
             String energyLevel = String.valueOf(EnergyHelper.getStoredEnergy(tileEntity));
             String maxEnergyLevel = String.valueOf(EnergyHelper.getMaxEnergyStored(tileEntity));
 

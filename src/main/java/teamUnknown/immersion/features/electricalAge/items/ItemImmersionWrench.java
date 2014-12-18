@@ -6,16 +6,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 import teamUnknown.immersion.core.meta.Names;
 import teamUnknown.immersion.core.utils.ChatHelper;
 import teamUnknown.immersion.core.utils.NBTHelper;
 import teamUnknown.immersion.features.electricalAge.api.IWrenchable;
-import teamUnknown.immersion.features.electricalAge.energy.EnergyHelper;
-import teamUnknown.immersion.features.electricalAge.energy.update.EnergyStorage;
-import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyContainerItem;
-import teamUnknown.immersion.features.electricalAge.energy.update.IEnergyStorage;
+import teamUnknown.immersion.features.electricalAge.energy.*;
 
 import java.util.List;
 
@@ -40,7 +36,7 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
         public static String CHANGELOG = "changelog";
     }
 
-    public static String DEFAULT_WRENCH_MODE = WrenchModes.BREAK;//TODO
+    public static String DEFAULT_WRENCH_MODE = WrenchModes.POWER_READER;//TODO
 
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
@@ -163,7 +159,7 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
 
     public static void modePowerReader(World world, EntityPlayer player, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if (tileEntity instanceof IEnergyStorage) {
+        if (tileEntity instanceof IEnergyHandler) {
             //((IEnergy) tileEntity).getEnergyBar().setEnergyLevel(20);
             //ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + ((IEnergyStorage) tileEntity).getEnergyBar().getEnergyLevel() + "/" + ((IEnergy) tileEntity).getEnergyBar().getEnergyLevel());
             ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + EnergyHelper.getStoredEnergy(tileEntity) + "/" + EnergyHelper.getMaxEnergyStored(tileEntity));

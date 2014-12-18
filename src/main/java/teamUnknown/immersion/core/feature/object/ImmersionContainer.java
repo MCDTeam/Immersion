@@ -12,15 +12,11 @@ public class ImmersionContainer extends BlockContainer implements IImersionObjec
     private static final Material DEFAULT_MATERIAL = Material.rock;
 
     public ImmersionContainer() {
-        super(DEFAULT_MATERIAL);
+        this(null, DEFAULT_MATERIAL);
     }
 
-    public ImmersionContainer(Material material) {
+    public ImmersionContainer(String name, Material material) {
         super(material);
-    }
-
-    public ImmersionContainer(String name) {
-        super(DEFAULT_MATERIAL);
 
         if (name == null)
             name = this.inferName();
