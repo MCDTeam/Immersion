@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.electricalAge.energy.update;
+package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -66,5 +66,10 @@ public class TileEnergyHandler extends TileEntity implements IEnergyHandler {
     @Override
     public EnergyStorage getEnergyStorage() {
         return storage;
+    }
+
+    @Override
+    public boolean canAddEnergyOnSide(ForgeDirection direction) {
+        return true;
     }
 }

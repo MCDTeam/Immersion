@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.electricalAge.energy.update;
+package teamUnknown.immersion.features.electricalAge.energy;
 
 /**
  * An energy storage is the unit of interaction with Energy inventories.<br>

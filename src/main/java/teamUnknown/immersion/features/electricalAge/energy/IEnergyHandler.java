@@ -1,7 +1,6 @@
-package teamUnknown.immersion.features.electricalAge.energy.update;
+package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraftforge.common.util.ForgeDirection;
-import teamUnknown.immersion.core.meta.Energy;
 
 /**
  * Implement this interface on Tile Entities which should handle energy, generally storing it in one or more internal {@link IEnergyStorage} objects.
@@ -59,4 +58,12 @@ public interface IEnergyHandler extends IEnergyProvider, IEnergyReciever {
      * @return
      */
     EnergyStorage getEnergyStorage();
+
+    /**
+     * Can the machine accept evergy on a certain side
+     * @param direction
+     * @return true/false
+     */
+    @Override
+    boolean canAddEnergyOnSide(ForgeDirection direction);
 }

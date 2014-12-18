@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.electricalAge.energy.update;
+package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

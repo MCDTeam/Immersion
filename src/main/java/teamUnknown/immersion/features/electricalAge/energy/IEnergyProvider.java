@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.electricalAge.energy.update;
+package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -33,4 +33,10 @@ public interface IEnergyProvider extends IEnergyConnection{
      */
     int getMaxEnergyStored(ForgeDirection from);
 
+    /**
+     * Can the machine accept evergy on a certain side
+     * @param direction
+     * @return true/false
+     */
+    boolean canAddEnergyOnSide(ForgeDirection direction);
 }

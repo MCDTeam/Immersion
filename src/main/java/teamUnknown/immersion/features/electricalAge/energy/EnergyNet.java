@@ -1,4 +1,4 @@
-package teamUnknown.immersion.features.electricalAge.energy.update;
+package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -43,7 +43,7 @@ public class EnergyNet {
             IEnergyHandler energyTileOnSide = (IEnergyHandler) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
             IEnergyHandler thisEnergyTile = (IEnergyHandler) world.getTileEntity(x, y, z);
             ForgeDirection invertedSide = ForgeDirection.VALID_DIRECTIONS[ForgeDirection.OPPOSITES[direction.ordinal()]];
-            if (thisEnergyTile.canConnectEnergy(invertedSide) && energyTileOnSide.canConnectEnergy(invertedSide)) {
+            if (thisEnergyTile.canConnectEnergy(invertedSide) && energyTileOnSide.canAddEnergyOnSide(invertedSide)) {
                 if (storage.getEnergyStored() - thisEnergyTile.getEnergyStorage().getEnergyTransferRate() >= 0) {
                     if (energyTileOnSide.getEnergyStorage().canAddEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate())) {
                         energyTileOnSide.getEnergyStorage().receiveEnergy(thisEnergyTile.getEnergyStorage().getEnergyTransferRate(), false);
@@ -66,7 +66,7 @@ public class EnergyNet {
                 IEnergyHandler energyTileNextToIt = (IEnergyHandler) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
                 IEnergyHandler thisEnergyTile = (IEnergyHandler) world.getTileEntity(x, y, z);
                 ForgeDirection invertedSide = ForgeDirection.VALID_DIRECTIONS[ForgeDirection.OPPOSITES[direction.ordinal()]];
-                if (thisEnergyTile.canConnectEnergy(invertedSide) && energyTileNextToIt.canConnectEnergy(invertedSide) && direction != lastDirection) {
+                if (thisEnergyTile.canConnectEnergy(invertedSide) && energyTileNextToIt.canAddEnergyOnSide(invertedSide) && direction != lastDirection) {
                     sidesCanOutput[direction.ordinal()] = true;
                     sides++;
                 }
