@@ -1,5 +1,6 @@
 package teamUnknown.immersion;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +15,10 @@ import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
 import teamUnknown.immersion.features.electricalAge.ElectricalFeature;
+import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityElectricalWire;
+import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityBasicStorage;
+import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityCreativeStorage;
+import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityWirelessCharger;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -81,6 +86,12 @@ public class Immersion
 
         // All proxy TileEntity registering
         proxy.registerTileEntitys();
+
+        GameRegistry.registerTileEntity(TileEntityElectricalWire.class, "ElectricalWire");
+        GameRegistry.registerTileEntity(TileEntityWirelessCharger.class, "WirelessCharger");
+
+        GameRegistry.registerTileEntity(TileEntityCreativeStorage.class, "CreativeStorage");
+        GameRegistry.registerTileEntity(TileEntityBasicStorage.class, "BasicStorage");
 
         this._featureRepository.runInitialization();
         log.info("Init Finished");
