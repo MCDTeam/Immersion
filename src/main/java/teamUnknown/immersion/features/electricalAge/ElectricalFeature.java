@@ -45,4 +45,9 @@ public class ElectricalFeature extends FeatureCommon{
     public void doWailaRegistry(IWailaRegistrar registrar){
         registrar.registerBodyProvider(new WailaHandler(), Immersion.class);
     }
+
+    /**@Feature.FeatureElement(Feature.FeatureElement.Element.)
+    public void clientThings(){
+
+    }**/
 }

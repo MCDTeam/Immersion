@@ -37,11 +37,13 @@ public class ImmersionElectricalBlock extends ImmersionContainer {
 
             int meta = world.getBlockMetadata(x, y, z);
             if (meta == 0) {
-                TileEntityMachine machine = (TileEntityMachine) world.getTileEntity(x, y, z);
+                if(world.getTileEntity(x, y, z) instanceof TileEntityMachine) {
+                    TileEntityMachine machine = (TileEntityMachine) world.getTileEntity(x, y, z);
 
-                //if (machine instanceof IRotatable) {
+                    //if (machine instanceof IRotatable) {
                     machine.rotation = BlockUtils.determineMetadataBasedOnPlayerOrientation(player);
-                //}
+                    //}
+                }
             }
         }
     }

@@ -11,7 +11,7 @@ import teamUnknown.immersion.features.electricalAge.energy.EnergyNet;
 import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
 import teamUnknown.immersion.features.electricalAge.energy.IEnergyHandler;
 
-public class TileEntityElectricalWire extends TileEntity implements IEnergyHandler{
+public class TileEntityElectricalWire extends TileEntityMachine implements IEnergyHandler{
 
     public EnergyStorage storage = new EnergyStorage(EnergyValues.Values.ELECTRICAL_WIRE_STORGE);
     private ForgeDirection lastReceivedDirection = ForgeDirection.UNKNOWN;
