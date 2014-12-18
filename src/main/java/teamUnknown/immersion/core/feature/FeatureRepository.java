@@ -192,30 +192,6 @@ public class FeatureRepository {
 		}
     	
     }
-
-    public void runClient(Configuration configuration){ //TODO
-        runSetup(configuration);
-        ILogger log = this._logger;
-
-        log.info("Running ClientProxy of all features");
-
-        for (IFeature feature : this._features.values()) {
-            log.info("Now running ClientProxy for Feature '%1$s'", FeatureDataCollector.instance.getFeatureName(feature));
-            for (Method m : feature.getClass().getDeclaredMethods()) {
-                try {
-                    FeatureElement data = m.getAnnotation(Feature.FeatureElement.class);
-                    if (data.value() == Element.CLIENT)
-                    {
-                        log.info("Invoking Generic ClientProxy Element of '%1$s'. THIS IS NOT RECCOMENDED. REMOVE THIS IF POSSIBLE.", FeatureDataCollector.instance.getFeatureName(feature));
-                        m.invoke(feature);
-                        continue;
-                    }
-                } catch (Throwable e) {
-                    this._logger.info("Scanning for and Invoking methods resulted in '%1$s' from feature '%2$s' for feild '%3$s'.", e.toString(), FeatureDataCollector.instance.getFeatureName(feature), m.getName());
-                }
-            }
-        }
-    }
     
     public void runPreInitialization(Configuration configuration) 
     {

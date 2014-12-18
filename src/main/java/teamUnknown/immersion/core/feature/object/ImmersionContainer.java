@@ -1,32 +1,21 @@
 package teamUnknown.immersion.core.feature.object;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import teamUnknown.immersion.core.providers.resources.ResourceProvider;
 
-/**
- * Reminder: You must register your block with your own ObjectRegister to have it
- * Registered into the game. Failure to do this will cause nothing to happen.
- */
-public class ImmersionBlock extends Block implements IImersionObject
-{
+public class ImmersionContainer extends BlockContainer implements IImersionObject {
+
     private static final Material DEFAULT_MATERIAL = Material.rock;
 
-    protected ImmersionBlock() {
+    public ImmersionContainer() {
         this(null, DEFAULT_MATERIAL);
     }
 
-    protected ImmersionBlock(Material material) {
-        this(null, material);
-    }
-
-    protected ImmersionBlock(String name) {
-        this(name, DEFAULT_MATERIAL);
-    }
-
-    protected ImmersionBlock(String name, Material material) {
+    public ImmersionContainer(String name, Material material) {
         super(material);
 
         if (name == null)
@@ -39,20 +28,22 @@ public class ImmersionBlock extends Block implements IImersionObject
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
-    private String inferName() 
-    {
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return null;
+    }
+
+    private String inferName() {
         return this.getClass().getSimpleName();
     }
 
-	@Override
-	public void craftingRegistration() 
-	{
+    @Override
+    public void craftingRegistration() {
 
-	}
+    }
 
-	@Override
-	public void forgeOreDict() 
-	{
+    @Override
+    public void forgeOreDict() {
 
-	}
+    }
 }
