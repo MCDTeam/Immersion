@@ -51,16 +51,19 @@ public class blockBasicStorage extends ImmersionContainer{
         return false;
     }
 
+    @Override
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
         return output;
     }
 
+    @Override
     public void registerBlockIcons(IIconRegister iconRegister) {
 
         output = iconRegister.registerIcon(ModMetadata.MOD_ID + ":" + "tile.machineOutput");
         base = iconRegister.registerIcon(ModMetadata.MOD_ID + ":" + "tile.machineBase");
     }
 
+    @Override
     public IIcon getIcon(int side, int meta) {
         if (side == 3) return output;
         return base;
