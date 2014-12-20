@@ -7,8 +7,10 @@ import teamUnknown.immersion.core.feature.configuration.IConfigurationProvider;
 @Feature(name = "TweetingFeature", version = "0.1")
 public class TweetingFeature extends FeatureCommon{
 
+    public static boolean enabled = true;
     public static int userID;
     public static int IDSecret;
+
 
     @Feature.FeatureElement(Feature.FeatureElement.Element.CONFIGURATION)
     public void doConfiguration(IConfigurationProvider cfg){
@@ -17,8 +19,18 @@ public class TweetingFeature extends FeatureCommon{
         this.IDSecret = cfg.getConfig("ID Secret", "The secret ID for the account", 1234);
     }
 
+    @Feature.FeatureElement(Feature.FeatureElement.Element.PREINITIALIZATION)
+    public void preInit(){
+        this.enabled = true;
+    }
+
     @Feature.FeatureElement(Feature.FeatureElement.Element.EVENTBUS_EVENT)
     public void registerEventHandlers(){
+
+    }
+
+    @Feature.FeatureElement(Feature.FeatureElement.Element.SERVERSTARTING)
+    public void serverStarting(){
 
     }
 }
