@@ -11,37 +11,39 @@ import teamUnknown.immersion.features.electricalAge.handler.ElectricalFeatureGui
 import teamUnknown.immersion.features.electricalAge.items.ElectricalItems;
 import teamUnknown.immersion.features.electricalAge.thirdParty.WailaHandler;
 
+import static teamUnknown.immersion.core.feature.Feature.*;
+
 @Feature(name = "Electrical Age", version = "0.1", isBase = true)
 public class ElectricalFeature extends FeatureCommon{
 
-    @Feature.FeatureElement(Feature.FeatureElement.Element.CONFIGURATION)
+    @FeatureElement(FeatureElement.Element.CONFIGURATION)
     public void registerConfiguration(){
 
     }
 
-    @Feature.FeatureElement(Feature.FeatureElement.Element.PREINITIALIZATION)
+    @FeatureElement(FeatureElement.Element.PREINITIALIZATION)
     public void preInit(){
 
         ElectricalBlocks.init();
         ElectricalItems.init();
     }
 
-    @Feature.FeatureElement(Feature.FeatureElement.Element.INTITIALIZATION)
+    @FeatureElement(FeatureElement.Element.INTITIALIZATION)
     public void init(){
-        FMLInterModComms.sendMessage("Waila", "register", "teamUnknown.immersion.features.electricalAge.thirdParty.doWailaRegistry");
+        FMLInterModComms.sendMessage("Waila", "register", "teamUnknown.immersion.features.electricalAge.ElectricalFeature.doWailaRegistry");
     }
 
-    @Feature.FeatureElement(Feature.FeatureElement.Element.EVENTBUS_EVENT)
+    @FeatureElement(FeatureElement.Element.EVENTBUS_EVENT)
     public void registerEventHandlers(){
 
         NetworkRegistry.INSTANCE.registerGuiHandler(Immersion.instance, new ElectricalFeatureGuiHandler());
     }
 
-    @Feature.FeatureElement(Feature.FeatureElement.Element.MOD_COMPATIBILITY)
+    @FeatureElement(FeatureElement.Element.MOD_COMPATIBILITY)
     public void thirdPartyMods(){
     }
 
-    @Feature.FeatureElement(Feature.FeatureElement.Element.NONSETUP)
+    @FeatureElement(FeatureElement.Element.NONSETUP)
     public void doWailaRegistry(IWailaRegistrar registrar){
         registrar.registerBodyProvider(new WailaHandler(), Immersion.class);
     }

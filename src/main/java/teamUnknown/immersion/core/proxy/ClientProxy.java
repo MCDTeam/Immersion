@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy{
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElectricalWire.class, new TileEntityRenderElectricalWireBasic());
 
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ElectricalBlocks.electricalBlock), ItemRenderElectricalWire.instance);
+        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ElectricalBlocks.electricalWire), ItemRenderElectricalWire.instance);
     }
 
     @Override

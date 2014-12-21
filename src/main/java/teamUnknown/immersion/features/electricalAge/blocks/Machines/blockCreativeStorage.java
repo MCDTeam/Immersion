@@ -11,7 +11,9 @@ import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.feature.object.ImmersionContainer;
 import teamUnknown.immersion.core.meta.GuiIds;
 import teamUnknown.immersion.core.meta.ModMetadata;
+import teamUnknown.immersion.core.utils.ChatHelper;
 import teamUnknown.immersion.features.electricalAge.blocks.ImmersionElectricalBlock;
+import teamUnknown.immersion.features.electricalAge.items.ElectricalItems;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityCreativeStorage;
 
 public class blockCreativeStorage extends ImmersionElectricalBlock{
@@ -32,7 +34,9 @@ public class blockCreativeStorage extends ImmersionElectricalBlock{
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 
         if(!world.isRemote) {
-            player.openGui(Immersion.instance, GuiIds.GUI_ENERGY_CELL_ID, world, x, y, z);
+            if(!player.isSneaking()) {
+                    player.openGui(Immersion.instance, GuiIds.GUI_ENERGY_CELL_ID, world, x, y, z);
+            }
         }
         return true;//TODO
     }
