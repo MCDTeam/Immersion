@@ -7,6 +7,8 @@ public class Commands {
     public static final String SELF = "self";
     public static final String ON = "on";
     public static final String OFF = "off";
+    public static final String ADD = "add";
+    public static final String REMOVE = "remove";
 
     public static final String COMMAND_IMMERSION = "immersion";
     public static final String COMMAND_ON = "on";
@@ -19,6 +21,7 @@ public class Commands {
     public static final String COMMAND_VERSION = "version";
     public static final String COMMAND_CHANGELOG = "changelog";
     public static final String COMMAND_WEBSITE = "website";
+    public static final String COMMAND_FRIEND = "friend";
 
     /**
      * Admin *
@@ -31,6 +34,7 @@ public class Commands {
     public static final String COMMAND_SOUNDS_USAGE = "Immersion sounds [ all | self | off ]";
     public static final String COMMAND_VERSION_USAGE = "command.im.version.usage";
     public static final String COMMAND_WEBSITE_USAGE = "Immersion websites [ source | wiki ]";
+    public static final String COMMAND_FRIEND_USAGE = "Immersion friend [ add | remove ]";
 
     public static final String COMMAND_PARTICLES_TURNED_ON = "command.immerison:particles.turned_on";
     public static final String COMMAND_PARTICLES_TURNED_OFF = "command.immerison:particles.turned_off";

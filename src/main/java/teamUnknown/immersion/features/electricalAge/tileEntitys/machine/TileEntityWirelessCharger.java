@@ -5,9 +5,12 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import teamUnknown.immersion.core.feature.object.ImmersionBlock;
+import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;
 import teamUnknown.immersion.features.electricalAge.energy.IEnergyContainerItem;
 import teamUnknown.immersion.features.electricalAge.energy.IEnergyHandler;
@@ -19,19 +22,24 @@ public class TileEntityWirelessCharger extends TileEntity implements IEnergyHand
 
     private EnergyStorage storage = new EnergyStorage(10000);
     private int energyUsePerOperation = 100;
+    public boolean isCharging = true;
 
     private int range = 50;
-    private int timer = 40;
     private int counter = 0;
+
 
     @Override
     public void updateEntity() {
         counter++;
 
-        if (counter == timer) {
+        if (counter % 200 == 0){
+
             doWirelessCharging();
+            System.out.println(true);
         }
     }
+
+
 
     public void doWirelessCharging() {
 
@@ -77,12 +85,16 @@ public class TileEntityWirelessCharger extends TileEntity implements IEnergyHand
                 if((itemEnergyStorage.canAddEnergy(energyUsePerOperation)) && (storage.canRemoveEnergy(energyUsePerOperation))){
                     itemEnergyStorage.addEnergy(energyUsePerOperation);
                     storage.removeEnergy(energyUsePerOperation);
+
+                    this.isCharging = true;
                 }
             }else{
                 int remainder = storage.getEnergyStored();
                 if((itemEnergyStorage.canAddEnergy(remainder)) && (storage.canRemoveEnergy(remainder))){
                     itemEnergyStorage.addEnergyWithRemaining(remainder);
                     storage.removeEnergy(remainder);
+
+                    this.isCharging = true;
                 }
             }
         }
@@ -138,5 +150,15 @@ public class TileEntityWirelessCharger extends TileEntity implements IEnergyHand
     public void readFromNBT(NBTTagCompound tagCompound) {
         super.readFromNBT(tagCompound);
         storage.readFromNBT(tagCompound);
+    }
+
+    public Packet getDescriptionPacket() {
+        NBTTagCompound tag = new NBTTagCompound();
+        writeToNBT(tag);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tag);
+    }
+
+    public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
+        readFromNBT(packet.func_148857_g());
     }
 }
