@@ -12,6 +12,7 @@ import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.proxy.IProxy;
 import teamUnknown.immersion.coreFeatures.creativeTab.FeatureCreativeTab;
+import teamUnknown.immersion.coreFeatures.debug.FeatureDebugging;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
@@ -63,6 +64,7 @@ public class Immersion
 		//Put feature register together
         _featureRepository.RegisterFeature(new FeatureDataCollector()); // this need to be first entry, as other features will not work without it
         _featureRepository.RegisterFeature(new FeatureOreGen());
+        _featureRepository.RegisterFeature(new FeatureDebugging());
         _featureRepository.RegisterFeature(new FeatureSpawning());
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());

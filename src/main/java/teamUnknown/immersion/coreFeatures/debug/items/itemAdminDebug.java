@@ -20,7 +20,6 @@ public class itemAdminDebug extends ImmersionItem{
     public itemAdminDebug(){
         super("adminDebug");
 
-        this.setCreativeTab(CreativeTabs.tabTools);
         this.setMaxStackSize(1);
     }
 
