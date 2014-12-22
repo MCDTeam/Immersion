@@ -11,6 +11,7 @@ import teamUnknown.immersion.core.feature.FeatureDataCollector;
 import teamUnknown.immersion.core.feature.FeatureRepository;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.proxy.IProxy;
+import teamUnknown.immersion.coreFeatures.creativeTab.FeatureCreativeTab;
 import teamUnknown.immersion.coreFeatures.oreGen.FeatureOreGen;
 import teamUnknown.immersion.coreFeatures.versionCheck.FeatureVersion;
 import teamUnknown.immersion.features.blacksmithFeature.BlacksmithFeature;
@@ -66,6 +67,7 @@ public class Immersion
         _featureRepository.RegisterFeature(new FeatureVersion());
         _featureRepository.RegisterFeature(new BlacksmithFeature());
         _featureRepository.RegisterFeature(new ElectricalFeature());
+        _featureRepository.RegisterFeature(new FeatureCreativeTab());
         
         //get config to send to features
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
