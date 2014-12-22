@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import teamUnknown.immersion.core.providers.resources.ResourceProvider;
+import teamUnknown.immersion.coreFeatures.creativeTab.FeatureCreativeTab;
 
 public class ImmersionContainer extends BlockContainer implements IImersionObject {
 
@@ -25,7 +26,7 @@ public class ImmersionContainer extends BlockContainer implements IImersionObjec
         this.setBlockTextureName(ResourceProvider.getTextureName(name));
 
         //Sets a basic creative tab so that it is accessible. Calling this in the constuructor overrides this
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(FeatureCreativeTab.tabImmersionCore);
     }
 
     @Override
