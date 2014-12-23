@@ -1,6 +1,7 @@
 package teamUnknown.immersion.core.utils;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 
@@ -11,12 +12,8 @@ public class ChatHelper {
         player.addChatMessage(new ChatComponentText(ChatFormatting.GREEN + "[Immersion] " + ChatFormatting.GRAY + object.toString()));
     }
 
-    public static void sendDebugMessageToOwner(EntityPlayer player, Object object) {
-
-        if (player.getDisplayName().equals("XeliteXirish")) {
-
-            player.addChatMessage(new ChatComponentText(ChatFormatting.BLUE + "[Immerison] " + ChatFormatting.GRAY + object.toString()));
-        }
+    public static void sendCommandMessageToPlayer(ICommandSender sender, Object object){
+        sender.addChatMessage(new ChatComponentText(ChatFormatting.GREEN + "[Immersion] " + ChatFormatting.GRAY + object.toString()));
     }
 
     public static void sendBlankMessageToPlayer(EntityPlayer player, Object object) {
