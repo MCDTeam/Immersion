@@ -1,9 +1,12 @@
 package teamUnknown.immersion.features.electricalAge.blocks.Machines;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -30,12 +33,12 @@ public class blockCreativeStorage extends ImmersionElectricalBlock{
         return new TileEntityCreativeStorage();
     }
 
-    @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
         if(!world.isRemote) {
             if(!player.isSneaking()) {
-                    player.openGui(Immersion.instance, GuiIds.GUI_ENERGY_CELL_ID, world, x, y, z);
+                player.openGui(Immersion.instance, GuiIds.GUI_ENERGY_CELL_ID, world, x, y, z);
             }
         }
         return true;//TODO

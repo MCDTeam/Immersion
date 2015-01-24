@@ -1,8 +1,14 @@
 package teamUnknown.immersion;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.config.Configuration;
 
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,14 +28,6 @@ import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEnti
 import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityCreativeStorage;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityWirelessCharger;
 import teamUnknown.immersion.features.spawnFeature.FeatureSpawning;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 
 @Mod(modid = ModMetadata.MOD_ID, name = ModMetadata.NAME, version = ModMetadata.VERSION)
@@ -37,7 +35,7 @@ public class Immersion
 {
 	public static Logger log = LogManager.getLogger(ModMetadata.MOD_ID);
 	
-	@Instance(ModMetadata.MOD_ID)
+	@Mod.Instance(ModMetadata.MOD_ID)
 	public static Immersion instance;
     private final FeatureRepository _featureRepository;
 
@@ -49,14 +47,14 @@ public class Immersion
         this._featureRepository = new FeatureRepository();
     }
 
-    @EventHandler
+    @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event){
 
         // Initialize the custom commands
         CommandHandler.initCommands(event);
     }
 
-	@EventHandler
+	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{	
 		log.info("Pre-Init Version: " + ModMetadata.VERSION);
@@ -83,8 +81,8 @@ public class Immersion
 		log.info("Pre-Init Finished");
 	}
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) 
+	@Mod.EventHandler
+	public void init(FMLInitializationEvent event)
 	{
 		log.info("Init Version: " + ModMetadata.VERSION);
 
@@ -101,7 +99,7 @@ public class Immersion
         log.info("Init Finished");
 	}
 	
-	@EventHandler
+	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		log.info("Post-Init Version: " + ModMetadata.VERSION);

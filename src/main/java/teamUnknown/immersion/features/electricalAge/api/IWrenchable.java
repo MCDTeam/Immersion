@@ -3,6 +3,7 @@ package teamUnknown.immersion.features.electricalAge.api;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
     /**
@@ -30,5 +31,5 @@ import net.minecraft.world.World;
          * @param side      - The side of the block clicked
          * @return true if wrenching is allowed, false if not
          */
-        public void onWrenchUsed(EntityPlayer player, Block block, ItemStack itemStack, World world, int x, int y, int z, int side);
+        public void onWrenchUsed(EntityPlayer player, Block block, ItemStack itemStack, World world, int x, int y, int z, EnumFacing side);
 }

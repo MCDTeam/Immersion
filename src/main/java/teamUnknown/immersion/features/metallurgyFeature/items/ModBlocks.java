@@ -1,9 +1,8 @@
 package teamUnknown.immersion.features.metallurgyFeature.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
-import teamUnknown.immersion.core.feature.object.FeatureObjectRegister;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.coreFeatures.oreGen.BlockOre;
 

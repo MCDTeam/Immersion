@@ -2,6 +2,7 @@ package teamUnknown.immersion.features.electricalAge.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import teamUnknown.immersion.core.meta.Energy;
 import teamUnknown.immersion.core.meta.Textures;
@@ -30,7 +31,7 @@ public class GuiEnergyCell extends GuiContainer {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.tileentity = (TileEntityCreativeStorage) world.getTileEntity(x, y, z);
+        this.tileentity = (TileEntityCreativeStorage) world.getTileEntity(new BlockPos(x, y, z));
     }
 
     @Override

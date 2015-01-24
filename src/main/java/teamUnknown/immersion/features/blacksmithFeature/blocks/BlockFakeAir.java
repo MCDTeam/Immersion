@@ -12,8 +12,7 @@ public class BlockFakeAir extends ImmersionBlock {
     }
 
     @Override
-    public boolean canCollideCheck(int meta, boolean b)
-    {
+    public boolean isCollidable() {
         return false;
     }
 

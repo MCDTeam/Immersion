@@ -1,8 +1,8 @@
 package teamUnknown.immersion.coreFeatures.versionCheck;
 
-import cpw.mods.fml.common.Loader;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.common.Loader;
 import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.meta.ModMetadata;
 import teamUnknown.immersion.core.meta.Strings;

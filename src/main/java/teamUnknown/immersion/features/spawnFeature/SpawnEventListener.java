@@ -1,11 +1,10 @@
 package teamUnknown.immersion.features.spawnFeature;
 
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import teamUnknown.immersion.core.feature.logging.FeatureLogger;
 
 /**
@@ -30,8 +29,8 @@ public class SpawnEventListener {
                 double direction = Math.random() * Math.PI * 2;
                 double distance = Math.random() * this._cfg.RespawnRadius + this._cfg.MinDistanceFromWorldSpawn;
 
-                int x = (int)Math.round(Math.sin(direction) * distance) + player.worldObj.getSpawnPoint().posX;
-                int z = (int)Math.round(Math.cos(direction) * distance) + player.worldObj.getSpawnPoint().posZ;
+                int x = (int)Math.round(Math.sin(direction) * distance) + player.worldObj.getSpawnPoint().getX();
+                int z = (int)Math.round(Math.cos(direction) * distance) + player.worldObj.getSpawnPoint().getZ();
 
 
                 if (!player.worldObj.provider.canCoordinateBeSpawn(x, z)){

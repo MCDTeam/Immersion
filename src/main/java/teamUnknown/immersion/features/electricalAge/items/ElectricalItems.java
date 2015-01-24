@@ -1,7 +1,7 @@
 package teamUnknown.immersion.features.electricalAge.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ElectricalItems {
 

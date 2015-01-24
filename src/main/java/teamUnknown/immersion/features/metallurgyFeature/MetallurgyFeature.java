@@ -10,11 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.core.utils.Stack;
 import teamUnknown.immersion.features.metallurgyFeature.items.ModBlocks;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 @Feature(name = "Metallurgy", version = "1.0")
 public class MetallurgyFeature extends FeatureCommon {

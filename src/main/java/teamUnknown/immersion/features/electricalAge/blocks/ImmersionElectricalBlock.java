@@ -7,7 +7,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import teamUnknown.immersion.core.feature.object.ImmersionContainer;
@@ -27,18 +27,18 @@ public class ImmersionElectricalBlock extends ImmersionContainer {
         if (entityLivingBase instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entityLivingBase;
 
-            if (world.getTileEntity(x, y, z) instanceof TileEntityMachine) {
+            if (world.getTileEntity(new BlockPos(x, y, z)) instanceof TileEntityMachine) {
 
                 this.playerOwner = player.getDisplayName().toString();
 
-                TileEntityMachine tileEntity = (TileEntityMachine) world.getTileEntity(x, y, z);
+                TileEntityMachine tileEntity = (TileEntityMachine) world.getTileEntity(new BlockPos(x, y, z));
                 //tileEntity.setOwner(this.playerOwner);
             }
 
-            int meta = world.getBlockMetadata(x, y, z);
+            int meta = world.getBlockMetadata(x, y, z); //TODO
             if (meta == 0) {
-                if(world.getTileEntity(x, y, z) instanceof TileEntityMachine) {
-                    TileEntityMachine machine = (TileEntityMachine) world.getTileEntity(x, y, z);
+                if(world.getTileEntity(new BlockPos(x, y, z)) instanceof TileEntityMachine) {
+                    TileEntityMachine machine = (TileEntityMachine) world.getTileEntity(new BlockPos(x, y, z));
 
                     //if (machine instanceof IRotatable) {
                     machine.rotation = BlockUtils.determineMetadataBasedOnPlayerOrientation(player);
@@ -56,7 +56,7 @@ public class ImmersionElectricalBlock extends ImmersionContainer {
     public IIcon getIcon(IBlockAccess world, IIcon[] icons, int activationTime, int x, int y, int z, int side) {
         int meta = world.getBlockMetadata(x, y, z);
         if (meta == 0) {
-            TileEntityMachine macerator = (TileEntityMachine) world.getTileEntity(x, y, z);
+            TileEntityMachine macerator = (TileEntityMachine) world.getTileEntity(new BlockPos(x, y, z));
 
             if (side == macerator.rotation) {
 

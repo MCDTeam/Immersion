@@ -1,8 +1,8 @@
 package teamUnknown.immersion.features.electricalAge;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.FeatureCommon;

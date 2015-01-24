@@ -1,14 +1,15 @@
 package teamUnknown.immersion.coreFeatures.debug.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import teamUnknown.immersion.coreFeatures.debug.api.IDebuggable;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 import teamUnknown.immersion.core.utils.ChatHelper;
@@ -36,10 +37,9 @@ public class itemAdminDebug extends ImmersionItem{
     }
 
     @Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float sideX, float sideY, float sideZ) {
-
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
-        Block lookedAt = world.getBlock(x, y, z);
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
+        TileEntity tileEntity = world.getTileEntity(new BlockPos(pos.getX(), pos.getZ(), pos.getZ()));
+        Block lookedAt = world.getBlockState(new BlockPos(pos.getX(), pos.getZ(), pos.getZ())).getBlock();
 
         if (!world.isRemote) {
             if (player.capabilities.isCreativeMode) {

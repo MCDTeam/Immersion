@@ -1,14 +1,13 @@
 package teamUnknown.immersion.features.electricalAge.blocks.energy;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import teamUnknown.immersion.core.meta.BBConstants;
 import teamUnknown.immersion.features.electricalAge.blocks.ImmersionElectricalBlock;
 import teamUnknown.immersion.features.electricalAge.energy.IEnergyConnection;

@@ -4,7 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 import teamUnknown.immersion.core.meta.Names;
@@ -39,14 +41,13 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
     public static String DEFAULT_WRENCH_MODE = WrenchModes.POWER_READER;//TODO
 
     @Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
             checkFirstUse(itemStack, player);
             NBTHelper.setBoolean(itemStack, Names.NBT.ACTIVATED, true);
 
             if (!player.isSneaking()) {
-                wrenchUsed(player, itemStack, world, x, y, z, side);
+                wrenchUsed(player, itemStack, world, pos, side);
             } else {
                 //player.openGui(Immersion.instance, guiIds.GUI_QUANTUM_WRENCH, world, x, y, z);
             }
@@ -92,7 +93,7 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
     public static void addRequiredNBT(EntityPlayer player, ItemStack itemStack) {
 
         NBTHelper.setString(itemStack, Names.NBT.WRENCH_MODE, DEFAULT_WRENCH_MODE);
-        NBTHelper.setString(itemStack, Names.NBT.OWNER, player.getDisplayName());
+        NBTHelper.setString(itemStack, Names.NBT.OWNER, player.getName());
         //NBTHelper.setInteger(itemStack, Names.NBT.CHARGE, DEFAULT_CHARGE_LEVEL);
     }
 
@@ -128,20 +129,20 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
         ChatHelper.sendMessageToPlayer(player, EnumChatFormatting.GRAY + "[Wrench Mode set to: " + EnumChatFormatting.GREEN + getWrenchMode(itemStack) + EnumChatFormatting.GRAY + "]");
     }
 
-    public void wrenchUsed(EntityPlayer player, ItemStack itemStack, World world, int x, int y, int z, int side) {
+    public void wrenchUsed(EntityPlayer player, ItemStack itemStack, World world, BlockPos pos, EnumFacing side) {
 
-        if (getWrenchMode(itemStack).equals(WrenchModes.BREAK)) modeBreak(itemStack, player, world, x, y, z, side);
-        else if (getWrenchMode(itemStack).equals(WrenchModes.ROTATE)) modeRotate(world, x, y, z);
-        else if (getWrenchMode(itemStack).equals(WrenchModes.POWER_READER)) modePowerReader(world, player, x, y, z);
+        if (getWrenchMode(itemStack).equals(WrenchModes.BREAK)) modeBreak(itemStack, player, world, pos, side);
+        else if (getWrenchMode(itemStack).equals(WrenchModes.ROTATE)) modeRotate(world, pos.getX(), pos.getY(), pos.getZ());
+        else if (getWrenchMode(itemStack).equals(WrenchModes.POWER_READER)) modePowerReader(world, player, pos);
     }
 
-    public static void modeBreak(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side) {
+    public static void modeBreak(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side) {
 
-        Block blockLookedAt = world.getBlock(x, y, z);
+        Block blockLookedAt = world.getBlockState(pos).getBlock();
 
         if ((blockLookedAt instanceof IWrenchable)) {
-            if (((IWrenchable) blockLookedAt).canWrench(player, world, x, y, z)) {
-                ((IWrenchable) blockLookedAt).onWrenchUsed(player, blockLookedAt, itemStack, world, x, y, z, side);
+            if (((IWrenchable) blockLookedAt).canWrench(player, world, pos.getX(), pos.getY(), pos.getZ())) {
+                ((IWrenchable) blockLookedAt).onWrenchUsed(player, blockLookedAt, itemStack, world, pos.getX(), pos.getY(), pos.getZ(), side);
             }
         }
     }
@@ -157,8 +158,8 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
         }**/
     }
 
-    public static void modePowerReader(World world, EntityPlayer player, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
+    public static void modePowerReader(World world, EntityPlayer player, BlockPos pos) {
+        TileEntity tileEntity = world.getTileEntity(pos);
         if (tileEntity instanceof IEnergyHandler) {
             //((IEnergy) tileEntity).getEnergyBar().setEnergyLevel(20);
             //ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + ((IEnergyStorage) tileEntity).getEnergyBar().getEnergyLevel() + "/" + ((IEnergy) tileEntity).getEnergyBar().getEnergyLevel());

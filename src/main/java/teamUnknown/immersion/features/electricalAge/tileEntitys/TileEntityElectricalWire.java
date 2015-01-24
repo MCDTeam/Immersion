@@ -5,7 +5,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.meta.EnergyValues;
 import teamUnknown.immersion.features.electricalAge.energy.EnergyNet;
 import teamUnknown.immersion.features.electricalAge.energy.EnergyStorage;

@@ -1,6 +1,6 @@
 package teamUnknown.immersion.coreFeatures.debug.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 
 public class DebugItems {

@@ -1,10 +1,11 @@
 package teamUnknown.immersion.features.blacksmithFeature.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 import teamUnknown.immersion.core.utils.BlockPosition;
 import teamUnknown.immersion.core.utils.WorldBlockPosition;
@@ -24,13 +25,13 @@ public class BlockHeatedCoal extends ImmersionBlock {
     }
 
     @Override
-    public int getLightValue(IBlockAccess world, int x, int y, int z) {
+    public int getLightValue() {
         return 15;
     }
 
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-        WorldBlockPosition position = new WorldBlockPosition(world, x, y, z);
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock) {//TODO
+        WorldBlockPosition position = new WorldBlockPosition(world, pos.getX(), pos.getY(), pos.getZ());
 
         if (!isPositionValid(position)){
             HashSet<BlockPosition> closed = new HashSet<BlockPosition>();
@@ -56,9 +57,14 @@ public class BlockHeatedCoal extends ImmersionBlock {
 
     @Override
     public void randomDisplayTick(World world, int x, int y, int z, Random random) {
+
+    }
+
+    @Override
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random random) {//TODO
         if (random.nextFloat() > 0.92){
-            world.spawnParticle("lava", x + 0.5, y + 0.8, z + 0.5, 0, 0.05, 0);
-            world.playSoundEffect(x + 0.5f, y + 0.8f, z + 0.5f, "liquid.lavapop", 1, 0.8f);
+            //world.spawnParticle("lava", pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, 0, 0.05, 0);
+            world.playSoundEffect(pos.getX() + 0.5f, pos.getY() + 0.8f, pos.getZ() + 0.5f, "liquid.lavapop", 1, 0.8f);
         }
     }
 

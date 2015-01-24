@@ -1,5 +1,6 @@
 package teamUnknown.immersion.coreFeatures.versionCheck;
 
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.Feature.FeatureData;
 import teamUnknown.immersion.core.feature.Feature.FeatureData.Data;
@@ -8,7 +9,6 @@ import teamUnknown.immersion.core.feature.Feature.FeatureElement.Element;
 import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.core.feature.configuration.IConfigurationProvider;
 import teamUnknown.immersion.core.meta.ModMetadata;
-import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * Feature that allows the client to check for updates and display the link to the user

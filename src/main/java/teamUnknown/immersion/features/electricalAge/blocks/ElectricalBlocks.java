@@ -1,8 +1,8 @@
 package teamUnknown.immersion.features.electricalAge.blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamUnknown.immersion.features.electricalAge.blocks.Machines.blockBasicStorage;
 import teamUnknown.immersion.features.electricalAge.blocks.Machines.blockCreativeStorage;
 import teamUnknown.immersion.features.electricalAge.blocks.Machines.blockWirelessCharger;

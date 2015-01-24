@@ -60,8 +60,8 @@ public class SocialRegistry {
 
         MessageSocialPacket packet = new MessageSocialPacket();
         packet.addByte(MessageSocialPacket.PacketTypes.FRIEND_LIST.ordinal());
-        packet.addInt(friendConf.getCategory(thePlayer.getCommandSenderName().toLowerCase()).keySet().size());
-        for (String theName : friendConf.getCategory(thePlayer.getCommandSenderName().toLowerCase()).keySet()) {
+        packet.addInt(friendConf.getCategory(thePlayer.getName().toLowerCase()).keySet().size());
+        for (String theName : friendConf.getCategory(thePlayer.getName().toLowerCase()).keySet()) {
             packet.addString(theName);
         }
         PacketHandler.sendTo(packet, thePlayer);
