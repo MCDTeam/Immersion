@@ -8,7 +8,7 @@ import teamUnknown.immersion.core.meta.Strings;
 
 public class CommandWebsite {
 
-    public static void processCommand(ICommandSender commandSender, String[] args) {
+    public static void processCommand(ICommandSender commandSender, String[] args) throws WrongUsageException {
 
         String subCommand;
 

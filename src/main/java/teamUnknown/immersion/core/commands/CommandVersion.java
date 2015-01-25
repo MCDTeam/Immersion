@@ -8,7 +8,7 @@ import teamUnknown.immersion.coreFeatures.versionCheck.VersionHelper;
 
 public class CommandVersion {
 
-    public static void processCommand(ICommandSender commandSender, String[] args) {
+    public static void processCommand(ICommandSender commandSender, String[] args) throws WrongUsageException {
 
         String subCommand;
 
@@ -22,6 +22,8 @@ public class CommandVersion {
         } else
             throw new WrongUsageException(Commands.COMMAND_WEBSITE_USAGE, new Object[0]);
     }
+
+
 
     private static void processWikiCommand(ICommandSender commandSender) {
         commandSender.addChatMessage(new ChatComponentText(VersionHelper.getResultMessageForClient()));

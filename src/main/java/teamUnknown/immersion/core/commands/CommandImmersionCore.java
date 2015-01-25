@@ -1,8 +1,10 @@
 package teamUnknown.immersion.core.commands;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
+import net.minecraft.util.BlockPos;
 import teamUnknown.immersion.core.meta.Commands;
 
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 public class CommandImmersionCore extends CommandBase {
 
     @Override
-    public String getCommandName() {
+    public String getName() {
         return Commands.COMMAND_IMMERSION;
     }
 
@@ -20,7 +22,8 @@ public class CommandImmersionCore extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender sender, String[] args) {
+    public void execute(ICommandSender sender, String[] args) throws CommandException {
+
         if (args.length > 0) {
             String commandName = args[0];
             System.arraycopy(args, 1, args, 0, args.length - 1);
@@ -40,26 +43,26 @@ public class CommandImmersionCore extends CommandBase {
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+    public boolean canCommandSenderUse(ICommandSender sender) {
         return true;
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender sender, String[] args) {
+    public List addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
         switch (args.length) {
             case 1: {
                 return getListOfStringsMatchingLastWord(args, new String[]{
                         Commands.COMMAND_VERSION, Commands.COMMAND_WEBSITE, Commands.COMMAND_FRIEND});
             }
-                case 2: {
-                    if (args[0].equalsIgnoreCase(Commands.COMMAND_WEBSITE))
-                        return getListOfStringsMatchingLastWord(args,
-                                new String[]{Commands.COMMAND_WIKI, Commands.COMMAND_SOURCE});
+            case 2: {
+                if (args[0].equalsIgnoreCase(Commands.COMMAND_WEBSITE))
+                    return getListOfStringsMatchingLastWord(args,
+                            new String[]{Commands.COMMAND_WIKI, Commands.COMMAND_SOURCE});
 
-                    if (args[0].equalsIgnoreCase(Commands.COMMAND_FRIEND))
-                        return getListOfStringsMatchingLastWord(args,
-                                new String[]{Commands.ADD, Commands.REMOVE});
-                }
+                if (args[0].equalsIgnoreCase(Commands.COMMAND_FRIEND))
+                    return getListOfStringsMatchingLastWord(args,
+                            new String[]{Commands.ADD, Commands.REMOVE});
+            }
             default: {
                 return null;
             }
