@@ -10,6 +10,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import teamUnknown.immersion.core.utils.BlockPosition;
 import teamUnknown.immersion.coreFeatures.debug.api.IDebuggable;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 import teamUnknown.immersion.core.utils.ChatHelper;
@@ -38,8 +39,8 @@ public class itemAdminDebug extends ImmersionItem{
 
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
-        TileEntity tileEntity = world.getTileEntity(new BlockPos(pos.getX(), pos.getZ(), pos.getZ()));
-        Block lookedAt = world.getBlockState(new BlockPos(pos.getX(), pos.getZ(), pos.getZ())).getBlock();
+        TileEntity tileEntity = BlockPosition.getTileEntity(world, pos);
+        Block lookedAt = BlockPosition.getBlock(world, pos);
 
         if (!world.isRemote) {
             if (player.capabilities.isCreativeMode) {

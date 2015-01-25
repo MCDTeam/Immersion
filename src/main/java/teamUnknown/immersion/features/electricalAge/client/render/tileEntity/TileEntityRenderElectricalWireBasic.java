@@ -3,7 +3,6 @@ package teamUnknown.immersion.features.electricalAge.client.render.tileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 import teamUnknown.immersion.core.meta.Textures;
 import teamUnknown.immersion.features.electricalAge.energy.IEnergyConnection;
@@ -15,6 +14,12 @@ public class TileEntityRenderElectricalWireBasic extends TileEntitySpecialRender
     public static TileEntityRenderElectricalWireBasic instance = new TileEntityRenderElectricalWireBasic();
 
     public void renderTileEntityAt(TileEntity tileentity, double xOffset, double yOffset, double zOffset, float partialTickTime) {
+
+
+    }
+
+    @Override
+    public void renderTileEntityAt(TileEntity tileEntity, double posX, double posZ, double p_180535_6_, float partialTickTime, int p_180535_9_) {
 
         boolean[] sides = new boolean[6];
         boolean[] cables = new boolean[6];
@@ -28,7 +33,7 @@ public class TileEntityRenderElectricalWireBasic extends TileEntitySpecialRender
         GL11.glRotatef(180, 0, 0, 1);
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(Textures.MODEL_ELECTRICAL_WIRE_BASIC);
-        
+
         ModelElectricalWireBasic.instance.renderMiddle();
         if (sides[0]) ModelElectricalWireBasic.instance.renderDown(cables[0]);
         if (sides[1]) ModelElectricalWireBasic.instance.renderUp(cables[1]);

@@ -38,16 +38,13 @@ public class blockCreativeStorage extends ImmersionElectricalBlock{
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
         if(!world.isRemote) {
             if(!player.isSneaking()) {
-                player.openGui(Immersion.instance, GuiIds.GUI_ENERGY_CELL_ID, world, x, y, z);
+                player.openGui(Immersion.instance, GuiIds.GUI_ENERGY_CELL_ID, world, pos.getX(), pos.getY(), pos.getZ());
             }
         }
         return true;//TODO
     }
 
-    @Override
-    public boolean renderAsNormalBlock() {
-        return false;
-    }
+
 
     /**@Override
     public int getRenderType() {

@@ -1,6 +1,8 @@
 package teamUnknown.immersion.core.utils;
 
 import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 /**
@@ -118,6 +120,19 @@ public class BlockPosition {
 
 
     //TODO the as much world function as possible
+    /**
+     * 1.8 Functions
+     */
 
+    public static BlockPos createPosFromCoords(int x, int y, int z){
+        return new BlockPos(x, y, z);
+    }
 
+    public static TileEntity getTileEntity(World world, BlockPos pos){
+        return world.getTileEntity(pos);
+    }
+
+    public static Block getBlock(World world, BlockPos pos){
+        return world.getBlockState(pos).getBlock();
+    }
 }

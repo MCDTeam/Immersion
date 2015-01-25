@@ -10,6 +10,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import teamUnknown.immersion.core.feature.object.ImmersionItem;
 import teamUnknown.immersion.core.meta.Names;
+import teamUnknown.immersion.core.utils.BlockPosition;
 import teamUnknown.immersion.core.utils.ChatHelper;
 import teamUnknown.immersion.core.utils.NBTHelper;
 import teamUnknown.immersion.features.electricalAge.api.IWrenchable;
@@ -138,7 +139,7 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
 
     public static void modeBreak(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side) {
 
-        Block blockLookedAt = world.getBlockState(pos).getBlock();
+        Block blockLookedAt = BlockPosition.getBlock(world, pos);
 
         if ((blockLookedAt instanceof IWrenchable)) {
             if (((IWrenchable) blockLookedAt).canWrench(player, world, pos.getX(), pos.getY(), pos.getZ())) {
@@ -159,7 +160,7 @@ public class ItemImmersionWrench extends ImmersionItem implements IEnergyContain
     }
 
     public static void modePowerReader(World world, EntityPlayer player, BlockPos pos) {
-        TileEntity tileEntity = world.getTileEntity(pos);
+        TileEntity tileEntity = BlockPosition.getTileEntity(world, pos);
         if (tileEntity instanceof IEnergyHandler) {
             //((IEnergy) tileEntity).getEnergyBar().setEnergyLevel(20);
             //ChatHelper.sendMessageToPlayer(player, "Energy Level= " + EnumChatFormatting.YELLOW + ((IEnergyStorage) tileEntity).getEnergyBar().getEnergyLevel() + "/" + ((IEnergy) tileEntity).getEnergyBar().getEnergyLevel());
