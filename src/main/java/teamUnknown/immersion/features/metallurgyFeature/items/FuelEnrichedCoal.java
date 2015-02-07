@@ -9,8 +9,6 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class FuelEnrichedCoal extends ImmersionBlock
 {
-	@SideOnly(Side.CLIENT)
-	protected IIcon texture;
 
 	public FuelEnrichedCoal() {
         super("fuelEnrichedCoal", Material.rock);

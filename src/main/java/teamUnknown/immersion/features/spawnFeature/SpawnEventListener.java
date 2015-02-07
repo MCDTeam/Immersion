@@ -1,6 +1,7 @@
 package teamUnknown.immersion.features.spawnFeature;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockPos;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -38,7 +39,7 @@ public class SpawnEventListener {
                     continue;
                 }
 
-                int y = player.worldObj.getTopSolidOrLiquidBlock(x, z);
+                int y = player.worldObj.getTopSolidOrLiquidBlock(new ChunkPos(x, z));
                 this._logger.info("Player spawn @ X:%1$d Y:%2$d Z:%3$d", x, y, z);
 
                 player.setSpawnChunk(new ChunkCoordinates(x, y, z), true);

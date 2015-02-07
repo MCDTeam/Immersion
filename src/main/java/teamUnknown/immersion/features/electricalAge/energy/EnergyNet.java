@@ -1,5 +1,6 @@
 package teamUnknown.immersion.features.electricalAge.energy;
 
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -19,7 +20,7 @@ public class EnergyNet {
      *                      of you don't have a last direction.
      * @param storage     The energyBar object to take the energy from.
      */
-    public static void distributeEnergyToSurrounding(World world, int x, int y, int z, ForgeDirection lastDirection, IEnergyStorage storage) {
+    public static void distributeEnergyToSurrounding(World world, int x, int y, int z, EnumFacing lastDirection, IEnergyStorage storage) {
         distributeEnergyToSurroundingWithLoss(world, x, y, z, lastDirection, storage, 0);
     }
 

@@ -14,9 +14,6 @@ import teamUnknown.immersion.core.feature.object.ImmersionBlock;
 
 public class BlockGemOre extends ImmersionBlock
 {
-	@SideOnly(Side.CLIENT)
-	protected IIcon texture;
-	
 	protected Item drop;
 	
 	public BlockGemOre(String type, Item dropped) 

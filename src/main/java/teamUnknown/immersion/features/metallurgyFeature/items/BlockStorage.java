@@ -9,8 +9,6 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockStorage extends ImmersionBlock
 {
-	@SideOnly(Side.CLIENT)
-	protected IIcon texture;
 	
 	public BlockStorage(String type) 
 	{
