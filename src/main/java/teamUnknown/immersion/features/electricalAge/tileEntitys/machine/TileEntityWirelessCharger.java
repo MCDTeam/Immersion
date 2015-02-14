@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.tileEntitys.machine;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -162,3 +163,4 @@ public class TileEntityWirelessCharger extends TileEntity implements IEnergyHand
         readFromNBT(packet.func_148857_g());
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraft.tileentity.TileEntity;
@@ -26,3 +27,4 @@ public class EnergyHelper {
         return getStoredEnergy(tileEntity) * scale / getMaxEnergyStored(tileEntity);
     }
 }
+*/

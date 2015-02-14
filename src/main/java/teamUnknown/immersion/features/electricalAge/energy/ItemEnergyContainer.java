@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraft.item.ItemStack;
@@ -50,7 +51,9 @@ public class ItemEnergyContainer extends ImmersionItem implements IEnergyContain
         this.maxExtract = maxExtract;
     }
 
-    /* IEnergyContainerItem */
+    */
+/* IEnergyContainerItem *//*
+
     @Override
     public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate) {
 
@@ -103,3 +106,4 @@ public class ItemEnergyContainer extends ImmersionItem implements IEnergyContain
         return null;
     }
 }
+*/

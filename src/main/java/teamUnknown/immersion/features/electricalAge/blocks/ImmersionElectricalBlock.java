@@ -18,7 +18,7 @@ import teamUnknown.immersion.core.feature.object.ImmersionContainer;
 import teamUnknown.immersion.core.utils.BlockUtils;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityMachine;
 
-public class ImmersionElectricalBlock extends ImmersionContainer {
+public class ImmersionElectricalBlock extends ImmersionContainer {//TODO
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
@@ -69,7 +69,7 @@ public class ImmersionElectricalBlock extends ImmersionContainer {
         return true;
     }
 
-    public IIcon getIcon(IBlockAccess world, IIcon[] icons, int activationTime, int x, int y, int z, int side) {
+    /*public IIcon getIcon(IBlockAccess world, IIcon[] icons, int activationTime, int x, int y, int z, int side) {
         int meta = world.getBlockMetadata(x, y, z);
         if (meta == 0) {
             TileEntityMachine macerator = (TileEntityMachine) world.getTileEntity(new BlockPos(x, y, z));
@@ -84,10 +84,10 @@ public class ImmersionElectricalBlock extends ImmersionContainer {
             }
         }
         return icons[0];
-    }
+    }*/
 
     //@Override
-    public void onWrenchUsed(EntityPlayer player, Block block, ItemStack itemStack, IBlockAccess world, BlockPos pos, IBlockState state) {
+    /*public void onWrenchUsed(EntityPlayer player, Block block, ItemStack itemStack, IBlockAccess world, BlockPos pos, IBlockState state) {
         for(int i = 0; i < block.getDrops(world, pos, state, 0).size(); i++){
 
             //Breaks the loop if i == size.
@@ -99,5 +99,5 @@ public class ImmersionElectricalBlock extends ImmersionContainer {
             world.spawnEntityInWorld(new EntityItem(world, x, y, z, block.getDrops(world, x, y, z, 0, 0).get(i)));
             world.setBlock(x, y, z, Blocks.air);
         }
-    }
+    }*/
 }

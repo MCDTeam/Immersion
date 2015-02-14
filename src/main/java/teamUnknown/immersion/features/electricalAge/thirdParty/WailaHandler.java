@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.thirdParty;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -49,7 +50,9 @@ public class WailaHandler implements IWailaDataProvider {
 
         //Get all the values from the map and put them in the list.
         for(Map.Entry<String, String> entry : values.entrySet()) {
-            currenttip.add(entry.getKey() + ": " + /*SpecialChars.ALIGNRIGHT +*/SpecialChars.WHITE + entry.getValue());
+            currenttip.add(entry.getKey() + ": " + */
+/*SpecialChars.ALIGNRIGHT +*//*
+SpecialChars.WHITE + entry.getValue());
         }
     }
 
@@ -58,3 +61,4 @@ public class WailaHandler implements IWailaDataProvider {
         return currenttip;
     }
 }
+*/

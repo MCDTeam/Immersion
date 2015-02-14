@@ -1,12 +1,11 @@
 package teamUnknown.immersion.features.electricalAge.energy;
 
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
-
-public class EnergyNet {
-
-    /**
+public class EnergyNet { //TODO energy class
+/*
+    *//**
      * A utility method for distributing energy to the surrounding
      * machines/cables.
      *
@@ -19,12 +18,12 @@ public class EnergyNet {
      *                      the six valid directions ({@link net.minecraftforge.common.util.ForgeDirection}), or UNKNOWN
      *                      of you don't have a last direction.
      * @param storage     The energyBar object to take the energy from.
-     */
+     *//*
     public static void distributeEnergyToSurrounding(World world, int x, int y, int z, EnumFacing lastDirection, IEnergyStorage storage) {
         distributeEnergyToSurroundingWithLoss(world, x, y, z, lastDirection, storage, 0);
     }
 
-    /**
+    *//**
      * A utility method for distributing energy to the surrounding
      * machines/cables.
      *
@@ -33,14 +32,14 @@ public class EnergyNet {
      * @param y         Self-explainatory
      * @param z         Self-explainatory
      * @param storage The energyBar object to take the energy from.
-     */
+     *//*
 
     public static void distributeEnergyToSurrounding(World world, int x, int y, int z, IEnergyStorage storage) {
-        distributeEnergyToSurrounding(world, x, y, z, ForgeDirection.UNKNOWN, storage);
+        distributeEnergyToSurrounding(world, x, y, z, BlockPos.UNKNOWN, storage);
     }
 
-    public static void distributeEnergyToSide(World world, int x, int y, int z, ForgeDirection direction, IEnergyStorage storage) {
-        if (world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) instanceof IEnergyHandler) {
+    public static void distributeEnergyToSide(World world, int x, int y, int z, BlockPos direction, IEnergyStorage storage) {
+        if (world.getTileEntity(x + direction.up()., y + direction.offsetY, z + direction.offsetZ) instanceof IEnergyHandler) {
             IEnergyHandler energyTileOnSide = (IEnergyHandler) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
             IEnergyHandler thisEnergyTile = (IEnergyHandler) world.getTileEntity(x, y, z);
             ForgeDirection invertedSide = ForgeDirection.VALID_DIRECTIONS[ForgeDirection.OPPOSITES[direction.ordinal()]];
@@ -88,5 +87,5 @@ public class EnergyNet {
                 }
             }
         }
-    }
+    }*/
 }

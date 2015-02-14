@@ -3,13 +3,14 @@ package teamUnknown.immersion.features.electricalAge.client.render.tileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import org.lwjgl.opengl.GL11;
 import teamUnknown.immersion.core.meta.Textures;
 import teamUnknown.immersion.features.electricalAge.energy.IEnergyConnection;
 import teamUnknown.immersion.features.electricalAge.model.ModelElectricalWireBasic;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityElectricalWire;
 
-public class TileEntityRenderElectricalWireBasic extends TileEntitySpecialRenderer {
+public class TileEntityRenderElectricalWireBasic extends TileEntitySpecialRenderer {//TODO
 
     public static TileEntityRenderElectricalWireBasic instance = new TileEntityRenderElectricalWireBasic();
 
@@ -21,11 +22,11 @@ public class TileEntityRenderElectricalWireBasic extends TileEntitySpecialRender
     @Override
     public void renderTileEntityAt(TileEntity tileEntity, double posX, double posZ, double p_180535_6_, float partialTickTime, int p_180535_9_) {
 
-        boolean[] sides = new boolean[6];
+        /*boolean[] sides = new boolean[6];
         boolean[] cables = new boolean[6];
-        for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) {
-            sides[direction.ordinal()] = tileentity.getWorldObj().getTileEntity(tileentity.xCoord + direction.offsetX, tileentity.yCoord + direction.offsetY, tileentity.zCoord + direction.offsetZ) instanceof IEnergyConnection && ((IEnergyConnection) tileentity.getWorldObj().getTileEntity(tileentity.xCoord + direction.offsetX, tileentity.yCoord + direction.offsetY, tileentity.zCoord + direction.offsetZ)).canConnectEnergy(direction);
-            cables[direction.ordinal()] = tileentity.getWorldObj().getTileEntity(tileentity.xCoord + direction.offsetX, tileentity.yCoord + direction.offsetY, tileentity.zCoord + direction.offsetZ) instanceof IEnergyConnection && !(((IEnergyConnection) tileentity.getWorldObj().getTileEntity(tileentity.xCoord + direction.offsetX, tileentity.yCoord + direction.offsetY, tileentity.zCoord + direction.offsetZ)) instanceof TileEntityElectricalWire);
+        for (BlockPos direction : BlockPos.VALID_DIRECTIONS) {
+            sides[direction.ordinal()] = tileEntity.getWorld().getTileEntity(new BlockPos(tileEntity.getPos().getX() + direction.offsetX, tileEntity.getPos().getY() + direction.offsetY, tileEntity.getPos().getZ() + direction.offsetZ)) instanceof IEnergyConnection && ((IEnergyConnection) tileEntity.getWorld().getTileEntity(tileEntity.getPos().getX() + direction.offsetX, tileEntity.getPos().getY() + direction.offsetY, tileEntity.getPos().getZ() + direction.offsetZ)).canConnectEnergy(direction);
+            cables[direction.ordinal()] = tileentity.getWorldObj().getTileEntity(tileEntity.getPos().getZ() + direction.offsetX, tileEntity.getPos().getY() + direction.offsetY, tileEntity.getPos().getZ() + direction.offsetZ) instanceof IEnergyConnection && !(((IEnergyConnection) tileEntity.getWorld().getTileEntity(tileEntity.getPos().getX() + direction.offsetX, tileEntity.getPos().getY() + direction.offsetY, tileEntity.getPos().getZ() + direction.offsetZ)) instanceof TileEntityElectricalWire);
         }
 
         GL11.glPushMatrix();
@@ -42,6 +43,6 @@ public class TileEntityRenderElectricalWireBasic extends TileEntitySpecialRender
         if (sides[4]) ModelElectricalWireBasic.instance.renderWest(cables[4]);
         if (sides[5]) ModelElectricalWireBasic.instance.renderEast(cables[5]);
 
-        GL11.glPopMatrix();
+        GL11.glPopMatrix();*/
     }
 }

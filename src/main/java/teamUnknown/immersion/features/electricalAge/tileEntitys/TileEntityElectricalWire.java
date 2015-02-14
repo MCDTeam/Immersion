@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.tileEntitys;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,9 +25,11 @@ public class TileEntityElectricalWire extends TileEntityMachine implements IEner
         EnergyNet.distributeEnergyToSurrounding(worldObj, xCoord, yCoord, zCoord, lastReceivedDirection, storage);
     }
 
-    /**
+    */
+/**
      * Power Network Functions *
-     */
+     *//*
+
 
     @Override
     public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
@@ -80,9 +83,11 @@ public class TileEntityElectricalWire extends TileEntityMachine implements IEner
         storage.readFromNBT(tagCompound);
     }
 
-    /**
+    */
+/**
      * Network
-     */
+     *//*
+
 
     @Override
     public Packet getDescriptionPacket() {
@@ -95,4 +100,4 @@ public class TileEntityElectricalWire extends TileEntityMachine implements IEner
     public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
         readFromNBT(packet.func_148857_g());
     }
-}
+}*/

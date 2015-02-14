@@ -4,6 +4,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,7 +14,7 @@ import teamUnknown.immersion.features.electricalAge.blocks.ImmersionElectricalBl
 import teamUnknown.immersion.features.electricalAge.energy.IEnergyConnection;
 import teamUnknown.immersion.features.electricalAge.tileEntitys.TileEntityElectricalWire;
 
-public class blockElectricalWire extends ImmersionElectricalBlock {
+public class blockElectricalWire extends ImmersionElectricalBlock { //TODO
 
     private float pixel = 1F / 16F;
 
@@ -24,7 +25,7 @@ public class blockElectricalWire extends ImmersionElectricalBlock {
         this.useNeighborBrightness = true;
         this.setBlockBounds(11 * pixel / 2, 11 * pixel / 2, 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2, 1 - 11 * pixel / 2);
 
-    }
+    }/**
 
     @Override
     public TileEntity createNewTileEntity(World world, int p_149915_2_) {
@@ -35,7 +36,7 @@ public class blockElectricalWire extends ImmersionElectricalBlock {
     public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
 
         boolean[] blockBounds = new boolean[6];
-        for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) {
+        for (ForgeDirection direction : BlockPos.VALID_DIRECTIONS) {
             blockBounds[direction.ordinal()] = world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) instanceof IEnergyConnection && ((IEnergyConnection) world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ)).canConnectEnergy(direction);
         }
         this.setBlockBounds(blockBounds[4] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[0] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[2] ? 0 : BBConstants.ELECTRICAL_WIRE_MIN_POS, blockBounds[5] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS, blockBounds[1] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS, blockBounds[3] ? 1 : BBConstants.ELECTRICAL_WIRE_MAX_POS);
@@ -69,5 +70,5 @@ public class blockElectricalWire extends ImmersionElectricalBlock {
     @Override
     public boolean renderAsNormalBlock() {
         return false;
-    }
+    }**/
 }

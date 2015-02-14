@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.tileEntitys;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,7 +14,8 @@ import teamUnknown.immersion.features.electricalAge.energy.IEnergyHandler;
 public class TileEntityMachine extends TileEntity implements IEnergyHandler{
 
     public int rotation;
-    /**private EnergyBar energyBar;
+    */
+/**private EnergyBar energyBar;
      private ForgeDirection lastReceivedDirection;
      private int maxStorage storage;
      private String playerOwner;
@@ -22,7 +24,8 @@ public class TileEntityMachine extends TileEntity implements IEnergyHandler{
      public TileEntityMachine(EnergyBar energyBar, ForgeDirection direction){
      this.energyBar = energyBar;
      this.lastReceivedDirection = direction;
-     }**/
+     }**//*
+
 
 
 
@@ -31,9 +34,11 @@ public class TileEntityMachine extends TileEntity implements IEnergyHandler{
         return AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1);
     }
 
-    /**
+    */
+/**
      * Network
-     */
+     *//*
+
 
     @Override
     public Packet getDescriptionPacket() {
@@ -91,3 +96,4 @@ public class TileEntityMachine extends TileEntity implements IEnergyHandler{
 
     }
 }
+*/

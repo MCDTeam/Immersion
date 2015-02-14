@@ -1,6 +1,5 @@
 package teamUnknown.immersion.features.electricalAge;
 
-import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import teamUnknown.immersion.Immersion;
@@ -9,9 +8,8 @@ import teamUnknown.immersion.core.feature.FeatureCommon;
 import teamUnknown.immersion.features.electricalAge.blocks.ElectricalBlocks;
 import teamUnknown.immersion.features.electricalAge.handler.ElectricalFeatureGuiHandler;
 import teamUnknown.immersion.features.electricalAge.items.ElectricalItems;
-import teamUnknown.immersion.features.electricalAge.thirdParty.WailaHandler;
 
-import static teamUnknown.immersion.core.feature.Feature.*;
+import static teamUnknown.immersion.core.feature.Feature.FeatureElement;
 
 @Feature(name = "Electrical Age", version = "0.1", isBase = true)
 public class ElectricalFeature extends FeatureCommon{
@@ -43,10 +41,10 @@ public class ElectricalFeature extends FeatureCommon{
     public void thirdPartyMods(){
     }
 
-    @FeatureElement(FeatureElement.Element.NONSETUP)
+    /*@FeatureElement(FeatureElement.Element.NONSETUP)
     public void doWailaRegistry(IWailaRegistrar registrar){
         registrar.registerBodyProvider(new WailaHandler(), Immersion.class);
-    }
+    }*/
 
     /**@Feature.FeatureElement(Feature.FeatureElement.Element.)
     public void clientThings(){

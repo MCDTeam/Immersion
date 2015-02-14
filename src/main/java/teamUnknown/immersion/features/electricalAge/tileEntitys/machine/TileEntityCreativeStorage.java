@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.tileEntitys.machine;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -82,3 +83,4 @@ public class TileEntityCreativeStorage extends TileEntity implements IEnergyHand
         storage.readFromNBT(tagCompound);
     }
 }
+*/

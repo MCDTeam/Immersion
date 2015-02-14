@@ -1,18 +1,20 @@
+/*
 package teamUnknown.immersion.features.electricalAge.energy;
 
-import net.minecraftforge.common.util.ForgeDirection;
-
+*/
 /**
  * Implement this interface on Tile Entities which should handle energy, generally storing it in one or more internal {@link IEnergyStorage} objects.
  * <p>
  * A reference implementation is provided {@link TileEnergyHandler}.
- */
+ *//*
+
 
 public interface IEnergyHandler extends IEnergyProvider, IEnergyReciever {
 
     // merely a convenience interface (remove these methods in 1.8; provided here for back-compat via compiler doing things)
 
-    /**
+    */
+/**
      * Add energy to an IEnergyReceiver, internal distribution is left entirely to the IEnergyReceiver.
      *
      * @param from
@@ -22,11 +24,13 @@ public interface IEnergyHandler extends IEnergyProvider, IEnergyReciever {
      * @param simulate
      *            If TRUE, the charge will only be simulated.
      * @return Amount of energy that was (or would have been, if simulated) received.
-     */
+     *//*
+
     @Override
     int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate);
 
-    /**
+    */
+/**
      * Remove energy from an IEnergyProvider, internal distribution is left entirely to the IEnergyProvider.
      *
      * @param from
@@ -36,34 +40,44 @@ public interface IEnergyHandler extends IEnergyProvider, IEnergyReciever {
      * @param simulate
      *            If TRUE, the extraction will only be simulated.
      * @return Amount of energy that was (or would have been, if simulated) extracted.
-     */
+     *//*
+
     @Override
     int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate);
 
 
-    /**
+    */
+/**
      * Returns the amount of energy currently stored.
-     */
+     *//*
+
     @Override
     int getEnergyStored(ForgeDirection from);
 
-    /**
+    */
+/**
      * Returns the maximum amount of energy that can be stored.
-     */
+     *//*
+
     @Override
     int getMaxEnergyStored(ForgeDirection from);
 
-    /**
+    */
+/**
      * Returns the energy provider
      * @return
-     */
+     *//*
+
     EnergyStorage getEnergyStorage();
 
-    /**
+    */
+/**
      * Can the machine accept evergy on a certain side
      * @param direction
      * @return true/false
-     */
+     *//*
+
     @Override
     boolean canAddEnergyOnSide(ForgeDirection direction);
 }
+*/

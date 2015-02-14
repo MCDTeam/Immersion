@@ -2,7 +2,9 @@ package teamUnknown.immersion.coreFeatures.oreGen;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.relauncher.Side;
@@ -15,8 +17,6 @@ public class BlockOre extends ImmersionBlock
 {
     private OreGenerator generator;
 
-    @SideOnly(Side.CLIENT)
-    protected IIcon texture;
 
     public BlockOre(String type, Float hardness, int picklevel)
     {
@@ -73,11 +73,12 @@ public class BlockOre extends ImmersionBlock
 
         public void generateForChunk (World world, Random random, int chunkX, int chunkZ)
         {
-            if (dimension == world.provider.dimensionId)
+            if (dimension == world.provider.getDimensionId())
             {
                 for (int i = 0; i < chunkdensity; i++)
-                {
-                    new WorldGenMinable(ore, (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, (chunkX + random.nextInt(16)), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16)));
+                {//TODO
+                    //new WorldGenMinable((IBlockState) ore.getBlockState(), (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, (chunkX + random.nextInt(16)), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16)));
+                    new WorldGenMinable((IBlockState) ore.getBlockState(), (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, new BlockPos(chunkX + random.nextInt(16), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16))));
                 }
             }
         }

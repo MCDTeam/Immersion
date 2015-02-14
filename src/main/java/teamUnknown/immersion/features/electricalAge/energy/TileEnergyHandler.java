@@ -1,3 +1,4 @@
+/*
 package teamUnknown.immersion.features.electricalAge.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,7 +25,9 @@ public class TileEnergyHandler extends TileEntity implements IEnergyHandler {
         storage.writeToNBT(nbt);
     }
 
-    /* IEnergyConnection */
+    */
+/* IEnergyConnection *//*
+
     @Override
     public boolean canConnectEnergy(ForgeDirection from) {
 
@@ -36,21 +39,27 @@ public class TileEnergyHandler extends TileEntity implements IEnergyHandler {
         this.lastReceivedDirection = direction;
     }
 
-    /* IEnergyReceiver */
+    */
+/* IEnergyReceiver *//*
+
     @Override
     public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
 
         return storage.receiveEnergy(maxReceive, simulate);
     }
 
-    /* IEnergyProvider */
+    */
+/* IEnergyProvider *//*
+
     @Override
     public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
 
         return storage.extractEnergy(maxExtract, simulate);
     }
 
-    /* IEnergyReceiver and IEnergyProvider */
+    */
+/* IEnergyReceiver and IEnergyProvider *//*
+
     @Override
     public int getEnergyStored(ForgeDirection from) {
 
@@ -73,3 +82,4 @@ public class TileEnergyHandler extends TileEntity implements IEnergyHandler {
         return true;
     }
 }
+*/
