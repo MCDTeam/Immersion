@@ -22,8 +22,7 @@ public class ImmersionContainer extends BlockContainer implements IImersionObjec
         if (name == null)
             name = this.inferName();
 
-        this.setBlockName(ResourceProvider.getBlockName(name));
-        this.setBlockTextureName(ResourceProvider.getTextureName(name));
+        //this.setBlockName(ResourceProvider.getBlockName(name));
 
         //Sets a basic creative tab so that it is accessible. Calling this in the constuructor overrides this
         this.setCreativeTab(FeatureCreativeTab.tabImmersionCore);

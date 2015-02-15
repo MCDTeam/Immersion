@@ -1,8 +1,8 @@
 package teamUnknown.immersion.core.feature.object;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamUnknown.immersion.Immersion;
 
 import java.util.ArrayList;

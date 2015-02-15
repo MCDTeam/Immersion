@@ -225,7 +225,7 @@ public abstract class ImmersionPacketBase extends PacketBase {
         } else {
             addShort(Item.getIdFromItem(theStack.getItem()));
             addByte(theStack.stackSize);
-            writeNBT(theStack.stackTagCompound);
+            writeNBT(theStack.getTagCompound());
         }
     }
 
@@ -238,7 +238,7 @@ public abstract class ImmersionPacketBase extends PacketBase {
             byte stackSize = getByte();
             short damage = getShort();
             stack = new ItemStack(Item.getItemById(itemID), stackSize, damage);
-            stack.stackTagCompound = readNBT();
+            stack.getTagCompound() = readNBT();
         }
 
         return stack;

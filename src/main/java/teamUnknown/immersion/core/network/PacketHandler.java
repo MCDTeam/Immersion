@@ -1,12 +1,5 @@
 package teamUnknown.immersion.core.network;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.FMLEmbeddedChannel;
-import cpw.mods.fml.common.network.FMLOutboundHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.internal.FMLProxyPacket;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
@@ -20,6 +13,13 @@ import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.network.FMLEmbeddedChannel;
+import net.minecraftforge.fml.common.network.FMLOutboundHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import teamUnknown.immersion.core.meta.ModMetadata;
 
 import java.util.*;
@@ -163,7 +163,7 @@ import java.util.*;
             instance.channels
                     .get(Side.SERVER)
                     .attr(FMLOutboundHandler.FML_MESSAGETARGETARGS)
-                    .set(new NetworkRegistry.TargetPoint(theTile.getWorldObj().provider.dimensionId, theTile.xCoord, theTile.yCoord, theTile.zCoord, ModMetadata.NETWORK_UPDATE_RANGE));
+                    .set(new NetworkRegistry.TargetPoint(theTile.getWorld().provider.getDimensionId(), theTile.getPos().getX(), theTile.getPos().getY(), theTile.getPos().getZ(), ModMetadata.NETWORK_UPDATE_RANGE));
             instance.channels.get(Side.SERVER).writeAndFlush(message);
         }
 
@@ -171,7 +171,7 @@ import java.util.*;
 
             instance.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALLAROUNDPOINT);
             instance.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS)
-                    .set(new NetworkRegistry.TargetPoint(world.provider.dimensionId, x, y, z, ModMetadata.NETWORK_UPDATE_RANGE));
+                    .set(new NetworkRegistry.TargetPoint(world.provider.getDimensionId(), x, y, z, ModMetadata.NETWORK_UPDATE_RANGE));
             instance.channels.get(Side.SERVER).writeAndFlush(message);
         }
 

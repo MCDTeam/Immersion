@@ -6,13 +6,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import teamUnknown.immersion.Immersion;
 import teamUnknown.immersion.core.feature.object.ImmersionContainer;
 import teamUnknown.immersion.core.meta.GuiIds;
-import teamUnknown.immersion.core.meta.ModMetadata;
-import teamUnknown.immersion.features.electricalAge.tileEntitys.machine.TileEntityBasicStorage;
 
 public class blockBasicStorage extends ImmersionContainer{
 
@@ -20,12 +17,12 @@ public class blockBasicStorage extends ImmersionContainer{
         super(name, material);
     }
 
-    public IIcon output;
-    public IIcon base;
-
     @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
+    /*public TileEntity createNewTileEntity(World world, int meta) {
         return new TileEntityBasicStorage();
+    }*/
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return null;
     }
 
     @Override
@@ -46,21 +43,4 @@ public class blockBasicStorage extends ImmersionContainer{
         return false;
     }
 
-    @Override
-    public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
-        return output;
-    }
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-
-        output = iconRegister.registerIcon(ModMetadata.MOD_ID + ":" + "tile.machineOutput");
-        base = iconRegister.registerIcon(ModMetadata.MOD_ID + ":" + "tile.machineBase");
-    }
-
-    @Override
-    public IIcon getIcon(int side, int meta) {
-        if (side == 3) return output;
-        return base;
-    }
 }

@@ -12,7 +12,6 @@ public class ImmersionItem extends Item implements IImersionObject
             name = this.inferName();
 
         this.setUnlocalizedName(ResourceProvider.getBlockName(name));
-        this.setTextureName(ResourceProvider.getTextureName(name));
 
         // Override if needed
         this.setCreativeTab(FeatureCreativeTab.tabImmersionCore);
