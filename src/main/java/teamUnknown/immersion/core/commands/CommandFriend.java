@@ -11,7 +11,7 @@ public class CommandFriend {
         if (args.length > 2) {
             if (args[1].equalsIgnoreCase("add")) {
                 if (validUsername(args[2])) {
-                    if (SocialRegistry.addFriend(commandSender.getCommandSenderName(), args[2])) {
+                    if (SocialRegistry.addFriend(commandSender.getDisplayName().getFormattedText(), args[2])) {
                         commandSender.addChatMessage(new ChatComponentText(EnumChatFormatting.YELLOW + args[2] + EnumChatFormatting.GREEN + " " + "info.immersion.command.friend.0"));
                     } else {
                         commandSender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "info.immersion.command.friend.1" + " " + EnumChatFormatting.YELLOW + args[2] + EnumChatFormatting.RED + " " + "info.immersion.command.friend.2"));
@@ -21,7 +21,7 @@ public class CommandFriend {
                 }
             } else if (args[1].equalsIgnoreCase("remove")) {
                 if (validUsername(args[2])) {
-                    if (SocialRegistry.removeFriend(commandSender.getCommandSenderName(), args[2])) {
+                    if (SocialRegistry.removeFriend(commandSender.getDisplayName().getFormattedText(), args[2])) {
                         commandSender.addChatMessage(new ChatComponentText(EnumChatFormatting.YELLOW + args[2] + EnumChatFormatting.GREEN + " " + "info.immersion.command.friend.4"));
                     } else {
                         commandSender.addChatMessage(new ChatComponentText(EnumChatFormatting.YELLOW + args[2] + EnumChatFormatting.RED + " " + "info.immersion.command.friend.5"));

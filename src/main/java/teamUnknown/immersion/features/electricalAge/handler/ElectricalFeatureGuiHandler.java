@@ -1,10 +1,10 @@
 package teamUnknown.immersion.features.electricalAge.handler;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 import teamUnknown.immersion.core.meta.GuiIds;
 import teamUnknown.immersion.features.electricalAge.client.gui.GuiEnergyCell;
 import teamUnknown.immersion.features.electricalAge.container.ContainerEnergyCell;
