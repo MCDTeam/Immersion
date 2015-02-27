@@ -1,6 +1,7 @@
 package teamUnknown.immersion.core.commands;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import teamUnknown.immersion.core.meta.Commands;
@@ -20,7 +21,7 @@ public class CommandImmersionCore extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender sender, String[] args) {
+    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if (args.length > 0) {
             String commandName = args[0];
             System.arraycopy(args, 1, args, 0, args.length - 1);
@@ -44,7 +45,7 @@ public class CommandImmersionCore extends CommandBase {
         return true;
     }
 
-    @Override
+    /*@Override
     public List addTabCompletionOptions(ICommandSender sender, String[] args) {
         switch (args.length) {
             case 1: {
@@ -64,5 +65,5 @@ public class CommandImmersionCore extends CommandBase {
                 return null;
             }
         }
-    }
+    }*/
 }

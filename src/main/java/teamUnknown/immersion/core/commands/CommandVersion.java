@@ -8,7 +8,7 @@ import teamUnknown.immersion.coreFeatures.versionCheck.VersionHelper;
 
 public class CommandVersion {
 
-    public static void processCommand(ICommandSender commandSender, String[] args) {
+    public static void processCommand(ICommandSender commandSender, String[] args) throws WrongUsageException {
 
         String subCommand;
 
