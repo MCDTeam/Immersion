@@ -32,11 +32,11 @@ public class MessageSocialPacket extends ImmersionPacketBase{
 
                 return;
             case ADD_FRIEND:
-                SocialRegistry.addFriend(player.getCommandSenderName(), getString());
+                SocialRegistry.addFriend(player.getDisplayName().getFormattedText(), getString());
                 SocialRegistry.sendFriendsToPlayer((EntityPlayerMP) player);
                 return;
             case REMOVE_FRIEND:
-                SocialRegistry.removeFriend(player.getCommandSenderName(), getString());
+                SocialRegistry.removeFriend(player.getDisplayName().getFormattedText(), getString());
                 SocialRegistry.sendFriendsToPlayer((EntityPlayerMP) player);
                 return;
         }

@@ -122,9 +122,9 @@ public abstract class ImmersionPacketBase extends PacketBase {
 
     public ImmersionPacketBase addCoords(TileEntity theTile) {
 
-        addInt(theTile.xCoord);
-        addInt(theTile.yCoord);
-        return addInt(theTile.zCoord);
+        addInt(theTile.getPos().getX());
+        addInt(theTile.getPos().getY());
+        return addInt(theTile.getPos().getZ());
     }
 
     public ImmersionPacketBase addCoords(int x, int y, int z) {
@@ -225,7 +225,7 @@ public abstract class ImmersionPacketBase extends PacketBase {
         } else {
             addShort(Item.getIdFromItem(theStack.getItem()));
             addByte(theStack.stackSize);
-            writeNBT(theStack.stackTagCompound);
+            writeNBT(theStack.getTagCompound());
         }
     }
 
