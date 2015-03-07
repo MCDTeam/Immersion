@@ -1,7 +1,10 @@
 package teamUnknown.immersion.core.utils;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
 public class BlockUtils {
 
@@ -22,4 +25,14 @@ public class BlockUtils {
         }
         return 3;
     }
+
+    /**
+     * 1.8 Methods
+     */
+
+    public static TileEntity getTileEntity(World world, BlockPos blockPos){
+        return world.getTileEntity(blockPos);
+    }
+
+
 }

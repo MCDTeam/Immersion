@@ -1,11 +1,9 @@
 package teamUnknown.immersion.coreFeatures.oreGen;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import teamUnknown.immersion.core.feature.object.ImmersionBlock;
@@ -15,9 +13,6 @@ import java.util.Random;
 public class BlockOre extends ImmersionBlock
 {
     private OreGenerator generator;
-
-    @SideOnly(Side.CLIENT)
-    protected IIcon texture;
 
     public BlockOre(String type, Float hardness, int picklevel)
     {
@@ -74,11 +69,11 @@ public class BlockOre extends ImmersionBlock
 
         public void generateForChunk (World world, Random random, int chunkX, int chunkZ)
         {
-            if (dimension == world.provider.dimensionId)
+            if (dimension == world.provider.getDimensionId())
             {
                 for (int i = 0; i < chunkdensity; i++)
                 {
-                    new WorldGenMinable(ore, (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, (chunkX + random.nextInt(16)), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16)));
+                    new WorldGenMinable(ore.getBlockState().getBaseState(), (sizeMin + random.nextInt(sizeMax - sizeMin))).generate(world, random, new BlockPos(chunkX + random.nextInt(16), (YMin + random.nextInt(YMax - YMin)), (chunkZ + random.nextInt(16))));
                 }
             }
         }

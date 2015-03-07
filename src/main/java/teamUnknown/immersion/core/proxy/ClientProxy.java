@@ -1,11 +1,10 @@
 package teamUnknown.immersion.core.proxy;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import teamUnknown.immersion.features.electricalAge.blocks.ElectricalBlocks;
 import teamUnknown.immersion.features.electricalAge.client.render.item.ItemRenderElectricalWire;
 import teamUnknown.immersion.features.electricalAge.client.render.tileEntity.TileEntityRenderElectricalWireBasic;

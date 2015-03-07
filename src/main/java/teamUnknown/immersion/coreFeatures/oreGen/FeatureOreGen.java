@@ -1,7 +1,7 @@
 package teamUnknown.immersion.coreFeatures.oreGen;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import teamUnknown.immersion.core.feature.Feature;
 import teamUnknown.immersion.core.feature.Feature.FeatureElement;
 import teamUnknown.immersion.core.feature.Feature.FeatureElement.Element;

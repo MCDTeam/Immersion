@@ -1,10 +1,8 @@
 package teamUnknown.immersion.features.electricalAge.blocks.Machines;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import teamUnknown.immersion.Immersion;
@@ -18,9 +16,6 @@ public class blockBasicStorage extends ImmersionContainer{
     public blockBasicStorage(String name, Material material){
         super(name, material);
     }
-
-    public IIcon output;
-    public IIcon base;
 
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
